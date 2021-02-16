@@ -11,6 +11,11 @@ spec:
   secretRef:
     name: flux-system
   url: ssh://git@github.com/charlie-haley/home-k3s-cluster
+  ignore: |
+    /*
+    !/cluster
+    /cluster/**/*.txt
+    /cluster/**/*.md
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
