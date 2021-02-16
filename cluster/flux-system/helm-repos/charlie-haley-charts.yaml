@@ -8,13 +8,4 @@ spec:
   interval: 10m
   url: https://charts.charlie-haley.dev
   timeout: 3m
-
-
-7fb7700ae3bb30ff8e2b553dbc54b235a16dddf8
-
-flux bootstrap github \
---owner=$GITHUB_USER \
---repository=home-k3s-cluster \
---branch=main \
---path=./cluster \
---personal
+  
