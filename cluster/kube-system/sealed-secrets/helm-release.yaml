@@ -5,16 +5,12 @@ metadata:
   name: sealed-secrets
   namespace: flux-system
 spec:
-  interval: 5m
   chart:
     spec:
       chart: sealed-secrets
-      version: 1.13.2
       sourceRef:
         kind: HelmRepository
-        name: bitnami-sealed-secrets-charts
-        namespace: flux-system
-      interval: 5m
-  values:
-    ingress:
-      enabled: false
+        name: stable
+      version: "1.13.x"
+  interval: 1h0m0s
+  releaseName: sealed-secrets
