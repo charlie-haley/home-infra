@@ -112,3 +112,5 @@ spec:
       image:
         repository: k8s.gcr.io/kube-state-metrics-arm64
         tag: v1.9.5
+      nodeSelector:
+        kubernetes.io/arch: arm64
