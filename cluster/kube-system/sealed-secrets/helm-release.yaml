@@ -10,7 +10,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bitnami-sealed-secrets-charts
+        namespace: kube-system
       version: "1.13.x"
   interval: 1h0m0s
   releaseName: sealed-secrets
-  targetNamespace: kube-system
