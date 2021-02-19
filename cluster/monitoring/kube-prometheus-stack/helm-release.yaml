@@ -1,0 +1,114 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 13.10.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    grafana:
+      extraConfigmapMounts:
+      - name: grafana-notifications
+        mountPath: /etc/grafana/provisioning/notifiers
+        configMap: grafana-notifications
+        readOnly: false
+      - name: grafana-dashboard-homeoverview
+        mountPath: /var/lib/grafana/dashboards/home/homeoverview.json
+        configMap: grafana-dashboard-homeoverview
+        readOnly: false
+      - name: grafana-dashboard-networkoverview
+        mountPath: /var/lib/grafana/dashboards/home/networkoverview.json
+        configMap: grafana-dashboard-networkoverview
+        readOnly: false
+      - name: grafana-dashboard-nfsnode
+        mountPath: /var/lib/grafana/dashboards/home/nfsnode.json
+        configMap: grafana-dashboard-nfsnode
+      - name: grafana-dashboard-alerts
+        mountPath: /var/lib/grafana/dashboards/home/alerts.json
+        configMap: grafana-dashboard-alerts
+        readOnly: false
+      nodeSelector:
+        kubernetes.io/arch: arm64
+      ingress:
+        enabled: true
+        annotations: 
+          cert-manager.io/cluster-issuer: letsencrypt-aws-prod
+        hosts:
+            - grafana.k3pi.xyz
+        tls: 
+        - hosts:
+          - grafana.k3pi.xyz
+          secretName: grafana-cert 
+      extraContainers: |
+        - name: renderer
+          image: adejong/grafana-image-renderer-pi:1.0.8-beta2
+      env:
+        GF_RENDERING_SERVER_URL: http://localhost:8081/render
+        GF_RENDERING_CALLBACK_URL: "http://grafana.k3pi.xyz"
+        GF_LOG_FILTERS: "rendering:debug"
+        GF_ROOT_URL: "https://grafana.k3pi.xyz"
+        GF_DOMAIN: "https://grafana.k3pi.xyz"
+        GF_ENCORCE_DOMAIN: "true"
+        GF_USERS_DEFAULT_THEME: "light"
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+          - name: 'Home'
+            orgId: 1
+            folder: 'Home'
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/home
+    alertmanager:
+      ingress:
+        enabled: true
+        annotations: 
+          cert-manager.io/cluster-issuer: letsencrypt-aws-prod
+        hosts:
+            - alertmanager.k3pi.xyz
+        tls: 
+        - hosts:
+          - alertmanager.k3pi.xyz
+          secretName: alertmanager-cert 
+    prometheus:
+      ingress:
+        enabled: true
+        annotations: 
+          cert-manager.io/cluster-issuer: letsencrypt-aws-prod
+        hosts:
+            - prometheus.k3pi.xyz
+        tls: 
+        - hosts:
+          - prometheus.k3pi.xyz
+          secretName: prometheus-cert 
+      prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
+    pushgateway:
+      ingress:
+        enabled: true
+        annotations: 
+          cert-manager.io/cluster-issuer: letsencrypt-aws-prod
+        hosts:
+            - pushgateway.k3pi.xyz
+        tls: 
+        - hosts:
+          - pushgateway.k3pi.xyz
+          secretName: pushgateway-cert 
+    kube-state-metrics:
+      #deploy arm version of kube-state-metrics
+      image:
+        repository: k8s.gcr.io/kube-state-metrics-arm64
+        tag: v1.9.5
