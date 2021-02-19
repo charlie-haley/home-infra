@@ -1,0 +1,61 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radarr
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: radarr
+      version: 3.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: linuxserver/radarr
+      pullPolicy: IfNotPresent
+    strategy:
+      type: Recreate
+    service:
+      port:
+        port: 7878
+    env:
+        TZ: UTC
+        PUID: 0
+        PGID: 0
+    persistence:
+      config:
+        enabled: true
+        mountPath: /config
+        skipuninstall: true
+      media:
+        enabled: false
+        emptyDir: false
+    additionalVolumeMounts:
+      - mountPath: /data/movies
+        name: media-nfs
+    additionalVolumes:
+      - name: media-nfs
+        nfs: 
+          server: 192.168.1.240
+          path: /mnt/data/media/movies
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-aws-prod
+      labels: {}
+      hosts:
+        - host: radarr.k3pi.xyz
+          paths:
+            - path: /
+      tls:
+      - hosts:
+        - radarr.k3pi.xyz
+        secretName: radarr-k3s-cert
+    hostNetwork: true
+    dnsPolicy: ClusterFirstWithHostNet
