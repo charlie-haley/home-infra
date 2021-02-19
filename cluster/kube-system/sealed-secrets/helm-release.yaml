@@ -7,10 +7,10 @@ spec:
   chart:
     spec:
       chart: sealed-secrets
+      version: "1.13.x"
       sourceRef:
         kind: HelmRepository
         name: bitnami-sealed-secrets-charts
         namespace: flux-system
-      version: "1.13.x"
-  interval: 1h0m0s
+      interval: 5m
   releaseName: sealed-secrets
