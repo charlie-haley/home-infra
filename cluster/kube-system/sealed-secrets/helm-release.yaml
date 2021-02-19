@@ -4,6 +4,7 @@ metadata:
   name: sealed-secrets
   namespace: kube-system
 spec:
+  interval: 5m
   chart:
     spec:
       chart: sealed-secrets
