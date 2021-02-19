@@ -1,17 +1,16 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: sealed-secrets
-  namespace: kube-system
+  namespace: flux-system
 spec:
   chart:
     spec:
       chart: sealed-secrets
       sourceRef:
         kind: HelmRepository
-        name: bitnami-sealed-secrets-charts
+        name: stable
       version: "1.13.x"
   interval: 1h0m0s
   releaseName: sealed-secrets
-  targetNamespace: kube-system
+  targetNamespace: flux-system
