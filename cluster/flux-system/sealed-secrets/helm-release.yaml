@@ -9,7 +9,7 @@ spec:
       chart: sealed-secrets
       sourceRef:
         kind: HelmRepository
-        name: stable
+        name: bitnami-sealed-secrets-charts
       version: "1.13.x"
   interval: 1h0m0s
   releaseName: sealed-secrets
