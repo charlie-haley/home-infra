@@ -16,14 +16,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: linuxserver/radarr
-      pullPolicy: IfNotPresent
-    strategy:
-      type: Recreate
-    service:
-      port:
-        port: 7878
     env:
         TZ: UTC
         PUID: 0
