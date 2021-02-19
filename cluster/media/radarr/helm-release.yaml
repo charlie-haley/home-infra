@@ -45,6 +45,7 @@ spec:
         - host: radarr.k3pi.xyz
           paths:
             - path: /
+              pathType: Prefix
       tls:
       - hosts:
         - radarr.k3pi.xyz
