@@ -42,6 +42,8 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-aws-prod
       hosts:
         - host: radarr.k3pi.xyz
+          paths:
+            - path: /
       tls:
       - hosts:
         - radarr.k3pi.xyz
