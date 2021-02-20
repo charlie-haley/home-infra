@@ -1,5 +1,20 @@
-# home-k3s-cluster
-My personal k3s cluster managed by Flux2 GitOps
+# 
+<table>
+    <tr>
+        <th>
+            <img src="docs/content/k3s-icon-color.png?raw=true" alt="drawing" width="200"/>
+        </th>
+        <th>
+            <dl>
+                <dt><h1>home-k3s-cluster</h3></dt>
+                <dd>My personal k3s cluster managed by Flux2 GitOps</dd>
+            </dl>
+        </th>
+    </tr>
+</table>
+
+
+
 
 ## 💻 Nodes
 | Node                     | RAM  | Storage       | Function          |
