@@ -5,11 +5,9 @@
     "dependencyDashboard": true,
     "dependencyDashboardTitle": "Renovate Dashboard",
     "commitBody": "Signed-off-by: Charlie Haley <charlie-haley@users.noreply.github.com>",
-    // do not notify on closed unmerged PRs
     "suppressNotifications": [
         "prIgnoreNotification"
     ],
-    // only rebase PRs when there's a conflict
     "rebaseWhen": "conflicted",
     "kubernetes": {
         "fileMatch": [
@@ -26,7 +24,6 @@
         ]
     },
     "regexManagers": [
-        // regexManager to read and process HelmRelease files
         {
             "fileMatch": [
                 "cluster/.+helm-release\\.yaml$"
@@ -36,7 +33,6 @@
             ],
             "datasourceTemplate": "helm"
         },
-        // regexManager to read and process actions-runner-controller runner images
         {
             "fileMatch": [
                 "cluster/actions-runner-system/runners/.+\\.yaml$"
@@ -48,14 +44,12 @@
         }
     ],
     "packageRules": [
-        // setup datasources
         {
             "matchDatasources": [
                 "helm"
             ],
             "separateMinorPatch": true
         },
-        // global docker datasource settings
         {
             "matchDatasources": [
                 "docker"
@@ -70,7 +64,6 @@
             ],
             "separateMinorPatch": true
         },
-        // add labels according to package and update types
         {
             "matchDatasources": [
                 "docker"
@@ -143,7 +136,6 @@
                 "dependency/patch"
             ]
         },
-        // custom version schemes
         {
             "matchDatasources": [
                 "docker"
@@ -162,7 +154,6 @@
                 "minio/minio"
             ]
         },
-        // pin package versions
         {
             "matchDatasources": [
                 "docker"
@@ -173,12 +164,6 @@
                 "prodrigestivill/postgres-backup-local"
             ]
         },
-        // {
-        //   "matchDatasources": ["helm"],
-        //   "allowedVersions": "<=13.2.0",
-        //   "matchPackageNames": ["kube-prometheus-stack"]
-        // },
-        // version strategies
         {
             "matchDatasources": [
                 "docker"
