@@ -32,13 +32,13 @@ spec:
       name: movies-nfs
     additionalVolumes:
     - name: tv-nfs
-      nfs: 
+      nfs:
         server: 192.168.1.240
         path: /mnt/data/media/tv
     - name: movies-nfs
-      nfs: 
+      nfs:
         server: 192.168.1.240
-        path: /mnt/data/media/movies 
+        path: /mnt/data/media/movies
     ingress:
       enabled: true
       annotations:

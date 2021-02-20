@@ -18,9 +18,9 @@ spec:
       interval: 5m
   values:
     env:
-        TZ: UTC
-        PUID: 0
-        PGID: 0
+      TZ: UTC
+      PUID: 0
+      PGID: 0
     persistence:
       config:
         enabled: true
@@ -34,7 +34,7 @@ spec:
       name: media-nfs
     additionalVolumes:
     - name: media-nfs
-      nfs: 
+      nfs:
         server: 192.168.1.240
         path: /mnt/data/media/tv
     ingress:

@@ -42,14 +42,14 @@ spec:
         kubernetes.io/arch: arm64
       ingress:
         enabled: true
-        annotations: 
+        annotations:
           cert-manager.io/cluster-issuer: letsencrypt-aws-prod
         hosts:
         - grafana.k3pi.xyz
-        tls: 
+        tls:
         - hosts:
           - grafana.k3pi.xyz
-          secretName: grafana-cert 
+          secretName: grafana-cert
       extraContainers: |
         - name: renderer
           image: adejong/grafana-image-renderer-pi:1.0.8-beta2
@@ -76,38 +76,38 @@ spec:
     alertmanager:
       ingress:
         enabled: true
-        annotations: 
+        annotations:
           cert-manager.io/cluster-issuer: letsencrypt-aws-prod
         hosts:
         - alertmanager.k3pi.xyz
-        tls: 
+        tls:
         - hosts:
           - alertmanager.k3pi.xyz
-          secretName: alertmanager-cert 
+          secretName: alertmanager-cert
     prometheus:
       ingress:
         enabled: true
-        annotations: 
+        annotations:
           cert-manager.io/cluster-issuer: letsencrypt-aws-prod
         hosts:
         - prometheus.k3pi.xyz
-        tls: 
+        tls:
         - hosts:
           - prometheus.k3pi.xyz
-          secretName: prometheus-cert 
+          secretName: prometheus-cert
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
     pushgateway:
       ingress:
         enabled: true
-        annotations: 
+        annotations:
           cert-manager.io/cluster-issuer: letsencrypt-aws-prod
         hosts:
         - pushgateway.k3pi.xyz
-        tls: 
+        tls:
         - hosts:
           - pushgateway.k3pi.xyz
-          secretName: pushgateway-cert 
+          secretName: pushgateway-cert
     kube-state-metrics:
       # deploy arm version of kube-state-metrics
       image:
