@@ -8,6 +8,7 @@ spec:
   chart:
     spec:
       #renovate https://bitnami-labs.github.io/sealed-secrets
+      # renovate: registryUrl=https://bitnami-labs.github.io/sealed-secrets
       chart: sealed-secrets
       version: "1.13.x"
       sourceRef:
