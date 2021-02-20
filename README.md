@@ -28,3 +28,5 @@
 
 ## 💻 Automations
 - [Renovate](https://github.com/renovatebot/renovate)
+- [GitHub Action YAMLlint](https://github.com/ibiqlik/action-yamllint)
+- [Renovate Helm Releases](https://github.com/k8s-at-home/renovate-helm-releases)
