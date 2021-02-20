@@ -47,8 +47,8 @@ spec:
       hosts:
       - host: jellyfin.k3pi.xyz
         paths:
-          - path: /
-            pathType: Prefix
+        - path: /
+          pathType: Prefix
       tls:
       - hosts:
         - jellyfin.k3pi.xyz
