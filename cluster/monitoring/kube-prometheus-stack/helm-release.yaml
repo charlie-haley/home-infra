@@ -45,7 +45,7 @@ spec:
         annotations: 
           cert-manager.io/cluster-issuer: letsencrypt-aws-prod
         hosts:
-            - grafana.k3pi.xyz
+        - grafana.k3pi.xyz
         tls: 
         - hosts:
           - grafana.k3pi.xyz
@@ -79,7 +79,7 @@ spec:
         annotations: 
           cert-manager.io/cluster-issuer: letsencrypt-aws-prod
         hosts:
-            - alertmanager.k3pi.xyz
+        - alertmanager.k3pi.xyz
         tls: 
         - hosts:
           - alertmanager.k3pi.xyz
@@ -90,7 +90,7 @@ spec:
         annotations: 
           cert-manager.io/cluster-issuer: letsencrypt-aws-prod
         hosts:
-            - prometheus.k3pi.xyz
+        - prometheus.k3pi.xyz
         tls: 
         - hosts:
           - prometheus.k3pi.xyz
@@ -103,13 +103,13 @@ spec:
         annotations: 
           cert-manager.io/cluster-issuer: letsencrypt-aws-prod
         hosts:
-            - pushgateway.k3pi.xyz
+        - pushgateway.k3pi.xyz
         tls: 
         - hosts:
           - pushgateway.k3pi.xyz
           secretName: pushgateway-cert 
     kube-state-metrics:
-      #deploy arm version of kube-state-metrics
+      # deploy arm version of kube-state-metrics
       image:
         repository: k8s.gcr.io/kube-state-metrics-arm64
         tag: v1.9.5

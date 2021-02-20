@@ -45,8 +45,8 @@ spec:
       hosts:
       - host: sonarr.k3pi.xyz
         paths:
-          - path: /
-            pathType: Prefix
+        - path: /
+          pathType: Prefix
       tls:
       - hosts:
         - sonarr.k3pi.xyz
