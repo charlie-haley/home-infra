@@ -33,9 +33,6 @@ spec:
       config:
         enabled: true
         emptyDir: false
-    valuesFrom:
-    - kind: Secret
-      name: "home-assistant-values"
     addons:
       codeserver:
         enabled: true
@@ -65,3 +62,6 @@ spec:
         - name: deploykey
           mountPath: /root/.ssh/id_rsa
           subPath: id_rsa
+  valuesFrom:
+  - kind: Secret
+    name: "home-assistant-values"
