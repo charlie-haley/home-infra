@@ -34,4 +34,7 @@ spec:
   - kind: HelmRelease
     namespace: 'monitoring'
     name: '*'
+  - kind: HelmRelease
+    namespace: 'apps'
+    name: '*'
   suspend: false
