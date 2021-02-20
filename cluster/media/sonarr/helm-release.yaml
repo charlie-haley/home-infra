@@ -30,13 +30,13 @@ spec:
         enabled: false
         emptyDir: false
     additionalVolumeMounts:
-      - mountPath: /data/tv
-        name: media-nfs
+    - mountPath: /data/tv
+      name: media-nfs
     additionalVolumes:
-      - name: media-nfs
-        nfs: 
-          server: 192.168.1.240
-          path: /mnt/data/media/tv
+    - name: media-nfs
+      nfs: 
+        server: 192.168.1.240
+        path: /mnt/data/media/tv
     ingress:
       enabled: true
       annotations:
