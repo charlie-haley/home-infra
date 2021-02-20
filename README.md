@@ -2,7 +2,6 @@
 My personal k3s cluster managed by Flux2 GitOps
 
 ## 💻 Nodes
-
 | Node                     | RAM  | Storage       | Function          |
 | ------------------------ |------| ------------- | ----------------- |
 | Raspberry Pi 4 Model B   | 4GB  | 32GB SD       | Kube Master Node  |
