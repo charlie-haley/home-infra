@@ -46,7 +46,7 @@ spec:
           hosts:
           - host: hass-code.k3pi.xyz
             paths:
-              - path: /
+            - path: /
           tls:
           - secretName: hass-code-cert
             hosts:
