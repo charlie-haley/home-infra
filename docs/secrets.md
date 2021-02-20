@@ -17,4 +17,5 @@ kubeseal --format=yaml --cert=pub-sealed-secrets.pem \
 
 Clean up old unencrypted secret
 ```
+rm secret.yaml
 ```
