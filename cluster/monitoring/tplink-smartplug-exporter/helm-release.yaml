@@ -8,6 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
+      # renovate: registryUrl=https://charts.charliehaley.dev
       chart: tplink-smartplug-exporter
       version: 0.1.2
       sourceRef:
