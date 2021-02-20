@@ -1,0 +1,23 @@
+---
+name: lint
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  lint-cluster-manifests:
+    runs-on:
+    - ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Lint Cluster Manifests
+      uses: ibiqlik/action-yamllint@v3
+      with:
+        file_or_dir: "./cluster"
+        config_file: "./.github/yamllint.config.yaml"
