@@ -24,5 +24,5 @@ rm secret.yaml
 kubseal sometimes fails to get the public cert, you can fetch the cert like this instead
 ```
 kubectl port-forward service/sealed-secrets -n flux-system 8081:8080
-curl localhost:8081/v1/cert.pem
+curl localhost:8081/v1/cert.pem > pub-sealed-secrets.pem
 ```
