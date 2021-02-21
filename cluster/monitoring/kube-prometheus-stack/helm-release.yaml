@@ -117,4 +117,4 @@ spec:
         kubernetes.io/arch: arm64
   valuesFrom:
   - kind: Secret
-    name: "kube-prometheus-stack-values"
+    name: kube-prometheus-stack-values
