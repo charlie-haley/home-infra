@@ -115,3 +115,6 @@ spec:
         tag: v1.9.5
       nodeSelector:
         kubernetes.io/arch: arm64
+  valuesFrom:
+  - kind: Secret
+    name: "kube-prometheus-stack-values"
