@@ -5,7 +5,7 @@ metadata:
   name: letsencrypt-staging
 spec:
   acme:
-    email: charlie@cvntrxl.co
+    email: charlie-haley@users.noreply.github.com
     preferredChain: ''
     privateKeySecretRef:
       name: letsencrypt-prod-dns
