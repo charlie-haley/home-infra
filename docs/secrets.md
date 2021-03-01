@@ -1,5 +1,18 @@
 # Secrets
 
+## Task
+
+```
+task generate-secret
+```
+Edit the `secret.yaml` file that's generated with the values you want to store in the secret.
+
+```
+task seal-secret
+```
+
+### Manually
+
 Generate a secret manifest
 ```
 kubectl -n default create secret generic my-secret-name \
@@ -20,9 +33,8 @@ Clean up old unencrypted secret
 rm secret.yaml
 ```
 
-## Issues
+### Issues
 kubseal sometimes fails to get the public cert, you can fetch the cert like this instead
 ```
-kubectl port-forward service/sealed-secrets -n flux-system 8081:8080
-curl localhost:8081/v1/cert.pem > pub-sealed-secrets.pem
+task fetch-cert
 ```
