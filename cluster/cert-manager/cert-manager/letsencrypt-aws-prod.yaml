@@ -1,0 +1,24 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    email: charlie-haley@users.noreply.github.com
+    preferredChain: ''
+    privateKeySecretRef:
+      name: letsencrypt-prod-dns
+    server: 'https://acme-v02.api.letsencrypt.org/directory'
+    solvers:
+      - dns01:
+          route53:
+            accessKeyID: AKIA5FEOZUCA6BENPYUJ
+            region: us-east-1
+            role: 'arn:aws:iam::904390090881:role/cert-manager'
+            secretAccessKeySecretRef:
+              key: secret-access-key
+              name: prod-route53-credentials-secret
+        selector:
+          dnsZones:
+            - k3pi.xyz
