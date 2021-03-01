@@ -26,7 +26,7 @@
 | HP MicroServer G8        | 8GB  | x4 3TB WD Red | NFS Server        | FreeBSD 12.2-RELEASE   |
 
 
-## 💻 Automations
+## 🦾 Automations
 - [Renovate](https://github.com/renovatebot/renovate)
 - [GitHub Action YAMLlint](https://github.com/ibiqlik/action-yamllint)
 - [Renovate Helm Releases](https://github.com/k8s-at-home/renovate-helm-releases)
