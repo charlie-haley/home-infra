@@ -22,7 +22,7 @@
 | Raspberry Pi 4 Model B   | 4GB  | 32GB SD       | Kube Master Node  | Ubuntu 20.04.2 LTS     |
 | Raspberry Pi 4 Model B   | 4GB  | 32GB SD       | Kube Worker Node  | Ubuntu 20.04.2 LTS     |
 | Raspberry Pi 4 Model B   | 4GB  | 32GB SD       | Kube Worker Node  | Ubuntu 20.04.2 LTS     |
-| Dell R210II              | 16GB | 240GB SSD     | Kube Master Node  | Ubuntu 20.04.2 LTS     |
+| Dell R210II              | 16GB | 240GB SSD     | Kube Worker Node  | Ubuntu 20.04.2 LTS     |
 | HP MicroServer G8        | 8GB  | x4 3TB WD Red | NFS Server        | FreeBSD 12.2-RELEASE   |
 
 
