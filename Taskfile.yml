@@ -16,6 +16,7 @@ tasks:
       --from-literal=key=value \
       --dry-run=client \
       -o yaml > secret.yaml
+
   seal-secret:
     desc: trest
     cmds:
