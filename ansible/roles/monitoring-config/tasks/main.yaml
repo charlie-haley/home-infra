@@ -1,0 +1,6 @@
+---
+- include: create-grafana-dashboards.yaml
+vars:
+  path: "{{ item }}"
+with_fileglob:
+- "../../cluster/monitoring/kube-prometheus-stack/dashboards/*"

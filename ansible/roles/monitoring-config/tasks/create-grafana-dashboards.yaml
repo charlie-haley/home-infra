@@ -1,0 +1,7 @@
+---
+- set_fact:
+    filename: "{{path.split('.')[0].split('/')[-1]}}"
+
+- name: Create dashboard for {{ filename }}.json
+  community.kubernetes.k8s:
+    definition: "{{ lookup('template', './dashboard-configmap.yml.j2') | from_yaml }}"
