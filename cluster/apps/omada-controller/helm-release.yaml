@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts
       chart: omada-controller
-      version: 1.1.0
+      version: 1.2.0
       sourceRef:
         kind: HelmRepository
         name: kube-at-home-charts
