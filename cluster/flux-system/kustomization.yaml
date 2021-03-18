@@ -6,8 +6,28 @@ resources:
 - gotk-sync.yaml
 - gotk-custom-kustomization.yaml
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 configMapGenerator:
-- name: config-map-monitoring
+  ####  Grafana ####
+- name: grafana-dashboard-alerts
   namespace: monitoring
   files:
   - ../monitoring/kube-prometheus-stack/dashboards/alerts.json
+
+- name: grafana-dashboard-homeoverview
+  namespace: monitoring
+  files:
+  - ../monitoring/kube-prometheus-stack/dashboards/homeoverview.json
+
+- name: grafana-dashboard-networkoverview
+  namespace: monitoring
+  files:
+  - ../monitoring/kube-prometheus-stack/dashboards/networkoverview.json
+
+- name: grafana-dashboard-nfsnode
+  namespace: monitoring
+  files:
+  - ../monitoring/kube-prometheus-stack/dashboards/nfsnode.json
+  ####  End ####
