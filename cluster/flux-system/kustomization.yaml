@@ -10,4 +10,4 @@ configMapGenerator:
 - name: config-map-monitoring
   namespace: monitoring
   files:
-    - ../monitoring/kube-prometheus-stack/dashboards/*.json
+  - ../monitoring/kube-prometheus-stack/dashboards/*.json
