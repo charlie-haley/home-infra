@@ -5,3 +5,9 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - gotk-custom-kustomization.yaml
+
+configMapGenerator:
+- name: config-map-monitoring
+  namespace: monitoring
+  files:
+  - ../monitoring/kube-prometheus-stack/dashboards/*.json
