@@ -10,7 +10,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 configMapGenerator:
-####  Grafana ####
+  ####  Grafana ####
 - name: grafana-dashboard-alerts
   namespace: monitoring
   files:
@@ -30,4 +30,4 @@ configMapGenerator:
   namespace: monitoring
   files:
   - ../monitoring/kube-prometheus-stack/dashboards/nfsnode.json
-####  End ####
+  ####  End ####
