@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
-      version: 13.10.0
+      version: 14.1.2
       sourceRef:
         kind: HelmRepository
         name: prometheus-community-charts
@@ -18,11 +18,12 @@ spec:
       interval: 5m
   values:
     grafana:
-      extraConfigmapMounts:
+      extraSecretMounts:
       - name: grafana-notifications
         mountPath: /etc/grafana/provisioning/notifiers
-        configMap: grafana-notifications
-        readOnly: false
+        secretName: grafana-notifications
+        readOnly: true
+      extraConfigmapMounts:
       - name: grafana-dashboard-homeoverview
         mountPath: /var/lib/grafana/dashboards/home/homeoverview.json
         configMap: grafana-dashboard-homeoverview
