@@ -36,7 +36,7 @@ spec:
         readOnly: false
       - name: notifications
         mountPath: /etc/grafana/provisioning/notifiers
-        secretName: grafana-notifications
+        configMap: notifications
         readOnly: true
       nodeSelector:
         kubernetes.io/arch: arm64
