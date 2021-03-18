@@ -9,7 +9,7 @@ tasks:
 
   ### Secrets Tasks
   generate-secret:
-    desc: Generate a sealed
+    desc: Generate a secret
     cmds:
     - |
       kubectl -n default create secret generic my-secret-name \
@@ -18,7 +18,7 @@ tasks:
       -o yaml > secret.yaml
 
   seal-secret:
-    desc: trest
+    desc: Seal a secret
     cmds:
     - |
       kubeseal --format=yaml --cert=pub-sealed-secrets.pem \
@@ -26,7 +26,7 @@ tasks:
     - rm secret.yaml
 
   fetch-cert:
-    desc: test
+    desc: Fetch public cert
     cmds:
     - |
       kubectl port-forward service/sealed-secrets -n flux-system 8081:8080 &>/dev/null &
