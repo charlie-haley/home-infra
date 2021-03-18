@@ -34,10 +34,6 @@ spec:
         mountPath: /var/lib/grafana/dashboards/home/alerts.json
         configMap: grafana-dashboard-alerts
         readOnly: false
-      - name: notifications
-        mountPath: /etc/grafana/provisioning/notifiers
-        configMap: notifications
-        readOnly: true
       nodeSelector:
         kubernetes.io/arch: arm64
       ingress:
