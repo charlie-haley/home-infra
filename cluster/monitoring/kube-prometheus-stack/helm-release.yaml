@@ -19,6 +19,10 @@ spec:
   values:
     grafana:
       extraConfigmapMounts:
+      - name: grafana-notifications
+        mountPath: /etc/grafana/provisioning/notifiers
+        configMap: grafana-notifications
+        readOnly: true
       - name: grafana-dashboard-homeoverview
         mountPath: /var/lib/grafana/dashboards/home/homeoverview.json
         configMap: grafana-dashboard-homeoverview
