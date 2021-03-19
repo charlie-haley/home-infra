@@ -48,7 +48,7 @@ spec:
           secretName: grafana-cert
       extraContainers: |
         - name: renderer
-          image: adejong/grafana-image-renderer-pi:1.0.8-beta2
+          image: grafana/grafana-image-renderer
       env:
         GF_RENDERING_SERVER_URL: http://localhost:8081/render
         GF_RENDERING_CALLBACK_URL: "http://grafana.k3pi.xyz"
