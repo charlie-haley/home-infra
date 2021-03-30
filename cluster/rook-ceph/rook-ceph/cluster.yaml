@@ -3,7 +3,7 @@ apiVersion: ceph.rook.io/v1
 kind: CephCluster
 metadata:
   name: rook-ceph
-  namespace: rook-ceph 
+  namespace: rook-ceph
 spec:
   cephVersion:
     image: ceph/ceph:v15.2.9
@@ -31,10 +31,10 @@ spec:
     disable: false
   cleanupPolicy:
     confirmation: ""
-    sanitizeDisks: 
+    sanitizeDisks:
       method: quick
       dataSource: zero
-      iteration: 1 
+      iteration: 1
     allowUninstallWithVolumes: false
   annotations:
   labels:
