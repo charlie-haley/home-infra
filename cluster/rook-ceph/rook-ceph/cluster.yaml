@@ -59,6 +59,6 @@ spec:
   disruptionManagement:
     managePodBudgets: false
     osdMaintenanceTimeout: 30
-    pgHealthCheckTimeout: 0 
+    pgHealthCheckTimeout: 0
     manageMachineDisruptionBudgets: false
     machineDisruptionBudgetNamespace: openshift-machine-api
