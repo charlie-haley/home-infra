@@ -33,3 +33,5 @@ spec:
       - secretName: omada-cert
         hosts:
         - omada.k3pi.xyz
+    nodeSelector:
+      kubernetes.io/arch: amd64
