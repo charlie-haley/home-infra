@@ -18,10 +18,10 @@ spec:
       interval: 5m
   values:
     csi:
-      kubeletDirPath: /var/lib/kubelet
+      enableCephfsDriver: false
       pluginTolerations:
-      - key: "node-role.kubernetes.io/master"
-        operator: "Exists"
+      - effect: NoSchedule
+        operator: Exists
     resources:
       requests:
         cpu: 100m
