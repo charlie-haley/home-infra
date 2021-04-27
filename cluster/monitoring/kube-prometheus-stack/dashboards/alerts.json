@@ -91,7 +91,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "7.4.1",
+            "pluginVersion": "7.4.2",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -231,7 +231,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "7.4.1",
+            "pluginVersion": "7.4.2",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -371,7 +371,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "7.4.1",
+            "pluginVersion": "7.4.2",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -440,6 +440,42 @@
             }
         },
         {
+            "alert": {
+                "alertRuleTags": {},
+                "conditions": [
+                    {
+                        "evaluator": {
+                            "params": [
+                                0
+                            ],
+                            "type": "lt"
+                        },
+                        "operator": {
+                            "type": "and"
+                        },
+                        "query": {
+                            "params": [
+                                "A",
+                                "5m",
+                                "now"
+                            ]
+                        },
+                        "reducer": {
+                            "params": [],
+                            "type": "avg"
+                        },
+                        "type": "query"
+                    }
+                ],
+                "executionErrorState": "alerting",
+                "for": "5m",
+                "frequency": "1m",
+                "handler": 1,
+                "message": "No data reported, node potentially down",
+                "name": "Panel Title alert",
+                "noDataState": "alerting",
+                "notifications": []
+            },
             "aliasColors": {},
             "bars": false,
             "dashLength": 10,
@@ -454,13 +490,13 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 8,
+                "h": 9,
                 "w": 12,
                 "x": 12,
                 "y": 9
             },
             "hiddenSeries": false,
-            "id": 6,
+            "id": 8,
             "legend": {
                 "avg": false,
                 "current": false,
@@ -477,7 +513,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "7.4.1",
+            "pluginVersion": "7.4.2",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -485,11 +521,28 @@
             "spaceLength": 10,
             "stack": false,
             "steppedLine": false,
-            "thresholds": [],
+            "targets": [
+                {
+                    "expr": "sum by (instance) (1 - rate(node_cpu_seconds_total{job=\"node-exporter\", mode=\"idle\"}[1m]))",
+                    "interval": "",
+                    "legendFormat": "{{instance}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [
+                {
+                    "colorMode": "critical",
+                    "fill": true,
+                    "line": true,
+                    "op": "lt",
+                    "value": 0,
+                    "visible": true
+                }
+            ],
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "Test Panel",
+            "title": "Panel Title",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -505,7 +558,7 @@
             },
             "yaxes": [
                 {
-                    "$$hashKey": "object:94",
+                    "$$hashKey": "object:74",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -514,7 +567,7 @@
                     "show": true
                 },
                 {
-                    "$$hashKey": "object:95",
+                    "$$hashKey": "object:75",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -537,7 +590,7 @@
         "list": []
     },
     "time": {
-        "from": "now-15m",
+        "from": "now-30m",
         "to": "now"
     },
     "timepicker": {},
