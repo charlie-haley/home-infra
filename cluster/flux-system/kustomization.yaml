@@ -5,7 +5,6 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - gotk-custom-kustomization.yaml
-- ../rook-ceph/kustomization.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
