@@ -60,18 +60,12 @@ spec:
       metadataDevice:
       osdsPerDevice: "1"
     nodes:
-    - name: "k8s-worker-a"
+    - name: "kube-worker1"
       devices:
-      - name: "nvme0n1"
-    - name: "k8s-worker-b"
+      - name: "mmcblk0p2"
+    - name: "kube-worker2"
       devices:
-      - name: "nvme0n1"
-    - name: "k8s-worker-c"
+      - name: "mmcblk0p2"
+    - name: "kube-worker3"
       devices:
-      - name: "nvme0n1"
-    - name: "k8s-worker-d"
-      devices:
-      - name: "nvme0n1"
-    - name: "k8s-worker-e"
-      devices:
-      - name: "nvme0n1"
+      - name: "sdc2"
