@@ -5,3 +5,4 @@ resources:
 - cisco-telnet-exporter
 - kube-prometheus-stack
 - tplink-smartplug-exporter
+- namespace.yaml
