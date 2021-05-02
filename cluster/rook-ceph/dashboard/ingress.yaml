@@ -7,6 +7,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "external"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    cert-manager.io/cluster-issuer: letsencrypt-aws-prod
   labels:
     app.kubernetes.io/instance: rook-ceph-mgr-dashboard
     app.kubernetes.io/name: rook-ceph-mgr-dashboard
@@ -24,4 +25,4 @@ spec:
               name: http-dashboard
   tls:
   - hosts:
-    - host: "rook.k3pi.xyz"
+    - "rook.k3pi.xyz"
