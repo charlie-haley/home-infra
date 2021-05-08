@@ -23,4 +23,4 @@ configMapGenerator:
   files:
   - nfsnode.json
 generatorOptions:
- disableNameSuffixHash: true
+  disableNameSuffixHash: true
