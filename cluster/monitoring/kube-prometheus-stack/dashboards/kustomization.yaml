@@ -22,3 +22,5 @@ configMapGenerator:
   namespace: monitoring
   files:
   - nfsnode.json
+generatorOptions:
+ disableNameSuffixHash: true
