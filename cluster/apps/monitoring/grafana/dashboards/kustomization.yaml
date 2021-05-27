@@ -5,25 +5,25 @@ commonLabels:
 resources:
 - https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/v0.7.0/manifests/grafana-dashboardDefinitions.yaml
 
-configMapGenerator:
-- name: grafana-dashboard-alerts
-  namespace: monitoring
-  files:
-  - alerts.json
+# configMapGenerator:
+# - name: grafana-dashboard-alerts
+#   namespace: monitoring
+#   files:
+#   - alerts.json
 
-- name: grafana-dashboard-homeoverview
-  namespace: monitoring
-  files:
-  - homeoverview.json
+# - name: grafana-dashboard-homeoverview
+#   namespace: monitoring
+#   files:
+#   - homeoverview.json
 
-- name: grafana-dashboard-networkoverview
-  namespace: monitoring
-  files:
-  - networkoverview.json
+# - name: grafana-dashboard-networkoverview
+#   namespace: monitoring
+#   files:
+#   - networkoverview.json
 
-- name: grafana-dashboard-nfsnode
-  namespace: monitoring
-  files:
-  - nfsnode.json
-generatorOptions:
-  disableNameSuffixHash: true
+# - name: grafana-dashboard-nfsnode
+#   namespace: monitoring
+#   files:
+#   - nfsnode.json
+# generatorOptions:
+#   disableNameSuffixHash: true
