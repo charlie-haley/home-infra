@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - falco-system
 - flux-system
-- home
+# - home
 - kube-system
 - media
 - monitoring
