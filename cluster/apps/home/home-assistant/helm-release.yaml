@@ -60,38 +60,38 @@ spec:
       config:
         enabled: true
         existingClaim: home-assistant-config-v1
-    addons:
-      codeserver:
-        enabled: true
-        image:
-          repository: codercom/code-server
-          tag: 3.9.3
-        git:
-          deployKeySecret: code-server
-        workingDir: "/config"
-        args:
-        - --auth
-        - "none"
-        - --user-data-dir
-        - "/config/.vscode"
-        - --extensions-dir
-        - "/config/.vscode"
-        ingress:
-          enabled: true
-          ingressClassName: "traefik"
-          annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          hosts:
-          - host: "hass-config.${SECRET_DOMAIN}"
-            paths:
-            - path: /
-              pathType: Prefix
-          tls:
-          - hosts:
-            - "hass-config.${SECRET_DOMAIN}"
-        volumeMounts:
-        - name: config
-          mountPath: /config
+    # addons:
+    #   codeserver:
+    #     enabled: true
+    #     image:
+    #       repository: codercom/code-server
+    #       tag: 3.9.3
+    #     git:
+    #       deployKeySecret: code-server
+    #     workingDir: "/config"
+    #     args:
+    #     - --auth
+    #     - "none"
+    #     - --user-data-dir
+    #     - "/config/.vscode"
+    #     - --extensions-dir
+    #     - "/config/.vscode"
+    #     ingress:
+    #       enabled: true
+    #       ingressClassName: "traefik"
+    #       annotations:
+    #         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    #       hosts:
+    #       - host: "hass-config.${SECRET_DOMAIN}"
+    #         paths:
+    #         - path: /
+    #           pathType: Prefix
+    #       tls:
+    #       - hosts:
+    #         - "hass-config.${SECRET_DOMAIN}"
+    #     volumeMounts:
+    #     - name: config
+    #       mountPath: /config
     resources:
       requests:
         cpu: 100m
