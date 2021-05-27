@@ -5,6 +5,3 @@ resources:
 - grafana
 - kube-prometheus-stack
 - loki
-- snmp-exporter
-- unifi-poller
-- uptimerobot-heartbeat
