@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - namespaces
 - cert-manager
-- monitoring
 - networking
 - rook-ceph
 - system-upgrade
