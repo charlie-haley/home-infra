@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-settings
+  namespace: flux-system
+data:
+  GATEWAY_IP: "192.168.1.1"
+  # Available IP range for Load Balancer services
+  METALLB_ARP_RANGE: "192.168.1.2-169.254.1.99"
+  # LoadBalancerIPs
+  LB_COREDNS_IP: "192.168.1.10"            # CLUSTER_LB_COREDNS: "192.168.69.180"
+  LB_TRAEFIK_IP: "192.168.1.11"            # CLUSTER_LB_TRAEFIK: "192.168.69.200"
+  LB_BLOCKY_IP: "192.168.1.12"             # CLUSTER_LB_BLOCKY: "192.168.69.115"
+  LB_HOME_ASSISTANT_IP: "192.168.1.13"     # CLUSTER_LB_HOME_ASSISTANT: "192.168.69.105"
+  LB_JELLYFIN_IP: "192.168.1.15"           # CLUSTER_LB_JELLYFIN: "192.168.69.220"
+  LB_LOKI_IP: "192.168.1.18"               # CLUSTER_LB_LOKI: "192.168.69.155"
