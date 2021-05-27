@@ -4,7 +4,6 @@ resources:
 - falco-system
 - flux-system
 - home
-- kasten-io
 - kube-system
 - media
 - monitoring
