@@ -4,5 +4,4 @@ resources:
 - descheduler
 - kured
 - metrics-server
-- node-problem-detector
 - reloader
