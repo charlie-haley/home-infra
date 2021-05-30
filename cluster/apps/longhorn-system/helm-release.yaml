@@ -16,10 +16,3 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    persistence:
-      defaultClassReplicaCount: 3
-    defaultSettings:
-      defaultReplicaCount: 3
-      storageMinimalAvailablePercentage: 10
-      createDefaultDiskLabeledNodes: true
-      defaultDataPath: /var/kubedata/
