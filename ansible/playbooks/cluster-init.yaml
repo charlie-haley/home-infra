@@ -10,8 +10,9 @@
       k3sup install \
       --host={{ item }} \
       --user=ubuntu \
+      --cluster \
       --k3s-version=v1.20.5+k3s1 \
-      --k3s-extra-args="--disable servicelb --disable traefik"
+      --k3s-extra-args="--disable servicelb --disable traefik" \
       --local-path $HOME/.kube/config
     with_items:
     - "{{ groups['master'] }}"
