@@ -8,7 +8,6 @@ resources:
 - deliveryhero-charts.yaml
 - drone-charts.yaml
 - falco-security-charts.yaml
-- gitea-charts.yaml
 - grafana-charts.yaml
 - infracloudio-charts.yaml
 - ingress-nginx-charts.yaml
