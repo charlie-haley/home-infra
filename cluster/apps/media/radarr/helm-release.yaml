@@ -58,12 +58,13 @@ spec:
       supplementalGroups:
       - 100
     additionalVolumeMounts:
-    - name: media
-      mountPath: "/media"
+    - name: movies-nfs
+      mountPath: /data/movies
     additionalVolumes:
-    - name: media
-      persistentVolumeClaim:
-        claimName: nfs-media-pvc
+    - name: movies-nfs
+      nfs:
+        server: 192.168.1.240
+        path: /mnt/data/media/movies
     resources:
       requests:
         memory: 250Mi

@@ -57,12 +57,19 @@ spec:
           enabled: true
           medium: "Memory"
     additionalVolumeMounts:
-    - name: media
-      mountPath: "/media"
+    - name: tv-nfs
+      mountPath: /data/tv
+    - name: movies-nfs
+      mountPath: /data/movies
     additionalVolumes:
-    - name: media
-      persistentVolumeClaim:
-        claimName: nfs-media-pvc
+    - name: tv-nfs
+      nfs:
+        server: 192.168.1.240
+        path: /mnt/data/media/tv
+    - name: movies-nfs
+      nfs:
+        server: 192.168.1.240
+        path: /mnt/data/media/movies
     resources:
       requests:
         cpu: 500m
