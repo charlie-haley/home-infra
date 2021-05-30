@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - flux-system
 - home
-- longhorn-system
+# - longhorn-system
 - kube-system
 - media
 - monitoring
