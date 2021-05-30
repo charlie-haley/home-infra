@@ -17,6 +17,10 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      repository: raspbernetes/botkube
+      tag: v0.12.1
+      pullPolicy: Always
     communications:
       discord:
         enabled: true
