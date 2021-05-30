@@ -16,10 +16,10 @@ spec:
         name: bitnami-charts
         namespace: flux-system
   values:
-  controller:
-    image:
-      repository: metallb/controller
-      tag: v0.9.5
+    controller:
+      image:
+        repository: metallb/controller
+        tag: v0.9.5
     speaker:
       image:
         repository: metallb/speaker
