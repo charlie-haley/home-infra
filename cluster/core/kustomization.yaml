@@ -4,5 +4,4 @@ resources:
 - namespaces
 - cert-manager
 - networking
-- longhorn-system
 - system-upgrade
