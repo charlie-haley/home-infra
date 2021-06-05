@@ -24,9 +24,6 @@ spec:
     replicaCount: 3
     isClusterService: false
     serviceType: LoadBalancer
-    service:
-      loadBalancerIP: "${LB_COREDNS_IP}"
-      externalTrafficPolicy: Local
     servers:
     - zones:
       - zone: ${SECRET_DOMAIN}

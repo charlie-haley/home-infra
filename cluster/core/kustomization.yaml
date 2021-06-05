@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
 - namespaces
 - cert-manager
-- networking
 - system-upgrade

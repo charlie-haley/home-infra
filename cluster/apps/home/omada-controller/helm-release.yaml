@@ -21,7 +21,7 @@ spec:
     ingress:
       enabled: true
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-aws-prod
+        cert-manager.io/cluster-issuer: letsencrypt-production
         nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         nginx.ingress.kubernetes.io/upstream-vhost: "omada.k3pi.xyz:8043"
