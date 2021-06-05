@@ -9,3 +9,4 @@ resources:
 - monitoring
 - networking
 - system-upgrade
+- metallb
