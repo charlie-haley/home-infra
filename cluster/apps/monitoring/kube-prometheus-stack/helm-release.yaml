@@ -71,13 +71,13 @@ spec:
         pathType: Prefix
         ingressClassName: "traefik"
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
         - "alertmanager.${SECRET_DOMAIN}"
         tls:
         - hosts:
           - "alertmanager.${SECRET_DOMAIN}"
+        secretName: "${SECRET_DOMAIN/./-}"
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -121,13 +121,13 @@ spec:
         pathType: Prefix
         ingressClassName: "traefik"
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
         - "prometheus.${SECRET_DOMAIN}"
         tls:
         - hosts:
           - "prometheus.${SECRET_DOMAIN}"
+        secretName: "${SECRET_DOMAIN/./-}"
       prometheusSpec:
         ruleSelector: {}
         ruleNamespaceSelector: {}

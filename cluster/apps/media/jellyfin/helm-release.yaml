@@ -31,7 +31,6 @@ spec:
       enabled: true
       ingressClassName: "traefik"
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
       - host: "jellyfin.${SECRET_DOMAIN}"
@@ -41,6 +40,7 @@ spec:
       tls:
       - hosts:
         - "jellyfin.${SECRET_DOMAIN}"
+        secretName: "${SECRET_DOMAIN/./-}"
     persistence:
       config:
         enabled: true
