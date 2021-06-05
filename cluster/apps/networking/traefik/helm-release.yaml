@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     additionalArguments:
-      # - --providers.file.filename=/data/traefik-config.yaml
+      - --providers.file.filename=/data/traefik-config.yaml
       - --entrypoints.websecure.http.tls.certresolver=cloudflare
       - --entrypoints.websecure.http.tls.domains[0].main=${SECRET_DOMAIN}
       - --entrypoints.websecure.http.tls.domains[0].sans=*.${SECRET_DOMAIN}
