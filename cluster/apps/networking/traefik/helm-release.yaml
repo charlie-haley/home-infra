@@ -41,6 +41,7 @@ spec:
       enabled: true
       path: /certs
       size: 128Mi
+      storageClass: longhorn
     volumes:
       - mountPath: /data
         name: traefik-config
