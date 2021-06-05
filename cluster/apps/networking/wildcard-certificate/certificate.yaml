@@ -5,7 +5,7 @@ metadata:
   name: "${SECRET_DOMAIN/./-}"
   namespace: networking
 spec:
-  secretName: "${SECRET_DOMAIN/./-}-tls"
+  secretName: "${SECRET_DOMAIN/./-}"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
