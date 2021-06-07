@@ -1,0 +1,20 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`sonarr.${SECRET_DOMAIN}`)
+    kind: Rule
+    priority: 10
+    services:
+    - name: sonarr
+      kind: Service
+    middlewares:
+    - name: rfc1918
+  tls:
+    secretName: "${SECRET_DOMAIN/./-}"

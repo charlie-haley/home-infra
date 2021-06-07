@@ -155,16 +155,7 @@ spec:
     serviceMonitor:
       enabled: true
     ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-      - "grafana.${SECRET_DOMAIN}"
-      tls:
-      - hosts:
-        - "grafana.${SECRET_DOMAIN}"
-        secretName: "${SECRET_DOMAIN/./-}"
+      enabled: false
     persistence:
       enabled: true
       storageClassName: "longhorn"

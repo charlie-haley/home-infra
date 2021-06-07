@@ -1,0 +1,20 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`grafana.${SECRET_DOMAIN}`)
+    kind: Rule
+    priority: 10
+    services:
+    - name: grafana
+      kind: Service
+    middlewares:
+    - name: rfc1918
+  tls:
+    secretName: "${SECRET_DOMAIN/./-}"

@@ -1,0 +1,20 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: home-assistant
+  namespace: home
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`hass.${SECRET_DOMAIN}`)
+    kind: Rule
+    priority: 10
+    services:
+    - name: home-assistant
+      kind: Service
+    middlewares:
+    - name: rfc1918
+  tls:
+    secretName: "${SECRET_DOMAIN/./-}"
