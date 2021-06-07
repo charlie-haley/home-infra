@@ -13,7 +13,7 @@ spec:
     priority: 10
     services:
     - name: grafana
-      kind: Service
+      namespace: monitoring
     middlewares:
     - name: rfc1918
   tls:

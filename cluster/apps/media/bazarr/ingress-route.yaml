@@ -13,7 +13,7 @@ spec:
     priority: 10
     services:
     - name: bazarr
-      kind: Service
+      namespace: media
     middlewares:
     - name: rfc1918
   tls:

@@ -13,7 +13,7 @@ spec:
     priority: 10
     services:
     - name: home-assistant
-      kind: Service
+      namespace: home
     middlewares:
     - name: rfc1918
   tls:
