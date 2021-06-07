@@ -67,7 +67,17 @@ spec:
             severity: 'warning'
           equal: ['alertname', 'namespace']
       ingress:
-        enabled: false
+        enabled: true
+        pathType: Prefix
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+        - "alertmanager.${SECRET_DOMAIN}"
+        tls:
+        - hosts:
+          - "alertmanager.${SECRET_DOMAIN}"
+        secretName: "${SECRET_DOMAIN/./-}"
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -107,7 +117,17 @@ spec:
       enabled: false
     prometheus:
       ingress:
-        enabled: false
+        enabled: true
+        pathType: Prefix
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+        - "prometheus.${SECRET_DOMAIN}"
+        tls:
+        - hosts:
+          - "prometheus.${SECRET_DOMAIN}"
+        secretName: "${SECRET_DOMAIN/./-}"
       prometheusSpec:
         ruleSelector: {}
         ruleNamespaceSelector: {}

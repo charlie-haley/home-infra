@@ -5,4 +5,3 @@ resources:
 # - code-server.enc.yaml
 # - home-assistant.enc.yaml
 - helm-release.yaml
-- ingress-route.yaml
