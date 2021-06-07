@@ -37,7 +37,6 @@ spec:
       tls:
       - hosts:
         - "hass.${SECRET_DOMAIN}"
-        secretName: "${SECRET_DOMAIN/./-}"
     prometheus:
       serviceMonitor:
         enabled: false

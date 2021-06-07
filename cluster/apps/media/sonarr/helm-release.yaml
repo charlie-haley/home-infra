@@ -50,7 +50,6 @@ spec:
         tls:
         - hosts:
           - "sonarr.${SECRET_DOMAIN}"
-        secretName: "${SECRET_DOMAIN/./-}"
     persistence:
       config:
         enabled: true

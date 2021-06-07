@@ -29,8 +29,7 @@ spec:
         paths:
         - path: /
       tls:
-      - secretName: "${SECRET_DOMAIN/./-}"
-        hosts:
+      - hosts:
         - omada.k3pi.xyz
     nodeSelector:
       kubernetes.io/arch: amd64

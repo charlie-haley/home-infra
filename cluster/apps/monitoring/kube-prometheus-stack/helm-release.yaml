@@ -77,7 +77,6 @@ spec:
         tls:
         - hosts:
           - "alertmanager.${SECRET_DOMAIN}"
-        secretName: "${SECRET_DOMAIN/./-}"
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -127,7 +126,6 @@ spec:
         tls:
         - hosts:
           - "prometheus.${SECRET_DOMAIN}"
-        secretName: "${SECRET_DOMAIN/./-}"
       prometheusSpec:
         ruleSelector: {}
         ruleNamespaceSelector: {}

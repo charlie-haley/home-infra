@@ -40,7 +40,6 @@ spec:
       tls:
       - hosts:
         - "jellyfin.${SECRET_DOMAIN}"
-        secretName: "${SECRET_DOMAIN/./-}"
     persistence:
       config:
         enabled: true
