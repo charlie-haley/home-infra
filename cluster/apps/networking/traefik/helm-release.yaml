@@ -56,9 +56,6 @@ spec:
       - --certificatesresolvers.cloudflare.acme.email=${CLOUDFLARE_EMAIL}
       - --certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1
       - --certificatesresolvers.cloudflare.acme.storage=/certs/acme.json
-    ports:
-      web:
-        redirectTo: websecure
     env:
       - name: CF_API_EMAIL
         value: ${CLOUDFLARE_EMAIL}
