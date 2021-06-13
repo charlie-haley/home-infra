@@ -26,6 +26,7 @@
       --server-ip {{ groups['master'][0] }} \
       --server \
       --k3s-version=v1.20.5+k3s1 \
+      --k3s-extra-args="--disable servicelb --disable traefik" 
     with_items:
     - "{{ groups['master'] | difference([groups['master'][0]]) }}"
     ignore_errors: yes
