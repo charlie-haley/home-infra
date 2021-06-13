@@ -29,36 +29,6 @@ spec:
       nameservers:
       - "1.1.1.1"
       - "8.8.8.8"
-    logs:
-      general:
-        format: json
-        level: DEBUG
-      access:
-        enabled: true
-        format: json
-    ingressClass:
-      enabled: true
-      isDefaultClass: true
-      fallbackApiVersion: v1
-    ingressRoute:
-      dashboard:
-        enabled: false
-    globalArguments:
-    - "--serverstransport.insecureskipverify=true"
-    - "--providers.kubernetesingress.ingressclass=traefik"
-    - "--metrics.prometheus=true"
-    - "--metrics.prometheus.entryPoint=metrics"
-    ports:
-      web:
-        redirectTo: websecure
-      websecure:
-        tls:
-          enabled: true
-          options: "default"
-      metrics:
-        port: 8082
-        expose: true
-        exposedPort: 8082
     prometheus:
       enabled: true
       servicemonitor:

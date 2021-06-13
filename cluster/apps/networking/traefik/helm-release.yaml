@@ -10,13 +10,43 @@ spec:
     spec:
       # renovate: registryUrl=https://helm.traefik.io/traefik
       chart: traefik
-      version: 9.19.1
+      version: 9.19.0
       sourceRef:
         kind: HelmRepository
         name: traefik-charts
         namespace: flux-system
       interval: 5m
   values:
+    logs:
+      general:
+        format: json
+        level: DEBUG
+      access:
+        enabled: true
+        format: json
+    ingressClass:
+      enabled: true
+      isDefaultClass: true
+      fallbackApiVersion: v1
+    ingressRoute:
+      dashboard:
+        enabled: false
+    globalArguments:
+    - "--serverstransport.insecureskipverify=true"
+    - "--providers.kubernetesingress.ingressclass=traefik"
+    - "--metrics.prometheus=true"
+    - "--metrics.prometheus.entryPoint=metrics"
+    ports:
+      web:
+        redirectTo: websecure
+      websecure:
+        tls:
+          enabled: true
+          options: "default"
+      metrics:
+        port: 8082
+        expose: true
+        exposedPort: 8082
     additionalArguments:
       - --providers.file.filename=/data/traefik-config.yaml
       - --entrypoints.websecure.http.tls.certresolver=cloudflare
@@ -34,9 +64,6 @@ spec:
         value: ${CLOUDFLARE_EMAIL}
       - name: CF_API_KEY
         value: ${CLOUDFLARE_APIKEY}
-    ingressRoute:
-      dashboard:
-        enabled: false
     persistence:
       enabled: true
       path: /certs
