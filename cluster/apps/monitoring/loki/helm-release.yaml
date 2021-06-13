@@ -48,4 +48,3 @@ spec:
           target_label: 'facility'
         - source_labels: ['__syslog_message_hostname']
           target_label: 'host'
-
