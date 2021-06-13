@@ -56,6 +56,8 @@ spec:
         existingClaim: radarr-config-v1
     podSecurityContext:
       supplementalGroups:
+      - 44
+      - 109
       - 100
     additionalVolumeMounts:
     - name: movies-nfs

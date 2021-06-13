@@ -56,6 +56,8 @@ spec:
         existingClaim: sabnzbd-config-v1
     podSecurityContext:
       supplementalGroups:
+      - 44
+      - 109
       - 100
     additionalVolumeMounts:
     - name: tv-nfs

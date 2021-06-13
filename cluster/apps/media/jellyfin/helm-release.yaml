@@ -22,11 +22,6 @@ spec:
     env:
       TZ: "Europe/London"
       JELLYFIN_CACHE_DIR: "/config/cache"
-    podSecurityContext:
-      supplementalGroups:
-      - 44
-      - 109
-      - 100
     ingress:
       enabled: true
       ingressClassName: "traefik"
