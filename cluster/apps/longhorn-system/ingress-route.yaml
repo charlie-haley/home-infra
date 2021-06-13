@@ -1,0 +1,21 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`longhorn.${SECRET_DOMAIN}`)
+    kind: Rule
+    priority: 10
+    services:
+    - name: longhorn-frontend
+      kind: Service
+      namespace: longhorn-system
+    middlewares:
+    - name: rfc1918
+  tls:
+    secretName: "${SECRET_DOMAIN/./-}"
