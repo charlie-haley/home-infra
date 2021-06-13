@@ -4,18 +4,32 @@
   become: true
   gather_facts: true
   tasks:
-  - name: cluster-init | k3sup master node
+  - name: cluster-init | k3sup first master node
     become: true
     shell: |
       k3sup install \
-      --host={{ item }} \
+      --host={{ groups['master'][0] }} \
       --user=ubuntu \
       --cluster \
       --k3s-version=v1.20.5+k3s1 \
       --k3s-extra-args="--disable servicelb --disable traefik" \
       --local-path $HOME/.kube/config
+    ignore_errors: yes
+
+  - name: cluster-init | k3sup join additional master nodes
+    become: true
+    shell: |
+      k3sup join \
+      --host={{ item }} \
+      --user=ubuntu \
+      --server-user ubuntu \
+      --server-ip {{ groups['master'][0] }} \
+      --server \
+      --k3s-version=v1.20.5+k3s1 \
     with_items:
-    - "{{ groups['master'] }}"
+    - "{{ groups['master'] | difference([groups['master'][0]]) }}"
+    ignore_errors: yes
+
 
   - name: cluster-init | k3sup join worker nodes
     become: true
@@ -27,3 +41,4 @@
           --user=ubuntu
     with_items:
     - "{{ groups['workers'] }}"
+    ignore_errors: yes

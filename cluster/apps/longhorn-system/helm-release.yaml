@@ -16,3 +16,17 @@ spec:
         name: longhorn-charts
         namespace: flux-system
       interval: 5m
+  values:
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      hosts:
+      - host: "longhorn.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "longhorn.${SECRET_DOMAIN}"
