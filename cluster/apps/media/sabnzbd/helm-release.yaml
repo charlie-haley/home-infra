@@ -55,10 +55,10 @@ spec:
         enabled: true
         existingClaim: sabnzbd-config-v1
     podSecurityContext:
-      supplementalGroups:
-      - 44
-      - 109
-      - 100
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
     additionalVolumeMounts:
     - name: tv-nfs
       mountPath: /data/tv

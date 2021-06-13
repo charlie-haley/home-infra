@@ -22,6 +22,11 @@ spec:
     env:
       TZ: "Europe/London"
       JELLYFIN_CACHE_DIR: "/config/cache"
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
     ingress:
       enabled: true
       ingressClassName: "traefik"
