@@ -24,3 +24,6 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       host: "longhorn.${SECRET_DOMAIN}"
       tlsSecret: "${SECRET_DOMAIN/./-}"
+    defaultSettings:
+      backupTarget: "${SECRET_S3_BACKUP_BUCKET}"
+      backupTargetCredentialSecret: longhorn-aws-secret
