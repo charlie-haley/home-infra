@@ -54,6 +54,9 @@ spec:
       config:
         enabled: true
         existingClaim: sabnzbd-config-v1
+      downloads:
+        enabled: true
+        existingClaim: sabnzbd-cache
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
