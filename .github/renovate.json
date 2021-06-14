@@ -61,8 +61,7 @@
                 "major",
                 "minor",
                 "patch"
-            ],
-            "separateMinorPatch": true
+            ]
         },
         {
             "matchDatasources": [
