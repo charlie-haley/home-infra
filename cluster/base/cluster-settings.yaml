@@ -6,4 +6,4 @@ metadata:
   namespace: flux-system
 data:
   GATEWAY_IP: "192.168.1.1"
-  # Available IP range for Load Balancer services
+  SVC_BLOCKY_ADDRESS: "192.168.1.228"
