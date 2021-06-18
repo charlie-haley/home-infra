@@ -24,25 +24,29 @@ spec:
       TZ: "Europe/London"
     replicas: 3
     service:
-      port:
-        port: 4000
       additionalServices:
-      - enabled: true
-        nameSuffix: dns
-        type: LoadBalancer
-        externalIPs:
-        - "${SVC_BLOCKY_ADDRESS}"
-        port:
-          port: 53
-          name: dns-tcp
-          protocol: TCP
-          targetPort: 53
-        additionalPorts:
-        - port: 53
-          name: dns-udp
-          protocol: UDP
-          targetPort: 53
-        externalTrafficPolicy: Local
+        - enabled: true
+          externalIPs:
+            - "${SVC_BLOCKY_ADDRESS}"
+          externalTrafficPolicy: Local
+          nameSuffix: dns-tcp
+          port:
+            name: dns-tcp
+            port: 53
+            protocol: TCP
+            targetPort: 53
+          type: LoadBalancer
+        - enabled: true
+          externalIPs:
+            - "${SVC_BLOCKY_ADDRESS}"
+          externalTrafficPolicy: Local
+          nameSuffix: dns-udp
+          port:
+            name: dns-udp
+            port: 53
+            protocol: UDP
+            targetPort: 53
+          type: LoadBalancer
     config: |
       upstream:
         externalResolvers:
