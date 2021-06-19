@@ -28,21 +28,21 @@ spec:
       - 109
       - 100
     ingress:
-      main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-        - host: "jellyfin.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
-        tls:
-        - hosts:
-          - "jellyfin.${SECRET_DOMAIN}"
-      api:
-        enabled: true
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      hosts:
+      - host: "jellyfin.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "jellyfin.${SECRET_DOMAIN}"
+      additionalIngresses:
+      - enabled: true
+        nameSuffix: "api"
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
@@ -53,7 +53,7 @@ spec:
             pathType: Prefix
         tls:
         - hosts:
-          - "jellyfin.${SECRET_DOMAIN}"
+          - "sabnzbd.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
