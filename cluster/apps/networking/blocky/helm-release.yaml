@@ -49,8 +49,9 @@ spec:
           type: LoadBalancer
     config: |
       upstream:
-        externalResolvers:
-        - doh.mullvad.net
+        default:
+        - 8.8.8.8
+        - 8.8.4.4
       blocking:
         blackLists:
           ads:
