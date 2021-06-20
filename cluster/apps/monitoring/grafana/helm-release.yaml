@@ -23,7 +23,7 @@ spec:
       GF_EXPLORE_ENABLED: true
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_LOG_FILTERS: rendering:debug
-      VAR_BLOCKY_URL: "http://blocky.networking.svc.cluster.local:4000"
+      VAR_BLOCKY_URL: "https://blocky.${SECRET_DOMAIN}"
     adminPassword: "${SECRET_GRAFANA_PASSWORD}"
     grafana.ini:
       server:
