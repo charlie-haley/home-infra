@@ -25,41 +25,41 @@ spec:
     replicas: 3
     service:
       additionalServices:
-        - enabled: true
-          externalIPs:
+      - enabled: true
+        externalIPs:
           - "${SVC_BLOCKY_ADDRESS}"
-          externalTrafficPolicy: Local
-          nameSuffix: dns-tcp
-          port:
-            name: dns-tcp
-            port: 53
-            protocol: TCP
-            targetPort: 53
-          type: LoadBalancer
-        - enabled: true
-          externalIPs:
+        externalTrafficPolicy: Local
+        nameSuffix: dns-tcp
+        port:
+          name: dns-tcp
+          port: 53
+          protocol: TCP
+          targetPort: 53
+        type: LoadBalancer
+      - enabled: true
+        externalIPs:
           - "${SVC_BLOCKY_ADDRESS}"
-          externalTrafficPolicy: Local
-          nameSuffix: dns-udp
-          port:
-            name: dns-udp
-            port: 53
-            protocol: UDP
-            targetPort: 53
-          type: LoadBalancer
+        externalTrafficPolicy: Local
+        nameSuffix: dns-udp
+        port:
+          name: dns-udp
+          port: 53
+          protocol: UDP
+          targetPort: 53
+        type: LoadBalancer
     ingress:
       enabled: true
       ingressClassName: "traefik"
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-      - host: "blocky.${SECRET_DOMAIN}"
-        paths:
-        - path: /
-          pathType: Prefix
+        - host: "blocky.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
       tls:
-      - hosts:
-        - "blocky.${SECRET_DOMAIN}"
+        - hosts:
+          - "blocky.${SECRET_DOMAIN}"
     config: |
       upstream:
         externalResolvers:
