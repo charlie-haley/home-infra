@@ -20,16 +20,21 @@ spec:
     hostNetwork: true
     ingress:
       enabled: true
+      ingressClassName: "traefik"
       annotations:
-        nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        nginx.ingress.kubernetes.io/upstream-vhost: "omada.k3pi.xyz:8043"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-      - host: omada.k3pi.xyz
+      - host: "omada.${SECRET_DOMAIN}"
         paths:
         - path: /
+          pathType: Prefix
       tls:
       - hosts:
-        - omada.k3pi.xyz
+        - "omada.${SECRET_DOMAIN}"
+    persistence:
+      config:
+        enabled: true
+        existingClaim: omada-config-v1
+        mountPath: /data
     nodeSelector:
       kubernetes.io/arch: amd64
