@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: omada-config-v1
-  namespace: media
+  namespace: home
 spec:
   accessModes:
   - ReadWriteOnce
