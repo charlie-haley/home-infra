@@ -6,8 +6,10 @@ metadata:
   namespace: networking
 spec:
   headers:
-    customRequestHeaders: Host = "omada.${SECRET_DOMAIN}:8043" 
-    customResponseHeaders: Host = "omada.${SECRET_DOMAIN}"
+    customRequestHeaders:
+      Host: "omada.${SECRET_DOMAIN}:8043"
+    customResponseHeaders:
+      Host: "omada.${SECRET_DOMAIN}"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -16,8 +18,8 @@ metadata:
   namespace: networking
 spec:
   redirectRegex: 
-    regex: "https://([/]+)/?$" 
-    replacement: "https://$1/login" 
+    regex: "https://([/]+)/?$"
+    replacement: "https://$1/login"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
