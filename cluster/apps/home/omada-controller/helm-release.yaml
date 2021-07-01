@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: omada-controller
       version: 3.0.0
       sourceRef:
