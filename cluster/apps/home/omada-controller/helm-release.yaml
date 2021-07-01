@@ -18,6 +18,9 @@ spec:
       interval: 5m
   values:
     hostNetwork: true
+    service:
+      annotations:
+        traefik.ingress.kubernetes.io/service.serversscheme: "https"
     ingress:
       main:
         enabled: true
