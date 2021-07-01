@@ -6,7 +6,7 @@ metadata:
   namespace: networking
 spec:
   headers:
-    customRequestHeaders: Host = "omada.${SECRET_DOMAIN}:443" 
+    customRequestHeaders: Host = "omada.${SECRET_DOMAIN}:8043" 
     customResponseHeaders: Host = "omada.${SECRET_DOMAIN}"
 ---
 apiVersion: traefik.containo.us/v1alpha1
