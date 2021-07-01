@@ -24,6 +24,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "omada"
         hosts:
         - host: "omada.${SECRET_DOMAIN}"
           paths:
