@@ -17,7 +17,7 @@ metadata:
   name: omada-redirect
   namespace: networking
 spec:
-  redirectRegex: 
+  redirectRegex:
     regex: "https://([/]+)/?$"
     replacement: "https://$1/login"
 ---
