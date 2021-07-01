@@ -13,7 +13,7 @@ spec:
       version: 3.0.0
       sourceRef:
         kind: HelmRepository
-        name: kube-at-home-charts
+        name: k8s-at-home-charts
         namespace: flux-system
       interval: 5m
   values:
