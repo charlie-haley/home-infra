@@ -36,7 +36,7 @@ spec:
     port: monitoring
     params:
       module:
-      - RFC1213
+      - if_mib
       target:
       - 192.168.0.1
     path: "/snmp"
@@ -49,7 +49,7 @@ spec:
     port: monitoring
     params:
       module:
-      - RFC1213
+      - if_mib
       target:
       - 192.168.0.3
     path: "/snmp"
@@ -62,7 +62,7 @@ spec:
     port: monitoring
     params:
       module:
-      - RFC1213
+      - if_mib
       target:
       - 192.168.0.10
     path: "/snmp"
@@ -75,7 +75,7 @@ spec:
     port: monitoring
     params:
       module:
-      - RFC1213
+      - if_mib
       target:
       - 192.168.0.11
     path: "/snmp"
