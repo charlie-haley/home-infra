@@ -38,6 +38,12 @@ spec:
         tls:
         - hosts:
           - "hass.${SECRET_DOMAIN}"
+    service:
+      main:
+        type: LoadBalancer
+        externalIPs:
+        - "${SVC_HOME_ASSISTANT_ADDRESS}"
+        externalTrafficPolicy: Local
     prometheus:
       serviceMonitor:
         enabled: false
