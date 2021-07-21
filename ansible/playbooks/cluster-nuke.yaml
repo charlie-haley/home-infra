@@ -6,7 +6,7 @@
   gather_facts: true
   vars_prompt:
     name: "nuke_confirmation"
-    prompt: "This will DESTROY the cluster and all rook-ceph disks. Do you wish to continue? [Y/n]"
+    prompt: "This will DESTROY the cluster. Do you wish to continue? [Y/n]"
     default: "n"
     private: no
   any_errors_fatal: yes
@@ -17,4 +17,3 @@
     when: nuke_confirmation != "Y"
   roles:
   - cluster-nuke
-  - ceph-nuke

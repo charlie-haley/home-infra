@@ -1,9 +1,22 @@
 ---
 - hosts:
-  - localhost
+  - master
+  - workers
   become: true
   gather_facts: true
   tasks:
+  - name: cluster-init | set hostname
+    become: true
+    shell: hostnamectl set-hostname {{ hostname }}
+    when: type == "sbc"
+    ignore_errors: yes
+
+  - name: cluster-init | enable cgroup
+    become: true
+    shell: sed ' 1 s/.*/& cgroup_enable=memory cgroup_memory=1/' /boot/firmware/cmdline.txt -i
+    when: type == "sbc"
+    ignore_errors: yes
+
   - name: cluster-init | k3sup first master node
     become: true
     shell: |
@@ -14,6 +27,7 @@
       --k3s-version=v1.20.5+k3s1 \
       --k3s-extra-args="--disable servicelb --disable traefik" \
       --local-path $HOME/.kube/config
+    delegate_to: 127.0.0.1
     ignore_errors: yes
 
   - name: cluster-init | k3sup join additional master nodes
@@ -29,8 +43,8 @@
       --k3s-extra-args="--disable servicelb --disable traefik" 
     with_items:
     - "{{ groups['master'] | difference([groups['master'][0]]) }}"
+    delegate_to: 127.0.0.1
     ignore_errors: yes
-
 
   - name: cluster-init | k3sup join worker nodes
     become: true
@@ -42,4 +56,9 @@
           --user=ubuntu
     with_items:
     - "{{ groups['workers'] }}"
+    delegate_to: 127.0.0.1
     ignore_errors: yes
+
+  - name: cluster-init | reboot node
+    reboot:
+    when: type == "sbc"

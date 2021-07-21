@@ -22,10 +22,10 @@
 | Raspberry Pi 4 Model B   | 4GB  | 120GB SSD     | Kube Master Node  | Ubuntu 20.10         |
 | Raspberry Pi 4 Model B   | 4GB  | 120GB SSD     | Kube Master Node  | Ubuntu 20.10         |
 | Raspberry Pi 4 Model B   | 4GB  | 120GB SSD     | Kube Master Node  | Ubuntu 20.10         |
-| Raspberry Pi 4 Model B   | 4GB  | 32GB SD       | Kube Worker Node  | Ubuntu 20.10         |
-| Raspberry Pi 4 Model B   | 4GB  | 32GB SD       | Kube Worker Node  | Ubuntu 20.10         |
-| Dell R210II              | 16GB | 240GB SSD     | Kube Worker Node  | Ubuntu 20.04.2 LTS     |
-| HP MicroServer G8        | 8GB  | x4 3TB WD Red | NFS Server        | FreeBSD 12.2-RELEASE   |
+| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME    | Kube Worker Node  | Ubuntu 20.10         |
+| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME    | Kube Worker Node  | Ubuntu 20.10         |
+| Dell R210II              | 16GB | 240GB SSD     | Kube Worker Node  | Ubuntu 20.04.2 LTS   |
+| HP MicroServer G8        | 8GB  | x4 3TB WD Red | NFS Server        | FreeBSD 12.2-RELEASE |
 
 
 ## 🦾 Automations
