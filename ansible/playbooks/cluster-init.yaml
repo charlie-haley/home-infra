@@ -17,6 +17,13 @@
     when: type == "sbc"
     ignore_errors: yes
 
+  - name: cluster-init | install nfs-common
+    become: true
+    shell: |
+      sudo apt update
+      sudo apt install nfs-common
+    ignore_errors: yes
+
   - name: cluster-init | k3sup first master node
     become: true
     shell: |
