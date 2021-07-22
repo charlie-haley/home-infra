@@ -9,20 +9,17 @@
     become: true
     shell: hostnamectl set-hostname {{ hostname }}
     when: type == "sbc"
-    ignore_errors: yes
 
   - name: cluster-init | enable cgroup
     become: true
     shell: sed ' 1 s/.*/& cgroup_enable=memory cgroup_memory=1/' /boot/firmware/cmdline.txt -i
     when: type == "sbc"
-    ignore_errors: yes
 
   - name: cluster-init | install nfs-common
     become: true
     shell: |
       sudo apt update
       sudo apt install nfs-common
-    ignore_errors: yes
 
   - name: cluster-init | k3sup first master node
     become: true
