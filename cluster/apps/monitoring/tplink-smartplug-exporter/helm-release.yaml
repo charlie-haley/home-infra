@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.charliehaley.dev
       chart: tplink-smartplug-exporter
-      version: 0.1.6
+      version: 0.1.7
       sourceRef:
         kind: HelmRepository
         name: charliehaley-charts
