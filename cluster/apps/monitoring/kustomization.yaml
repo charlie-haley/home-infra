@@ -5,5 +5,5 @@ resources:
 - grafana
 - kube-prometheus-stack
 - loki
-- snmp-exporter
+- omada-exporter
 - tplink-smartplug-exporter
