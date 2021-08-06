@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     config:
-      lokiAddress: http://loki:3100/loki/api/v1/push
+      lokiAddress: http://loki.monitoring:3100/loki/api/v1/push
       snippets:
         extraScrapeConfigs: |
           - job_name: syslog
