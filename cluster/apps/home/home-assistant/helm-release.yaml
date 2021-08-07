@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: home-assistant
-      version: 9.3.0
+      version: 9.3.1
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/home-assistant/home-assistant
-      tag: 2021.7.4
+      tag: 2021.8.2
     env:
       TZ: "Europe/London"
     hostNetwork: true
@@ -63,7 +63,7 @@ spec:
         enabled: true
         image:
           repository: codercom/code-server
-          tag: 3.10.2
+          tag: 3.11.1
         git:
           deployKeySecret: code-server
         workingDir: "/config"
