@@ -4,6 +4,8 @@
   - workers
   become: true
   gather_facts: true
+  vars:
+    k3s_version: "v1.21.3+k3s1"
   tasks:
   - name: cluster-init | set hostname
     become: true
@@ -19,36 +21,20 @@
     become: true
     shell: |
       sudo apt update
-      sudo apt install nfs-common
+      sudo apt install -y nfs-common
 
-  - name: cluster-init | k3sup first master node
+  - name: cluster-init | k3sup master node
     become: true
     shell: |
       k3sup install \
       --host={{ groups['master'][0] }} \
       --user=ubuntu \
-      --cluster \
-      --k3s-version=v1.20.5+k3s1 \
+      --k3s-version={{ k3s_version }} \
       --k3s-extra-args="--disable servicelb --disable traefik" \
       --local-path $HOME/.kube/config
     delegate_to: 127.0.0.1
     ignore_errors: yes
-
-  - name: cluster-init | k3sup join additional master nodes
-    become: true
-    shell: |
-      k3sup join \
-      --host={{ item }} \
-      --user=ubuntu \
-      --server-user ubuntu \
-      --server-ip {{ groups['master'][0] }} \
-      --server \
-      --k3s-version=v1.20.5+k3s1 \
-      --k3s-extra-args="--disable servicelb --disable traefik" 
-    with_items:
-    - "{{ groups['master'] | difference([groups['master'][0]]) }}"
-    delegate_to: 127.0.0.1
-    ignore_errors: yes
+    when: "'master' in group_names"
 
   - name: cluster-init | k3sup join worker nodes
     become: true
@@ -56,12 +42,13 @@
       k3sup join \
           --host={{ item }} \
           --server-host={{ groups['master'][0] }} \
-          --k3s-version=v1.20.5+k3s1 \
+          --k3s-version={{ k3s_version }} \
           --user=ubuntu
     with_items:
     - "{{ groups['workers'] }}"
     delegate_to: 127.0.0.1
     ignore_errors: yes
+    when: "'workers' in group_names"
 
   - name: cluster-init | reboot node
     reboot:

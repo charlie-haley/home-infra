@@ -1,11 +1,11 @@
 localhost ansible_connection=local
 
 [master]
-192.168.1.225   ansible_user=ubuntu type=sbc hostname=kube-master1
-192.168.1.226   ansible_user=ubuntu type=sbc hostname=kube-master2
-192.168.1.227   ansible_user=ubuntu type=sbc hostname=kube-master3
+192.168.1.225   ansible_user=ubuntu type=server hostname=kube-master1
 
 [workers]
-192.168.1.229   ansible_user=ubuntu type=sbc hostname=kube-worker1
-192.168.1.230   ansible_user=ubuntu type=sbc hostname=kube-worker2
-192.168.1.228   ansible_user=ubuntu type=server hostname=kube-worker3
+192.168.1.226   ansible_user=ubuntu type=sbc hostname=kube-worker1
+192.168.1.227   ansible_user=ubuntu type=sbc hostname=kube-worker2
+192.168.1.228   ansible_user=ubuntu type=sbc hostname=kube-worker3
+192.168.1.229   ansible_user=ubuntu type=sbc hostname=kube-worker4
+192.168.1.230   ansible_user=ubuntu type=sbc hostname=kube-worker5
