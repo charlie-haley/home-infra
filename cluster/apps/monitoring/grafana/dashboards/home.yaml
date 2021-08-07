@@ -1,0 +1,1471 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 28,
+  "links": [],
+  "panels": [
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 30,
+      "title": "Temps",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "temperature{sensor=\"temp_office\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Office",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 1
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "temperature{sensor=\"temp_livingroom\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Living Room",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 1
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "temperature{sensor=\"temp_bedroom\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Bedroom",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 35
+              },
+              {
+                "color": "light-red",
+                "value": 40
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 1
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "temperature{sensor=\"temp_rack\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Server Rack",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 28,
+      "panels": [],
+      "title": "Sensors",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 300000
+              },
+              {
+                "color": "light-red",
+                "value": 400000
+              }
+            ]
+          },
+          "unit": "mwatt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 7
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "power_mw{host=\"192.168.50.2:9999\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Desks",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 600000
+              },
+              {
+                "color": "light-red",
+                "value": 700000
+              }
+            ]
+          },
+          "unit": "mwatt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 4,
+        "y": 7
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "power_mw{host=\"192.168.50.13:9999\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Rack",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 60
+              },
+              {
+                "color": "light-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 8,
+        "y": 7
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "humidity{sensor=\"temp_bedroom\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Bedroom",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 60
+              },
+              {
+                "color": "light-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 10,
+        "y": 7
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "humidity{sensor=\"temp_office\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Office",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 65
+              },
+              {
+                "color": "light-red",
+                "value": 70
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 22,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.225:9100\"})",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master1",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.226:9100\"})",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master2",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.227:9100\"})",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master3",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.229:9100\"})",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker1",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.230:9100\"})",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker2",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.228:9100\"})",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker3",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.1.240:9100\"})",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "nfsserver",
+          "refId": "G"
+        },
+        {
+          "exemplar": true,
+          "expr": "avg(node_hwmon_temp_celsius{instance=\"192.168.50.18:9100\"})",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "zigbeemqtt",
+          "refId": "H"
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 216000
+              },
+              {
+                "color": "light-red",
+                "value": 253000
+              }
+            ]
+          },
+          "unit": "mvolt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 10
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "voltage_mv{host=\"192.168.50.2:9999\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Desks",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 216000
+              },
+              {
+                "color": "light-red",
+                "value": 253000
+              }
+            ]
+          },
+          "unit": "mvolt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 4,
+        "y": 10
+      },
+      "id": 21,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "voltage_mv{host=\"192.168.50.13:9999\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Rack",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 60
+              },
+              {
+                "color": "light-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 8,
+        "y": 10
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "humidity{sensor=\"temp_livingroom\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Living Room",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 60
+              },
+              {
+                "color": "light-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 10,
+        "y": 10
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "humidity{sensor=\"temp_rack\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Server Rack",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 6,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bool"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Hall"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 24,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "occupancy{sensor=\"motion_hall\"}",
+          "interval": "",
+          "legendFormat": "Hall",
+          "refId": "A"
+        }
+      ],
+      "title": "Hall",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 70
+              },
+              {
+                "color": "light-red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 14,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"192.168.1.225:9100\"}[5m])) * 100)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master1",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"192.168.1.226:9100\"}[5m])) * 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master2",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"192.168.1.227:9100\"}[5m])) * 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master3",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"192.168.1.229:9100\"}[5m])) * 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker1",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"192.168.1.230:9100\"}[5m])) * 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker2",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"192.168.1.228:9100\"}[5m])) * 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker3",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"192.168.1.240:9100\"}[5m])) * 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "nfsserver",
+          "refId": "G"
+        },
+        {
+          "exemplar": true,
+          "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"192.168.50.18:9100\"}[5m])) * 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "zigbeemqtt",
+          "refId": "H"
+        }
+      ],
+      "title": "CPU Usage",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 6,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bool"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Hall"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Office"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "id": 31,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "occupancy{sensor=\"motion_office\"}",
+          "interval": "",
+          "legendFormat": "Office",
+          "refId": "A"
+        }
+      ],
+      "title": "Office",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 60
+              },
+              {
+                "color": "light-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 26,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "100-(avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", instance=\"192.168.1.225:9100\"})/avg(node_memory_MemTotal_bytes{job=\"node-exporter\", instance=\"192.168.1.225:9100\"})* 100)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master1",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "100-(avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", instance=\"192.168.1.226:9100\"})/avg(node_memory_MemTotal_bytes{job=\"node-exporter\", instance=\"192.168.1.226:9100\"})* 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master2",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "100-(avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", instance=\"192.168.1.227:9100\"})/avg(node_memory_MemTotal_bytes{job=\"node-exporter\", instance=\"192.168.1.227:9100\"})* 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-master3",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "100-(avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", instance=\"192.168.1.229:9100\"})/avg(node_memory_MemTotal_bytes{job=\"node-exporter\", instance=\"192.168.1.229:9100\"})* 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker1",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "100-(avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", instance=\"192.168.1.230:9100\"})/avg(node_memory_MemTotal_bytes{job=\"node-exporter\", instance=\"192.168.1.230:9100\"})* 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker2",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "100-(avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", instance=\"192.168.1.228:9100\"})/avg(node_memory_MemTotal_bytes{job=\"node-exporter\", instance=\"192.168.1.228:9100\"})* 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "kube-worker3",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "100-(avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", instance=\"192.168.1.240:9100\"})/avg(node_memory_MemTotal_bytes{job=\"node-exporter\", instance=\"192.168.1.240:9100\"})* 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "nfsserver",
+          "refId": "G"
+        },
+        {
+          "exemplar": true,
+          "expr": "100-(avg(node_memory_MemAvailable_bytes{job=\"node-exporter\", instance=\"192.168.50.18:9100\"})/avg(node_memory_MemTotal_bytes{job=\"node-exporter\", instance=\"192.168.50.18:9100\"})* 100)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "zigbeemqtt",
+          "refId": "H"
+        }
+      ],
+      "title": "Memory Usage",
+      "transparent": true,
+      "type": "bargauge"
+    }
+  ],
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": false,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ],
+    "type": "timepicker"
+  },
+  "timezone": "browser",
+  "title": "Home",
+  "uid": "Exa1TOWnk",
+  "version": 12
+}
