@@ -4,4 +4,3 @@ resources:
 # - cloudflare-ddns
 - traefik
 - wildcard-certificate
-- blocky
