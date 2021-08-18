@@ -60,9 +60,8 @@ spec:
         existingClaim: jellyfin-config-v1
       transcode:
         enabled: true
-        emptyDir:
-          enabled: true
-          medium: "Memory"
+        type: emptyDir
+        medium: Memory
     additionalVolumeMounts:
     - name: tv-nfs
       mountPath: /data/tv
