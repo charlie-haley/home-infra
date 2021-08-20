@@ -40,7 +40,7 @@ spec:
             pathType: Prefix
         tls:
         - hosts:
-            - "jellyfin.${SECRET_DOMAIN}"
+          - "jellyfin.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
