@@ -20,6 +20,8 @@ spec:
   values:
     prometheusOperator:
       createCustomResource: false
+        configReloaderCpu: 200m
+        configReloaderMemory: 100Mi
     alertmanager:
       config:
         global:
