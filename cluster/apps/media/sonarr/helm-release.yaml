@@ -53,19 +53,19 @@ spec:
       config:
         enabled: true
         existingClaim: sonarr-config-v1
+      media:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: 192.168.1.240
+            path: /mnt/data/media/tv
+        mountPath: /data/tv
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
       fsGroup: 1000
       fsGroupChangePolicy: OnRootMismatch
-    additionalVolumeMounts:
-    - name: tv-nfs
-      mountPath: /data/tv
-    additionalVolumes:
-    - name: tv-nfs
-      nfs:
-        server: 192.168.1.240
-        path: /mnt/data/media/tv
     resources:
       requests:
         memory: 250Mi
