@@ -53,19 +53,19 @@ spec:
       config:
         enabled: true
         existingClaim: radarr-config-v1
+      media:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: 192.168.1.240
+            path: /mnt/data/media/movies
+        mountPath: /data/movies
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
       fsGroup: 1000
       fsGroupChangePolicy: OnRootMismatch
-    additionalVolumeMounts:
-    - name: movies-nfs
-      mountPath: /data/movies
-    additionalVolumes:
-    - name: movies-nfs
-      nfs:
-        server: 192.168.1.240
-        path: /mnt/data/media/movies
     resources:
       requests:
         memory: 250Mi
