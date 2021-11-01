@@ -1,0 +1,27 @@
+---
+- hosts:
+  - master
+  - workers
+  become: true
+  gather_facts: true
+  tasks:
+  - name: delete file
+    become: true
+    shell: rm -f /boot/config.txt
+    when: type == "sbc"
+
+  - name: set fan speeds
+    become: true
+    shell: |
+      cat <<EOT >> /boot/firmware/config.txt
+      dtoverlay=rpi-poe
+      dtparam=poe_fan_temp0=65000,poe_fan_temp0_hyst=2000
+      dtparam=poe_fan_temp1=70000,poe_fan_temp1_hyst=5000
+      dtparam=poe_fan_temp2=75000,poe_fan_temp2_hyst=5000
+      dtparam=poe_fan_temp3=80000,poe_fan_temp3_hyst=2000
+      EOT
+    when: type == "sbc"
+
+  - name: reboot nodes
+    reboot:
+    when: type == "sbc"
