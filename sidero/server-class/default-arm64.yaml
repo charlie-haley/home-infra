@@ -5,11 +5,10 @@ metadata:
 spec:
   environmentRef:
     namespace: default
-    name: default-arm64
-  qualifiers:
-    cpu:
-      - manufacturer: Broadcom
-        version: BCM2711 (ARM Cortex-A72)
+    name: default
+  selector:
+    matchLabels:
+      pi-master: "true"
   configPatches:
     - op: replace
       path: /machine/install/disk
