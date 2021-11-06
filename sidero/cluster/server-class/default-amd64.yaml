@@ -6,9 +6,10 @@ spec:
   environmentRef:
     namespace: default
     name: default-amd64
-  selector:
-    matchLabels:
-      pi-master: "true"
+  qualifiers:
+    cpu:
+      - manufacturer: Intel(R) Corporation
+        version: NotSupport
   configPatches:
     - op: replace
       path: /machine/install/disk

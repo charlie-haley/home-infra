@@ -62,6 +62,7 @@ curl -I http://${SIDERO_ENDPOINT}:8081/tftp/ipxe.efi
 
 ```bash
 # example ipxe-metal.conf located in /sidero/dhcp
+set service dhcp-server global-parameters 'option system-arch code 93 = unsigned integer 16;'
 set service dhcp-server shared-network-name VLAN10 subnet 192.168.1.0/24 subnet-parameters "include &quot;/config/ipxe-metal.conf&quot;;"
 ```
 
@@ -94,7 +95,7 @@ kubectl apply --kustomize=./sidero/cluster/base/flux-system
 (As per the documentation here)[https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#patch-metal-controller], we need to patch the sidero-controller-manager so the RPI4's can boot over network boot = UEFI.
 
 ```
-kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./sidero/cluster/patches/controller.patch.yaml)"
+kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./sidero/patches/controller.patch.yaml)"
 ```
 
 ### Accept servers

@@ -1,0 +1,20 @@
+apiVersion: metal.sidero.dev/v1alpha1
+kind: Server
+metadata:
+  labels:
+    worker-node: "true"
+  name: 4c4c4544-0030-4a10-8038-b7c04f563032
+  namespace: default
+spec:
+  accepted: true
+  cpu:
+    manufacturer: Intel(R) Corporation
+    version: NotSupport
+  hostname: 192.168.1.223
+  system:
+    family: Unknown
+    manufacturer: Dell Inc.
+    productName: PowerEdge R210 II
+    serialNumber: Unknown
+    skuNumber: Unknown
+    version: 70J8V02

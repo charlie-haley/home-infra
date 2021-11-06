@@ -1,0 +1,8 @@
+apiVersion: metal.sidero.dev/v1alpha1
+kind: ServerClass
+metadata:
+  name: master
+spec:
+  selector:
+    matchLabels:
+      master-node: "true"
