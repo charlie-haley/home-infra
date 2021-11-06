@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - master.yaml
   - worker.yaml
-  - cluster.yaml
+  - workload-cluster.yaml
