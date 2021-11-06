@@ -5,7 +5,7 @@ metadata:
 spec:
   environmentRef:
     namespace: default
-    name: default-arm64
+    name: default
   qualifiers:
     cpu:
       - manufacturer: Broadcom
