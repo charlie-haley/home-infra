@@ -17,7 +17,7 @@ metadata:
   namespace: flux-system
 spec:
   clusterName: workload-cluster
-  replicas: 0
+  replicas: 3
   selector:
     matchLabels: null
   template:
