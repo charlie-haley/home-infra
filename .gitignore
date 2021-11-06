@@ -3,3 +3,8 @@
 Thumbs.db
 bin/
 logs/
+
+kubeconfig
+.kubeconfig.yaml
+talosconfig
+.talosconfig.yaml
