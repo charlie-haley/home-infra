@@ -5,7 +5,7 @@
   become: true
   gather_facts: true
   vars:
-    k3s_version: "v1.21.3+k3s1"
+    k3s_version: "v1.21.5+k3s2"
   tasks:
   - name: cluster-init | set hostname
     become: true
@@ -40,12 +40,10 @@
     become: true
     shell: |
       k3sup join \
-          --host={{ item }} \
+          --host={{ inventory_hostname }} \
           --server-host={{ groups['master'][0] }} \
           --k3s-version={{ k3s_version }} \
           --user=ubuntu
-    with_items:
-    - "{{ groups['workers'] }}"
     delegate_to: 127.0.0.1
     ignore_errors: yes
     when: "'workers' in group_names"

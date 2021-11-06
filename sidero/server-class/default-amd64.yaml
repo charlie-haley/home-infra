@@ -1,0 +1,15 @@
+apiVersion: metal.sidero.dev/v1alpha1
+kind: ServerClass
+metadata:
+  name: default-amd64
+spec:
+  environmentRef:
+    namespace: default
+    name: default-amd64
+  selector:
+    matchLabels:
+      pi-master: "true"
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
