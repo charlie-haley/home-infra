@@ -6,7 +6,7 @@ metadata:
   name: 4c4c4544-0058-3910-805a-b6c04f355931
   namespace: default
 spec:
-  accepted: false
+  accepted: true
   cpu:
     manufacturer: Intel(R) Corporation
     version: NotSupport
