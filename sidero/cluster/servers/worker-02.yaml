@@ -28,7 +28,7 @@ spec:
           - rw
     - op: replace
       path: /machine/kubelet/extraArgs
-      values:
+      value:
         node-labels: openebs.io/engine=mayastor
   environmentRef:
     namespace: default
