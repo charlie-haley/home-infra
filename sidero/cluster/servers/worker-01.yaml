@@ -18,10 +18,12 @@ spec:
       value:
         vm.nr_hugepages: "512"
     - op: add
-      path: /machine/kubelet/extraMounts
+      path: /machine/kubelet
     - op: replace
-      path: /machine/kubelet/extraMounts
+      path: /machine/kubelet
       value:
+        extraArgs:
+          node-labels: metal.sidero.dev/uuid=4c4c4544-0058-3910-805a-b6c04f355931,openebs.io/engine=mayastor
         extraMounts:
         - destination: /var/local
           type: bind
@@ -30,10 +32,6 @@ spec:
           - rbind
           - rshared
           - rw
-    - op: replace
-      path: /machine/kubelet/extraArgs
-      value:
-        node-labels: metal.sidero.dev/uuid=4c4c4544-0058-3910-805a-b6c04f355931,openebs.io/engine=mayastor
   environmentRef:
     namespace: default
     name: default-amd64
