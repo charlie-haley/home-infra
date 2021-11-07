@@ -7,7 +7,3 @@ spec:
     cpu:
       - manufacturer: Broadcom
         version: BCM2711 (ARM Cortex-A72)
-  configPatches:
-    - op: replace
-      path: /machine/install/disk
-      value: /dev/sda

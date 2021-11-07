@@ -6,6 +6,10 @@ metadata:
   name: 4c4c4544-0030-4a10-8038-b7c04f563032
   namespace: default
 spec:
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
   environmentRef:
     namespace: default
     name: default-amd64
