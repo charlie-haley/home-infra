@@ -3,9 +3,6 @@ kind: ServerClass
 metadata:
   name: default-amd64
 spec:
-  environmentRef:
-    namespace: default
-    name: default-amd64
   qualifiers:
     cpu:
       - manufacturer: Intel(R) Corporation

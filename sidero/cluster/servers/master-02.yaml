@@ -6,6 +6,9 @@ metadata:
   name: 00c03114-0000-0000-0000-e45f011f57de
   namespace: default
 spec:
+  environmentRef:
+    namespace: default
+    name: default-arm64
   accepted: true
   cpu:
     manufacturer: Broadcom

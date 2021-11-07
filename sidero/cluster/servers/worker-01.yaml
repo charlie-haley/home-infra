@@ -6,6 +6,9 @@ metadata:
   name: 4c4c4544-0058-3910-805a-b6c04f355931
   namespace: default
 spec:
+  environmentRef:
+    namespace: default
+    name: default-amd64
   accepted: true
   cpu:
     manufacturer: Intel(R) Corporation

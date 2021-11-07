@@ -3,9 +3,6 @@ kind: ServerClass
 metadata:
   name: default-arm64
 spec:
-  environmentRef:
-    namespace: default
-    name: default-arm64
   qualifiers:
     cpu:
       - manufacturer: Broadcom
