@@ -11,10 +11,14 @@ spec:
       path: /machine/install/disk
       value: /dev/sda
 #mayastor config patches
+    - op: add
+      path: /machine/sysctls
     - op: replace
       path: /machine/sysctls
       value:
         vm.nr_hugepages: "512"
+    - op: add
+      path: /machine/kubelet/extraMounts
     - op: replace
       path: /machine/kubelet/extraMounts
       value:
@@ -29,7 +33,7 @@ spec:
     - op: replace
       path: /machine/kubelet/extraArgs
       value:
-        node-labels: openebs.io/engine=mayastor
+        node-labels: metal.sidero.dev/uuid=4c4c4544-0058-3910-805a-b6c04f355931,openebs.io/engine=mayastor
   environmentRef:
     namespace: default
     name: default-amd64
