@@ -66,6 +66,16 @@ set service dhcp-server global-parameters 'option system-arch code 93 = unsigned
 set service dhcp-server shared-network-name VLAN10 subnet 192.168.1.0/24 subnet-parameters "include &quot;/config/ipxe-metal.conf&quot;;"
 ```
 
+## Configure servers
+(follow guide to configure rpi4 as servers with PXE boot)[https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#build-the-image-with-the-boot-folder-contents]
+
+## Patch metal controller
+(As per the documentation here)[https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#patch-metal-controller], we need to patch the sidero-controller-manager so the RPI4's can boot over network boot = UEFI.
+
+```
+kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./sidero/patches/controller.patch.yaml)"
+```
+
 ## Bootstrap Flux
 Run pre-installation checks
 ```
@@ -86,16 +96,6 @@ kubectl create secret generic sops-gpg \
 Install Flux
 ```
 kubectl apply --kustomize=./sidero/cluster/base/flux-system
-```
-
-## Configure servers
-(follow guide to configure rpi4 as servers with PXE boot)[https://www.sidero.dev/docs/v0.3/guides/rpi4-as-servers/#build-the-image-with-the-boot-folder-contents]
-
-## Patch metal controller
-(As per the documentation here)[https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#patch-metal-controller], we need to patch the sidero-controller-manager so the RPI4's can boot over network boot = UEFI.
-
-```
-kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./sidero/patches/controller.patch.yaml)"
 ```
 
 ### Accept servers
