@@ -10,6 +10,26 @@ spec:
     - op: replace
       path: /machine/install/disk
       value: /dev/sda
+#mayastor config patches
+    - op: replace
+      path: /machine/sysctls
+      value:
+        vm.nr_hugepages: "512"
+    - op: replace
+      path: /machine/kubelet/extraMounts
+      value:
+        extraMounts:
+        - destination: /var/local
+          type: bind
+          source: /var/local
+          options:
+          - rbind
+          - rshared
+          - rw
+    - op: replace
+      path: /machine/kubelet/extraArgs
+      values:
+        node-labels: openebs.io/engine=mayastor
   environmentRef:
     namespace: default
     name: default-arm64
