@@ -14,7 +14,8 @@ spec:
     - op: replace
       path: /machine/sysctls
       value:
-        vm.nr_hugepages: "512"
+        vm:
+          nr_hugepages: "512"
     - op: replace
       path: /machine/kubelet/extraMounts
       value:
