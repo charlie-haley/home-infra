@@ -27,9 +27,10 @@ spec:
     defaultSettings:
       backupTarget: "${SECRET_S3_BACKUP_BUCKET}"
       backupTargetCredentialSecret: longhorn-aws-secret
+      createDefaultDiskLabeledNodes: true
     persistence:
       defaultClass: true
-      defaultClassReplicaCount: 3
+      defaultClassReplicaCount: 2
       reclaimPolicy: Delete
       recurringJobs:
         enable: true

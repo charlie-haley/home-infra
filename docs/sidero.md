@@ -51,6 +51,8 @@ talosctl kubeconfig
 #wait for log "[talos] bootstrap sequence: done" before continuing
 talosctl dmesg -f | grep "bootstrap sequence: done"
 
+# seems to take a couple minutes after that log before 6443 is open and it's ready for the clusterctl command
+
 #init management cluster
 SIDERO_CONTROLLER_MANAGER_HOST_NETWORK=true SIDERO_CONTROLLER_MANAGER_API_ENDPOINT=${SIDERO_ENDPOINT} clusterctl init -i sidero -b talos -c talos
 
@@ -77,16 +79,20 @@ kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patc
 ```
 
 ## Bootstrap Flux
-Run pre-installation checks
+Ensure we're using the correct context
+```bash
+kubectx workload
 ```
+Run pre-installation checks
+```bash
 flux check --pre
 ```
 Create flux-system namespace
-```
+```bash
 kubectl create namespace flux-system
 ```
 Add GPG key for SOPS
-```
+```bash
 export FLUX_FINGERPRINT=9BED42A6B950B27737E31539730EBA837FB2813F
 gpg --export-secret-keys --armor "${FLUX_FINGERPRINT}" |
 kubectl create secret generic sops-gpg \
@@ -94,15 +100,26 @@ kubectl create secret generic sops-gpg \
     --from-file=sops.asc=/dev/stdin
 ```
 Install Flux
-```
+```bash
+# due to a race condition with the Flux CRDs, this command will need to be run twice
 kubectl apply --kustomize=./sidero/cluster/base/flux-system
 ```
 
-### Accept servers
-```bash
-# get servers
-kubectl get servers -o wide
+## Get kubeconfig
 
-# accept servers
-kubectl get servers <server-id> --type='json' -p='[{"op": "replace", "path": "/spec/accepted", "value": true}]'
+```bash
+# fetch talosconfig
+kubectl get talosconfig -o yaml $(kubectl get talosconfig -A -o jsonpath='{.items[0].metadata.name}') -o jsonpath='{.status.talosConfig}' > talosconfig
+
+# fetch kubeconfig
+talosctl --nodes="192.168.1.14" --talosconfig talosconfig kubeconfig .
+
+# merge kubeconfig files
+cp ~/.kube/config ~/.kube/config.bak
+KUBECONFIG=~/.kube/config:$(pwd)/kubeconfig kubectl config view --flatten > /tmp/kubeconfig
+mv /tmp/kubeconfig ~/.kube/config
 ```
+
+## Next steps
+
+(Next we'll need to bootstrap Flux onto the workload cluster.)[workload-cluster.md]
