@@ -1,0 +1,9 @@
+---
+apiVersion: "openebs.io/v1alpha1"
+kind: MayastorPool
+metadata:
+  name: worker01-pool
+  namespace: mayastor
+spec:
+  node: talos-192-168-1-224
+  disks: ["/dev/sdb"]

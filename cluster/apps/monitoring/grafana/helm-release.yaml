@@ -108,7 +108,7 @@ spec:
         - "grafana.${SECRET_DOMAIN}"
     persistence:
       enabled: true
-      storageClassName: "longhorn"
+      storageClassName: "mayastor-nvmf"
       size: 10Gi
       accessModes:
       - ReadWriteOnce

@@ -81,7 +81,7 @@ kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patc
 ## Bootstrap Flux
 Ensure we're using the correct context
 ```bash
-kubectx workload
+kubectx admin@rpi4-sidero
 ```
 Run pre-installation checks
 ```bash
@@ -109,7 +109,7 @@ kubectl apply --kustomize=./sidero/cluster/base/flux-system
 
 ```bash
 # fetch talosconfig
-kubectl get talosconfig -o yaml $(kubectl get talosconfig -A -o jsonpath='{.items[0].metadata.name}') -o jsonpath='{.status.talosConfig}' > talosconfig
+kubectl get talosconfig -o yaml $(kubectl get talosconfig -A -o jsonpath='{.items[0].metadata.name}') -n flux-system -o jsonpath='{.status.talosConfig}' > talosconfig
 
 # fetch kubeconfig
 talosctl --nodes="192.168.1.14" --talosconfig talosconfig kubeconfig .
@@ -118,6 +118,12 @@ talosctl --nodes="192.168.1.14" --talosconfig talosconfig kubeconfig .
 cp ~/.kube/config ~/.kube/config.bak
 KUBECONFIG=~/.kube/config:$(pwd)/kubeconfig kubectl config view --flatten > /tmp/kubeconfig
 mv /tmp/kubeconfig ~/.kube/config
+```
+
+## Tidy up context names
+```bash
+kubectx sidero=admin@rpi4-sidero
+kubectx workload=admin@workload-cluster
 ```
 
 ## Next steps

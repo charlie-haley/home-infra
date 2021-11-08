@@ -12,13 +12,6 @@ The following applies to sidero v0.4
 
 (Ensure the cluster has been created following the documentation here.)[sidero.md]
 
-## Configure nodes for longhorn to schedule
-```bash
-# ensure we only schedule longhorn on the R210II
-kubectl label node talos-192-168-1-223 node.longhorn.io/create-default-disk=true
-kubectl label node talos-192-168-1-224 node.longhorn.io/create-default-disk=true
-```
-
 ## Bootstrap Flux
 Ensure we're using the correct context
 ```bash
