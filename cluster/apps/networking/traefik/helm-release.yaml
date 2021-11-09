@@ -65,7 +65,7 @@ spec:
       enabled: true
       path: /certs
       size: 128Mi
-      storageClass: longhorn
+      storageClass: mayastor-nvmf
     volumes:
     - mountPath: /data
       name: traefik-config

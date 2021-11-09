@@ -83,7 +83,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: "longhorn"
+              storageClassName: "mayastor-nvmf"
               resources:
                 requests:
                   storage: 10Gi
@@ -144,7 +144,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: "longhorn"
+              storageClassName: "mayastor-nvmf"
               resources:
                 requests:
                   storage: 50Gi

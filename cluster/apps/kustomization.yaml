@@ -3,9 +3,8 @@ kind: Kustomization
 resources:
 - flux-system
 - home
-- longhorn-system
+- mayastor
 - kube-system
 - media
 - monitoring
 - networking
-# - system-upgrade

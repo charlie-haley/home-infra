@@ -5,3 +5,4 @@ resources:
 - cert-manager
 # - system-upgrade
 - metallb
+- mayastor
