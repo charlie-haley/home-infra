@@ -16,7 +16,7 @@ spec:
     - op: replace
       path: /machine/sysctls
       value:
-        vm.nr_hugepages: "512"
+        vm.nr_hugepages: "2048"
     - op: add
       path: /machine/kubelet
     - op: replace
