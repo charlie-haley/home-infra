@@ -48,6 +48,8 @@ spec:
 
         - name: moac
           image: mayadata/moac:v0.8.1
+          nodeSelector:
+            kubernetes.io/arch: amd64
           imagePullPolicy: Always
           args:
             - "--csi-address=$(CSI_ENDPOINT)"
