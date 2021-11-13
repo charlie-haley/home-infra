@@ -6,6 +6,16 @@ metadata:
   name: 4c4c4544-0058-3910-805a-b6c04f355931
   namespace: default
 spec:
+  bmc:
+    endpoint: 192.168.1.120
+    userFrom:
+      secretKeyRef:
+        name: ipmi-credentials
+        key: username
+    passFrom:
+      secretKeyRef:
+        name: ipmi-credentials
+        key: password
   configPatches:
     - op: replace
       path: /machine/install/disk
@@ -16,7 +26,7 @@ spec:
     - op: replace
       path: /machine/sysctls
       value:
-        vm.nr_hugepages: "2048"
+        vm.nr_hugepages: "1024"
     - op: add
       path: /machine/kubelet
     - op: replace
