@@ -10,4 +10,4 @@ spec:
   resources:
     requests:
       storage: 15Gi
-  storageClassName: mayastor-nvmf
+  storageClassName: ceph-block

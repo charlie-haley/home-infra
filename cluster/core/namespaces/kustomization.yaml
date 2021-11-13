@@ -8,4 +8,4 @@ resources:
 - media.yaml
 - monitoring.yaml
 - networking.yaml
-- mayastor.yaml
+- rook-ceph.yaml

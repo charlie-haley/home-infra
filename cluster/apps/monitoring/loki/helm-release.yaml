@@ -24,7 +24,7 @@ spec:
           retention_period: 336h
       persistence:
         enabled: true
-        storageClassName: "mayastor-nvmf"
+        storageClassName: "ceph-block"
         size: 25Gi
       serviceMonitor:
         enabled: true

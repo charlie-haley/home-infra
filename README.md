@@ -18,7 +18,7 @@ My personal k8s cluster built with Sidero and managed by Flux2 GitOps
 
 - PXE Boot Talos managed by Sidero
 - Traefik Ingress
-- Mayastor
+- Rook Ceph
 - Prometheus/Grafana/Loki Monitoring Stack
 
 ## 🦾 Automations

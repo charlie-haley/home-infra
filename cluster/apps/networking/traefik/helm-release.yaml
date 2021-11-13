@@ -65,7 +65,7 @@ spec:
       enabled: true
       path: /certs
       size: 128Mi
-      storageClass: mayastor-nvmf
+      storageClass: ceph-block
     volumes:
     - mountPath: /data
       name: traefik-config

@@ -108,7 +108,7 @@ spec:
         - "grafana.${SECRET_DOMAIN}"
     persistence:
       enabled: true
-      storageClassName: "mayastor-nvmf"
+      storageClassName: "ceph-block"
       size: 10Gi
       accessModes:
       - ReadWriteOnce
