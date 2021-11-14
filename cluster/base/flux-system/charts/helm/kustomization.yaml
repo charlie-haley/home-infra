@@ -19,3 +19,4 @@ resources:
 - prometheus-community-charts.yaml
 - stakater-charts.yaml
 - traefik-charts.yaml
+- rook-ceph-charts.yaml
