@@ -59,7 +59,7 @@ spec:
         volumeSpec:
           nfs:
             server: 192.168.1.240
-            path: /mnt/data/media/movies
+            path: /media/movies
         mountPath: /data/tv
         readOnly: true
       shows:
@@ -68,7 +68,7 @@ spec:
         volumeSpec:
           nfs:
             server: 192.168.1.240
-            path: /mnt/data/media/tv
+            path: /media/tv
         mountPath: /data/movies
         readOnly: true
     podSecurityContext:

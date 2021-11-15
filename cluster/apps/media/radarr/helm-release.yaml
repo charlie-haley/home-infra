@@ -59,7 +59,7 @@ spec:
         volumeSpec:
           nfs:
             server: 192.168.1.240
-            path: /mnt/data/media/movies
+            path: /media/movies
         mountPath: /data/movies
     podSecurityContext:
       runAsUser: 1000
