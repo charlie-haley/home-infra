@@ -27,6 +27,7 @@ spec:
       path: /machine/sysctls
       value:
         vm.nr_hugepages: "1024"
+        fs.inotify.max_user_watches: "3276800"
     - op: add
       path: /machine/kubelet
     - op: replace
