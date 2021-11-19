@@ -7,10 +7,6 @@ metadata:
   namespace: default
 spec:
   pxeBootAlways: true
-  configPatches:
-    - op: replace
-      path: /machine/install/disk
-      value: /dev/sda
   environmentRef:
     namespace: default
     name: default-arm64

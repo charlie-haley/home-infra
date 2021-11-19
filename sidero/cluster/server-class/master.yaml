@@ -3,6 +3,17 @@ kind: ServerClass
 metadata:
   name: master
 spec:
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
+    - op: add
+      path: /machine/network/interfaces
+      value:
+        - interface: eth0
+          dhcp: true
+          vip:
+            ip: 192.168.1.50
   selector:
     matchLabels:
       master-node: "true"
