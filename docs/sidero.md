@@ -72,6 +72,7 @@ set service dhcp-server shared-network-name VLAN10 subnet 192.168.1.0/24 subnet-
 (follow guide to configure rpi4 as servers with PXE boot)[https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#build-the-image-with-the-boot-folder-contents]
 
 ## Patch metal controller
+__TODO: move this into a kustomization__
 (As per the documentation here)[https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#patch-metal-controller], we need to patch the sidero-controller-manager so the RPI4's can boot over network boot = UEFI.
 
 ```

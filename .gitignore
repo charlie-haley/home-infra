@@ -8,3 +8,6 @@ kubeconfig
 .kubeconfig.yaml
 talosconfig
 .talosconfig.yaml
+
+/controlplane.yaml
+/worker.yaml
