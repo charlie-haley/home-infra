@@ -1,9 +1,0 @@
----
-- hosts:
-  - master
-  - workers
-  become: true
-  gather_facts: true
-  tasks:
-  - name: Reboot node
-    reboot:
