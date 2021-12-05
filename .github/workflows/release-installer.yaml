@@ -33,5 +33,4 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main' }}
           context: ./sidero/custom/installer
           tags: |
-            ghcr.io/charlie-haley/talos-installer:$(date +'%Y%m%d')
             ghcr.io/charlie-haley/talos-installer:latest
