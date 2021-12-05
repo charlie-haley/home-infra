@@ -31,8 +31,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            name/app
-            ghcr.io/username/app
+            ghcr.io/charlie-haley/talos-installer
           tags: |
             type=sha
 
