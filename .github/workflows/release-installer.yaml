@@ -6,7 +6,7 @@ on:
 
 name: release installer
 
-defaults:
+jobs:
   build:
     name: build and publish installer image
     runs-on: ubuntu-latest
