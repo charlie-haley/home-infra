@@ -26,10 +26,20 @@ jobs:
         password: ${{ secrets.GHCR_TOKEN }}
         registry: ghcr.io
 
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          name/app
+          ghcr.io/username/app
+        tags: |
+          type=sha
+
     - name: build and push to ghcr
       uses: docker/build-push-action@v2
       with:
         push: ${{ github.ref == 'refs/heads/main' }}
         context: ./sidero/custom/raspberrypi4-uefi
-        tags: |
-          ghcr.io/charlie-haley/raspberrypi4-uefi:latest
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
