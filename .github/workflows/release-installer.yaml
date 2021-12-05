@@ -4,6 +4,7 @@ name: release installer
 on:
   push:
     paths:
+      - '.github/workflows/release-installer.yaml'
       - 'sidero/custom/installer/**'
 
 jobs:
