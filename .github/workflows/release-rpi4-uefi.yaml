@@ -6,7 +6,7 @@ on:
 
 name: release raspberrypi4-uefi
 
-defaults:
+jobs:
   build:
     name: build and publish raspberrypi4-uefi image
     runs-on: ubuntu-latest
