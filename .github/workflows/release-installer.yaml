@@ -1,15 +1,15 @@
 ---
+name: release installer
+
 on:
   push:
     paths:
       - 'sidero/custom/installer/**'
 
-name: release installer
-
 jobs:
-  build:
-    name: build and publish installer image
-    runs-on: ubuntu-latest
+  build-publish:
+    runs-on:
+    - ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2

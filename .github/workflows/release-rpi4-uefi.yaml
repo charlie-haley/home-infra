@@ -1,35 +1,35 @@
 ---
+name: release raspberrypi4-uefi
+
 on:
   push:
     paths:
       - 'sidero/custom/raspberrypi4-uefi/**'
 
-name: release raspberrypi4-uefi
-
 jobs:
-  build:
-    name: build and publish raspberrypi4-uefi image
-    runs-on: ubuntu-latest
+  build-publish:
+    runs-on:
+    - ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+    - name: checkout
+      uses: actions/checkout@v2
 
-      - name: setup buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
+    - name: setup buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v1
 
-      - name: login ghcr
-        uses: docker/login-action@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
-          registry: ghcr.io
-      
-      - name: build and push to ghcr
-        uses: docker/build-push-action@v2
-        with:
-          push: ${{ github.ref == 'refs/heads/main' }}
-          context: ./sidero/custom/raspberrypi4-uefi
-          tags: |
-            ghcr.io/charlie-haley/raspberrypi4-uefi:$(date +'%Y%m%d')
-            ghcr.io/charlie-haley/raspberrypi4-uefi:latest
+    - name: login ghcr
+      uses: docker/login-action@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_TOKEN }}
+        registry: ghcr.io
+    
+    - name: build and push to ghcr
+      uses: docker/build-push-action@v2
+      with:
+        push: ${{ github.ref == 'refs/heads/main' }}
+        context: ./sidero/custom/raspberrypi4-uefi
+        tags: |
+          ghcr.io/charlie-haley/raspberrypi4-uefi:$(date +'%Y%m%d')
+          ghcr.io/charlie-haley/raspberrypi4-uefi:latest
