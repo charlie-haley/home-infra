@@ -76,7 +76,7 @@ __TODO: move this into a kustomization__
 (As per the documentation here)[https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#patch-metal-controller], we need to patch the sidero-controller-manager so the RPI4's can boot over network boot = UEFI.
 
 ```
-kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./sidero/patches/controller.patch.yaml)"
+kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./sidero/cluster/core/patches/controller.patch.yaml)"
 ```
 
 ## Bootstrap Flux
