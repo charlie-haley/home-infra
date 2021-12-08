@@ -6,6 +6,7 @@ metadata:
   name: 4c4c4544-0030-4a10-8038-b7c04f563032
   namespace: default
 spec:
+  pxeBootAlways: true
   bmc:
     endpoint: 192.168.1.121
     userFrom:
