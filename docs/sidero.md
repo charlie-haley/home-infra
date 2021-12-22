@@ -75,8 +75,8 @@ set service dhcp-server shared-network-name VLAN10 subnet 192.168.1.0/24 subnet-
 __TODO: move this into a kustomization__
 (As per the documentation here)[https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#patch-metal-controller], we need to patch the sidero-controller-manager so the RPI4's can boot over network boot = UEFI.
 
-```
-kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./sidero/cluster/core/patches/controller.patch.yaml)"
+```bash
+kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./manifests/management/core/sidero/patches/controller.patch.yaml)"
 ```
 
 ## Bootstrap Flux
@@ -103,7 +103,7 @@ kubectl create secret generic sops-gpg \
 Install Flux
 ```bash
 # due to a race condition with the Flux CRDs, this command will need to be run twice
-kubectl apply --kustomize=./sidero/cluster/base/flux-system
+kubectl apply --kustomize=./manifests/management/gitops/flux-system
 ```
 
 ## Get kubeconfig
@@ -124,9 +124,5 @@ mv /tmp/kubeconfig ~/.kube/config
 ## Tidy up context names
 ```bash
 kubectx sidero=admin@rpi4-sidero
-kubectx workload=admin@metal-01
+kubectx metal-01=admin@metal-01
 ```
-
-## Next steps
-
-(Next we'll need to bootstrap Flux onto the workload cluster.)[metal-01.md]
