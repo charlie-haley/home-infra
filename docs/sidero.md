@@ -94,7 +94,7 @@ Create flux-system namespace
 ```bash
 kubectl create namespace flux-system
 ```
-Add GPG key for SOPS
+Add Age key for SOPS
 ```bash
 cat flux.agekey |
 kubectl create secret generic sops-age \
