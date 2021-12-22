@@ -16,8 +16,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 1
-    - name: Lint Cluster Manifests
+    - name: Lint Cluster API Manifests
       uses: ibiqlik/action-yamllint@v3
       with:
-        file_or_dir: "./cluster"
+        file_or_dir: "./clusters"
+        config_file: "./.github/yamllint-config.yaml"
+    - name: Lint Manifests
+      uses: ibiqlik/action-yamllint@v3
+      with:
+        file_or_dir: "./manifests"
         config_file: "./.github/yamllint-config.yaml"
