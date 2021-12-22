@@ -40,6 +40,6 @@ jobs:
         with:
           platforms: linux/amd64
           push: ${{ github.ref == 'refs/heads/main' }}
-          context: ./sidero/custom/installer
+          context: ./misc/sidero/custom/installer
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
