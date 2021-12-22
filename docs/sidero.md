@@ -54,7 +54,9 @@ talosctl dmesg -f | grep "bootstrap sequence: done"
 # seems to take a couple minutes after that log before 6443 is open and it's ready for the clusterctl command
 
 #init management cluster
-SIDERO_CONTROLLER_MANAGER_HOST_NETWORK=true SIDERO_CONTROLLER_MANAGER_API_ENDPOINT=${SIDERO_ENDPOINT} clusterctl init -i sidero -b talos -c talos
+SIDERO_CONTROLLER_MANAGER_HOST_NETWORK=true \
+SIDERO_CONTROLLER_MANAGER_API_ENDPOINT=${SIDERO_ENDPOINT} \
+clusterctl init -i "sidero" -b talos -c talos
 
 #verify admin cluster
 curl -I http://${SIDERO_ENDPOINT}:8081/tftp/ipxe.efi
@@ -94,8 +96,7 @@ kubectl create namespace flux-system
 ```
 Add GPG key for SOPS
 ```bash
-export FLUX_FINGERPRINT=9BED42A6B950B27737E31539730EBA837FB2813F
-gpg --export-secret-keys --armor "${FLUX_FINGERPRINT}" |
+cat flux.agekey |
 kubectl create secret generic sops-gpg \
     --namespace=flux-system \
     --from-file=sops.asc=/dev/stdin

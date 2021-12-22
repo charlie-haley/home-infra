@@ -2,26 +2,29 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: management-apps
+  name: metal-01-apps
   namespace: flux-system
 spec:
+  kubeConfig:
+    secretRef:
+      name: metal-01-kubeconfig
   interval: 10m0s
   dependsOn:
-    - name: management-core
+    - name: metal-01-core
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./manifests/management/apps
+  path: ./manifests/metal-01/apps
   prune: true
   validation: client
   postBuild:
     substitute: {}
     substituteFrom:
       - kind: Secret
-        name: cluster-secrets-management
+        name: cluster-secrets-metal-01
       - kind: ConfigMap
-        name: cluster-settings-management
+        name: cluster-settings-metal-01
   decryption:
     provider: sops
     secretRef:

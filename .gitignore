@@ -11,3 +11,5 @@ talosconfig
 
 /controlplane.yaml
 /worker.yaml
+
+flux.agekey

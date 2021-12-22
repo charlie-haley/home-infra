@@ -5,6 +5,9 @@ metadata:
   name: metal-01-core
   namespace: flux-system
 spec:
+  kubeConfig:
+    secretRef:
+      name: metal-01-kubeconfig
   interval: 10m0s
   dependsOn:
     - name: metal-01-crds
