@@ -1,22 +1,23 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- bitnami-charts.yaml
-- blakeshome-charts.yaml
-- charliehaley-charts.yaml
-- coredns-charts.yaml
-- deliveryhero-charts.yaml
-- drone-charts.yaml
-- grafana-charts.yaml
-- infracloudio-charts.yaml
-- ingress-nginx-charts.yaml
-- jetstack-charts.yaml
-- k8s-at-home-charts.yaml
-- kasten-charts.yaml
-- kubernetes-sigs-descheduler-charts.yaml
-- nfs-subdir-external-provisioner-charts.yaml
-- node-feature-discovery-charts.yaml
-- prometheus-community-charts.yaml
-- stakater-charts.yaml
-- traefik-charts.yaml
-- rook-ceph-charts.yaml
+  - bitnami-charts.yaml
+  - blakeshome-charts.yaml
+  - charliehaley-charts.yaml
+  - coredns-charts.yaml
+  - deliveryhero-charts.yaml
+  - drone-charts.yaml
+  - grafana-charts.yaml
+  - infracloudio-charts.yaml
+  - ingress-nginx-charts.yaml
+  - jetstack-charts.yaml
+  - k8s-at-home-charts.yaml
+  - kasten-charts.yaml
+  - kubernetes-sigs-descheduler-charts.yaml
+  - nfs-subdir-external-provisioner-charts.yaml
+  - node-feature-discovery-charts.yaml
+  - prometheus-community-charts.yaml
+  - stakater-charts.yaml
+  - traefik-charts.yaml
+  - rook-ceph-charts.yaml

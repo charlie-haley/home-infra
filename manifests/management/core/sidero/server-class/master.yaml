@@ -1,3 +1,4 @@
+---
 apiVersion: metal.sidero.dev/v1alpha1
 kind: ServerClass
 metadata:
@@ -16,4 +17,4 @@ spec:
             ip: 192.168.1.50
   selector:
     matchLabels:
-      master-node: "true"
+      master-node: 'true'

@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     podAnnotations:
-      botkube.io/disable: "true"
+      botkube.io/disable: 'true'
     deschedulerPolicy:
       strategies:
         RemoveDuplicates:
@@ -27,7 +27,7 @@ spec:
           enabled: true
           params:
             nodeAffinityType:
-            - requiredDuringSchedulingIgnoredDuringExecution
+              - requiredDuringSchedulingIgnoredDuringExecution
         RemovePodsViolatingInterPodAntiAffinity:
           enabled: false
         LowNodeUtilization:

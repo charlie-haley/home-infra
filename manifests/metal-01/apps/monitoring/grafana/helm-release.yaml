@@ -23,11 +23,11 @@ spec:
       GF_EXPLORE_ENABLED: true
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_LOG_FILTERS: rendering:debug
-      VAR_BLOCKY_URL: "https://blocky.${SECRET_DOMAIN}"
-    adminPassword: "${SECRET_GRAFANA_PASSWORD}"
+      VAR_BLOCKY_URL: https://blocky.${SECRET_DOMAIN}
+    adminPassword: ${SECRET_GRAFANA_PASSWORD}
     grafana.ini:
       server:
-        root_url: "https://grafana.${SECRET_DOMAIN}"
+        root_url: https://grafana.${SECRET_DOMAIN}
       paths:
         data: /var/lib/grafana/data
         logs: /var/log/grafana
@@ -45,27 +45,27 @@ spec:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-        - name: 'default'
-          orgId: 1
-          folder: ''
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/default
+          - name: default
+            orgId: 1
+            folder: ''
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
     datasources:
       datasources.yaml:
         apiVersion: 1
         datasources:
-        - name: Prometheus
-          type: prometheus
-          url: http://prometheus-operated:9090
-          access: proxy
-          isDefault: true
-        - name: Loki
-          type: loki
-          access: proxy
-          url: http://loki:3100
+          - name: Prometheus
+            type: prometheus
+            url: http://prometheus-operated:9090
+            access: proxy
+            isDefault: true
+          - name: Loki
+            type: loki
+            access: proxy
+            url: http://loki:3100
     dashboards:
       default:
         flux-cluster:
@@ -88,29 +88,29 @@ spec:
         enabled: true
         searchNamespace: ALL
     plugins:
-    - natel-discrete-panel
-    - pr0ps-trackmap-panel
-    - grafana-piechart-panel
-    - vonage-status-panel
-    - grafana-worldmap-panel
-    - grafana-clock-panel
+      - natel-discrete-panel
+      - pr0ps-trackmap-panel
+      - grafana-piechart-panel
+      - vonage-status-panel
+      - grafana-worldmap-panel
+      - grafana-clock-panel
     serviceMonitor:
       enabled: true
     ingress:
       enabled: true
-      ingressClassName: "traefik"
+      ingressClassName: traefik
       annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
       hosts:
-      - "grafana.${SECRET_DOMAIN}"
+        - grafana.${SECRET_DOMAIN}
       tls:
-      - hosts:
-        - "grafana.${SECRET_DOMAIN}"
+        - hosts:
+            - grafana.${SECRET_DOMAIN}
     persistence:
       enabled: true
-      storageClassName: "ceph-block"
+      storageClassName: ceph-block
       size: 10Gi
       accessModes:
-      - ReadWriteOnce
+        - ReadWriteOnce
     podAnnotations:
-      configmap.reloader.stakater.com/reload: "grafana"
+      configmap.reloader.stakater.com/reload: grafana

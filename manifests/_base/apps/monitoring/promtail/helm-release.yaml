@@ -36,7 +36,7 @@ spec:
         containerPort: 1514
         service:
           type: LoadBalancer
-          loadBalancerIP: "${SVC_PROMTAIL_ADDRESS}"
+          loadBalancerIP: ${SVC_PROMTAIL_ADDRESS}
     serviceMonitor:
       enabled: true
   postRenderers:
@@ -51,4 +51,4 @@ spec:
               - op: add
                 path: /spec/externalIPs
                 value:
-                  - "${SVC_PROMTAIL_ADDRESS}"
+                  - ${SVC_PROMTAIL_ADDRESS}

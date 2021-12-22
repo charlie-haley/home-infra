@@ -21,35 +21,35 @@ spec:
       repository: ghcr.io/k8s-at-home/sabnzbd
       tag: v3.4.1
     env:
-      TZ: "Europe/London"
-      HOST_WHITELIST_ENTRIES: "sabnzbd.${SECRET_DOMAIN}"
+      TZ: Europe/London
+      HOST_WHITELIST_ENTRIES: sabnzbd.${SECRET_DOMAIN}
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: traefik
         annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-        - host: "sabnzbd.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: sabnzbd.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - hosts:
-          - "sabnzbd.${SECRET_DOMAIN}"
+          - hosts:
+              - sabnzbd.${SECRET_DOMAIN}
       api:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: traefik
         annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-        - host: "sabnzbd.${SECRET_DOMAIN}"
-          paths:
-          - path: /api
-            pathType: Prefix
+          - host: sabnzbd.${SECRET_DOMAIN}
+            paths:
+              - path: /api
+                pathType: Prefix
         tls:
-        - hosts:
-          - "sabnzbd.${SECRET_DOMAIN}"
+          - hosts:
+              - sabnzbd.${SECRET_DOMAIN}
     persistence:
       config:
         enabled: true

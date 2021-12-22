@@ -20,8 +20,8 @@ spec:
       interval: 5m
   values:
     omada:
-      host: "${SECRET_OMADA_HOST}"
-      username: "${SECRET_OMADA_USERNAME}"
-      password: "${SECRET_OMADA_PASSWORD}"
-      site: "Default"
+      host: ${SECRET_OMADA_HOST}
+      username: ${SECRET_OMADA_USERNAME}
+      password: ${SECRET_OMADA_PASSWORD}
+      site: Default
       insecure: true

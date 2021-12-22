@@ -1,8 +1,9 @@
+---
 apiVersion: metal.sidero.dev/v1alpha1
 kind: Server
 metadata:
   labels:
-    master-node: "true"
+    master-node: 'true'
   name: 00c03111-0000-0000-0000-dca6322fa605
   namespace: sidero
 spec:

@@ -19,7 +19,7 @@ spec:
   clusterName: metal-01
   replicas: 3
   selector:
-    matchLabels: null
+    matchLabels:
   template:
     spec:
       bootstrap:

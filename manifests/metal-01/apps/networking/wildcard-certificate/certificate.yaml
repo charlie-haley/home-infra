@@ -2,14 +2,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: "${SECRET_DOMAIN/./-}"
+  name: ${SECRET_DOMAIN/./-}
   namespace: networking
 spec:
-  secretName: "${SECRET_DOMAIN/./-}"
+  secretName: ${SECRET_DOMAIN/./-}
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "${SECRET_DOMAIN}"
+  commonName: ${SECRET_DOMAIN}
   dnsNames:
-  - "${SECRET_DOMAIN}"
-  - "*.${SECRET_DOMAIN}"
+    - ${SECRET_DOMAIN}
+    - '*.${SECRET_DOMAIN}'

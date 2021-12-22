@@ -21,23 +21,23 @@ spec:
       repository: ghcr.io/home-assistant/home-assistant
       tag: 2021.9.7
     env:
-      TZ: "Europe/London"
+      TZ: Europe/London
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: traefik
         annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-        - host: "hass.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: hass.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - hosts:
-          - "hass.${SECRET_DOMAIN}"
+          - hosts:
+              - hass.${SECRET_DOMAIN}
     # service:
     #   main:
     #     type: LoadBalancer
@@ -66,30 +66,30 @@ spec:
           tag: 3.12.0
         git:
           deployKeySecret: code-server
-        workingDir: "/config"
+        workingDir: /config
         args:
-        - --auth
-        - "none"
-        - --user-data-dir
-        - "/config/.vscode"
-        - --extensions-dir
-        - "/config/.vscode"
+          - --auth
+          - none
+          - --user-data-dir
+          - /config/.vscode
+          - --extensions-dir
+          - /config/.vscode
         ingress:
           enabled: true
-          ingressClassName: "traefik"
+          ingressClassName: traefik
           annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
           hosts:
-          - host: "hass-config.${SECRET_DOMAIN}"
-            paths:
-            - path: /
-              pathType: Prefix
+            - host: hass-config.${SECRET_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
           tls:
-          - hosts:
-            - "hass-config.${SECRET_DOMAIN}"
+            - hosts:
+                - hass-config.${SECRET_DOMAIN}
         volumeMounts:
-        - name: config
-          mountPath: /config
+          - name: config
+            mountPath: /config
     resources:
       requests:
         cpu: 100m
