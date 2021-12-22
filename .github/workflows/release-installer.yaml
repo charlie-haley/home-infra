@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - .github/workflows/release-installer.yaml
-      - sidero/custom/installer/**
+      - misc/sidero/custom/installer/**
 
 jobs:
   build-publish:

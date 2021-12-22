@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - .github/workflows/release-rpi4-uefi.yaml
-      - sidero/custom/raspberrypi4-uefi/**
+      - misc/sidero/custom/raspberrypi4-uefi/**
 
 jobs:
   build-publish:
