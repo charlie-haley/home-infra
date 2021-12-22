@@ -124,9 +124,9 @@ mv /tmp/kubeconfig ~/.kube/config
 ## Tidy up context names
 ```bash
 kubectx sidero=admin@rpi4-sidero
-kubectx workload=admin@workload-cluster
+kubectx workload=admin@metal-01
 ```
 
 ## Next steps
 
-(Next we'll need to bootstrap Flux onto the workload cluster.)[workload-cluster.md]
+(Next we'll need to bootstrap Flux onto the workload cluster.)[metal-01.md]
