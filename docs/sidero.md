@@ -99,7 +99,7 @@ Add Age key for SOPS
 cat flux.agekey |
 kubectl create secret generic sops-age \
     --namespace=flux-system \
-    --from-file=sops.asc=/dev/stdin
+    --from-file=age.agekey=/dev/stdin
 ```
 Install Flux
 ```bash
