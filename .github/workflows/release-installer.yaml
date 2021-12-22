@@ -4,13 +4,13 @@ name: release installer
 on:
   push:
     paths:
-      - '.github/workflows/release-installer.yaml'
-      - 'sidero/custom/installer/**'
+      - .github/workflows/release-installer.yaml
+      - misc/sidero/custom/installer/**
 
 jobs:
   build-publish:
     runs-on:
-    - ubuntu-latest
+      - ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -25,7 +25,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
           registry: ghcr.io
-      
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
@@ -40,6 +40,6 @@ jobs:
         with:
           platforms: linux/amd64
           push: ${{ github.ref == 'refs/heads/main' }}
-          context: ./sidero/custom/installer
+          context: ./misc/sidero/custom/installer
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

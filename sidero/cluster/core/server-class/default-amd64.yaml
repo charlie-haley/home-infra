@@ -1,9 +1,0 @@
-apiVersion: metal.sidero.dev/v1alpha1
-kind: ServerClass
-metadata:
-  name: default-amd64
-spec:
-  qualifiers:
-    cpu:
-      - manufacturer: Intel(R) Corporation
-        version: NotSupport

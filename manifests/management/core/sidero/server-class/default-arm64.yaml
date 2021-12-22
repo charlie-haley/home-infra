@@ -1,0 +1,10 @@
+---
+apiVersion: metal.sidero.dev/v1alpha1
+kind: ServerClass
+metadata:
+  name: default-arm64
+spec:
+  qualifiers:
+    cpu:
+      - manufacturer: Broadcom
+        version: BCM2711 (ARM Cortex-A72)

@@ -1,0 +1,32 @@
+---
+apiVersion: cluster.x-k8s.io/v1alpha3
+kind: Cluster
+metadata:
+  name: metal-01
+  namespace: flux-system
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+        - 10.244.0.0/16
+    services:
+      cidrBlocks:
+        - 10.96.0.0/12
+  controlPlaneRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1alpha3
+    kind: TalosControlPlane
+    name: metal-01-cp
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+    kind: MetalCluster
+    name: metal-01
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: MetalCluster
+metadata:
+  name: metal-01
+  namespace: flux-system
+spec:
+  controlPlaneEndpoint:
+    host: 192.168.1.50
+    port: 6443

@@ -1,0 +1,48 @@
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
+kind: TalosConfigTemplate
+metadata:
+  name: metal-01-workers
+  namespace: flux-system
+spec:
+  template:
+    spec:
+      generateType: join
+      talosVersion: v0.13.2
+---
+apiVersion: cluster.x-k8s.io/v1alpha3
+kind: MachineDeployment
+metadata:
+  name: metal-01-workers
+  namespace: flux-system
+spec:
+  clusterName: metal-01
+  replicas: 3
+  selector:
+    matchLabels:
+  template:
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
+          kind: TalosConfigTemplate
+          name: metal-01-workers
+      clusterName: metal-01
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+        kind: MetalMachineTemplate
+        name: metal-01-workers
+      version: v1.22.3
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: MetalMachineTemplate
+metadata:
+  name: metal-01-workers
+  namespace: flux-system
+spec:
+  template:
+    spec:
+      serverClassRef:
+        apiVersion: metal.sidero.dev/v1alpha1
+        kind: ServerClass
+        name: worker

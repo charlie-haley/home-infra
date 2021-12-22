@@ -1,0 +1,44 @@
+---
+apiVersion: metal.sidero.dev/v1alpha1
+kind: Server
+metadata:
+  labels:
+    worker-node: 'true'
+  name: 00c03111-0000-0000-0000-dca6322fa5f9
+  namespace: sidero
+spec:
+  pxeBootAlways: true
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
+    - op: add
+      path: /machine/kubelet
+    - op: replace
+      path: /machine/kubelet
+      value:
+        extraArgs:
+          node-labels: metal.sidero.dev/uuid=00c03111-0000-0000-0000-dca6322fa5f9,openebs.io/engine=mayastor
+        extraMounts:
+          - destination: /var/local
+            type: bind
+            source: /var/local
+            options:
+              - rbind
+              - rshared
+              - rw
+  environmentRef:
+    namespace: default
+    name: default-arm64
+  accepted: true
+  cpu:
+    manufacturer: Broadcom
+    version: BCM2711 (ARM Cortex-A72)
+  hostname: 192.168.1.18
+  system:
+    family: Raspberry Pi
+    manufacturer: Raspberry Pi Foundation
+    productName: Raspberry Pi 4 Model B
+    serialNumber: 0000DCA6322FA5F9
+    skuNumber: 0000000000C03111
+    version: C03111

@@ -1,0 +1,72 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://helm.traefik.io/traefik
+      chart: traefik
+      version: 10.6.1
+      sourceRef:
+        kind: HelmRepository
+        name: traefik-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    logs:
+      general:
+        format: json
+        level: DEBUG
+      access:
+        enabled: true
+        format: json
+    ingressClass:
+      enabled: true
+      isDefaultClass: true
+      fallbackApiVersion: v1
+    ingressRoute:
+      dashboard:
+        enabled: false
+    globalArguments:
+      - --serverstransport.insecureskipverify=true
+      - --providers.kubernetesingress.ingressclass=traefik
+      - --metrics.prometheus=true
+      - --metrics.prometheus.entryPoint=metrics
+    ports:
+      web:
+        redirectTo: websecure
+      websecure:
+        tls:
+          enabled: true
+          options: default
+      metrics:
+        port: 8082
+        expose: true
+        exposedPort: 8082
+    additionalArguments:
+      - --providers.file.filename=/data/traefik-config.yaml
+      - --entrypoints.websecure.http.tls.certresolver=cloudflare
+      - --entrypoints.websecure.http.tls.domains[0].main=${SECRET_DOMAIN}
+      - --entrypoints.websecure.http.tls.domains[0].sans=*.${SECRET_DOMAIN}
+      - --certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare
+      - --certificatesresolvers.cloudflare.acme.email=${CLOUDFLARE_EMAIL}
+      - --certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1
+      - --certificatesresolvers.cloudflare.acme.storage=/certs/acme.json
+    env:
+      - name: CF_API_EMAIL
+        value: ${CLOUDFLARE_EMAIL}
+      - name: CF_API_KEY
+        value: ${CLOUDFLARE_APIKEY}
+    persistence:
+      enabled: true
+      path: /certs
+      size: 128Mi
+      storageClass: ceph-block
+    volumes:
+      - mountPath: /data
+        name: traefik-config
+        type: configMap

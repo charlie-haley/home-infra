@@ -1,0 +1,33 @@
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: MetalMachineTemplate
+metadata:
+  name: metal-01-cp
+  namespace: flux-system
+spec:
+  template:
+    spec:
+      serverClassRef:
+        apiVersion: metal.sidero.dev/v1alpha1
+        kind: ServerClass
+        name: master
+---
+apiVersion: controlplane.cluster.x-k8s.io/v1alpha3
+kind: TalosControlPlane
+metadata:
+  name: metal-01-cp
+  namespace: flux-system
+spec:
+  controlPlaneConfig:
+    controlplane:
+      generateType: controlplane
+      talosVersion: v0.13.2
+    init:
+      generateType: init
+      talosVersion: v0.13.2
+  infrastructureTemplate:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+    kind: MetalMachineTemplate
+    name: metal-01-cp
+  replicas: 3
+  version: v1.22.3

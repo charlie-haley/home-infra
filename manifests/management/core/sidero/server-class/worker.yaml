@@ -1,0 +1,9 @@
+---
+apiVersion: metal.sidero.dev/v1alpha1
+kind: ServerClass
+metadata:
+  name: worker
+spec:
+  selector:
+    matchLabels:
+      worker-node: 'true'
