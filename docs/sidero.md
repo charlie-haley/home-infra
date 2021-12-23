@@ -7,13 +7,13 @@ The following applies to sidero v0.4
     ```
     sudo pacman -S kubectl
     ```
-- clusterctl 0.4.4
+- clusterctl 0.4.5
     ```
     curl -Lo /usr/local/bin/clusterctl \
-    "https://github.com/kubernetes-sigs/cluster-api/releases/download/v0.4.4/clusterctl-linux-amd64"
+    "https://github.com/kubernetes-sigs/cluster-api/releases/download/v0.4.5/clusterctl-linux-amd64"
     chmod +x /usr/local/bin/clusterctl
     ```
-- talosctl
+- talosctl 0.14.0
      ```
     sudo curl -Lo /usr/local/bin/talosctl \
     "https://github.com/talos-systems/talos/releases/latest/download/talosctl-linux-amd64"

@@ -9,12 +9,11 @@ spec:
       path: /machine/install/disk
       value: /dev/sda
     - op: add
-      path: /machine/network/interfaces
+      path: /machine/network
       value:
-        - interface: eth0
-          dhcp: true
-          vip:
-            ip: 192.168.1.50
+        interfaces:
+          - interface: eth0
+            dhcp: true
   selector:
     matchLabels:
       master-node: 'true'
