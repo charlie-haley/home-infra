@@ -110,11 +110,8 @@ kubectl apply --kustomize=./manifests/management/gitops/flux-system
 ## Get kubeconfig
 
 ```bash
-# fetch talosconfig
-kubectl get talosconfig -o yaml $(kubectl get talosconfig -A -o jsonpath='{.items[0].metadata.name}') -n flux-system -o jsonpath='{.status.talosConfig}' > talosconfig
-
 # fetch kubeconfig
-talosctl --nodes="192.168.1.14" --talosconfig talosconfig kubeconfig .
+kubectl get secret -n flux-system metal-01-kubeconfig -o yaml -o jsonpath='{.data.value}' | base64 -d > kubeconfig
 
 # merge kubeconfig files
 cp ~/.kube/config ~/.kube/config.bak
@@ -125,5 +122,5 @@ mv /tmp/kubeconfig ~/.kube/config
 ## Tidy up context names
 ```bash
 kubectx sidero=admin@rpi4-sidero
-kubectx metal-01=admin@metal-01
+kubectx metal-01=metal-01-admin@metal-01
 ```

@@ -27,21 +27,6 @@ spec:
     - op: replace
       path: /machine/install/image
       value: ghcr.io/charlie-haley/talos-installer:sha-e98e242
-    - op: add
-      path: /machine/kubelet
-    - op: replace
-      path: /machine/kubelet
-      value:
-        extraArgs:
-          node-labels: metal.sidero.dev/uuid=4c4c4544-0030-4a10-8038-b7c04f563032,openebs.io/engine=mayastor
-        extraMounts:
-          - destination: /var/local
-            type: bind
-            source: /var/local
-            options:
-              - rbind
-              - rshared
-              - rw
   environmentRef:
     namespace: default
     name: default-amd64
