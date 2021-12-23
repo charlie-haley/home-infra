@@ -4,6 +4,12 @@ kind: ServerClass
 metadata:
   name: worker
 spec:
+  configPatches:
+    - op: add
+      path: /machine/network/interfaces/0
+      value:
+        interface: eth0
+        dhcp: true
   selector:
     matchLabels:
       worker-node: 'true'
