@@ -9,10 +9,11 @@ spec:
       path: /machine/install/disk
       value: /dev/sda
     - op: add
-      path: /machine/network/interfaces/0
+      path: /machine/network
       value:
-        interface: eth0
-        dhcp: true
+        interfaces:
+          - interface: eth0
+            dhcp: true
   selector:
     matchLabels:
       master-node: 'true'
