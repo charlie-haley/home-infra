@@ -1,7 +1,7 @@
 ---
 ignore: |
     .github/
-    misc/
+    integrations/
     *-crds.yaml
     *.patch.yaml
 extends: default

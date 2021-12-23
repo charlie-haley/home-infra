@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - .github/workflows/release-rpi4-uefi.yaml
-      - misc/sidero/custom/raspberrypi4-uefi/**
+      - integrations/sidero/custom/raspberrypi4-uefi/**
 
 jobs:
   build-publish:
@@ -39,6 +39,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: ${{ github.ref == 'refs/heads/main' }}
-          context: ./misc/sidero/custom/raspberrypi4-uefi
+          context: ./integrations/sidero/custom/raspberrypi4-uefi
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

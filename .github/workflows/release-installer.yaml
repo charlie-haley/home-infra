@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - .github/workflows/release-installer.yaml
-      - misc/sidero/custom/installer/**
+      - integrations/sidero/custom/installer/**
 
 jobs:
   build-publish:
@@ -40,6 +40,6 @@ jobs:
         with:
           platforms: linux/amd64
           push: ${{ github.ref == 'refs/heads/main' }}
-          context: ./misc/sidero/custom/installer
+          context: ./integrations/sidero/custom/installer
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
