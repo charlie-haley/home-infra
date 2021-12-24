@@ -28,5 +28,5 @@ metadata:
   namespace: flux-system
 spec:
   controlPlaneEndpoint:
-    host: 192.168.1.50
+    host: 192.168.1.14
     port: 6443
