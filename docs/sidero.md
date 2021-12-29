@@ -30,7 +30,7 @@ Flash USB SSD with Talos image, (found here.)[https://github.com/talos-systems/t
 export SIDERO_ENDPOINT=192.168.1.215
 
 #generate config
-talosctl gen config --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/sda"}]' rpi4-sidero https://${SIDERO_ENDPOINT}:6443/
+talosctl gen config --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/sda"}]' rpi4-sidero "https://${SIDERO_ENDPOINT}:6443/"
 
 #apply generated config
 talosctl apply-config --insecure -n ${SIDERO_ENDPOINT} -f controlplane.yaml
@@ -54,12 +54,10 @@ talosctl dmesg -f | grep "bootstrap sequence: done"
 # seems to take a couple minutes after that log before 6443 is open and it's ready for the clusterctl command
 
 #init management cluster
-SIDERO_CONTROLLER_MANAGER_HOST_NETWORK=true \
-SIDERO_CONTROLLER_MANAGER_API_ENDPOINT=${SIDERO_ENDPOINT} \
-clusterctl init -i "sidero" -b talos -c talos
+SIDERO_CONTROLLER_MANAGER_HOST_NETWORK=true SIDERO_CONTROLLER_MANAGER_API_ENDPOINT=${SIDERO_ENDPOINT} clusterctl init -i "sidero" -b talos -c talos
 
 #verify admin cluster
-curl -I http://${SIDERO_ENDPOINT}:8081/tftp/ipxe.efi
+curl -I "http://${SIDERO_ENDPOINT}:8081/tftp/ipxe.efi"
 ```
 
 ## Setting up DHCP
@@ -96,8 +94,7 @@ kubectl create namespace flux-system
 ```
 Add Age key for SOPS
 ```bash
-cat flux.agekey |
-kubectl create secret generic sops-age \
+cat flux.agekey | kubectl create secret generic sops-age \
     --namespace=flux-system \
     --from-file=age.agekey=/dev/stdin
 ```
