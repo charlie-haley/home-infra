@@ -5,7 +5,6 @@ metadata:
   labels:
     worker-node: 'true'
   name: 00c03111-0000-0000-0000-dca6322fa5f9
-  namespace: sidero
 spec:
   pxeBootAlways: true
   configPatches:

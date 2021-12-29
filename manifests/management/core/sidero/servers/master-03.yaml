@@ -5,7 +5,6 @@ metadata:
   labels:
     master-node: 'true'
   name: 00c03111-0000-0000-0000-dca6322fa605
-  namespace: sidero
 spec:
   pxeBootAlways: true
   environmentRef:
