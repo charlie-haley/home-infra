@@ -25,7 +25,9 @@ spec:
           path: /machine/network
           value:
             interfaces:
-              - vip:
+              - interface: eth0
+                dhcp: true
+                vip:
                   ip: 192.168.1.50
       generateType: controlplane
       talosVersion: v0.14
@@ -35,7 +37,9 @@ spec:
           path: /machine/network
           value:
             interfaces:
-              - vip:
+              - interface: eth0
+                dhcp: true
+                vip:
                   ip: 192.168.1.50
       generateType: init
       talosVersion: v0.14
