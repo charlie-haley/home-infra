@@ -34,7 +34,7 @@ spec:
           op: create
     - op: replace
       path: /machine/install/image
-      value: ghcr.io/charlie-haley/talos-installer:sha-e98e242
+      value: ghcr.io/charlie-haley/talos-installer:sha-993a7df
   environmentRef:
     namespace: default
     name: default-amd64
