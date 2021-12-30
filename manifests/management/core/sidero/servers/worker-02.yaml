@@ -23,6 +23,15 @@ spec:
     - op: replace
       path: /machine/install/disk
       value: /dev/sda
+    - op: add
+      path: /machine/files
+      value:
+        - content: |
+            [plugins."io.containerd.runtime.v1.linux"]
+                shim = "containerd-shim"
+                runtime = "nvidia-container-runtime"
+          path: /var/cri/conf.d/runtime.toml
+          op: create
     - op: replace
       path: /machine/install/image
       value: ghcr.io/charlie-haley/talos-installer:sha-e98e242
