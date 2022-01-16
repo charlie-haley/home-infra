@@ -24,17 +24,6 @@ spec:
       path: /machine/install
       value:
         disk: /dev/sda
-  #       image: ghcr.io/charlie-haley/talos-installer:2
-  #   - op: add
-  #     path: /machine
-  #     value:
-  #       files:
-  #         - content: |
-  #             [plugins."io.containerd.runtime.v1.linux"]
-  #                 shim = "containerd-shim"
-  #                 runtime = "nvidia-container-runtime"
-  #           path: /var/cri/conf.d/runtime.toml
-  #           op: create
   environmentRef:
     namespace: default
     name: default-amd64
