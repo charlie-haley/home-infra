@@ -4,9 +4,7 @@ kind: Kustomization
 bases:
   - ../../_base/apps/
 resources:
-  - flux-system
   - home
-  - kube-system
   - media
   - monitoring
   - networking
