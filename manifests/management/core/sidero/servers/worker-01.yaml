@@ -20,9 +20,10 @@ spec:
         key: password
   configPatches:
     - op: replace
-      path: /machine/install/disk
-      value: /dev/sda
-      image: ghcr.io/charlie-haley/talos-installer:2
+      path: /machine/install
+      value:
+        disk: /dev/sda
+        image: ghcr.io/charlie-haley/talos-installer:2
     - op: add
       path: /machine
       value:
