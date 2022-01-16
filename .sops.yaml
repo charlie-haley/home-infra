@@ -1,6 +1,5 @@
 ---
 creation_rules:
   - encrypted_regex: ^(data|stringData)$
-    pgp: >-
-      9BED42A6B950B27737E31539730EBA837FB2813F,
-      6ADDCC324FE7A27E9CC28E85A0809721C46C549E
+    age: >-
+      age1c000ffrkz0lwqdhmkqurvj4tc2zvluhm3zh5l4ppmu5dq6y5qfls2t3vfw
