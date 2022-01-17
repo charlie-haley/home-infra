@@ -11,22 +11,22 @@
     "rebaseWhen": "conflicted",
     "kubernetes": {
         "fileMatch": [
-            "cluster/.+\\.yaml$"
+            "manifests/.+\\.yaml$"
         ],
         "ignorePaths": [
-            "cluster/flux-system/",
-            "cluster/actions-runner-system/"
+            "manifests/flux-system/",
+            "manifests/actions-runner-system/"
         ]
     },
     "helm-values": {
         "fileMatch": [
-            "cluster/.+helm-release\\.yaml$"
+            "manifests/.+helm-release\\.yaml$"
         ]
     },
     "regexManagers": [
         {
             "fileMatch": [
-                "cluster/.+helm-release\\.yaml$"
+                "manifests/.+helm-release\\.yaml$"
             ],
             "matchStrings": [
                 "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
@@ -35,7 +35,7 @@
         },
         {
             "fileMatch": [
-                "cluster/actions-runner-system/runners/.+\\.yaml$"
+                "manifests/actions-runner-system/runners/.+\\.yaml$"
             ],
             "matchStrings": [
                 "image: (?<depName>.*?):(?<currentValue>.*?)\n"
