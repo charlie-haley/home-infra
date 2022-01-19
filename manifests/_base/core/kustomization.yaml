@@ -6,4 +6,3 @@ resources:
   - flux-system
   - metallb
   - namespaces
-  - rook-ceph
