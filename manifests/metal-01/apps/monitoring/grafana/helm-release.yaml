@@ -8,21 +8,29 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://grafana.github.io/helm-charts
       chart: grafana
-      version: 6.20.8
+      version: 6.21.1
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
         namespace: flux-system
       interval: 5m
+  install:
+    createNamespace: true
   values:
-    deploymentStrategy:
-      type: Recreate
+    replicas: 1
     env:
       GF_EXPLORE_ENABLED: true
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_LOG_FILTERS: rendering:debug
+      GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
+      GF_DATE_FORMATS_FULL_DATE: MMM Do, YYYY hh:mm:ss a
+      GF_DATE_FORMATS_INTERVAL_SECOND: hh:mm:ss a
+      GF_DATE_FORMATS_INTERVAL_MINUTE: hh:mm a
+      GF_DATE_FORMATS_INTERVAL_HOUR: DD/MM hh:mm a
+      GF_DATE_FORMATS_INTERVAL_DAY: DD/MM
+      GF_DATE_FORMATS_INTERVAL_MONTH: MM-YYYY
+      GF_DATE_FORMATS_INTERVAL_YEAR: YYYY
       VAR_BLOCKY_URL: https://blocky.${SECRET_DOMAIN}
     adminPassword: ${SECRET_GRAFANA_PASSWORD}
     grafana.ini:
@@ -84,6 +92,9 @@ spec:
       dashboards:
         enabled: true
         searchNamespace: ALL
+        folderAnnotation: grafana_folder
+        provider:
+          foldersFromFilesStructure: true
       datasources:
         enabled: true
         searchNamespace: ALL
