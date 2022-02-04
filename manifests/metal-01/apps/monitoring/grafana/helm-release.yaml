@@ -88,6 +88,12 @@ spec:
         sonarr:
           url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
           datasource: Prometheus
+        network-overview:
+          url: https://raw.githubusercontent.com/charlie-haley/home-cluster/main/manifests/metal-01/apps/monitoring/grafana/dashboards/network-overview.json
+          datasource: Prometheus
+        home:
+          url: https://raw.githubusercontent.com/charlie-haley/home-cluster/main/manifests/metal-01/apps/monitoring/grafana/dashboards/home.json
+          datasource: Prometheus
     sidecar:
       dashboards:
         enabled: true

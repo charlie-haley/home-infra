@@ -5,5 +5,3 @@ commonLabels:
   grafana_dashboard: '1'
 resources:
   - https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/v0.7.0/manifests/grafana-dashboardDefinitions.yaml
-  - https://raw.githubusercontent.com/charlie-haley/home-cluster/main/manifests/metal-01/apps/monitoring/grafana/dashboards/network-overview.json
-  - https://raw.githubusercontent.com/charlie-haley/home-cluster/main/manifests/metal-01/apps/monitoring/grafana/dashboards/home.json
