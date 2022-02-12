@@ -19,13 +19,17 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 28,
+  "id": 29,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -37,7 +41,6 @@
       "type": "row"
     },
     {
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -88,11 +91,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "temperature{sensor=\"temp_office\"}",
+          "expr": "temperature{sensor=\"Office Temp\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "Office",
@@ -102,7 +109,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -153,11 +159,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "temperature{sensor=\"temp_livingroom\"}",
+          "expr": "temperature{sensor=\"Living Room Temp\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "Living Room",
@@ -167,7 +177,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -218,11 +227,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "temperature{sensor=\"temp_bedroom\"}",
+          "expr": "temperature{sensor=\"Bedroom Temp\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "Bedroom",
@@ -232,7 +245,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -283,11 +295,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "temperature{sensor=\"temp_rack\"}",
+          "expr": "temperature{sensor=\"\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "Server Rack",
@@ -298,7 +314,10 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -311,7 +330,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -362,7 +384,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -376,7 +398,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -427,7 +452,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -441,7 +466,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -492,7 +520,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -506,7 +534,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -557,7 +588,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -571,7 +602,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -620,7 +654,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -698,7 +732,10 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -749,7 +786,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -763,7 +800,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -814,7 +854,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -828,7 +868,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -879,7 +922,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -893,7 +936,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -944,7 +990,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -958,7 +1004,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1045,8 +1090,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "occupancy{sensor=\"motion_hall\"}",
+          "expr": "occupancy{sensor=\"Hall Motion\"}",
           "interval": "",
           "legendFormat": "Hall",
           "refId": "A"
@@ -1057,7 +1106,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1106,7 +1158,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -1185,7 +1237,6 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1287,8 +1338,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "occupancy{sensor=\"motion_office\"}",
+          "expr": "occupancy{sensor=\"Office Motion\"}",
           "interval": "",
           "legendFormat": "Office",
           "refId": "A"
@@ -1299,7 +1354,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1348,7 +1406,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -1427,14 +1485,14 @@
       "type": "bargauge"
     }
   ],
-  "schemaVersion": 30,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -1467,5 +1525,6 @@
   "timezone": "browser",
   "title": "Home",
   "uid": "Exa1TOWnk",
-  "version": 12
+  "version": 2,
+  "weekStart": ""
 }
