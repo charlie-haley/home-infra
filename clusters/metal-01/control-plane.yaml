@@ -10,7 +10,7 @@ spec:
       serverClassRef:
         apiVersion: metal.sidero.dev/v1alpha1
         kind: ServerClass
-        name: any
+        name: master
 ---
 apiVersion: controlplane.cluster.x-k8s.io/v1alpha3
 kind: TalosControlPlane
@@ -26,5 +26,5 @@ spec:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: MetalMachineTemplate
     name: metal-01-cp
-  replicas: 1
+  replicas: 3
   version: v1.23.5
