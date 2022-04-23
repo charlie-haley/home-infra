@@ -52,7 +52,7 @@ kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patc
 ## Bootstrap Flux
 Ensure we're using the correct context
 ```bash
-kubectx admin@rpi4-sidero
+kubectx admin@management
 ```
 Run pre-installation checks
 ```bash
@@ -88,6 +88,6 @@ mv /tmp/kubeconfig ~/.kube/config
 
 ## Tidy up context names
 ```bash
-kubectx sidero=admin@management
+kubectx management=admin@management
 kubectx metal-01=metal-01-admin@metal-01
 ```
