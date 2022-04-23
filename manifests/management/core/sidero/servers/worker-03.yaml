@@ -7,13 +7,6 @@ metadata:
   name: 00c03111-0000-0000-0000-dca6322fa5f9
 spec:
   pxeBootAlways: true
-  configPatches:
-    - op: replace
-      path: /machine/install/disk
-      value: /dev/sda
-  environmentRef:
-    namespace: default
-    name: default-arm64
   accepted: true
   cpu:
     manufacturer: Broadcom

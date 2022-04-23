@@ -4,48 +4,18 @@ kind: Server
 metadata:
   labels:
     worker-node: 'true'
-  name: 4c4c4544-0058-3910-805a-b6c04f355931
+  name: 65f0f100-253e-11e9-83b3-a9a942fa1200
 spec:
-  bmc:
-    endpoint: 192.168.1.121
-    userFrom:
-      secretKeyRef:
-        name: ipmi-credentials
-        namespace: sidero
-        key: username
-    passFrom:
-      secretKeyRef:
-        name: ipmi-credentials
-        namespace: sidero
-        key: password
-  configPatches:
-    - op: replace
-      path: /machine/install
-      value:
-        disk: /dev/sda
-        image: ghcr.io/charlie-haley/talos-installer:2
-    - op: add
-      path: /machine
-      value:
-        files:
-          - content: |
-              [plugins."io.containerd.runtime.v1.linux"]
-                  shim = "containerd-shim"
-                  runtime = "nvidia-container-runtime"
-            path: /var/cri/conf.d/runtime.toml
-            op: create
-  environmentRef:
-    namespace: default
-    name: default-amd64
+  pxeBootAlways: true
   accepted: true
   cpu:
     manufacturer: Intel(R) Corporation
-    version: NotSupport
-  hostname: 192.168.1.224
+    version: Intel(R) Core(TM) i5-9500T CPU @ 2.20GHz
+  hostname: 192.168.1.243
   system:
-    family: Unknown
-    manufacturer: Dell Inc.
-    productName: PowerEdge R210 II
-    serialNumber: Unknown
-    skuNumber: Unknown
-    version: 6X9Z5Y1
+    family: ThinkCentre M720q
+    manufacturer: LENOVO
+    productName: 10T8S6FU00
+    serialNumber: PC11NSKX
+    skuNumber: LENOVO_MT_10T8_BU_Think_FM_ThinkCentre M720q
+    version: ThinkCentre M720q

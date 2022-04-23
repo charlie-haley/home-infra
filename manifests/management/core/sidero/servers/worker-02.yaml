@@ -4,38 +4,18 @@ kind: Server
 metadata:
   labels:
     worker-node: 'true'
-  name: 4c4c4544-0030-4a10-8038-b7c04f563032
+  name: 3a625100-1a02-11ea-bc97-da204e0c0f00
 spec:
   pxeBootAlways: true
-  bmc:
-    endpoint: 192.168.1.120
-    userFrom:
-      secretKeyRef:
-        name: ipmi-credentials
-        namespace: sidero
-        key: username
-    passFrom:
-      secretKeyRef:
-        name: ipmi-credentials
-        namespace: sidero
-        key: password
-  configPatches:
-    - op: replace
-      path: /machine/install
-      value:
-        disk: /dev/sda
-  environmentRef:
-    namespace: default
-    name: default-amd64
   accepted: true
   cpu:
     manufacturer: Intel(R) Corporation
-    version: NotSupport
-  hostname: 192.168.1.223
+    version: Intel(R) Core(TM) i5-8400T CPU @ 1.70GHz
+  hostname: 192.168.1.245
   system:
-    family: Unknown
-    manufacturer: Dell Inc.
-    productName: PowerEdge R210 II
-    serialNumber: Unknown
-    skuNumber: Unknown
-    version: 70J8V02
+    family: ThinkCentre M720q
+    manufacturer: LENOVO
+    productName: 10T7004BUK
+    serialNumber: PC1C6AFW
+    skuNumber: LENOVO_MT_10T7_BU_Think_FM_ThinkCentre M720q
+    version: ThinkCentre M720q

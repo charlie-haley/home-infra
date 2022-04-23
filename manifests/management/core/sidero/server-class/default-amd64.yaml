@@ -7,4 +7,9 @@ spec:
   qualifiers:
     cpu:
       - manufacturer: Intel(R) Corporation
-        version: NotSupport
+        version: Intel(R) Core(TM) i5-9500T CPU @ 2.20GHz
+      - manufacturer: Intel(R) Corporation
+        version: Intel(R) Core(TM) i5-8400T CPU @ 1.70GHz
+  environmentRef:
+    namespace: sidero
+    name: default-amd64
