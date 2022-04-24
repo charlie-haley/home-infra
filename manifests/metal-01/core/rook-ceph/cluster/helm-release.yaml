@@ -42,12 +42,12 @@ spec:
         config:
           osdsPerDevice: '1'
         nodes:
-          - name: talos-192-168-1-223
+          - name: talos-192-168-1-246
             devices:
-              - name: sdb
-          - name: talos-192-168-1-224
+              - name: sda
+          - name: talos-192-168-1-243
             devices:
-              - name: sdb
+              - name: sda
       placement:
         all:
           tolerations:

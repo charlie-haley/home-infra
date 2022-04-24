@@ -11,7 +11,7 @@ spec:
   cpu:
     manufacturer: Intel(R) Corporation
     version: Intel(R) Core(TM) i5-8400T CPU @ 1.70GHz
-  hostname: 192.168.1.245
+  hostname: 192.168.1.246
   system:
     family: ThinkCentre M720q
     manufacturer: LENOVO
@@ -22,4 +22,4 @@ spec:
   configPatches:
     - op: replace
       path: /machine/install/disk
-      value: /dev/sda
+      value: /dev/nvme0n1
