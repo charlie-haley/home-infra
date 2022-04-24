@@ -19,3 +19,6 @@ spec:
     serialNumber: 0000DCA6322FA5F9
     skuNumber: 0000000000C03111
     version: C03111
+  environmentRef:
+    namespace: sidero
+    name: default-arm64
