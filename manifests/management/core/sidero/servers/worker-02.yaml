@@ -19,3 +19,7 @@ spec:
     serialNumber: PC1C6AFW
     skuNumber: LENOVO_MT_10T7_BU_Think_FM_ThinkCentre M720q
     version: ThinkCentre M720q
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda

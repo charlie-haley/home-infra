@@ -19,3 +19,7 @@ spec:
     serialNumber: PC11NSKX
     skuNumber: LENOVO_MT_10T8_BU_Think_FM_ThinkCentre M720q
     version: ThinkCentre M720q
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/nvme0n1
