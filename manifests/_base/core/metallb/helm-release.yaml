@@ -29,4 +29,5 @@ spec:
         - name: default
           protocol: layer2
           addresses:
-            - 192.168.1.223-192.168.1.224
+            - 192.168.1.246
+            - 192.168.1.223
