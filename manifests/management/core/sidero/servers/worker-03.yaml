@@ -22,3 +22,7 @@ spec:
   environmentRef:
     namespace: sidero
     name: default-arm64
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
