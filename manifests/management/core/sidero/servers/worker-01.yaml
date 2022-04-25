@@ -26,5 +26,5 @@ spec:
     - op: add
       path: /machine/udev/rules
       value:
-        - SUBSYSTEM=="drm", KERNEL=="card*", GROUP="44", MODE="0660"
-        - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0660"
+        - SUBSYSTEM=="drm", KERNEL=="card*", GROUP="44", MODE="0777"
+        - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0777"
