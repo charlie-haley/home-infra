@@ -23,7 +23,7 @@ spec:
     - op: replace
       path: /machine/install/disk
       value: /dev/nvme0n1
-    - op: replace
+    - op: add
       path: /machine/udev/rules
       value:
         - SUBSYSTEM=="drm", KERNEL=="card*", GROUP="44", MODE="0660"
