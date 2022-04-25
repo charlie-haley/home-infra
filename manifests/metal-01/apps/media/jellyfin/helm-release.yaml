@@ -16,23 +16,15 @@ spec:
         name: k8s-at-home-charts
         namespace: flux-system
   values:
-    additionalVolumeMounts:
-      - mountPath: /dev/dri/renderD128
-        name: dri-device
-    additionalVolumes:
-      - hostPath:
-          path: /dev/dri/renderD128
-        name: dri-device
     image:
       repository: linuxserver/jellyfin
       tag: 10.7.7
     env:
+      PGID: 1000
+      PUID: 1000
       TZ: Europe/London
       JELLYFIN_CACHE_DIR: /config/cache
     podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
       supplementalGroups:
         - 44
         - 109
@@ -52,6 +44,10 @@ spec:
           - hosts:
               - jellyfin.${SECRET_DOMAIN}
     persistence:
+      dri:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/dri/renderD128
       config:
         enabled: true
         existingClaim: jellyfin-config-v1
