@@ -24,6 +24,9 @@ spec:
       PUID: 1000
       TZ: Europe/London
       JELLYFIN_CACHE_DIR: /config/cache
+    securityContext:
+      privileged: true
+      allowPrivilegeEscalation: true
     podSecurityContext:
       supplementalGroups:
         - 44
