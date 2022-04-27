@@ -58,7 +58,7 @@ spec:
           nfs:
             server: 192.168.1.240
             path: /media/movies
-        mountPath: /data/tv
+        mountPath: /data/movies
         readOnly: true
       shows:
         enabled: true
@@ -67,7 +67,7 @@ spec:
           nfs:
             server: 192.168.1.240
             path: /media/tv
-        mountPath: /data/movies
+        mountPath: /data/tv
         readOnly: true
       transcode:
         enabled: true
