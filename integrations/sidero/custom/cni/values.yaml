@@ -1,0 +1,5 @@
+---
+hubble:
+  tls:
+    auto:
+      method: cert-mangaer

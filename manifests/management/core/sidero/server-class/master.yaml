@@ -16,6 +16,16 @@ spec:
             dhcp: true
             vip:
               ip: 192.168.1.50
+    - op: add
+      path: /machine/kubelet/extraArgs
+      value:
+        rotate-server-certificates: true
+    - op: replace
+      path: /cluster/network/cni
+      value:
+        name: custom
+        urls:
+          - https://raw.githubusercontent.com/charlie-haley/home-cluster/main/integrations/sidero/custom/cni/cilium-deployment.yaml
   selector:
     matchLabels:
       master-node: 'true'
