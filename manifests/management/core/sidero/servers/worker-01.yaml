@@ -28,7 +28,3 @@ spec:
       value:
         - SUBSYSTEM=="drm", KERNEL=="card*", GROUP="44", MODE="0777"
         - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0777"
-    - op: add
-      path: /machine/install/extensions
-      value:
-        - image: ghcr.io/charlie-haley/intel-media-driver:22.3.1
