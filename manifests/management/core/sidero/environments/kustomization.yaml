@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - default-amd64.yaml
   - default-arm64.yaml
-  - default
+  - default.yaml
