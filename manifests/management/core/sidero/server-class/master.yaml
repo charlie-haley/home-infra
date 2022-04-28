@@ -26,6 +26,9 @@ spec:
         name: custom
         urls:
           - https://raw.githubusercontent.com/charlie-haley/home-cluster/main/integrations/sidero/custom/cni/cilium-deployment.yaml
+    - op: add
+      path: /cluster/proxy/disabled
+      value: true
   selector:
     matchLabels:
       master-node: 'true'

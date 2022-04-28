@@ -708,6 +708,10 @@ spec:
                   name: cilium-config
                   key: custom-cni-conf
                   optional: true
+            - name: KUBERNETES_SERVICE_HOST
+              value: 192.168.1.50
+            - name: KUBERNETES_SERVICE_PORT
+              value: '6443'
           lifecycle:
             postStart:
               exec:
@@ -795,6 +799,10 @@ spec:
                   name: cilium-config
                   key: clean-cilium-bpf-state
                   optional: true
+            - name: KUBERNETES_SERVICE_HOST
+              value: 192.168.1.50
+            - name: KUBERNETES_SERVICE_PORT
+              value: '6443'
           securityContext:
             privileged: true
           volumeMounts:
@@ -951,6 +959,10 @@ spec:
                   key: debug
                   name: cilium-config
                   optional: true
+            - name: KUBERNETES_SERVICE_HOST
+              value: 192.168.1.50
+            - name: KUBERNETES_SERVICE_PORT
+              value: '6443'
           livenessProbe:
             httpGet:
               host: 127.0.0.1
