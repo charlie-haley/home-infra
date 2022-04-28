@@ -5,6 +5,7 @@ resources:
   - bitnami-charts.yaml
   - blakeshome-charts.yaml
   - charliehaley-charts.yaml
+  - cilium-charts.yaml
   - coredns-charts.yaml
   - deliveryhero-charts.yaml
   - drone-charts.yaml
