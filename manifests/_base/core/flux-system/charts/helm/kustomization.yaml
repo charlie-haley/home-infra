@@ -21,3 +21,4 @@ resources:
   - stakater-charts.yaml
   - traefik-charts.yaml
   - rook-ceph-charts.yaml
+  - metrics-server-charts.yaml
