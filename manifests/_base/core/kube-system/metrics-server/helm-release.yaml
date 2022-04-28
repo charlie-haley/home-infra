@@ -16,3 +16,5 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    args:
+      - --kubelet-insecure-tls
