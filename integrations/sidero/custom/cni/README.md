@@ -12,3 +12,8 @@ This is referenced as patches in the machineconfig for Talos.
     urls:
       - "https://raw.githubusercontent.com/charlie-haley/home-cluster/main/integrations/sidero/custom/cni/cilium-deployment.yaml
 ```
+
+## Templating using values
+```
+helm template -n kube-system cilium/cilium > cilium-deployment.yaml --values values.yaml
+```
