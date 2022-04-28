@@ -7,3 +7,5 @@ hubble:
   tls:
     auto:
       method: cert-mangaer
+ipam:
+  mode: kubernetes
