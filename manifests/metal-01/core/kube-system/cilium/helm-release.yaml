@@ -45,7 +45,7 @@ spec:
     ipam:
       mode: kubernetes
     ipv6:
-      enabled: true
+      enabled: false
     operator:
       rollOutPods: true
       prometheus:
@@ -68,19 +68,19 @@ spec:
         serviceMonitor:
           enabled: true
       relay:
-        enabled: false
+        enabled: true
         rollOutPods: true
-        # ui:
-        #   enabled: true
-        #   rollOutPods: true
-        #   ingress:
-        #     enabled: true
-        #     annotations:
-        #       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        #       # cert-manager.io/cluster-issuer: letsencrypt-production
-        #     hosts:
-        #       - hubble.${SECRET_DOMAIN}
-        #     tls:
-        #       - secretName: hubble-tls
-        #         hosts:
-        #           - hubble.${SECRET_DOMAIN}
+        ui:
+          enabled: true
+          rollOutPods: true
+          ingress:
+            enabled: true
+            annotations:
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              # cert-manager.io/cluster-issuer: letsencrypt-production
+            hosts:
+              - hubble.${SECRET_DOMAIN}
+            tls:
+              - secretName: hubble-tls
+                hosts:
+                  - hubble.${SECRET_DOMAIN}
