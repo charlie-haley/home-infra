@@ -70,17 +70,17 @@ spec:
       relay:
         enabled: true
         rollOutPods: true
-        ui:
+      ui:
+        enabled: true
+        rollOutPods: true
+        ingress:
           enabled: true
-          rollOutPods: true
-          ingress:
-            enabled: true
-            annotations:
-              traefik.ingress.kubernetes.io/router.entrypoints: websecure
-              cert-manager.io/cluster-issuer: letsencrypt-production
-            hosts:
-              - hubble.${SECRET_DOMAIN}
-            tls:
-              - secretName: hubble-tls
-                hosts:
-                  - hubble.${SECRET_DOMAIN}
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            cert-manager.io/cluster-issuer: letsencrypt-production
+          hosts:
+            - hubble.${SECRET_DOMAIN}
+          tls:
+            - secretName: hubble-tls
+              hosts:
+                - hubble.${SECRET_DOMAIN}
