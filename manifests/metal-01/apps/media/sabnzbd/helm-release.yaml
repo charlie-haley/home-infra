@@ -63,9 +63,9 @@ spec:
             path: /media
         mountPath: /data
         readOnly: false
-      downloads:
+      incomplete:
         enabled: true
-        existingClaim: sabnzbd-cache
+        type: emptyDir
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
