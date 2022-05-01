@@ -52,6 +52,13 @@ spec:
       config:
         enabled: true
         existingClaim: prowlarr-config-v1
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
+      supplementalGroups:
+        - 100
     resources:
       requests:
         cpu: 100m
