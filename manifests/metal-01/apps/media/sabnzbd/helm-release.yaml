@@ -54,24 +54,15 @@ spec:
       config:
         enabled: true
         existingClaim: sabnzbd-config-v1
-      movies:
+      data:
         enabled: true
         type: custom
         volumeSpec:
           nfs:
             server: 192.168.1.240
-            path: /media/tv
-        mountPath: /data/tv
-        readOnly: true
-      shows:
-        enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: 192.168.1.240
-            path: /media/movies
-        mountPath: /data/movies
-        readOnly: true
+            path: /media
+        mountPath: /data
+        readOnly: false
       downloads:
         enabled: true
         existingClaim: sabnzbd-cache
