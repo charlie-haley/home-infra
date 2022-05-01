@@ -66,6 +66,8 @@ spec:
       runAsGroup: 1000
       fsGroup: 1000
       fsGroupChangePolicy: OnRootMismatch
+      supplementalGroups:
+        - 100
     resources:
       requests:
         memory: 250Mi
@@ -77,8 +79,6 @@ spec:
       serviceMonitor:
         interval: 3m
         scrapeTimeout: 1m
-      prometheusRule:
-        enabled: true
       exporter:
         image:
           repository: ghcr.io/onedr0p/exportarr
