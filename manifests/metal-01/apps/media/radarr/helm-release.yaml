@@ -52,14 +52,15 @@ spec:
       config:
         enabled: true
         existingClaim: radarr-config-v1
-      media:
+      data:
         enabled: true
         type: custom
         volumeSpec:
           nfs:
             server: 192.168.1.240
-            path: /media/movies
-        mountPath: /data/movies
+            path: /media
+        mountPath: /data
+        readOnly: false
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
