@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.rook.io/release
       chart: rook-ceph-cluster
-      version: v1.8.5
+      version: v1.9.2
       sourceRef:
         kind: HelmRepository
         name: rook-ceph-charts
@@ -42,12 +42,12 @@ spec:
         config:
           osdsPerDevice: '1'
         nodes:
-          - name: talos-192-168-1-223
+          - name: talos-192-168-1-246
             devices:
-              - name: sdb
-          - name: talos-192-168-1-224
+              - name: sda
+          - name: talos-192-168-1-243
             devices:
-              - name: sdb
+              - name: sda
       placement:
         all:
           tolerations:

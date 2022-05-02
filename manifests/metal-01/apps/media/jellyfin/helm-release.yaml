@@ -10,16 +10,18 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: jellyfin
-      version: 9.3.0
+      version: 9.4.1
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
         namespace: flux-system
   values:
     image:
-      repository: jellyfin/jellyfin
+      repository: linuxserver/jellyfin
       tag: 10.7.7
     env:
+      PGID: 1000
+      PUID: 1000
       TZ: Europe/London
       JELLYFIN_CACHE_DIR: /config/cache
     podSecurityContext:
@@ -42,6 +44,10 @@ spec:
           - hosts:
               - jellyfin.${SECRET_DOMAIN}
     persistence:
+      dri:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/dri/renderD128
       config:
         enabled: true
         existingClaim: jellyfin-config-v1
@@ -52,7 +58,7 @@ spec:
           nfs:
             server: 192.168.1.240
             path: /media/movies
-        mountPath: /data/tv
+        mountPath: /data/movies
         readOnly: true
       shows:
         enabled: true
@@ -61,15 +67,18 @@ spec:
           nfs:
             server: 192.168.1.240
             path: /media/tv
-        mountPath: /data/movies
+        mountPath: /data/tv
         readOnly: true
       transcode:
         enabled: true
         type: emptyDir
         medium: Memory
-    resources:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       requests:
+        gpu.intel.com/i915: 1
         cpu: 500m
         memory: 1000Mi
       limits:
+        gpu.intel.com/i915: 1
         memory: 8000Mi

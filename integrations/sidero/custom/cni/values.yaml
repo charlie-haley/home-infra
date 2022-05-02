@@ -1,0 +1,13 @@
+---
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+  tls:
+    auto:
+      method: cert-mangaer
+ipam:
+  mode: kubernetes
+k8sServiceHost: 192.168.1.50
+k8sServicePort: 6443

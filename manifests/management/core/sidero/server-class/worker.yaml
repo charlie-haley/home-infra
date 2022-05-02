@@ -11,6 +11,10 @@ spec:
         interfaces:
           - interface: eth0
             dhcp: true
+    - op: add
+      path: /machine/kubelet/extraArgs
+      value:
+        rotate-server-certificates: true
   selector:
     matchLabels:
       worker-node: 'true'

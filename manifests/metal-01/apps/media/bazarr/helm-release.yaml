@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: bazarr
-      version: 10.3.0
+      version: 10.5.1
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/k8s-at-home/bazarr
-      tag: v1.0.2
+      tag: v1.0.4
     env:
       TZ: Europe/London
     ingress:
@@ -53,24 +53,15 @@ spec:
       config:
         enabled: true
         existingClaim: bazarr-config-v1
-      movies:
+      data:
         enabled: true
         type: custom
         volumeSpec:
           nfs:
             server: 192.168.1.240
-            path: /media/movies
-        mountPath: /data/tv
-        readOnly: true
-      shows:
-        enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: 192.168.1.240
-            path: /media/tv
-        mountPath: /data/movies
-        readOnly: true
+            path: /media
+        mountPath: /data
+        readOnly: false
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000

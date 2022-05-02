@@ -4,5 +4,6 @@ kind: Kustomization
 bases:
   - ../../_base/core/
 resources:
+  - kube-system
   - namespaces
   - rook-ceph

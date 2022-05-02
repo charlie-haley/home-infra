@@ -7,9 +7,6 @@ metadata:
   name: 00c03111-0000-0000-0000-dca6322fa605
 spec:
   pxeBootAlways: true
-  environmentRef:
-    namespace: default
-    name: default-arm64
   accepted: true
   cpu:
     manufacturer: Broadcom
@@ -22,3 +19,6 @@ spec:
     serialNumber: 0000DCA6322FA605
     skuNumber: 0000000000C03111
     version: C03111
+  environmentRef:
+    namespace: sidero
+    name: default-arm64
