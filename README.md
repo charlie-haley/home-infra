@@ -2,17 +2,17 @@
 
 My personal k8s cluster built with Sidero and managed by Flux2 GitOps
 
-## 💻 Nodes
-| Node                     | RAM  | Storage       | Function           | Operating System
-| ------------------------ |------| ------------- | ------------------ | -------------------- |
-| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME    | Sidero Master Node | Talos 0.13.2         |
-| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME    | Kube Master Node   | Talos 0.13.2         |
-| Raspberry Pi 4 Model B   | 4GB  | 120GB SSD     | Kube Master Node   | Talos 0.13.2         |
-| Raspberry Pi 4 Model B   | 4GB  | 120GB SSD     | Kube Master Node   | Talos 0.13.2         |
-| Dell R210II              | 16GB | 1TB SSD       | Kube Worker Node   | Talos 0.13.2         |
-| Dell R210II              | 16GB | 1TB SSD       | Kube Worker Node   | Talos 0.13.2         |
-| Raspberry Pi 4 Model B   | 4GB  | 120GB SSD     | Kube Worker Node   | Talos 0.13.2         |
-| HP MicroServer G8        | 8GB  | x4 3TB WD Red | NFS Server         | Ubuntu 20.04.2 LTS   |
+## 💻 Management Cluster
+| Node                     | RAM  | Storage                    | Function           | Operating System     | Quantity
+| ------------------------ |------| -------------------------- | ------------------ | -------------------- | --------
+| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Sidero CP + Worker | Talos 1.0.3          | 1
+
+
+## 💻 Metal-01 Workload Cluster
+| Node                     | RAM  | Storage                    | Function           | Operating System     | Quantity
+| ------------------------ |------| -------------------------- | ------------------ | -------------------- | --------
+| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Kube Control Plane | Talos 1.1.0-alpha.1  | 3
+| Lenovo M720q             | 16GB | 256GB NVME + 1TB SSD       | Kube Worker        | Talos 1.0.3          | 3
 
 ## Cluster
 
