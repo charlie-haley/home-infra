@@ -48,6 +48,9 @@ spec:
           - name: talos-192-168-1-243
             devices:
               - name: sda
+          - name: talos-192-168-1-248
+            devices:
+              - name: sda
       placement:
         all:
           tolerations:
@@ -58,13 +61,13 @@ spec:
       crashCollector:
         disable: false
       mgr:
-        count: 2
+        count: 1
     cephBlockPools:
       - name: ceph-blockpool
         spec:
           failureDomain: host
           replicated:
-            size: 2
+            size: 3
         storageClass:
           enabled: true
           name: ceph-block

@@ -24,7 +24,8 @@ spec:
       path: /machine/install/disk
       value: /dev/nvme0n1
     - op: add
-      path: /machine/udev/rules
+      path: /machine/udev
       value:
-        - SUBSYSTEM=="drm", KERNEL=="card*", GROUP="44", MODE="0777"
-        - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0777"
+        rules:
+          - SUBSYSTEM=="drm", KERNEL=="card*", GROUP="44", MODE="0777"
+          - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0777"
