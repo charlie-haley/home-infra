@@ -17,7 +17,7 @@ metadata:
   namespace: flux-system
 spec:
   clusterName: metal-01
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
   template:

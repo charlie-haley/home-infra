@@ -8,3 +8,4 @@ resources:
   - worker-01.yaml
   - worker-02.yaml
   - worker-03.yaml
+  - worker-04.yaml

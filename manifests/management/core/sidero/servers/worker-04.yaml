@@ -1,0 +1,30 @@
+---
+apiVersion: metal.sidero.dev/v1alpha1
+kind: Server
+metadata:
+  labels:
+    worker-node: 'true'
+  name: 898c3580-4e23-11e9-80df-5c66b3c30d00
+spec:
+  pxeBootAlways: true
+  accepted: true
+  cpu:
+    manufacturer: Intel(R) Corporation
+    version: Intel(R) Core(TM) i5-8500T CPU @ 2.10GHz
+  hostname: 192.168.1.248
+  system:
+    family: ThinkCentre M720q
+    manufacturer: LENOVO
+    productName: 10T8S67N0A
+    serialNumber: PC13EAK5
+    skuNumber: LENOVO_MT_10T8_BU_Think_FM_ThinkCentre M720q
+    version: ThinkCentre M720q
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/nvme0n1
+    - op: add
+      path: /machine/udev/rules
+      value:
+        - SUBSYSTEM=="drm", KERNEL=="card*", GROUP="44", MODE="0777"
+        - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0777"
