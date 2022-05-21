@@ -8,4 +8,4 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/charlie-haley/home-k3s-cluster
+  url: https://github.com/charlie-haley/home-cluster

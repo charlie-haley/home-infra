@@ -20,7 +20,7 @@ spec:
     logs:
       general:
         format: json
-        level: DEBUG
+        level: WARN
       access:
         enabled: true
         format: json
@@ -47,26 +47,3 @@ spec:
         port: 8082
         expose: true
         exposedPort: 8082
-    additionalArguments:
-      - --providers.file.filename=/data/traefik-config.yaml
-      - --entrypoints.websecure.http.tls.certresolver=cloudflare
-      - --entrypoints.websecure.http.tls.domains[0].main=${SECRET_DOMAIN}
-      - --entrypoints.websecure.http.tls.domains[0].sans=*.${SECRET_DOMAIN}
-      - --certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare
-      - --certificatesresolvers.cloudflare.acme.email=${CLOUDFLARE_EMAIL}
-      - --certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1
-      - --certificatesresolvers.cloudflare.acme.storage=/certs/acme.json
-    env:
-      - name: CF_API_EMAIL
-        value: ${CLOUDFLARE_EMAIL}
-      - name: CF_API_KEY
-        value: ${CLOUDFLARE_APIKEY}
-    persistence:
-      enabled: true
-      path: /certs
-      size: 128Mi
-      storageClass: ceph-block
-    volumes:
-      - mountPath: /data
-        name: traefik-config
-        type: configMap

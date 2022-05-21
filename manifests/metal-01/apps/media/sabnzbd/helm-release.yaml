@@ -29,6 +29,7 @@ spec:
         ingressClassName: traefik
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
           - host: sabnzbd.${SECRET_DOMAIN}
             paths:
@@ -42,6 +43,7 @@ spec:
         ingressClassName: traefik
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
           - host: sabnzbd.${SECRET_DOMAIN}
             paths:
