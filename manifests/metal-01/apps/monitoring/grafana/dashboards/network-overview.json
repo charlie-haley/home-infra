@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,8 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 31,
-  "iteration": 1644272296340,
+  "iteration": 1653674805277,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -93,7 +95,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -135,7 +137,7 @@
               }
             ]
           },
-          "unit": "ms"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -161,7 +163,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -179,6 +181,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -221,7 +227,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -308,7 +314,8 @@
           "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -402,7 +409,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -498,7 +506,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -561,7 +570,7 @@
               }
             ]
           },
-          "unit": "ms"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -587,7 +596,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -650,7 +659,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -743,7 +752,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -835,7 +845,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -925,7 +936,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -945,20 +956,24 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 34,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
           "value": [
             "$__all"
           ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "omada_device_need_upgrade{site=\"$Site\"}",
         "hide": 2,
@@ -971,7 +986,7 @@
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "device_type=\"(?<text>[^\"]+)|device=\"(?<value>[^\"]+).*",
+        "regex": "device_type=\"(?<text>[^\"]+)|mac=\"(?<value>[^\"]+).*",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -1000,6 +1015,10 @@
           "text": "Default",
           "value": "Default"
         },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "definition": "label_values(omada_device_need_upgrade, site)",
         "hide": 0,
         "includeAll": false,
@@ -1026,6 +1045,6 @@
   "timezone": "",
   "title": "Network Overview",
   "uid": "network-overview",
-  "version": 30,
+  "version": 31,
   "weekStart": ""
 }
