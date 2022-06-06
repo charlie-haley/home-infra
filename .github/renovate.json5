@@ -23,6 +23,21 @@
             "manifests/.+helm-release\\.yaml$"
         ]
     },
+    "flux": {
+        "fileMatch": [
+            "manifests/.+\\.ya?ml$"
+        ]
+    },
+    "ignoreDeps": [
+        "kubesphere/kubectl",
+        "containous/orbula",
+        "ghcr.io/fluxcd/helm-controller",
+        "ghcr.io/fluxcd/image-automation-controller",
+        "ghcr.io/fluxcd/image-reflector-controller",
+        "ghcr.io/fluxcd/kustomize-controller",
+        "ghcr.io/fluxcd/notification-controller",
+        "ghcr.io/fluxcd/source-controller"
+    ],
     "regexManagers": [
         {
             "fileMatch": [
