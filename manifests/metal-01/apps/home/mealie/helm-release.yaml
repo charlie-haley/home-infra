@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: mealie
-      version: 5.0.1
+      version: 3.3.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -18,8 +18,8 @@ spec:
     env:
       PUID: 1001
       PGID: 1001
-      BASE_URL: "https://mealie.${SECRET_DOMAIN}"
-      API_DOCS: "False"
+      BASE_URL: https://mealie.${SECRET_DOMAIN}
+      API_DOCS: 'False'
     image:
       repository: hkotel/mealie
       tag: v0.5.6
