@@ -37,7 +37,8 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: hass-tls
+            hosts:
               - hass.${SECRET_DOMAIN}
     prometheus:
       serviceMonitor:
@@ -81,7 +82,8 @@ spec:
                 - path: /
                   pathType: Prefix
           tls:
-            - hosts:
+            - secretName: hass-config-tls
+              hosts:
                 - hass-config.${SECRET_DOMAIN}
         volumeMounts:
           - name: config

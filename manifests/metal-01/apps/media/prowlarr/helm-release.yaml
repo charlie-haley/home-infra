@@ -34,7 +34,8 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: prowlarr-tls
+            hosts:
               - prowlarr.${SECRET_DOMAIN}
       api:
         enabled: true
@@ -48,7 +49,8 @@ spec:
               - path: /api
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: prowlarr-api-tls
+            hosts:
               - prowlarr.${SECRET_DOMAIN}
     persistence:
       config:

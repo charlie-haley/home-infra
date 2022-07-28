@@ -36,7 +36,8 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: sabnzbd-tls
+            hosts:
               - sabnzbd.${SECRET_DOMAIN}
       api:
         enabled: true
@@ -50,7 +51,8 @@ spec:
               - path: /api
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: sabnzbd-api-tls
+            hosts:
               - sabnzbd.${SECRET_DOMAIN}
     persistence:
       config:

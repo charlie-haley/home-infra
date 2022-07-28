@@ -36,7 +36,8 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: mealie-tls
+            hosts:
               - mealie.${SECRET_DOMAIN}
     persistence:
       config:

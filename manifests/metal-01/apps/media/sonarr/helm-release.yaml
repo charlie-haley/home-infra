@@ -34,7 +34,8 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: sonarr-tls
+            hosts:
               - sonarr.${SECRET_DOMAIN}
       api:
         enabled: true
@@ -48,7 +49,8 @@ spec:
               - path: /api
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: sonarr-api-tls
+            hosts:
               - sonarr.${SECRET_DOMAIN}
     persistence:
       config:

@@ -122,7 +122,8 @@ spec:
       hosts:
         - grafana.${SECRET_DOMAIN}
       tls:
-        - hosts:
+        - secretName: grafana-tls
+          hosts:
             - grafana.${SECRET_DOMAIN}
     persistence:
       enabled: true

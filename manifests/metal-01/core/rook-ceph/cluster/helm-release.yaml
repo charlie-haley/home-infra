@@ -30,7 +30,8 @@ spec:
           name: rook.${SECRET_DOMAIN}
           path: /
         tls:
-          - hosts:
+          - secretName: rook-tls
+            hosts:
               - rook.${SECRET_DOMAIN}
     cephClusterSpec:
       dashboard:

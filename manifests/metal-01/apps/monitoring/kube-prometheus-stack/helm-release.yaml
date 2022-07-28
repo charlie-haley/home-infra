@@ -85,7 +85,8 @@ spec:
         hosts:
           - alertmanager.${SECRET_DOMAIN}
         tls:
-          - hosts:
+          - secretName: alertmanager-tls
+            hosts:
               - alertmanager.${SECRET_DOMAIN}
       alertmanagerSpec:
         storage:
@@ -135,7 +136,8 @@ spec:
         hosts:
           - prometheus.${SECRET_DOMAIN}
         tls:
-          - hosts:
+          - secretName: prometheus-tls
+            hosts:
               - prometheus.${SECRET_DOMAIN}
       prometheusSpec:
         ruleSelector: {}

@@ -35,7 +35,8 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: bazarr-tls
+            hosts:
               - bazarr.${SECRET_DOMAIN}
       api:
         enabled: true
@@ -49,7 +50,8 @@ spec:
               - path: /api
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: hass-api-tls
+            hosts:
               - bazarr.${SECRET_DOMAIN}
     persistence:
       config:
