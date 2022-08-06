@@ -60,6 +60,14 @@
     ],
     "packageRules": [
         {
+            "packagePatterns": [
+                "rook-ceph-cluster",
+                "rook-ceph",
+            ],
+            "enabled": true,
+            "groupName": "rook-ceph"
+        },
+        {
             "matchDatasources": [
                 "helm"
             ],
