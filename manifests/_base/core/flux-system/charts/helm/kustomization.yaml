@@ -23,3 +23,4 @@ resources:
   - traefik-charts.yaml
   - rook-ceph-charts.yaml
   - metrics-server-charts.yaml
+  - minecraft-server-charts.yaml
