@@ -1,7 +1,0 @@
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: minecraft-op-config
-  namespace: gaming
-data:

@@ -24,7 +24,6 @@ spec:
       MODS: https://github.com/EssentialsX/Essentials/releases/download/2.19.6/EssentialsX-2.19.6.jar
       ENABLE_AUTOPAUSE: false
       SPIGET_RESOURCES: '274'
-      OPS: Chazalias
     minecraftServer:
       eula: 'TRUE'
       version: LATEST
@@ -45,6 +44,7 @@ spec:
         -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true"
       memory: 4096M
       difficulty: easy
+      ops: Chazalias
       maxTickTime: -1
       gameMode: survival
       motd: §6Kubernetes Powered §2Minecraft!
