@@ -24,7 +24,7 @@ spec:
       eula: 'TRUE'
       version: LATEST
       type: PAPER
-      paperDownloadUrl: https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/14/downloads/paper-1.19.2-127.jar
+      paperDownloadUrl: https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/127/downloads/paper-1.19.2-127.jar
       forceReDownload: true
       jvmOpts: >-
         -Xms4G -Xmx4G
