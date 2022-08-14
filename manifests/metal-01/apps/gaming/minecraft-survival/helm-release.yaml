@@ -9,16 +9,19 @@ spec:
   chart:
     spec:
       chart: minecraft
-      version: 3.8.0
+      version: 4.2.0
       sourceRef:
         kind: HelmRepository
         name: minecraft-server-charts
         namespace: flux-system
       interval: 5m
   values:
-    image: itzg/minecraft-server
-    imageTag: java17-alpine
+    image:
+      repository: itzg/minecraft-server
+      tag: 2022.10.0-java17
+    strategyType: Recreate
     extraEnv:
+      MODS: https://github.com/EssentialsX/Essentials/releases/download/2.19.6/EssentialsX-2.19.6.jar
       ENABLE_AUTOPAUSE: false
     minecraftServer:
       eula: 'TRUE'
@@ -39,7 +42,7 @@ spec:
         -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1
         -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true"
       memory: 4096M
-      difficulty: normal
+      difficulty: easy
       maxTickTime: -1
       gameMode: survival
       motd: §6Kubernetes Powered §2Minecraft!
