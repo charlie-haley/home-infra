@@ -45,8 +45,6 @@ spec:
       motd: §6Kubernetes Powered §2Minecraft!
       icon: https://www.nicepng.com/png/detail/206-2061905_server-icon-png-minecraft-for-kids-.png
       serviceType: LoadBalancer
-      externalIPs:
-        - 192.168.69.150
       extraPorts:
         - name: map
           containerPort: 8123
