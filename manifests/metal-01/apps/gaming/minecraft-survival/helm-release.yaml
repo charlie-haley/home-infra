@@ -45,6 +45,9 @@ spec:
       motd: §6Kubernetes Powered §2Minecraft!
       icon: https://www.nicepng.com/png/detail/206-2061905_server-icon-png-minecraft-for-kids-.png
       serviceType: LoadBalancer
+      rcon:
+        enabled: true
+        port: 25575
       extraPorts:
         - name: map
           containerPort: 8123
