@@ -70,7 +70,7 @@ spec:
     persistence:
       dataDir:
         enabled: true
-        existingClaim: minecraft-survival-config-v1
+        existingClaim: minecraft-survival-v1
     resources:
       requests:
         memory: 4096Mi
