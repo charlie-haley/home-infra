@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: itzg/minecraft-server
-      tag: 2022.10.0-java17
+      tag: 2022.11.0-java17
     strategyType: Recreate
     extraEnv:
       MODS: https://github.com/EssentialsX/Essentials/releases/download/2.19.6/EssentialsX-2.19.6.jar
