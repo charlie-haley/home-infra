@@ -54,6 +54,8 @@ spec:
           enabled: true
     containerRuntime:
       integration: containerd
+    securityContext:
+      privileged: true
     hubble:
       enabled: true
       metrics:
