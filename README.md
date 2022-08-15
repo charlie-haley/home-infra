@@ -11,9 +11,9 @@ My personal k8s cluster built with Sidero and managed by Flux2 GitOps
 ## 💻 Metal-01 Workload Cluster
 | Node                     | RAM  | Storage                    | Function           | Operating System     | Quantity
 | ------------------------ |------| -------------------------- | ------------------ | -------------------- | --------
-| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Kube Control Plane | Talos 1.1.0-alpha.1  | 3
-| Lenovo M720q             | 16GB | 256GB NVME + 1TB SSD       | Kube Worker        | Talos 1.0.3          | 3
-| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Kube Worker        | Talos 1.1.0-alpha.1  | 1
+| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Kube Control Plane | Talos 1.1.2          | 3
+| Lenovo M720q             | 16GB | 256GB NVME + 1TB SSD       | Kube Worker        | Talos 1.1.2          | 3
+| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Kube Worker        | Talos 1.1.2          | 1
 
 ## Cluster
 

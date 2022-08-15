@@ -9,7 +9,7 @@ The following applies to sidero v0.4
 
 ## Install Talos on RPI4
 
-Flash USB SSD with Talos image, (found here.)[https://github.com/talos-systems/talos/releases/latest/download/metal-rpi_4-arm64.img.xz]
+Flash USB SSD with Talos image, (found here.)[https://github.com/siderolabs/talos/releases/latest/download/metal-rpi_4-arm64.img.xz]
 
 ## Creating management cluster
 ```bash
