@@ -1,4 +1,4 @@
-# home-cluster
+# home-infra
 
 My personal k8s cluster built with Sidero and managed by Flux2 GitOps
 

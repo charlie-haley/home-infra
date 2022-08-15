@@ -10,7 +10,7 @@ This is referenced as patches in the machineconfig for Talos.
   value:
     name: "custom"
     urls:
-      - "https://raw.githubusercontent.com/charlie-haley/home-cluster/main/integrations/sidero/custom/cni/cilium-deployment.yaml
+      - "https://raw.githubusercontent.com/charlie-haley/home-infra/main/integrations/sidero/custom/cni/cilium-deployment.yaml
 ```
 
 ## Templating using values
