@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    deployment:
+      replicas: 3
     logs:
       general:
         format: json
