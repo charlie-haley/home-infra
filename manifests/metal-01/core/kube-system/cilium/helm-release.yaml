@@ -86,7 +86,7 @@ spec:
             - secretName: hubble-tls
               hosts:
                 - hubble.${SECRET_DOMAIN}
-      bgp:
-        enabled: true
-        announce:
-          loadBalancerIP: true
+    bgp:
+      enabled: true
+      announce:
+        loadBalancerIP: true
