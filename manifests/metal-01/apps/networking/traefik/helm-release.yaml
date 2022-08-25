@@ -22,7 +22,7 @@ spec:
     logs:
       general:
         format: json
-        level: WARN
+        level: ERROR
       access:
         enabled: true
         format: json
