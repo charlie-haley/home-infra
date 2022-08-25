@@ -5,5 +5,4 @@ resources:
   - cert-manager
   - flux-system
   - kube-system
-  - metallb
   - namespaces
