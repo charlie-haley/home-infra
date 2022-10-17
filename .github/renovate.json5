@@ -8,6 +8,9 @@
     "suppressNotifications": [
         "prIgnoreNotification"
     ],
+    "extends": [
+        "gitmoji"
+    ],
     "rebaseWhen": "conflicted",
     "kubernetes": {
         "fileMatch": [
@@ -59,6 +62,12 @@
         }
     ],
     "packageRules": [
+        {
+        "matchManagers": ["kubernetes"],
+        "matchDatasources": ["kubernetes-api"],
+        "description": "disable kubernetes api updates",
+        "enabled": false
+        },
         {
             "packagePatterns": [
                 "rook-ceph-cluster",
