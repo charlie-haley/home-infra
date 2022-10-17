@@ -78,6 +78,13 @@
         },
         {
             "matchDatasources": [
+                "docker"
+            ],
+            "matchPackageNames": ["docker.io/linuxserver/jellyfin"],
+            "allowedVersions": "<1000"
+        },
+        {
+            "matchDatasources": [
                 "helm"
             ],
             "separateMinorPatch": true
