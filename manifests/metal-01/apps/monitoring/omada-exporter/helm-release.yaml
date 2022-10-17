@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.charliehaley.dev
       chart: omada-exporter
-      version: 0.6.0
+      version: 0.7.0
       sourceRef:
         kind: HelmRepository
         name: charliehaley-charts
@@ -20,7 +20,7 @@ spec:
     image:
       repository: ghcr.io/charlie-haley/omada_exporter
       pullPolicy: IfNotPresent
-      tag: 0.6.0
+      tag: 0.7.0
     omada:
       host: ${SECRET_OMADA_HOST}
       username: ${SECRET_OMADA_USERNAME}
