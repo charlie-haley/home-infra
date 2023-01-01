@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: cilium-charts
+  name: bjw-s
   namespace: flux-system
 spec:
-  interval: 15m
-  url: https://helm.cilium.io
+  interval: 10m
+  url: https://bjw-s.github.io/helm-charts/
   timeout: 3m

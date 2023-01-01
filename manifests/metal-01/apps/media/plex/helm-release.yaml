@@ -1,34 +1,46 @@
 ---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helmrelease_v2beta1.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: jellyfin
+  name: plex
   namespace: media
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: jellyfin
-      version: 9.5.3
+      chart: app-template
+      version: 1.2.0
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s
         namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
+    controller:
+      type: statefulset
     image:
-      repository: linuxserver/jellyfin
-      tag: 10.8.8
+      repository: ghcr.io/onedr0p/plex
+      tag: 1.30.0.6486-629d58034@sha256:b3e3a2a305443f243643553161cff639f3dcc74349595884ac9c77cf6bb24068
     env:
-      PGID: 1000
-      PUID: 1000
       TZ: Europe/London
-      JELLYFIN_CACHE_DIR: /config/cache
-    podSecurityContext:
-      supplementalGroups:
-        - 44
-        - 109
-        - 100
+    service:
+      main:
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 32400
     ingress:
       main:
         enabled: true
@@ -37,22 +49,33 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - host: jellyfin.${SECRET_DOMAIN}
+          - host: plex.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
-          - secretName: jellyfin-tls
+          - secretName: plex-tls
             hosts:
-              - jellyfin.${SECRET_DOMAIN}
+              - plex.${SECRET_DOMAIN}
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      supplementalGroups:
+        - 44
+        - 109
+        - 100
+    volumeClaimTemplates:
+      - name: config
+        mountPath: /config
+        accessMode: ReadWriteOnce
+        size: 100Gi
+        storageClass: ceph-block
     persistence:
       dri:
         enabled: true
         type: hostPath
         hostPath: /dev/dri/renderD128
-      config:
-        enabled: true
-        existingClaim: jellyfin-config-v1
       movies:
         enabled: true
         type: custom
@@ -79,8 +102,8 @@ spec:
     resources:
       requests:
         gpu.intel.com/i915: 1
-        cpu: 500m
-        memory: 1000Mi
+        cpu: 100m
+        memory: 2000Mi
       limits:
         gpu.intel.com/i915: 1
-        memory: 8000Mi
+        memory: 10000Mi
