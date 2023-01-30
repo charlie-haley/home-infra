@@ -36,7 +36,7 @@ jobs:
             type=sha
 
       - name: build and push to ghcr
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           platforms: linux/amd64
           push: ${{ github.ref == 'refs/heads/main' }}
