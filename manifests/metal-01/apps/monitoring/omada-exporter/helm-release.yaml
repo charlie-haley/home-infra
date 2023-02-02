@@ -20,7 +20,7 @@ spec:
     image:
       repository: ghcr.io/charlie-haley/omada_exporter
       pullPolicy: IfNotPresent
-      tag: 0.7.0
+      tag: 0.8.0
     omada:
       host: ${SECRET_OMADA_HOST}
       username: ${SECRET_OMADA_USERNAME}
