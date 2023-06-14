@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.16.2
+FROM docker.io/library/alpine:3.18.2
 
 COPY ./serials /serials
 
