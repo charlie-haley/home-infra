@@ -1,33 +1,61 @@
 # 🪙 Sidero
 
-The following applies to sidero v0.4
+The following documentation applies to Talos v1.4 and Sidero
+
 ## Dependencies
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
 - [clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start.html#install-clusterctl)
 - [talosctl](https://www.talos.dev/v0.9/introduction/getting-started/#talosctl)
 
-## Install Talos on RPI4
+## Provisioning the Management Cluster
 
-Flash USB SSD with Talos image, (found here.)[https://github.com/siderolabs/talos/releases/latest/download/metal-rpi_4-arm64.img.xz]
+Flash a USB with the latest Talos image found under [Talos GitHub Release's](https://github.com/siderolabs/talos/releases).
 
-## Creating management cluster
+Next, once the device has booted and is running the Talos image we can configure the management cluster.
+
 ```bash
 export SIDERO_ENDPOINT=192.168.1.215
-# bootstrap single node management cluster
-talosctl apply-config --insecure --mode=interactive --nodes ${SIDERO_ENDPOINT}
 
-# fetch cluster kubeconfig
-talosctl kubeconfig --nodes ${SIDERO_ENDPOINT}
+# decrypt the secrets bundle
+sops --decrypt --in-place hack/talos/config/secrets.yaml
 
-# install sidero cluster api provider
+# generate config for the management cluster
+talosctl gen config \
+    --config-patch @hack/talos/config/patch-management.yaml \
+    --with-secrets hack/talos/config/secrets.yaml \
+    management \
+    https://$SIDERO_ENDPOINT:6443
+
+# re-encrypt secrets bundle after generating config
+sops --encrypt --in-place hack/talos/config/secrets.yaml
+
+# apply generated config
+talosctl apply-config --insecure -n 192.168.1.215 --file controlplane.yaml
+
+# move talos config
+mv talosconfig ~/.talos/config
+
+# bootstrap Talos
+talosctl bootstrap -n 192.168.1.215
+
+# get kubeconfig
+talosctl kubeconfig -n 191.168.1.215
+
+# tidy
+rm controlplane.yaml worker.yaml
+```
+
+## Install Sidero
+
+Now the management cluster is running, we can install Sidero using `clusterctl`.
+
+```
 export SIDERO_CONTROLLER_MANAGER_HOST_NETWORK=true
-export SIDERO_CONTROLLER_MANAGER_API_ENDPOINT=${SIDERO_ENDPOINT}
-export SIDERO_CONTROLLER_MANAGER_SIDEROLINK_ENDPOINT=${SIDERO_ENDPOINT}
-clusterctl init -b talos -c talos -i sidero
+export SIDERO_CONTROLLER_MANAGER_API_ENDPOINT=$SIDERO_ENDPOINT
+export SIDERO_CONTROLLER_MANAGER_SIDEROLINK_ENDPOINT=$SIDERO_ENDPOINT
 
-#verify admin cluster
-curl -I "http://${SIDERO_ENDPOINT}:8081/tftp/ipxe.efi"
+clusterctl init -b talos -c talos -i sidero
 ```
 
 ## Setting up DHCP
@@ -38,16 +66,8 @@ set service dhcp-server global-parameters 'option system-arch code 93 = unsigned
 set service dhcp-server shared-network-name VLAN10 subnet 192.168.1.0/24 subnet-parameters "include &quot;/config/ipxe-metal.conf&quot;;"
 ```
 
-## Configure servers
-[follow guide to configure rpi4 as servers with PXE boot](https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#build-the-image-with-the-boot-folder-contents)
 
-## Patch metal controller
-__TODO: move this into a kustomization__
-[As per the documentation here](https://www.sidero.dev/docs/v0.4/guides/rpi4-as-servers/#patch-metal-controller), we need to patch the sidero-controller-manager so the RPI4's can boot over the network.
 
-```bash
-kubectl -n sidero-system patch deployments.apps sidero-controller-manager --patch "$(cat ./manifests/management/core/sidero/patches/controller.patch.yaml)"
-```
 
 ## Bootstrap Flux
 Ensure we're using the correct context

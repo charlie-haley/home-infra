@@ -4,20 +4,8 @@ Thumbs.db
 bin/
 logs/
 
-# kubeconfig
-kubeconfig
-.kubeconfig.yaml
-
-# talosconfig
-talosconfig
-.talosconfig.yaml
-
-# talos init
-/controlplane.yaml
-/worker.yaml
-
-# age
-flux.agekey
-
 # sops vscode
 .decrypted~*
+
+# ignore old manifests while migrating
+/manifests/
