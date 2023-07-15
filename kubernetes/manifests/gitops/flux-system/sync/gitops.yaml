@@ -8,12 +8,13 @@ metadata:
 spec:
   interval: 60m
   retryInterval: 5m
-  dependsOn:
-    - name: flux
   sourceRef:
     kind: GitRepository
     name: home-infra
-    namespace: flux-system
-  path: ./kubernetes/manifests/gitops/
+  path: ./kubernetes/manifests/gitops
   prune: true
-  wait: true
+  wait: false
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
