@@ -3,9 +3,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: charliehaley
+  name: traefik
   namespace: flux-system
 spec:
   interval: 10m
-  url: https://charts.charliehaley.dev
+  url: https://traefik.github.io/charts
   timeout: 3m

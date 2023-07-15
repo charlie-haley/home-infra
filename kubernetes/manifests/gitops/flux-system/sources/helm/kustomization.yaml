@@ -1,6 +1,8 @@
-# yaml-language-server: $schema=http://json.schemastore.org/kustomization
 ---
+# yaml-language-server: $schema=http://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - charliehaley.yaml
+  - prometheus-community.yaml
+  - traefik.yaml
