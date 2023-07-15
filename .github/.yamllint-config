@@ -1,9 +1,8 @@
 ---
 ignore: |
     .github/
-    integrations/
-    *-crds.yaml
-    *.patch.yaml
+    kubernetes/bootstrap/
+    .sops.yaml
 extends: default
 rules:
     truthy:

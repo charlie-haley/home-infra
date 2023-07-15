@@ -9,7 +9,7 @@ spec:
   interval: 60m
   retryInterval: 5m
   dependsOn:
-    - name: flux-manifests
+    - name: flux
   sourceRef:
     kind: GitRepository
     name: home-infra
