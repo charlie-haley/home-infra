@@ -3,9 +3,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - charliehaley.yaml
-  - cilium.yaml
-  - jetstack.yaml
-  - prometheus-community.yaml
-  - rook-release.yaml
-  - traefik.yaml
+  - cert-manager/
+  - namespace.yaml

@@ -3,10 +3,10 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps-kube-system
+  name: apps-cert-manager
   namespace: flux-system
 spec:
-  path: ./kubernetes/manifests/apps/kube-system/
+  path: ./kubernetes/manifests/apps/cert-manager
   prune: true
   sourceRef:
     kind: GitRepository
