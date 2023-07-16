@@ -8,10 +8,6 @@ metadata:
 spec:
   interval: 5m
   timeout: 10m
-  upgrade:
-    remediation:
-      remediateLastFailure: true
-      strategy: rollback
   chart:
     spec:
       chart: cilium
@@ -21,13 +17,26 @@ spec:
         name: cilium
         namespace: flux-system
       interval: 5m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     prometheus:
       enabled: true
       serviceMonitor:
         enabled: true
     cluster:
-      name: metal-01
+      name: vilya
       id: 1
     rollOutCiliumPods: true
     localRedirectPolicy: true
@@ -107,7 +116,5 @@ spec:
             - secretName: hubble-tls
               hosts:
                 - hubble.${SECRET_DOMAIN}
-    bgp:
+    bgpControlPlane:
       enabled: true
-      announce:
-        loadbalancerIP: true
