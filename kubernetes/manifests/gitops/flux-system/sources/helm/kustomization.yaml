@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - charliehaley.yaml
   - cilium.yaml
+  - grafana.yaml
   - jetstack.yaml
   - prometheus-community.yaml
   - rook-release.yaml
