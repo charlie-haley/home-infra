@@ -21,7 +21,7 @@ spec:
   values:
     operatorNamespace: storage
     monitoring:
-      enabled: false
+      enabled: true
     ingress:
       dashboard:
         ingressClassName: traefik

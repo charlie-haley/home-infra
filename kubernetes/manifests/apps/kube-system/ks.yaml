@@ -1,0 +1,29 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-kube-system
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: apps-observability
+  path: ./kubernetes/manifests/apps/kube-system/
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-infra
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: vilya-flux
+      - kind: ConfigMap
+        name: vilya-flux
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age

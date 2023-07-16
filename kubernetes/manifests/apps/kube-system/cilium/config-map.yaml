@@ -1,0 +1,19 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.3/configmap-v1.json
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bgp-config
+  namespace: kube-system
+data:
+  config.yaml: |
+    peers:
+      - peer-address: ${NETWORK_BGP_PEER}
+        peer-asn: 64512
+        my-asn: 64512
+    address-pools:
+      - name: default
+        protocol: bgp
+        addresses:
+          - ${NETWORK_BGP_ADDR_RANGE}
+        avoid-buggy-ips: true

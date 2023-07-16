@@ -20,7 +20,7 @@ spec:
     crds:
       enabled: true
     monitoring:
-      enabled: false
+      enabled: true
     resources:
       requests:
         cpu: 400m
