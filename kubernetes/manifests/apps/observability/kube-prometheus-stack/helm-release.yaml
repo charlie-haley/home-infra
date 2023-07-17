@@ -122,6 +122,10 @@ spec:
             sourceLabels:
               - node
             targetLabel: instance
+        cAdvisorRelabelings:
+        - sourceLabels: [__address__]
+          targetLabel: cluster
+          replacement: vilya
     kubeApiServer:
       enabled: true
     kubeControllerManager:
