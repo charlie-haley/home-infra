@@ -69,13 +69,9 @@ spec:
           repeat_interval: 6h
           receiver: discord
           routes:
-            - receiver: "null"
-              match:
-                alertname: Watchdog
-            - receiver: discord
-              match_re:
-                severity: critical
-              continue: true
+            - receiver: 'null'
+              matchers:
+                - alertname =~ "InfoInhibitor|Watchdog"
         inhibit_rules:
           - source_match:
               severity: critical
