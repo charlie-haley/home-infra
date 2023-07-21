@@ -17,11 +17,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    automountServiceAccountToken: false
     controller:
       type: statefulset
     image:
-      repository: ghcr.io/linuxserver/radarr
-      tag: 4.7.1-develop
+      repository: ghcr.io/onedr0p/radarr
+      tag: 4.6.4.7568
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
@@ -33,7 +34,7 @@ spec:
       main:
         ports:
           http:
-            port: *port
+            port: 7878
     ingress:
       main:
         enabled: true
@@ -59,7 +60,7 @@ spec:
         memory: 512Mi
     persistence:
       config:
-        enable: true
+        enabled: true
         mountPath: /config
         size: 5Gi
       media:

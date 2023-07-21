@@ -17,11 +17,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    automountServiceAccountToken: false
     controller:
       type: statefulset
     image:
-      repository: ghcr.io/linuxserver/prowlarr
-      tag: 1.6.3
+      repository: ghcr.io/onedr0p/prowlarr
+      tag: 1.6.3.3608
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
@@ -59,6 +60,6 @@ spec:
         memory: 512Mi
     persistence:
       config:
-        enable: true
+        enabled: true
         mountPath: /config
         size: 5Gi

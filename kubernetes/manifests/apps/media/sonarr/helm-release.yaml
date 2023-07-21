@@ -17,11 +17,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    automountServiceAccountToken: false
     controller:
       type: statefulset
     image:
-      repository: ghcr.io/linuxserver/sonarr
-      tag: develop-version-4.0.0.575
+      repository: ghcr.io/onedr0p/sonarr
+      tag: 3.0.10.1567
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
@@ -59,7 +60,7 @@ spec:
         memory: 512Mi
     persistence:
       config:
-        enable: true
+        enabled: true
         mountPath: /config
         size: 5Gi
       media:

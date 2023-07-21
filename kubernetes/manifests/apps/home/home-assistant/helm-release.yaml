@@ -26,7 +26,7 @@ spec:
       main:
         ports:
           http:
-            port: *port
+            port: 8123
     ingress:
       main:
         enabled: true
@@ -52,6 +52,6 @@ spec:
         memory: 512Mi
     persistence:
       config:
-        enable: true
+        enabled: true
         mountPath: /config
         size: 10Gi

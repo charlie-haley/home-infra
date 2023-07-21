@@ -20,7 +20,7 @@ spec:
     controller:
       type: statefulset
     image:
-      repository: ghcr.io/linuxserver/bazarr
+      repository: ghcr.io/onedr0p/bazarr
       tag: 1.2.3
     podSecurityContext:
       runAsUser: 1000
@@ -59,7 +59,7 @@ spec:
         memory: 512Mi
     persistence:
       config:
-        enable: true
+        enabled: true
         mountPath: /config
         size: 5Gi
       media:

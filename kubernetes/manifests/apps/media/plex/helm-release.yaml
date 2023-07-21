@@ -17,11 +17,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    automountServiceAccountToken: false
     controller:
       type: statefulset
     image:
-      repository: ghcr.io/linuxserver/plex
-      tag: 1.32.5
+      repository: ghcr.io/onedr0p/plex
+      tag: 1.32.5.7328-2632c9d3a
     env:
       TZ: Europe/London
     service:
@@ -53,21 +54,15 @@ spec:
         - 44
         - 109
         - 100
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 100Gi
-        storageClass: ceph-block
     persistence:
+      config:
+        enabled: true
+        mountPath: /config
+        size: 5Gi
       dri:
         enabled: true
         type: hostPath
         hostPath: /dev/dri/renderD128
-      config:
-        enable: true
-        mountPath: /config
-        size: 5Gi
       media:
         enabled: true
         type: nfs

@@ -17,10 +17,19 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    automountServiceAccountToken: false
     controller:
       type: statefulset
+    env:
+      SABNZBD__HOST_WHITELIST_ENTRIES: >-
+        sabnzbd,
+        sabnzbd.default,
+        sabnzbd.default.svc,
+        sabnzbd.default.svc.cluster,
+        sabnzbd.default.svc.cluster.local,
+        sabnzbd.${SECRET_DOMAIN}
     image:
-      repository: ghcr.io/linuxserver/sabnzbd
+      repository: ghcr.io/onedr0p/sabnzbd
       tag: 4.0.3
     podSecurityContext:
       runAsUser: 1000
@@ -59,7 +68,7 @@ spec:
         memory: 1024Mi
     persistence:
       config:
-        enable: true
+        enabled: true
         mountPath: /config
         size: 5Gi
       media:
