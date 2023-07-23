@@ -27,6 +27,8 @@ spec:
       TZ: Europe/London
     service:
       main:
+        type: LoadBalancer
+        externalTrafficPolicy: Local
         ports:
           http:
             port: 32400
