@@ -1,0 +1,10 @@
+FROM alpine:3.18.2
+
+RUN apk add --update curl bash
+
+RUN curl -s https://fluxcd.io/install.sh | bash
+RUN apk add --update docker openrc
+RUN apk add --update kubectl helm yq --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+COPY hack/template-manifests.sh ./
+
+CMD ["./template-manifests.sh"]

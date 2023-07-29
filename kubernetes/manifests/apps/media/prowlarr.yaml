@@ -1,0 +1,53 @@
+---
+helm:
+  repo: https://bjw-s.github.io/helm-charts
+  chart: app-template
+  version: 1.5.1
+
+values:
+  automountServiceAccountToken: false
+  controller:
+    type: statefulset
+  image:
+    repository: ghcr.io/onedr0p/prowlarr
+    tag: 1.6.3.3608
+  podSecurityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+    supplementalGroups:
+      - 100
+  service:
+    main:
+      ports:
+        http:
+          port: 9696
+  ingress:
+    main:
+      enabled: true
+      ingressClassName: traefik
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      hosts:
+        - host: prowlarr.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: prowlarr-tls
+          hosts:
+            - prowlarr.${SECRET_DOMAIN}
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  persistence:
+    config:
+      enabled: true
+      mountPath: /config
+      size: 5Gi

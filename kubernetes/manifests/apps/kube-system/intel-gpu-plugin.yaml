@@ -1,0 +1,3 @@
+---
+kustomize:
+  - https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/gpu_plugin?ref=v0.27.1

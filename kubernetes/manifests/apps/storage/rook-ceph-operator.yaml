@@ -1,0 +1,21 @@
+---
+helm:
+  repo: https://charts.rook.io/release
+  chart: rook-ceph-cluster
+  version: 1.12.0
+
+dependsOn:
+  - grafana-agent
+
+values:
+  crds:
+    enabled: true
+  monitoring:
+    enabled: true
+  resources:
+    requests:
+      cpu: 400m
+      memory: 128Mi
+    limits:
+      cpu: 1000m
+      memory: 256Mi

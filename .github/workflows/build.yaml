@@ -1,0 +1,36 @@
+---
+name: build
+on:
+  push:
+    branches:
+      - "feat/rebuild"
+    paths:
+      - "Dockerfile"
+      - "hack/template-manifests.sh"
+
+env:
+  IMAGE: ghcr.io/${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH: "true"
+      REGISTRY: ghcr.io
+      USER: ${{ github.actor }}
+      PASS: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.USER }}
+          password: ${{ env.PASS }}
+
+      - name: build/deploy tools image
+        run: make deploy-image
+
+      - name: deploy manifests
+        run: make deploy

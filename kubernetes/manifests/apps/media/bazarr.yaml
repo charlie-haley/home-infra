@@ -1,0 +1,58 @@
+---
+helm:
+  repo: https://bjw-s.github.io/helm-charts
+  chart: app-template
+  version: 1.5.1
+
+values:
+  controller:
+    type: statefulset
+  image:
+    repository: ghcr.io/onedr0p/bazarr
+    tag: 1.2.3
+  podSecurityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+    supplementalGroups:
+      - 100
+  service:
+    main:
+      ports:
+        http:
+          port: 6767
+  ingress:
+    main:
+      enabled: true
+      ingressClassName: traefik
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      hosts:
+        - host: bazarr.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: bazarr-tls
+          hosts:
+            - bazarr.${SECRET_DOMAIN}
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  persistence:
+    config:
+      enabled: true
+      mountPath: /config
+      size: 5Gi
+    media:
+      enabled: true
+      type: nfs
+      server: narya.${SECRET_INTERNAL_DOMAIN}
+      path: /media
+      mountPath: /data

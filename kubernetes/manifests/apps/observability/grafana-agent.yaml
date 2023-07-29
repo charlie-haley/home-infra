@@ -1,0 +1,10 @@
+---
+helm:
+  repo: https://grafana.github.io/helm-charts
+  chart: loki
+  version: 2.15.2
+
+values:
+  kubeletService:
+    namespace: observability
+    serviceName: kubelet

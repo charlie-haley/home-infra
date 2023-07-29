@@ -3,6 +3,7 @@ ignore: |
     .github/
     kubernetes/bootstrap/
     .sops.yaml
+    kubernetes/templates/
 extends: default
 rules:
     truthy:

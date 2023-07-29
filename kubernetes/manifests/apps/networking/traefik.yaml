@@ -1,0 +1,42 @@
+---
+helm:
+  repo: https://traefik.github.io/charts
+  chart: traefik
+  version: 23.2.0
+
+values:
+  deployment:
+    replicas: 3
+  logs:
+    general:
+      format: json
+      level: ERROR
+    access:
+      enabled: true
+      format: json
+  ingressClass:
+    enabled: true
+    isDefaultClass: true
+    fallbackApiVersion: v1
+  ingressRoute:
+    dashboard:
+      enabled: true
+      matchRule: Host(`traefik.${SECRET_DOMAIN}`)
+      tls:
+        secretName: ${SECRET_DOMAIN/./-}
+  globalArguments:
+    - --serverstransport.insecureskipverify=true
+    - --providers.kubernetesingress.ingressclass=traefik
+    - --metrics.prometheus=true
+    - --metrics.prometheus.entryPoint=metrics
+  ports:
+    web:
+      redirectTo: websecure
+    websecure:
+      tls:
+        enabled: true
+        options: default
+    metrics:
+      port: 8082
+      expose: true
+      exposedPort: 8082

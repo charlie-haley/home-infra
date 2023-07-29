@@ -1,0 +1,29 @@
+{{- range $namespace, $v := .Values.namespaces }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ $namespace }}
+---
+{{- range $name, $config := $v -}}
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: {{ $namespace }}-{{ $name }}
+  namespace: {{ $.Values.namespace }}
+spec:
+  interval: 10m
+  targetNamespace: {{ $namespace }}
+  prune: true
+  sourceRef:
+    kind: {{ $.Values.sourceRef.kind }}
+    name: {{ $.Values.sourceRef.name }}
+    namespace: {{ $.Values.namespace }}
+  path: ./{{ $namespace }}/{{ $name }}
+{{- with $config.dependsOn }}
+  dependsOn:
+  {{- toYaml . | nindent 4 }}
+{{- end }}
+---
+{{- end }}
+
+{{- end -}}

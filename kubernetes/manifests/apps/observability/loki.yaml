@@ -1,0 +1,17 @@
+---
+helm:
+  repo: https://grafana.github.io/helm-charts
+  chart: loki
+  version: 5.9.2
+
+values:
+  loki:
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 336h
+    persistence:
+      enabled: true
+      storageClassName: ceph-block
+      size: 25Gi
+    serviceMonitor:
+      enabled: true

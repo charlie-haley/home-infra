@@ -13,7 +13,7 @@ spec:
   path: ./
   sourceRef:
     kind: OCIRepository
-    name: flux-manifests
+    name: flux
   patches:
     # Increase the number of reconciliations that can be performed in parallel, bump resource limits, increase kube api queries per second, increase burst queries, reduce requeue dep time to 5s
     # https://fluxcd.io/flux/cheatsheets/bootstrap/#increase-the-number-of-workers

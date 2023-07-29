@@ -1,0 +1,11 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: manifests
+  namespace: flux-system
+spec:
+  interval: 30m
+  url: oci://ghcr.io/charlie-haley/home-infra/manifests
+  ref:
+    tag: e8ecf4b-1690669412 # {"$imagepolicy": "flux-system:podinfo-oci:tag"}

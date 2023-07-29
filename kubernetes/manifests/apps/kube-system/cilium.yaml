@@ -1,0 +1,133 @@
+---
+helm:
+  repo: https://helm.cilium.io/
+  chart: cilium
+  version: 1.13.4
+
+dependsOn:
+  - cert-manager
+
+values:
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  cluster:
+    name: vilya
+    id: 1
+  rollOutCiliumPods: true
+  localRedirectPolicy: true
+  kubeProxyReplacement: strict
+  kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
+  ipv4NativeRoutingCIDR: 10.244.0.0/16
+  ipam:
+    mode: kubernetes
+  securityContext:
+    capabilities:
+      ciliumAgent:
+        - CHOWN
+        - KILL
+        - NET_ADMIN
+        - NET_RAW
+        - IPC_LOCK
+        - SYS_ADMIN
+        - SYS_RESOURCE
+        - DAC_OVERRIDE
+        - FOWNER
+        - SETGID
+        - SETUID
+      cleanCiliumState:
+        - NET_ADMIN
+        - SYS_ADMIN
+        - SYS_RESOURCE
+  cgroup:
+    autoMount:
+      enabled: false
+    hostRoot: /sys/fs/cgroup
+  k8sServiceHost: 192.168.1.100
+  k8sServicePort: 6443
+  loadBalancer:
+    algorithm: maglev
+    mode: dsr
+  tunnel: disabled
+  endpointRoutes:
+    enabled: true
+  autoDirectNodeRoutes: true
+  ipv6:
+    enabled: false
+  operator:
+    rollOutPods: true
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+  containerRuntime:
+    integration: containerd
+  hubble:
+    enabled: true
+    tls:
+      auto:
+        method: certmanager
+        certManagerIssuerRef:
+          group: cert-manager.io
+          kind: ClusterIssuer
+          name: letsencrypt-production
+    metrics:
+      enabled:
+        - dns:query
+        - drop
+        - flow
+        - http
+        - icmp
+        - port-distribution
+        - tcp
+      serviceMonitor:
+        enabled: true
+    relay:
+      enabled: true
+      rollOutPods: true
+    ui:
+      enabled: true
+      rollOutPods: true
+      ingress:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        hosts:
+          - hubble.${SECRET_DOMAIN}
+        tls:
+          - secretName: hubble-tls
+            hosts:
+              - hubble.${SECRET_DOMAIN}
+  bgpControlPlane:
+    enabled: true
+
+resources:
+  - apiVersion: cilium.io/v2alpha1
+    kind: CiliumBGPPeeringPolicy
+    metadata:
+      name: bgp-loadbalancer-ip-main
+      namespace: cilium
+    spec:
+      nodeSelector:
+        matchLabels:
+          kubernetes.io/os: "linux"
+      virtualRouters:
+        - localASN: 64512
+          exportPodCIDR: false
+          serviceSelector:
+            matchExpressions:
+              - key: somekey,
+                operator: NotIn,
+                values: ["announce-all-services"]
+          neighbors:
+            - peerAddress: "${NETWORK_BGP_PEER}/32"
+              peerASN: 64512
+  - apiVersion: "cilium.io/v2alpha1"
+    kind: CiliumLoadBalancerIPPool
+    metadata:
+      name: "blue-pool"
+    spec:
+      cidrs:
+        - cidr: 192.168.2.0/24
