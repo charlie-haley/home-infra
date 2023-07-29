@@ -118,7 +118,7 @@ input=`printf "namespaces:$ks_values" | yq`
 echo "$input"
 
 # If publish mode, push artifacts to registry
-if [[ -z "${PUBLISH}" ]]; then
+if [[ ! -z "${PUBLISH}" ]]; then
   tag="${GIT_SHA:0:7}-$(date +%s)"
 
   # Push Flux manifests artifact

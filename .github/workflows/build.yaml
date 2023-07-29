@@ -5,9 +5,8 @@ on:
     branches:
       - "feat/rebuild"
     paths:
-      - "Dockerfile"
+      - "hack/Dockerfile.tools"
       - "hack/template-manifests.sh"
-
 env:
   IMAGE: ghcr.io/${{ github.repository }}
 
