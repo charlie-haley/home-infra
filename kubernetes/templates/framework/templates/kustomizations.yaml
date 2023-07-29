@@ -22,6 +22,16 @@ spec:
 {{- with $config.dependsOn }}
   dependsOn:
   {{- toYaml . | nindent 4 }}
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: vilya-flux
+      - kind: ConfigMap
+        name: vilya-flux
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
 {{- end }}
 ---
 {{- end }}
