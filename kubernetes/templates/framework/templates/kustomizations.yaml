@@ -22,6 +22,7 @@ spec:
 {{- with $config.dependsOn }}
   dependsOn:
   {{- toYaml . | nindent 4 }}
+{{- end }}
   postBuild:
     substituteFrom:
       - kind: Secret
@@ -32,7 +33,6 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-{{- end }}
 ---
 {{- end }}
 
