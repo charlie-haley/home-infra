@@ -8,4 +8,4 @@ spec:
   interval: 30m
   url: oci://ghcr.io/charlie-haley/home-infra/kustomizations
   ref:
-    tag: ffcdba3-1690672700 # {"$imagepolicy": "flux-system:podinfo-oci:tag"}
+    tag: 1f8b799-1690673112 # {"$imagepolicy": "flux-system:podinfo-oci:tag"}
