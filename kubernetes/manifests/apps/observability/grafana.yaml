@@ -5,7 +5,7 @@ helm:
   version: 6.58.6
 
 dependsOn:
-  - cert-manager
+  - name: observability-grafana-agent
 
 values:
   replicas: 1

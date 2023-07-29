@@ -4,6 +4,9 @@ helm:
   chart: loki
   version: 5.9.2
 
+dependsOn:
+  - name: observability-grafana-agent
+
 values:
   loki:
     table_manager:

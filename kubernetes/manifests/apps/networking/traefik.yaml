@@ -4,6 +4,9 @@ helm:
   chart: traefik
   version: 23.2.0
 
+dependsOn:
+  - name: observability-grafana-agent
+
 values:
   deployment:
     replicas: 3

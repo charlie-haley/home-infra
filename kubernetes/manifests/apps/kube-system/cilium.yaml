@@ -5,8 +5,8 @@ helm:
   version: 1.13.4
 
 dependsOn:
-  - cert-manager
-
+  - name: cert-manager-cert-manager
+  - name: observability-grafana-agent
 values:
   prometheus:
     enabled: true

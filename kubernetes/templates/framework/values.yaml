@@ -9,7 +9,7 @@ sourceRef:
 #   media:
 #     plex:
 #       dependsOn:
-#         - cert-manager
+#         - name: cert-manager-cert-manager
 #     jellyfin: {}
 #   observability:
 #     grafana: {}
@@ -17,4 +17,4 @@ sourceRef:
 #   kube-system:
 #     cilium:
 #       dependsOn:
-#         - cert-manager
+#         - name: cert-manager-cert-manager

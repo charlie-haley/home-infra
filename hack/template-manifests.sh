@@ -47,7 +47,8 @@ EOM`
       chart=`cat $f | yq .helm.chart`
       version=`cat $f | yq .helm.version`
 
-      dependsOn=`cat $f | yq -r -o="yaml" .dependsOn | sed  's/^/      /'`
+      # This is a bit gross... need to migrate to an actual programming language soon™
+      dependsOn=`cat $f | yq -r -o="yaml" .dependsOn | sed  "s/^/      /"`
       fileName=`basename $f`
       release=${fileName%%.*}
 
@@ -114,9 +115,6 @@ EOF`
     printf "🟩 Processed namespace $namespace\n"
 done
 
-input=`printf "namespaces:$ks_values" | yq`
-echo "$input"
-
 # If publish mode, push artifacts to registry
 if [[ ! -z "${PUBLISH}" ]]; then
   tag="${GIT_SHA:0:7}-$(date +%s)"
@@ -140,5 +138,8 @@ EOF`
     --path - <<EOF
 $ks_artifact
 EOF
-
+else
+  # Print values passed to framework chart
+  input=`printf "namespaces:$ks_values" | yq`
+  echo "$input"
 fi

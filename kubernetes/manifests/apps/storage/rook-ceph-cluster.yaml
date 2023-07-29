@@ -5,9 +5,8 @@ helm:
   version: 1.12.0
 
 dependsOn:
-  - cert-manager
-  - grafana-agent
-  - rook-ceph-operator
+  - name: observability-grafana-agent
+  - name: storage-rook-ceph-operator
 
 values:
   operatorNamespace: storage
