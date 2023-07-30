@@ -18,3 +18,6 @@ values:
       size: 25Gi
     serviceMonitor:
       enabled: true
+    selfMonitoring:
+      grafanaAgent:
+        installOperator: false
