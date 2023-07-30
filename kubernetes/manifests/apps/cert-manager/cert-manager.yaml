@@ -30,7 +30,7 @@ resources:
     metadata:
       name: cloudflare-token-secret
     stringData:
-      cloudflare-token: ${SECRET_CLOUDFLARE_TOKEN}
+      cloudflare-token: "${SECRET_CLOUDFLARE_TOKEN}"
 
   - apiVersion: cert-manager.io/v1
     kind: ClusterIssuer
