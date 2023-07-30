@@ -108,7 +108,6 @@ resources:
     kind: CiliumBGPPeeringPolicy
     metadata:
       name: bgp-loadbalancer-ip-main
-      namespace: cilium
     spec:
       nodeSelector:
         matchLabels:

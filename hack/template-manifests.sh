@@ -84,7 +84,7 @@ EOF`
           res_kind=`printf "$rs" | yq .kind`
           resource_filename="$res_name-$res_kind.yaml"
 
-          printf "$rs" | yq -o="yaml" -P | yq '.. style="double"' | grep "" > "$app_dir/$resource_filename"
+          printf "$rs" | yq -o="yaml" -P | grep "" > "$app_dir/$resource_filename"
           res_kustomize_files="$res_kustomize_files\n- $resource_filename"
         done
 
