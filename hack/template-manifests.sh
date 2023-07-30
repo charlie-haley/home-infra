@@ -18,7 +18,7 @@ create_kustomize () {
   cat <<EOF  > $app_dir/kustomization.yaml
 namespace: $namespace
 commonLabels:
-  github.com/charlie-haley/home-infra/templated: "true"
+  home-infra.charlie-haley.github.com/templated: "true"
 resources:
 $1
 EOF
