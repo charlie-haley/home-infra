@@ -64,26 +64,6 @@ values:
           type: loki
           access: proxy
           url: http://loki:3100
-  dashboards:
-    default:
-      flux-cluster:
-        url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/cluster.json
-        datasource: Prometheus
-      flux-control-plane:
-        url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
-        datasource: Prometheus
-      radarr:
-        url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/radarr.json
-        datasource: Prometheus
-      sonarr:
-        url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
-        datasource: Prometheus
-      network-overview:
-        url: https://raw.githubusercontent.com/charlie-haley/home-infra/main/manifests/metal-01/apps/monitoring/grafana/dashboards/network-overview.json
-        datasource: Prometheus
-      home:
-        url: https://raw.githubusercontent.com/charlie-haley/home-infra/main/manifests/metal-01/apps/monitoring/grafana/dashboards/home.json
-        datasource: Prometheus
   sidecar:
     dashboards:
       enabled: true

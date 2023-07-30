@@ -61,7 +61,7 @@ EOM`
         template=`helm template $release $release/$chart --no-hooks --version $version --include-crds --kube-version="1.27" -a "monitoring.coreos.com/v1","networking.k8s.io/v1" --values -  <<EOF
 $values
 EOF`
-        echo "$template" >> "$app_dir/chart.yaml"
+        echo "$template" > "$app_dir/chart.yaml"
         create_kustomize "- chart.yaml"
       fi
 
