@@ -117,8 +117,8 @@ resources:
           exportPodCIDR: false
           serviceSelector:
             matchExpressions:
-              - key: somekey,
-                operator: NotIn,
+              - key: somekey
+                operator: NotIn
                 values: ["announce-all-services"]
           neighbors:
             - peerAddress: "${NETWORK_BGP_PEER}/32"

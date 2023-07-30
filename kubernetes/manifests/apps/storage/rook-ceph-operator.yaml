@@ -1,7 +1,7 @@
 ---
 helm:
   repo: https://charts.rook.io/release
-  chart: rook-ceph-cluster
+  chart: rook-ceph
   version: 1.11.9
 
 dependsOn:
