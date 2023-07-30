@@ -1,8 +1,8 @@
 ---
 helm:
   repo: https://grafana.github.io/helm-charts
-  chart: loki
-  version: 2.15.2
+  chart: agent-operator
+  version: 0.2.19
 
 values:
   kubeletService:

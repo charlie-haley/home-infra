@@ -58,7 +58,7 @@ EOM`
       if [[ "$helm" != "null" ]]; then
         helm repo add $release $repo >/dev/null
         helm repo update >/dev/null
-        template=`helm template $release $release/$chart --version $version --include-crds --kube-version="1.27" -a "monitoring.coreos.com/v1","networking.k8s.io/v1" --values -  <<EOF
+        template=`helm template $release $release/$chart --no-hooks --version $version --include-crds --kube-version="1.27" -a "monitoring.coreos.com/v1","networking.k8s.io/v1" --values -  <<EOF
 $values
 EOF`
         echo "$template" >> "$app_dir/chart.yaml"

@@ -42,3 +42,4 @@ values:
     config:
       enabled: true
       mountPath: /config
+      size: 10Gi
