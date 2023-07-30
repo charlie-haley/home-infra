@@ -1,7 +1,7 @@
 ---
 helm:
   repo: https://grafana.github.io/helm-charts
-  chart: agent-operator
+  chart: grafana-agent-operator
   version: 0.2.19
 
 values:
