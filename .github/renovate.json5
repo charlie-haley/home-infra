@@ -44,10 +44,10 @@
     "regexManagers": [
         {
             "fileMatch": [
-                "manifests/.+helm-release\\.yaml$"
+                "manifests/apps/.+\\.ya?ml$"
             ],
             "matchStrings": [
-                "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+                "helm:\n *repo:(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
             ],
             "datasourceTemplate": "helm"
         },

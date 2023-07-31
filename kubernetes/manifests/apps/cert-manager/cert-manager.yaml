@@ -1,8 +1,8 @@
 ---
 helm:
-  repo: https://bjw-s.github.io/helm-charts
-  chart: app-template
-  version: 1.5.1
+  repo: https://charts.jetstack.io
+  chart: cert-manager
+  version: 1.11.0
 
 values:
   installCRDs: true
