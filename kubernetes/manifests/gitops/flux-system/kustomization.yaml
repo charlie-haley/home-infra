@@ -6,3 +6,4 @@ resources:
   - notifications/
   - sources/
   - sync/
+  - cloudflare-tunnel.yaml
