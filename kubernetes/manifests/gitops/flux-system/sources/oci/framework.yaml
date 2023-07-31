@@ -11,14 +11,14 @@ spec:
   git:
     checkout:
       ref:
-        branch: feat/rebuild
+        branch: main
     commit:
       author:
         email: 141027038+celebrimbor-bot[bot]@users.noreply.github.com
         name: celebrimbot
       messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
     push:
-      branch: feat/rebuild
+      branch: main
   update:
     path: ./kubernetes/manifests/gitops/flux-system/sources/oci/
     strategy: Setters

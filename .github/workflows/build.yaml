@@ -3,7 +3,7 @@ name: build
 on:
   push:
     branches:
-      - "feat/rebuild"
+      - "main"
     paths:
       - "hack/Dockerfile.tools"
       - "hack/template-manifests.sh"
