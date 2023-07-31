@@ -1,0 +1,28 @@
+---
+helm:
+  repo: https://grafana.github.io/helm-charts
+  chart: loki
+  version: 5.9.2
+
+dependsOn:
+  - name: observability-grafana-agent
+
+values:
+  loki:
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 336h
+    persistence:
+      enabled: true
+      storageClassName: ceph-block
+      size: 25Gi
+    serviceMonitor:
+      enabled: true
+    frontend:
+      scheduler_address: query-scheduler-discovery.observability.svc.cluster.local
+    frontend_worker:
+      scheduler_address: query-scheduler-discovery.observability.svc.cluster.local
+  monitoring:
+    selfMonitoring:
+      grafanaAgent:
+        installOperator: false

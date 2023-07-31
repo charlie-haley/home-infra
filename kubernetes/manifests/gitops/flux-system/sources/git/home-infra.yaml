@@ -1,0 +1,14 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/gitrepository-source-v1.json
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: home-infra
+  namespace: flux-system
+spec:
+  interval: 60m
+  ref:
+    branch: main
+  url: ssh://github.com/charlie-haley/home-infra
+  secretRef:
+    name: ssh-credentials

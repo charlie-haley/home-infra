@@ -1,17 +1,6 @@
 ---
 fail_fast: false
 repos:
-  - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-    rev: 0.0.11
-    hooks:
-      - id: yamlfmt
-        args:
-          - --mapping
-          - '2'
-          - --sequence
-          - '4'
-          - --offset
-          - '2'
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
@@ -27,8 +16,8 @@ repos:
     rev: 0.2.0
     hooks:
       - id: fix-smartquotes
-  - repo: https://github.com/k8s-at-home/sops-pre-commit
-    rev: v2.0.3
+  - repo: https://github.com/onedr0p/sops-pre-commit
+    rev: v2.1.0
     hooks:
       - id: forbid-secrets
   - repo: https://github.com/adrienverge/yamllint

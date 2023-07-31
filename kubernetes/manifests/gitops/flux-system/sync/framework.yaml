@@ -1,0 +1,28 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/kustomization-kustomize-v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: framework
+  namespace: flux-system
+spec:
+  interval: 60m
+  retryInterval: 5m
+  dependsOn:
+    - name: cluster-gitops
+  sourceRef:
+    kind: OCIRepository
+    name: framework
+    namespace: flux-system
+  path: ./
+  prune: true
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: vilya-flux
+      - kind: ConfigMap
+        name: vilya-flux
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age

@@ -1,28 +1,51 @@
 # home-infra
 
-My personal k8s cluster built with Sidero and managed by Flux2 GitOps
+<p align="center" style="text-align: center">
+    <img src="./docs/images/gopher.svg" width="30%"><br/>
+<br/>
+    <strong>One Repo to Rule Them All.</strong> <br/>
+  <i>A monorepo for managing my home infrastructure using GitOps.</i><br/>
+</p>
 
-## 💻 Management Cluster
-| Node                     | RAM  | Storage                    | Function           | Operating System     | Quantity
-| ------------------------ |------| -------------------------- | ------------------ | -------------------- | --------
-| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Sidero CP + Worker | Talos 1.0.3          | 1
+## 📁 Folder Structure
 
+```
+├── docs           # Documentation as markdown files.
+├── hack           # Scripts and other bits
+├── kubernetes     # Kubernets manifests
+│   ├── bootstrap    # Manifests required when bootstrapping the cluster for the first time
+│   ├── manifests    # Application deployment manifests
+│   └── templates    # Local Helm templates
+```
 
-## 💻 Metal-01 Workload Cluster
-| Node                     | RAM  | Storage                    | Function           | Operating System     | Quantity
-| ------------------------ |------| -------------------------- | ------------------ | -------------------- | --------
-| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Kube Control Plane | Talos 1.1.2          | 3
-| Lenovo M720q             | 16GB | 256GB NVME + 1TB SSD       | Kube Worker        | Talos 1.1.2          | 3
-| Raspberry Pi 4 Model B   | 4GB  | 256GB NVME                 | Kube Worker        | Talos 1.1.2          | 1
+## ☸️ Kubernetes
 
-## Cluster
+I run a bare metal cluster provisioned using [Talos Linux](https://www.talos.dev/) and managed using [Flux](https://fluxcd.io/). The cluster is comprised of 3 worker nodes and 1 control plane node.
 
-- PXE Boot Talos managed by Sidero
-- Traefik Ingress
-- Rook Ceph
-- Prometheus/Grafana/Loki Monitoring Stack
+| Hostname  | Node              | Resources          |
+| --------- | ----------------- | ------------------ |
+| vilya-c01 | Lenovo M720q Tiny | 16GB RAM, i5-9500t |
+| vilya-w01 | Lenovo M720q Tiny | 16GB RAM, i5-9500t |
+| vilya-w02 | Lenovo M720q Tiny | 16GB RAM, i5-9500t |
+| vilya-w03 | Lenovo M720q Tiny | 16GB RAM, i5-9500t |
 
-## 🦾 Automations
-- [Renovate](https://github.com/renovatebot/renovate)
-- [GitHub Action YAMLlint](https://github.com/ibiqlik/action-yamllint)
-- [Renovate Helm Releases](https://github.com/k8s-at-home/renovate-helm-releases)
+### ⚙️ GitOps
+
+I use Flux to manage deployments to the cluster, everything that is deployed to my cluster is defined as YAML files in the `kubernetes/manifests/` directory.
+
+```
+├── apps                # Apps deployed to the cluster
+│   ├── cert-manager      # The namespace for all the files in the directory to be deployed to
+│   ├── home
+│   └── storage
+└── gitops              # Anything and everything Flux/GitOps related
+    ├── flux-system
+```
+
+To save on duplicate code and reduce the management overhead of adding new Flux Kustomization's, Namespaces and other boilerplate config. I template all of my manifests and deploy them up to GHCR as an OCI image. This is done through a (pretty hacky) bash script which reads the provided YAML file and actions it based on the contents.
+
+The script is triggered by Github Actions, a webhook is then fired after the package is uploaded which tells Flux to reconcile the cluster with the state from the OCI image.
+
+## 👏 Thanks
+
+Thanks to everyone in the [Kubernetes@Home Discord community](https://discord.gg/k8s-at-home) Insipration for how to deploy and my manage my cluster has been influenced heavily by everyone who's shared thier clusters using the [k8s-at-home GitHub tag](https://github.com/topics/k8s-at-home).

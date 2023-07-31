@@ -1,0 +1,21 @@
+---
+helm:
+  repo: https://charts.rook.io/release
+  chart: rook-ceph
+  version: 1.11.9
+
+dependsOn:
+  - name: observability-grafana-agent
+
+values:
+  crds:
+    enabled: true
+  monitoring:
+    enabled: true
+  resources:
+    requests:
+      cpu: 400m
+      memory: 128Mi
+    limits:
+      cpu: 1000m
+      memory: 256Mi

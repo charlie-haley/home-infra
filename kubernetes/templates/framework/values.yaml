@@ -1,0 +1,20 @@
+app: foo
+namespace: flux-system
+
+sourceRef:
+  kind: OCIRepository
+  name: manifests
+# Here we define namespaces and their containing apps, this is used to generate Flux Kustomization
+# namespaces:
+#   media:
+#     plex:
+#       dependsOn:
+#         - name: cert-manager-cert-manager
+#     jellyfin: {}
+#   observability:
+#     grafana: {}
+#     prometheus: {}
+#   kube-system:
+#     cilium:
+#       dependsOn:
+#         - name: cert-manager-cert-manager

@@ -1,9 +1,11 @@
 ---
 ignore: |
     .github/
-    integrations/
-    *-crds.yaml
-    *.patch.yaml
+    kubernetes/bootstrap/
+    .sops.yaml
+    kubernetes/templates/
+    # Ignore YAML linting for OCI sources as Flux Image Automations reformat the file..
+    kubernetes/manifests/gitops/flux-system/sources/oci/
 extends: default
 rules:
     truthy:

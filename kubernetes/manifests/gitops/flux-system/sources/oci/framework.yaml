@@ -1,0 +1,59 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: manifests
+  namespace: flux-system
+spec:
+  interval: 30m
+  sourceRef:
+    kind: GitRepository
+    name: home-infra
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: 141027038+celebrimbor-bot[bot]@users.noreply.github.com
+        name: celebrimbot
+      messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
+    push:
+      branch: main
+  update:
+    path: ./kubernetes/manifests/gitops/flux-system/sources/oci/
+    strategy: Setters
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: home-infra-manifests
+  namespace: flux-system
+spec:
+  image: ghcr.io/charlie-haley/home-infra/kustomizations
+  interval: 30m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: home-infra-manifests
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: home-infra-manifests
+  filterTags:
+    pattern: "^[a-fA-F0-9]+-(?P<ts>.*)"
+    extract: "$ts"
+  policy:
+    numerical:
+      order: asc
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: framework
+  namespace: flux-system
+spec:
+  interval: 30m
+  url: oci://ghcr.io/charlie-haley/home-infra/kustomizations
+  ref:
+    tag: ff2e10c-1690811428 # {"$imagepolicy": "flux-system:home-infra-manifests:tag"}

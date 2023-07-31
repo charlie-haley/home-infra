@@ -1,0 +1,24 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: oci-manifests
+  namespace: flux-system
+spec:
+  image: oci://ghcr.io/charlie-haley/home-infra/kustomizations
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: manifests-oci
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: oci-manfiests
+  filterTags:
+    pattern: "^main-[a-fA-F0-9]+-(?P<ts>.*)"
+    extract: "$ts"
+  policy:
+    numerical:
+      order: asc
