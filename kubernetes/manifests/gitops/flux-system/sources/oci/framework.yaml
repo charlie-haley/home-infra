@@ -40,7 +40,7 @@ metadata:
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: podinfo
+    name: home-infra-manifests
   filterTags:
     pattern: "^[a-fA-F0-9]+-(?P<ts>.*)"
     extract: "$ts"

@@ -9,4 +9,6 @@ spec:
   interval: 60m
   ref:
     branch: feat/rebuild
-  url: https://github.com/charlie-haley/home-infra
+  url: ssh://github.com/charlie-haley/home-infra
+  secretRef:
+    name: ssh-credentials
