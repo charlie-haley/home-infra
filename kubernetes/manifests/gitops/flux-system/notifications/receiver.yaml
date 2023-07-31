@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flux-receiver
+  namespace: flux-system
+spec:
+  selector:
+    app: notification-controller
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 9292
+---
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Receiver
+metadata:
+  name: home-infra
+  namespace: flux-system
+spec:
+  type: github
+  events:
+    - "ping"
+    - "push"
+  secretRef:
+    name: webhook-token
+  resources:
+    - kind: GitRepository
+      name: home-infra
+    - kind: ImageRepository
+      name: home-infra-manifests

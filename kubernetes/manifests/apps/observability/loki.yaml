@@ -18,6 +18,10 @@ values:
       size: 25Gi
     serviceMonitor:
       enabled: true
+    frontend:
+      scheduler_address: query-scheduler-discovery.observability.svc.cluster.local
+    frontend_worker:
+      scheduler_address: query-scheduler-discovery.observability.svc.cluster.local
   monitoring:
     selfMonitoring:
       grafanaAgent:
