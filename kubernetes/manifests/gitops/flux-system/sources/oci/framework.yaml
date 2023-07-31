@@ -1,4 +1,3 @@
----
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
@@ -57,4 +56,4 @@ spec:
   interval: 30m
   url: oci://ghcr.io/charlie-haley/home-infra/kustomizations
   ref:
-    tag: 6ef153d-1690807963 # {"$imagepolicy": "flux-system:home-infra-manifests:tag"}
+    tag: 83a0d57-1690811261 # {"$imagepolicy": "flux-system:home-infra-manifests:tag"}
