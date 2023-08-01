@@ -11,6 +11,10 @@ on:
       - "kubernetes/manifests/gitops/flux-system/sources/oci/framework.yaml"
       - "kubernetes/manifests/gitops/flux-system/sources/oci/manifests.yaml"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   IMAGE: ghcr.io/${{ github.repository }}
 

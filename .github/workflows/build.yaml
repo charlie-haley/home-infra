@@ -7,6 +7,11 @@ on:
     paths:
       - "hack/Dockerfile.tools"
       - "hack/template-manifests.sh"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   IMAGE: ghcr.io/${{ github.repository }}
 
