@@ -23,6 +23,7 @@ spec:
   events:
     - "ping"
     - "push"
+    - "package"
   secretRef:
     name: webhook-token
   resources:
