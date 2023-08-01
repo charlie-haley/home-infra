@@ -2,7 +2,7 @@
 helm:
   repo: https://helm.cilium.io/
   chart: cilium
-  version: 1.13.4
+  version: 1.14.0
 
 dependsOn:
   - name: cert-manager-cert-manager
