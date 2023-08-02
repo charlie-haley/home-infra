@@ -106,6 +106,25 @@ EOF`
         ks_ns_val="$ks_ns_val\n    $release:\n      dependsOn:\n$dependsOn"
       fi
 
+      # If we're processing the rook-ceph-cluster chart, update the kustomization to patch
+      # the clusterID. Currently, `helm template` doesn't bother templating .Release.Namespace....
+      # A long term fix would be migrating this script to code and trying to utlise the Go SDK.
+      if [[ "$app" = "rook-ceph-cluster" ]]; then
+        patch="
+patchesJSON6902:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: deploy
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: nginx:latest"
+
+      printf "$patch" >> $kustomize_file
+      fi
+
       printf "🟩 Processed app $release\n"
     done
 
