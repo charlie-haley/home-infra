@@ -55,6 +55,8 @@ EOM`
       app_dir="$tmpdir/$namespace/$release"
       mkdir $app_dir
 
+      kustomize_file="$app_dir/kustomization.yaml"
+      
       if [[ "$helm" != "null" ]]; then
         helm repo add $release $repo >/dev/null
         helm repo update >/dev/null
@@ -66,8 +68,6 @@ EOF`
       fi
 
       if [[ "$kustomize" != "null" ]]; then
-        # If kustomization exists, append resources
-        kustomize_file="$app_dir/kustomization.yaml"
         if test -f $kustomize_file; then
           printf "$kustomize" >> $kustomize_file
         fi
@@ -109,18 +109,19 @@ EOF`
       # If we're processing the rook-ceph-cluster chart, update the kustomization to patch
       # the clusterID. Currently, `helm template` doesn't bother templating .Release.Namespace....
       # A long term fix would be migrating this script to code and trying to utlise the Go SDK.
-      if [[ "$release" = "rook-ceph-cluster" ]]; then
+      if [[ "$release" =~ .*"rook-ceph-cluster".* ]]; then
         patch="
 patchesJSON6902:
 - target:
-    group: apps
+    group: storage.k8s.io
     version: v1
-    kind: Deployment
-    name: deploy
+    kind: StorageClass
+    name: ceph-block 
   patch: |-
     - op: replace
-      path: /spec/template/spec/containers/0/image
-      value: nginx:latest"
+      path: /parameters/clusterID
+      value: $namespace
+"
 
       printf "$patch" >> $kustomize_file
       fi
@@ -160,3 +161,5 @@ else
   input=`printf "namespaces:$ks_values" | yq`
   echo "$input"
 fi
+
+tail -f /dev/null
