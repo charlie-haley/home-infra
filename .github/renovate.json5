@@ -50,15 +50,6 @@
                 "helm:\n *repo:(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
             ],
             "datasourceTemplate": "helm"
-        },
-        {
-            "fileMatch": [
-                "manifests/actions-runner-system/runners/.+\\.yaml$"
-            ],
-            "matchStrings": [
-                "image: (?<depName>.*?):(?<currentValue>.*?)\n"
-            ],
-            "datasourceTemplate": "docker"
         }
     ],
     "packageRules": [
@@ -75,13 +66,6 @@
             ],
             "enabled": true,
             "groupName": "rook-ceph"
-        },
-        {
-            "matchDatasources": [
-                "docker"
-            ],
-            "matchPackageNames": ["docker.io/linuxserver/jellyfin"],
-            "allowedVersions": "<1000"
         },
         {
             "matchDatasources": [
