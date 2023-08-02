@@ -109,7 +109,7 @@ EOF`
       # If we're processing the rook-ceph-cluster chart, update the kustomization to patch
       # the clusterID. Currently, `helm template` doesn't bother templating .Release.Namespace....
       # A long term fix would be migrating this script to code and trying to utlise the Go SDK.
-      if [[ "$app" = "rook-ceph-cluster" ]]; then
+      if [[ "$release" = "rook-ceph-cluster" ]]; then
         patch="
 patchesJSON6902:
 - target:
