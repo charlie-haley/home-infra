@@ -80,14 +80,3 @@ values:
           csi.storage.k8s.io/fstype: ext4
   cephFileSystems: []
   cephObjectStores: []
-
-resources:
-  - apiVersion: v1
-    kind: ConfigMap
-    metadata:
-      name: rook-config-override
-    data:
-      config: |
-        [global]
-        mon clock drift allowed = 0.8
-        osd pool default size = 3
