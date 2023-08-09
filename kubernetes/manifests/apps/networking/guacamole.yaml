@@ -1,0 +1,61 @@
+---
+helm:
+  repo: https://bjw-s.github.io/helm-charts
+  chart: app-template
+  version: 1.5.1
+
+dependsOn:
+  - name: observability-grafana-agent
+
+values:
+  image:
+    repository: docker.io/maxwaldorf/guacamole
+    tag: latest
+    pullPolicy: Always
+  env:
+    TZ: "${TIMEZONE}"
+    EXTENSIONS: auth-header
+  controller:
+    replicas: 1
+    strategy: RollingUpdate
+  service:
+    main:
+      ports:
+        http:
+          port: &port 8080
+  ingress:
+    main:
+      enabled: true
+      ingressClassName: traefik
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      hosts:
+        - host: guac.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: guac-tls
+          hosts:
+            - guac.${SECRET_DOMAIN}
+  probes:
+    liveness: &probes
+      enabled: true
+      custom: true
+      spec:
+        httpGet:
+          path: /
+          port: *port
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        timeoutSeconds: 1
+        failureThreshold: 3
+    readiness: *probes
+    startup:
+      enabled: false
+  persistence:
+    config:
+      enabled: true
+      mountPath: /config
+      size: 5Gi
