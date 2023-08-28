@@ -56,4 +56,4 @@ spec:
   interval: 30m
   url: oci://ghcr.io/charlie-haley/home-infra/kustomizations
   ref:
-    tag: a0f1bfa-1693182881 # {"$imagepolicy": "flux-system:home-infra-manifests:tag"}
+    tag: c783e5b-1693233756 # {"$imagepolicy": "flux-system:home-infra-manifests:tag"}
