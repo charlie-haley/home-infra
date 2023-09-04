@@ -27,7 +27,7 @@ jobs:
       USER: ${{ github.actor }}
       PASS: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: deploy manifests
         run: make deploy
