@@ -4,7 +4,7 @@ kind: Namespace
 metadata:
   name: {{ $namespace }}
 # Bit of a hack until I sort out privileged in the templates
-{{- if or (eq $namespace "observability") (eq $namespace "storage") }}
+{{- if or (eq $namespace "observability") (eq $namespace "storage") (eq $namespace "media") }}
   labels:
     # These have to be set currently due to node exporter.
     pod-security.kubernetes.io/warn: privileged
