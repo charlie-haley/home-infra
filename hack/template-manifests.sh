@@ -161,5 +161,3 @@ else
   input=`printf "namespaces:$ks_values" | yq`
   echo "$input"
 fi
-
-tail -f /dev/null
