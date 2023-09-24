@@ -24,7 +24,7 @@ jobs:
       USER: ${{ github.actor }}
       PASS: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
