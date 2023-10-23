@@ -2,7 +2,7 @@
 helm:
   repo: https://traefik.github.io/charts
   chart: traefik
-  version: 24.0.0
+  version: 25.0.0
 
 dependsOn:
   - name: observability-grafana-agent
