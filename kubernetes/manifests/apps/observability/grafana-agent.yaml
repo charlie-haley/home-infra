@@ -2,7 +2,7 @@
 helm:
   repo: https://grafana.github.io/helm-charts
   chart: grafana-agent-operator
-  version: 0.3.8
+  version: 0.3.9
 
 values:
   kubeletService:
