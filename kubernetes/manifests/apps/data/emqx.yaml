@@ -1,0 +1,46 @@
+---
+helm:
+  repo: https://repos.emqx.io/charts
+  chart: emqx
+  version: 5.3.0
+
+values:
+  emqxConfig:
+    EMQX_ALLOW_ANONYMOUS: "false"
+    EMQX_AUTH__MNESIA__PASSWORD_HASH: plain
+    EMQX_DASHBOARD__DEFAULT_USERNAME: admin
+  service:
+    main:
+      type: LoadBalancer
+      externalTrafficPolicy: Local
+  ingress:
+    main:
+      enabled: true
+      ingressClassName: traefik
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      hosts:
+        - host: emqx.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: emqx-tls
+          hosts:
+            - emqx.${SECRET_DOMAIN}
+  metrics:
+    enabled: true
+  persistence:
+    enabled: true
+    size: 1Gi
+
+resources:
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: emqx-secrets
+    stringData:
+      EMQX_DASHBOARD__DEFAULT_PASSWORD: ${SECRET_EMQX_DEFAULT_PASS}
+      EMQX_AUTH__USER__1__USERNAME: ${SECRET_EMQX_USER}
+      EMQX_AUTH__USER__1__PASSWORD: ${SECRET_EMQX_PASS}
