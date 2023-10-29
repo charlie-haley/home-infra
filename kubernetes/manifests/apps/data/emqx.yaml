@@ -14,7 +14,7 @@ values:
       type: LoadBalancer
       externalTrafficPolicy: Local
   ingress:
-    main:
+    dashboard:
       enabled: true
       ingressClassName: traefik
       annotations:
