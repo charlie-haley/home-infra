@@ -34,7 +34,8 @@ values:
     - --metrics.prometheus.entryPoint=metrics
   ports:
     web:
-      redirectTo: websecure
+      redirectTo:
+        port: websecure
     websecure:
       tls:
         enabled: true
