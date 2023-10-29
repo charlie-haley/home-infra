@@ -56,13 +56,14 @@ EOM`
       mkdir $app_dir
 
       kustomize_file="$app_dir/kustomization.yaml"
-      
+
       if [[ "$helm" != "null" ]]; then
         helm repo add $release $repo >/dev/null
         helm repo update >/dev/null
         template=`helm template $release $release/$chart --no-hooks --version $version --include-crds --kube-version="1.27" -a "monitoring.coreos.com/v1","networking.k8s.io/v1" --values -  <<EOF
 $values
 EOF`
+
         echo "$template" > "$app_dir/chart.yaml"
         create_kustomize "- chart.yaml"
       fi
@@ -70,10 +71,10 @@ EOF`
       if [[ "$kustomize" != "null" ]]; then
         if test -f $kustomize_file; then
           printf "$kustomize" >> $kustomize_file
+        else
+          # Kustomization doesn't exist, create it and append resources
+          create_kustomize "$kustomize"
         fi
-
-        # Kustomization doesn't exist, create it and append resources
-        create_kustomize "$kustomize"
       fi
 
       if [[ ! -z "$resources" ]]; then
@@ -93,9 +94,10 @@ EOF`
         kustomize_file="$app_dir/kustomization.yaml"
         if test -f $kustomize_file; then
           printf "$res_kustomize_files" >> $kustomize_file
+        else
+          # Kustomization doesn't exist, create it and append resources
+          create_kustomize "$kustomize"
         fi
-        # Kustomization doesn't exist, create it and append resources
-        create_kustomize "$res_kustomize_files"
       fi
 
       # Apppend variable to the end of the framework chart values
@@ -116,7 +118,7 @@ patchesJSON6902:
     group: storage.k8s.io
     version: v1
     kind: StorageClass
-    name: ceph-block 
+    name: ceph-block
   patch: |-
     - op: replace
       path: /parameters/clusterID
