@@ -21,10 +21,7 @@ values:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
-        - host: emqx.${SECRET_DOMAIN}
-          paths:
-            - path: /
-              pathType: Prefix
+        - emqx.${SECRET_DOMAIN}
       tls:
         - secretName: emqx-tls
           hosts:
