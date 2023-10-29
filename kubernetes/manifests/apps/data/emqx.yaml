@@ -5,6 +5,7 @@ helm:
   version: 5.3.0
 
 values:
+  replicaCount: 1
   emqxConfig:
     EMQX_ALLOW_ANONYMOUS: "false"
     EMQX_AUTH__MNESIA__PASSWORD_HASH: plain
