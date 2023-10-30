@@ -11,9 +11,7 @@ values:
     EMQX_AUTH__MNESIA__PASSWORD_HASH: plain
     EMQX_DASHBOARD__DEFAULT_USERNAME: admin
   service:
-    main:
-      type: LoadBalancer
-      externalTrafficPolicy: Local
+    type: LoadBalancer
   ingress:
     dashboard:
       enabled: true
