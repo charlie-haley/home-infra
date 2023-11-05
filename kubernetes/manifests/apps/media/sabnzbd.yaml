@@ -49,10 +49,10 @@ values:
             - sabnzbd.${SECRET_DOMAIN}
   resources:
     requests:
-      cpu: 100m
+      cpu: 500m
       memory: 256Mi
     limits:
-      cpu: 500m
+      cpu: 800m
       memory: 1024Mi
   persistence:
     config:
