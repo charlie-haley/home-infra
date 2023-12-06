@@ -9,19 +9,25 @@ dependsOn:
 
 values:
   loki:
+    commonConfig:
+      replication_factor: 1
+    storage:
+      type: 'filesystem'
     table_manager:
       retention_deletes_enabled: true
       retention_period: 336h
     persistence:
       enabled: true
       storageClassName: ceph-block
-      size: 25Gi
+      size: 100Gi
     serviceMonitor:
       enabled: true
     frontend:
       scheduler_address: query-scheduler-discovery.observability.svc.cluster.local
     frontend_worker:
       scheduler_address: query-scheduler-discovery.observability.svc.cluster.local
+  singleBinary:
+    replicas: 1
   monitoring:
     selfMonitoring:
       grafanaAgent:
