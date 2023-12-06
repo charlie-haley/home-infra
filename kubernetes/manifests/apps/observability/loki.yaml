@@ -22,10 +22,6 @@ values:
     size: 100Gi
   serviceMonitor:
     enabled: true
-  frontend:
-    scheduler_address: query-scheduler-discovery.observability.svc.cluster.local
-  frontend_worker:
-    scheduler_address: query-scheduler-discovery.observability.svc.cluster.local
   singleBinary:
     replicas: 1
   monitoring:
