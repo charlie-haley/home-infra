@@ -65,13 +65,6 @@ values:
     integration: containerd
   hubble:
     enabled: true
-    tls:
-      auto:
-        method: certmanager
-        certManagerIssuerRef:
-          group: cert-manager.io
-          kind: ClusterIssuer
-          name: letsencrypt-production
     metrics:
       enabled:
         - dns:query
