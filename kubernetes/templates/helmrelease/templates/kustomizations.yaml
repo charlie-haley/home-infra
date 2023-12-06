@@ -1,0 +1,39 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: {{ .Values.namespace }}
+  namespace: {{ .Values.name }}
+spec:
+  interval: 10m
+  url: {{ .Values.helm.repo }}
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: {{ .Values.namespace }}
+  namespace: {{ .Values.name }}
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: {{ .Values.helm.chart }}
+      version: {{ .Values.helm.chart }}
+      sourceRef:
+        kind: HelmRepository
+        name: {{ .Values.name }}
+        namespace: {{ .Values.name }}
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+{{- with .Values.values }}
+  {{- toYaml . | nindent 4 }}
+{{- end }}

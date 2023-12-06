@@ -19,6 +19,7 @@ metadata:
   namespace: {{ $.Values.namespace }}
 spec:
   interval: 10m
+  wait: true
   targetNamespace: {{ $namespace }}
   prune: true
   sourceRef:

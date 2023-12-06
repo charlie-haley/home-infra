@@ -2,6 +2,7 @@
 set -e
 
 KUSTOMIZATIONS_CHART="./templates/framework/"
+HELMRELEASE_CHART="./templates/helmrelease/"
 MANIFESTS_DIR="./manifests/"
 tmpdir=`mktemp -d`
 
@@ -36,14 +37,10 @@ EOM`
 
     # For each application
     for f in $d*; do
-      values=`cat $f | yq .values`
+      values=`cat $f | yq 'del(.resources)'`
       helm=`cat $f | yq .helm`
       kustomize=`cat $f | yq -r -o="yaml" .kustomize`
       resources=`cat $f | yq -r -o="yaml" ".resources[]"`
-
-      repo=`cat $f | yq .helm.repo | tr -d \"`
-      chart=`cat $f | yq .helm.chart`
-      version=`cat $f | yq .helm.version`
 
       # This is a bit gross... need to migrate to an actual programming language soon™
       dependsOn=`cat $f | yq -r -o="yaml" .dependsOn | sed  "s/^/      /"`
@@ -58,9 +55,7 @@ EOM`
       kustomize_file="$app_dir/kustomization.yaml"
 
       if [[ "$helm" != "null" ]]; then
-        helm repo add $release $repo >/dev/null
-        helm repo update >/dev/null
-        template=`helm template $release $release/$chart --no-hooks --version $version --include-crds --kube-version="1.27" -a "monitoring.coreos.com/v1","networking.k8s.io/v1" --values -  <<EOF
+        template=`helm template helmrelease $HELMRELEASE_CHART --set name=$release --set namespace=$namespace --values -  <<EOF
 $values
 EOF`
 
