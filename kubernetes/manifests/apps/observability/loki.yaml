@@ -27,5 +27,6 @@ values:
       size: 100Gi
   monitoring:
     selfMonitoring:
+      enabled: true
       grafanaAgent:
         installOperator: false
