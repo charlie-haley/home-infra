@@ -16,6 +16,7 @@ values:
     table_manager:
       retention_deletes_enabled: true
       retention_period: 336h
+    auth_enabled: false
   persistence:
     enabled: true
     storageClassName: ceph-block
