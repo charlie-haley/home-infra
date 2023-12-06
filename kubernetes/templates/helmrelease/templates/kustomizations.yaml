@@ -2,8 +2,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: {{ .Values.namespace }}
-  namespace: {{ .Values.name }}
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
 spec:
   interval: 10m
   url: {{ .Values.helm.repo }}
@@ -11,18 +11,18 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: {{ .Values.namespace }}
-  namespace: {{ .Values.name }}
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
 spec:
   interval: 10m
   chart:
     spec:
       chart: {{ .Values.helm.chart }}
-      version: {{ .Values.helm.chart }}
+      version: {{ .Values.helm.version }}
       sourceRef:
         kind: HelmRepository
         name: {{ .Values.name }}
-        namespace: {{ .Values.name }}
+        namespace: {{ .Values.namespace }}
   maxHistory: 2
   install:
     remediation:
