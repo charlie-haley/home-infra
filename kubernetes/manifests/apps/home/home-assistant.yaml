@@ -4,6 +4,9 @@ helm:
   chart: app-template
   version: 1.5.1
 
+backup:
+  pvc: "home-assistant-config"
+
 values:
   controller:
     type: statefulset
@@ -51,25 +54,25 @@ values:
         tag: 4.17.0
       workingDir: "/config"
       args:
-      - --auth
-      - "none"
-      - --user-data-dir
-      - "/config/.vscode"
-      - --extensions-dir
-      - "/config/.vscode"
+        - --auth
+        - "none"
+        - --user-data-dir
+        - "/config/.vscode"
+        - --extensions-dir
+        - "/config/.vscode"
       ingress:
         enabled: true
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-        - host: "hass-config.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "hass-config.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - hosts:
-          - "hass-config.${SECRET_DOMAIN}"
+          - hosts:
+              - "hass-config.${SECRET_DOMAIN}"
       volumeMounts:
-      - name: config
-        mountPath: /config
+        - name: config
+          mountPath: /config

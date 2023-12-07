@@ -7,6 +7,9 @@ helm:
 dependsOn:
   - name: observability-grafana-agent
 
+backup:
+  pvc: "grafana-config"
+
 values:
   replicas: 1
   deploymentStrategy:

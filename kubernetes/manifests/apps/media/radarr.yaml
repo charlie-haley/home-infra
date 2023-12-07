@@ -4,6 +4,9 @@ helm:
   chart: app-template
   version: 1.5.1
 
+backup:
+  pvc: "radarr-config"
+
 values:
   automountServiceAccountToken: false
   controller:
