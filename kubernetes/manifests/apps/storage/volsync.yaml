@@ -6,6 +6,8 @@ helm:
 
 dependsOn:
   - name: observability-grafana-agent
+  - name: storage-snapshot-controller
+
 values:
   metrics:
     disableAuth: true
