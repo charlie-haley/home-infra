@@ -71,7 +71,14 @@ $backup
 EOF`
 
         echo "$template" > "$app_dir/volsync-backup-gen.yaml"
-        create_kustomize "- volsync-backup-gen.yaml"
+
+        volsync_filename="- volsync-backup-gen.yaml"
+        if test -f $kustomize_file; then
+          printf -- "$volsync_filename" >> $kustomize_file
+        else
+          # Kustomization doesn't exist, create it and append resources
+          create_kustomize "$volsync_filename"
+        fi
       fi
 
       if [[ "$kustomize" != "null" ]]; then
