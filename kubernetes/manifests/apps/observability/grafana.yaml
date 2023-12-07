@@ -8,7 +8,7 @@ dependsOn:
   - name: observability-grafana-agent
 
 backup:
-  pvc: "grafana-config"
+  pvc: "grafana"
 
 values:
   replicas: 1
