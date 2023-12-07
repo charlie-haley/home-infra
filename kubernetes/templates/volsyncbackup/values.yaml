@@ -1,0 +1,9 @@
+# name: "foo"
+# namespace: "bar"
+# pvc: "my-pvc"
+
+# Default to run at 3am
+schedule: "0 3 * * *"
+
+# Default retain backups for 14 days
+retentionDays: 14

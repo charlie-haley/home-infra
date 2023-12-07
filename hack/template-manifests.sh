@@ -3,6 +3,7 @@ set -e
 
 KUSTOMIZATIONS_CHART="./templates/framework/"
 HELMRELEASE_CHART="./templates/helmrelease/"
+VOLSYNCBACKUP_CHART="./templates/volsyncbackup/"
 MANIFESTS_DIR="./manifests/"
 tmpdir=`mktemp -d`
 
@@ -39,6 +40,7 @@ EOM`
     for f in $d*; do
       values=`cat $f | yq 'del(.resources)'`
       helm=`cat $f | yq .helm`
+      backup=`cat $f | yq .backup`
       kustomize=`cat $f | yq -r -o="yaml" .kustomize`
       resources=`cat $f | yq -r -o="yaml" ".resources[]"`
 
@@ -61,6 +63,15 @@ EOF`
 
         echo "$template" > "$app_dir/chart.yaml"
         create_kustomize "- chart.yaml"
+      fi
+
+      if [[ "$backup" != "null" ]]; then
+        template=`helm template helmrelease $VOLSYNCBACKUP_CHART --set name=$release --set namespace=$namespace --values -  <<EOF
+$backup
+EOF`
+
+        echo "$template" > "$app_dir/volsync-backup-gen.yaml"
+        create_kustomize "- volsync-backup-gen.yaml"
       fi
 
       if [[ "$kustomize" != "null" ]]; then
@@ -102,23 +113,6 @@ EOF`
       else
         ks_ns_val="$ks_ns_val\n    $release:\n      dependsOn:\n$dependsOn"
       fi
-
-      # If we're processing the rook-ceph-cluster chart, update the kustomization to patch
-      # the clusterID. Currently, `helm template` doesn't bother templating .Release.Namespace....
-      # A long term fix would be migrating this script to code and trying to utlise the Go SDK.
-      if [[ "$release" =~ .*"rook-ceph-cluster".* ]]; then
-        patch="
-patchesJSON6902:
-- target:
-    group: storage.k8s.io
-    version: v1
-    kind: StorageClass
-    name: ceph-block
-  patch: |-
-    - op: replace
-      path: /parameters/clusterID
-      value: $namespace
-"
 
       printf "$patch" >> $kustomize_file
       fi

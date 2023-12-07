@@ -1,0 +1,5 @@
+apiVersion: v2
+name: volsyncbackup
+description: A local chart designed to template Volsync backup resources.
+type: application
+version: 0.1.0

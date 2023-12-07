@@ -4,6 +4,9 @@ helm:
   chart: app-template
   version: 1.5.1
 
+backup:
+  pvc: "bazarr-config"
+
 values:
   controller:
     type: statefulset
