@@ -1,0 +1,11 @@
+---
+helm:
+  repo: https://backube.github.io/helm-charts/
+  chart: volsync
+  version: 0.8.0
+
+dependsOn:
+  - name: observability-grafana-agent
+values:
+  metrics:
+    disableAuth: true
