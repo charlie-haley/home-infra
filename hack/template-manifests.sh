@@ -38,7 +38,7 @@ EOM`
 
     # For each application
     for f in $d*; do
-      values=`cat $f | yq 'del(.resources)'`
+      values=`cat $f | yq 'del(.resources)' | yq 'del(.backup)'`
       helm=`cat $f | yq .helm`
       backup=`cat $f | yq .backup`
       kustomize=`cat $f | yq -r -o="yaml" .kustomize`
