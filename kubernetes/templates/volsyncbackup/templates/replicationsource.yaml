@@ -22,7 +22,7 @@ spec:
     schedule: {{ .Values.schedule }}
   restic:
     pruneIntervalDays: {{ .Values.retentionDays }}
-    repository: "${RESTIC_REPOSITORY}/{{ .Values.namespace }}/{{ .Values.name }}"
+    repository: {{ .Values.name }}-restic-config
     retain:
       daily: {{ .Values.retentionDays }}
     copyMethod: Snapshot
