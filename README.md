@@ -48,4 +48,4 @@ The script is triggered by Github Actions, a webhook is then fired after the pac
 
 ## 👏 Thanks
 
-Thanks to everyone in the [Kubernetes@Home Discord community](https://discord.gg/k8s-at-home) Insipration for how to deploy and my manage my cluster has been influenced heavily by everyone who's shared thier clusters using the [k8s-at-home GitHub tag](https://github.com/topics/k8s-at-home).
+Thanks to everyone in the [Kubernetes@Home Discord community](https://discord.gg/k8s-at-home) Inspiration for how to deploy and my manage my cluster has been influenced heavily by everyone who's shared their clusters using the [k8s-at-home GitHub tag](https://github.com/topics/k8s-at-home).
