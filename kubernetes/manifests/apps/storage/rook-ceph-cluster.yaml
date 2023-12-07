@@ -56,6 +56,11 @@ values:
       disable: false
     mgr:
       count: 1
+  cephBlockPoolsVolumeSnapshotClass:
+    enabled: true
+    name: csi-ceph-blockpool
+    isDefault: false
+    deletionPolicy: Delete
   cephBlockPools:
     - name: ceph-blockpool
       spec:
