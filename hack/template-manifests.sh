@@ -114,9 +114,6 @@ EOF`
         ks_ns_val="$ks_ns_val\n    $release:\n      dependsOn:\n$dependsOn"
       fi
 
-      printf "$patch" >> $kustomize_file
-      fi
-
       printf "🟩 Processed app $release\n"
     done
 
