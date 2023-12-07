@@ -1,0 +1,15 @@
+---
+helm:
+  repo: https://piraeus.io/helm-charts/
+  chart: snapshot-controller
+  version: 2.0.3
+
+dependsOn:
+  - name: observability-grafana-agent
+
+values:
+  controller:
+    serviceMonitor:
+      create: true
+  webhook:
+    enabled: false
