@@ -37,7 +37,7 @@ values:
               period: 24h
       common:
         path_prefix: /var/loki
-        replication_factor: 3
+        replication_factor: 2
         storage:
           s3:
             s3: null
@@ -79,17 +79,12 @@ values:
         reporting_enabled: false
   gateway:
     enabled: true
-    replicas: 3
-    deploymentStrategy:
-      type: RollingUpdate
-      rollingUpdate:
-        maxSurge: 1
-        maxUnavailable: 1
+    replicas: 2
     ingress:
       enabled: true
       annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
         - host: "loki.${SECRET_DOMAIN}"
           paths:
@@ -99,12 +94,12 @@ values:
         - hosts:
             - "loki.${SECRET_DOMAIN}"
   write:
-    replicas: 3
+    replicas: 2
     persistence:
       size: 10Gi
       storageClass: ceph-block
   read:
-    replicas: 3
+    replicas: 2
     extraVolumeMounts:
       - name: loki-rules
         mountPath: /rules/fake
