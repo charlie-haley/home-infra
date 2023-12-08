@@ -87,17 +87,14 @@ values:
         maxUnavailable: 1
     ingress:
       enabled: true
-      ingressClassName: "nginx"
-      annotations:
-        hajimari.io/enable: "false"
       hosts:
-        - host: &host "loki.${SECRET_PUBLIC_DOMAIN}"
+        - host: "loki.${SECRET_DOMAIN}"
           paths:
             - path: /
               pathType: Prefix
       tls:
         - hosts:
-            - *host
+            - "loki.${SECRET_DOMAIN}"
   write:
     replicas: 3
     persistence:
