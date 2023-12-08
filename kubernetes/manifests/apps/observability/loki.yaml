@@ -122,6 +122,16 @@ values:
     extraVolumes:
       - name: scratch
         emptyDir: {}
+  monitoring:
+    dashboards:
+      annotations:
+        grafana_folder: Loki
+    selfMonitoring:
+      enabled: true
+      grafanaAgent:
+        installOperator: false
+    lokiCanary:
+      enabled: false
   valuesFrom:
     - targetPath: loki.structuredConfig.common.storage.s3.bucketnames
       kind: ConfigMap
