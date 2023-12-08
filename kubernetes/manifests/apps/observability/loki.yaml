@@ -101,16 +101,11 @@ values:
   read:
     replicas: 2
     extraVolumeMounts:
-      - name: loki-rules
-        mountPath: /rules/fake
       - name: loki-rules-tmp
         mountPath: /tmp/scratch
       - name: loki-tmp
         mountPath: /tmp/loki-tmp
     extraVolumes:
-      - name: loki-rules
-        configMap:
-          name: loki-alerting-rules
       - name: loki-rules-tmp
         emptyDir: {}
       - name: loki-tmp
