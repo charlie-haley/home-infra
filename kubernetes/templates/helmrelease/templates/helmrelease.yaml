@@ -37,3 +37,7 @@ spec:
 {{- with .Values.values }}
   {{- toYaml . | nindent 4 }}
 {{- end }}
+{{- with .Values.valuesFrom }}
+valuesFrom:
+  {{- toYaml . | nindent 4 }}
+{{- end }}
