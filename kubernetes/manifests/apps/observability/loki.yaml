@@ -116,12 +116,15 @@ values:
     persistence:
       size: 10Gi
       storageClass: ceph-block
-    extraVolumeMounts:
-      - name: scratch
-        mountPath: /tmp/scratch
-    extraVolumes:
-      - name: scratch
-        emptyDir: {}
+      extraVolumeMounts:
+        - name: rules
+          mountPath: /rules/fake
+        - name: scratch
+          mountPath: /tmp/scratch
+      extraVolumes:
+        - name: rules
+        - name: scratch
+          emptyDir: {}
   monitoring:
     dashboards:
       annotations:
