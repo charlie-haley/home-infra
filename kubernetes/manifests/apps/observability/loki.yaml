@@ -49,7 +49,7 @@ values:
       ruler:
         enable_api: true
         enable_alertmanager_v2: true
-        alertmanager_url: http://kube-prometheus-stack-alertmanager:9093
+        alertmanager_url: http://prometheus-alertmanager:9093
         storage:
           type: local
           local:
@@ -87,6 +87,9 @@ values:
         maxUnavailable: 1
     ingress:
       enabled: true
+      annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
         - host: "loki.${SECRET_DOMAIN}"
           paths:
