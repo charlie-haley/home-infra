@@ -11,6 +11,7 @@ values:
   loki:
     auth_enabled: false
     structuredConfig:
+      auth_enabled: false
       server:
         log_level: info
         http_listen_port: 3100
@@ -91,7 +92,8 @@ values:
             - path: /
               pathType: Prefix
       tls:
-        - hosts:
+        - secretName: loki-gateway-tls
+          hosts:
             - "loki.${SECRET_DOMAIN}"
   write:
     replicas: 2
