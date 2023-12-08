@@ -68,7 +68,7 @@ values:
         - name: Loki
           type: loki
           access: proxy
-          url: http://loki-gateway:3100
+          url: https://loki.k3pi.xyz
   sidecar:
     dashboards:
       enabled: true
