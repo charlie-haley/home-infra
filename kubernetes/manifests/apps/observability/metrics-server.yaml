@@ -1,0 +1,12 @@
+---
+helm:
+  repo: https://kubernetes-sigs.github.io/metrics-server/
+  chart: metrics-server
+  version: 3.11.0
+
+dependsOn:
+  - name: observability-grafana-agent
+
+values:
+  serviceMonitor:
+    enabled: true
