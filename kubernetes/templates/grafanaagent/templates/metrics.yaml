@@ -47,7 +47,7 @@ spec:
   podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
   remoteWrite:
-    - url: "{{ .Values.metrics.endpoint }}/api/prom/push"
+    - url: "{{ .Values.metrics.endpoint }}/api/v1/push"
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
 ---

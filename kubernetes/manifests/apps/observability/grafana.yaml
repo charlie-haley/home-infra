@@ -62,7 +62,7 @@ values:
       datasources:
         - name: Prometheus
           type: prometheus
-          url: http://prometheus-operated:9090
+          url: https://mimir.k3pi.xyz/prometheus
           access: proxy
           isDefault: true
         - name: Loki
