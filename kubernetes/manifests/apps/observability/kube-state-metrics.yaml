@@ -9,3 +9,6 @@ dependsOn:
 
 values:
   releaseLabel: true
+  prometheus:
+    monitor:
+      enabled: true
