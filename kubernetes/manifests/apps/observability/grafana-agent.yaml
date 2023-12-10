@@ -7,6 +7,6 @@ dependsOn:
 
 values:
   metrics:
-    endpoint: mimir:9009
+    endpoint: https://mimir.k3pi.xyz
   logs:
     endpoint: https://loki.k3pi.xyz
