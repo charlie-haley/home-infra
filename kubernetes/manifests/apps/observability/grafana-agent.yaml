@@ -10,3 +10,12 @@ values:
     endpoint: https://mimir.k3pi.xyz
   logs:
     endpoint: https://loki.k3pi.xyz
+  additionalScrapeTargets:
+    - name: ash-nazg-telegraf
+      host: 192.168.0.1:9273
+    - name: narya-node
+      host: narya:9100
+    - name: zigbeemqtt-node
+      host: zigbeemqtt:9100
+    - name: zigbeemqtt-mqtt
+      host: zigbeemqtt:9641

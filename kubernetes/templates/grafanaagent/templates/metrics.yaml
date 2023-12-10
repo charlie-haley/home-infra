@@ -36,6 +36,21 @@ spec:
         path: /proc
       name: procfs
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Release.Name }}-scrape-config
+  namespace: {{ .Release.Namespace }}
+type: Opaque
+stringData:
+  config: |
+{{- range $target, $v := .Values.additionalScrapeTargets }}
+    - job_name: {{ $target.name }}
+      static_configs:
+        - targets:
+          - {{ $target.endpoint }}
+{{- end }}
+---
 apiVersion: monitoring.grafana.com/v1alpha1
 kind: MetricsInstance
 metadata:
@@ -50,6 +65,9 @@ spec:
     - url: "{{ .Values.metrics.endpoint }}/api/v1/push"
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
+  additionalScrapeConfigs:
+    name: {{ .Release.Name }}-scrape-config
+    key: config
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
