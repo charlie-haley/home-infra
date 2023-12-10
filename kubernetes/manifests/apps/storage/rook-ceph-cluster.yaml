@@ -56,6 +56,15 @@ values:
       disable: false
     mgr:
       count: 1
+    resources:
+      mon:
+        requests:
+          cpu: 600m
+          memory: 1300Gi
+      osd:
+        requests:
+          cpu: 600m
+          memory: 4Gi
   cephBlockPoolsVolumeSnapshotClass:
     enabled: true
     name: csi-ceph-blockpool

@@ -29,17 +29,17 @@ values:
         ingestion_burst_size: 8000000
         compactor_blocks_retention_period: 1y
   alertmanager:
-    replicas: 2
+    replicas: 1
     persistentVolume:
       storageClass: local-path
   distributor:
-    replicas: 2
+    replicas: 1
   ingester:
-    replicas: 2
+    replicas: 1
     persistentVolume:
       storageClass: ceph-block
   store_gateway:
-    replicas: 2
+    replicas: 1
     persistentVolume:
       storageClass: ceph-block
   compactor:
@@ -52,7 +52,19 @@ values:
       scrapeTimeout: 30s
   nginx:
     ingress:
-      enabled: false
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      hosts:
+        - host: "mimir.${SECRET_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: mimir-gateway-tls
+          hosts:
+            - "mimir.${SECRET_DOMAIN}"
   minio:
     enabled: false
 
