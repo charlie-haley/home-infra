@@ -1,0 +1,5 @@
+apiVersion: v2
+name: grafanaagent
+description: A local chart designed to template a Grafana Agent deployment with integrations.
+type: application
+version: 0.1.0

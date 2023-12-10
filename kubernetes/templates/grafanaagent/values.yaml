@@ -1,0 +1,5 @@
+metrics:
+  endpoint: ""
+
+logs:
+  endpoint: ""

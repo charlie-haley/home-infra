@@ -1,10 +1,12 @@
 ---
 helm:
-  repo: https://grafana.github.io/helm-charts
-  chart: grafana-agent-operator
-  version: 0.3.11
+  path: ./kubernetes/templates/grafanaagent
+
+dependsOn:
+  - name: observability-grafana-agent-operator
 
 values:
-  kubeletService:
-    namespace: observability
-    serviceName: kubelet
+  metrics:
+    endpoint: mimir:9009
+  logs:
+    endpoint: https://loki.k3pi.xyz

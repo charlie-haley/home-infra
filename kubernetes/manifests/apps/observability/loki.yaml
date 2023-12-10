@@ -132,7 +132,7 @@ values:
       annotations:
         grafana_folder: Loki
     selfMonitoring:
-      enabled: true
+      enabled: false
       grafanaAgent:
         installOperator: false
     lokiCanary:

@@ -17,12 +17,20 @@ spec:
   interval: 10m
   chart:
     spec:
+{{ if .Values.helm.path }}
+      chart: {{ .Values.helm.path }}
+      sourceRef:
+        kind: GitRepository
+        name: home-infra
+        namespace: flux-system
+{{ else }}
       chart: {{ .Values.helm.chart }}
       version: {{ .Values.helm.version }}
       sourceRef:
         kind: HelmRepository
         name: {{ .Values.name }}
         namespace: {{ .Values.namespace }}
+{{ end }}
   maxHistory: 2
   install:
     remediation:
