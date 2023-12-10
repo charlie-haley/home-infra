@@ -12,18 +12,22 @@ values:
     endpoint: https://loki.k3pi.xyz
   additionalScrapeConfigs:
     - job_name: ash-nazg-telegraf
+      scrape_interval: 60s
       static_configs:
         - targets:
             - 192.168.0.1:9273
     - job_name: narya-node
+      scrape_interval: 60s
       static_configs:
         - targets:
             - narya:9100
     - job_name: zigbeemqtt-node
+      scrape_interval: 60s
       static_configs:
         - targets:
             - zigbeemqtt:9100
     - job_name: zigbeemqtt-mqtt
+      scrape_interval: 60s
       static_configs:
         - targets:
             - zigbeemqtt:9641
