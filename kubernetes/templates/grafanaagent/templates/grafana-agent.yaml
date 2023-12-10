@@ -19,6 +19,8 @@ rules:
       - endpoints
       - pods
       - events
+      - configmaps
+      - secrets
     verbs:
       - get
       - list
