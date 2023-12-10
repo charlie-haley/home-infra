@@ -12,3 +12,9 @@ values:
   prometheus:
     monitor:
       enabled: true
+      honorLabels: true
+  metricLabelsAllowlist:
+    - deployments=[*]
+    - statefulsets=[*]
+    - persistentvolumeclaims=[*]
+    - pods=[*]
