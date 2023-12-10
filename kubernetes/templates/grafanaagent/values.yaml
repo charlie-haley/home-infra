@@ -1,3 +1,5 @@
+clusterName: vilya
+
 metrics:
   endpoint: ""
 

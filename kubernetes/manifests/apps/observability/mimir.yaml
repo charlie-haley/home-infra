@@ -1,8 +1,8 @@
 ---
 helm:
   repo: https://grafana.github.io/helm-charts
-  chart: mimir
-  version: 5.39.0
+  chart: mimir-distributed
+  version: 5.1.3
 
 dependsOn:
   - name: observability-grafana-agent

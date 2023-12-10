@@ -9,7 +9,7 @@ metadata:
 spec:
   clients:
     - externalLabels:
-        cluster: vilya
+        cluster: {{ .Values.clusterName }}
       url: "{{ .Values.logs.endpoint }}/loki/api/v1/push"
   podLogsNamespaceSelector: {}
   podLogsSelector: {}
