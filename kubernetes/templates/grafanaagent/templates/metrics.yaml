@@ -44,11 +44,11 @@ metadata:
 type: Opaque
 stringData:
   config: |
-{{- range $target, $v := .Values.additionalScrapeTargets }}
+{{- range $k, $target := .Values.additionalScrapeTargets }}
     - job_name: {{ $target.name }}
       static_configs:
         - targets:
-          - {{ $target.endpoint }}
+          - {{ $target.host }}
 {{- end }}
 ---
 apiVersion: monitoring.grafana.com/v1alpha1
