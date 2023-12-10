@@ -31,7 +31,7 @@ values:
   alertmanager:
     replicas: 1
     persistentVolume:
-      storageClass: local-path
+      storageClass: ceph-block
   distributor:
     replicas: 1
   ingester:

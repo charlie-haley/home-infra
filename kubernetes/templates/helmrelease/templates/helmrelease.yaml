@@ -21,6 +21,7 @@ spec:
     spec:
 {{ if .Values.helm.path }}
       chart: {{ .Values.helm.path }}
+      reconcileStrategy: Revision
       sourceRef:
         kind: GitRepository
         name: home-infra
