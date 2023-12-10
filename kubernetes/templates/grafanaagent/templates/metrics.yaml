@@ -4,7 +4,7 @@ kind: Integration
 metadata:
   labels:
     agent: {{ .Release.Name }}
-  name:  "{{ .Release.Name }}-node-exporter"
+  name:  "node-exporter"
   namespace: {{ .Release.Namespace }}
 spec:
   config:
