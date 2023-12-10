@@ -60,7 +60,7 @@ values:
       mon:
         requests:
           cpu: 600m
-          memory: 1300Gi
+          memory: 1300Mi
       osd:
         requests:
           cpu: 600m

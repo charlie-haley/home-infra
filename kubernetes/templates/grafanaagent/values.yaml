@@ -1,5 +1,3 @@
-clusterName: vilya
-
 metrics:
   endpoint: ""
 

@@ -63,7 +63,7 @@ spec:
         agent: {{ .Release.Name }}
   metrics:
     externalLabels:
-      cluster: {{ .Values.clusterName }}
+      cluster: vilya
     instanceSelector:
       matchLabels:
         agent: {{ .Release.Name }}
