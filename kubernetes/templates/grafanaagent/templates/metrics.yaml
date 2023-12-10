@@ -42,13 +42,11 @@ metadata:
   name: {{ .Release.Name }}-scrape-config
   namespace: {{ .Release.Namespace }}
 type: Opaque
-stringData:
-  config: |
-{{- range $k, $target := .Values.additionalScrapeTargets }}
-    - job_name: {{ $target.name }}
-      static_configs:
-        - targets:
-          - {{ $target.host }}
+data:
+{{- if  eq ( typeOf .Values.additionalScrapeConfigs ) "string" }}
+  additional-scrape-configs.yaml: {{ tpl .Values.additionalScrapeConfigs $ | b64enc | quote }}
+{{- else }}
+  additional-scrape-configs.yaml: {{ tpl (toYaml .Values.additionalScrapeConfigs) $ | b64enc | quote }}
 {{- end }}
 ---
 apiVersion: monitoring.grafana.com/v1alpha1
@@ -67,7 +65,7 @@ spec:
   serviceMonitorSelector: {}
   additionalScrapeConfigs:
     name: {{ .Release.Name }}-scrape-config
-    key: config
+    key: additional-scrape-configs.yaml
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
