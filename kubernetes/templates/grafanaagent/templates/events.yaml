@@ -31,4 +31,4 @@ spec:
   volumes:
     - name: "eventhandler"
       persistentVolumeClaim:
-        claimName: "{eventhandler"
+        claimName: "eventhandler"
