@@ -12,6 +12,7 @@ values:
   operatorNamespace: storage
   monitoring:
     enabled: true
+    createPrometheusRules: true
   ingress:
     dashboard:
       ingressClassName: traefik
