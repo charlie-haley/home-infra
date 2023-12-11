@@ -17,6 +17,8 @@ values:
       - name: root
         hostPath:
           path: /
+    tolerations:
+      - operator: Exists
   agent:
     mounts:
       varlog: true
@@ -37,8 +39,6 @@ values:
       enabled: false
     controller:
       type: 'daemonset'
-      tolerations:
-      - operator: Exists
     configMap:
       create: true
       content: |-
