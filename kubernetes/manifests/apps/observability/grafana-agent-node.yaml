@@ -17,21 +17,21 @@ values:
       - name: root
         hostPath:
           path: /
-  mounts:
-    varlog: true
-    dockercontainers: true
-    extra:
-      - name: proc
-        mountPath: /host/proc
-        readOnly:  true
-      - name: sys
-        mountPath: /host/sys
-        readOnly: true
-      - name: root
-        mountPath: /host/root
-        mountPropagation: HostToContainer
-        readOnly: true
   agent:
+    mounts:
+      varlog: true
+      dockercontainers: true
+      extra:
+        - name: proc
+          mountPath: /host/proc
+          readOnly:  true
+        - name: sys
+          mountPath: /host/sys
+          readOnly: true
+        - name: root
+          mountPath: /host/root
+          mountPropagation: HostToContainer
+          readOnly: true
     mode: 'flow'
     clustering:
       enabled: false
