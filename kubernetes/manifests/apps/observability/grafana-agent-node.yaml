@@ -29,9 +29,9 @@ values:
       - operator: Exists
     configMap:
       create: true
-      content: |
+      content: |-
         // Node exporter
-        prometheus.exporter.unix "node" { 
+        prometheus.exporter.unix "node" {
           procfs_path = "/host/proc"
           sysfs_path = "/host/sys"
           rootfs_path = "/host/root"
@@ -45,10 +45,10 @@ values:
 
         prometheus.remote_write "mimir_metrics" {
             endpoint {
-                url = "https://mimir.${SECRET_INTERNAL_DOMAIN}/api/v1/push"
+                url = "https://mimir.${SECRET_DOMAIN}/api/v1/push"
             }
         }
-        
+
         // Loki config
         discovery.kubernetes "pods" {
           role = "pod"
@@ -101,8 +101,7 @@ values:
           stage.match {
             selector = "{tmp_container_runtime=\"containerd\"}"
             // the cri processing stage extracts the following k/v pairs log, stream, time, flags
-            stage.cri {
-            }
+            stage.cri {}
             // Set the extract flags and stream values as labels
             stage.labels {
               values = {
@@ -116,8 +115,7 @@ values:
           stage.match {
             selector = "{tmp_container_runtime=\"docker\"}"
             // the docker processing stage extracts the following k/v pairs log, stream, time
-            stage.docker {
-            }
+            stage.docker {}
 
             // Set the extract stream value as a label
             stage.labels {
@@ -137,6 +135,6 @@ values:
 
         loki.write "loki" {
           endpoint {
-            url = "https://loki.${SECRET_INTERNAL_DOMAIN}/loki/api/v1/push"
-          } 
+            url = "https://loki.${SECRET_DOMAIN}/loki/api/v1/push"
+          }
         }
