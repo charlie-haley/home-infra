@@ -56,5 +56,5 @@ values:
 
         // Mimir rules integration
         mimir.rules.kubernetes "mimir_rules" {
-          address = "mimir-ruler:8080"
+          address = "http://mimir-ruler:8080"
         }
