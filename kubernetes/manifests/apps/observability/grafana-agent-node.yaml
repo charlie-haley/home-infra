@@ -38,8 +38,8 @@ resources:
     metadata:
       name: grafana-agent-node-conf
       namespace: observability
-    annotations:
-      kustomize.toolkit.fluxcd.io/substitute: disabled
+      annotations:
+        kustomize.toolkit.fluxcd.io/substitute: disabled
     data:
       config.yaml: |
         // Node exporter
