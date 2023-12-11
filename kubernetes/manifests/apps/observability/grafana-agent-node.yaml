@@ -5,6 +5,18 @@ helm:
   version: 0.29.0
 
 values:
+  controller:
+    volumes:
+      extra:
+      - name: proc
+        hostPath:
+          path: /proc
+      - name: sys
+        hostPath:
+          path: /sys
+      - name: root
+        hostPath:
+          path: /
   mounts:
     varlog: true
     dockercontainers: true
