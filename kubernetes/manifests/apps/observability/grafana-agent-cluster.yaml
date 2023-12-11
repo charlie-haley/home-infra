@@ -19,23 +19,23 @@ values:
       content: |
         // Prometheus configuration
         prometheus.remote_write "mimir_metrics" {
-            endpoint {
-                url = "https://mimir.${SECRET_DOMAIN}/api/v1/push"
-            }
+          endpoint {
+            url = "https://mimir.${SECRET_DOMAIN}/api/v1/push"
+          }
         }
 
         prometheus.operator.podmonitors "main" {
-            forward_to = [prometheus.remote_write.mimir_metrics.receiver]
-            scrape {
-              default_scrape_timeout = 8s
-            }
+          forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+          scrape {
+            default_scrape_timeout = 8s
+          }
         }
 
         prometheus.operator.servicemonitors "main" {
-            forward_to = [prometheus.remote_write.mimir_metrics.receiver]
-            scrape {
-              default_scrape_timeout = 8s
-            }
+          forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+          scrape {
+            default_scrape_timeout = 8s
+          }
         }
 
         prometheus.scrape "node" {
