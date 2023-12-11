@@ -4,6 +4,12 @@ helm:
   chart: grafana-agent
   version: 0.29.0
 
+kustomize:
+  - https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/d56049292dba3ec034365bd12455b56080297e82/manifests/kubePrometheus-prometheusRule.yaml
+  - https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/d56049292dba3ec034365bd12455b56080297e82/manifests/kubeStateMetrics-prometheusRule.yaml
+  - https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/d56049292dba3ec034365bd12455b56080297e82/manifests/kubernetesControlPlane-prometheusRule.yaml
+  - https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/d56049292dba3ec034365bd12455b56080297e82/manifests/nodeExporter-prometheusRule.yaml
+
 values:
   controller:
     type: "statefulset"
