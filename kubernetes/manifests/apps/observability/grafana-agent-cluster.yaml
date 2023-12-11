@@ -66,6 +66,10 @@ values:
         }
 
         // API Server
+        discovery.kubernetes "apiserver" {
+          role = "endpoints"
+        }
+
         prometheus.scrape "apiserver" {
           targets    = discovery.relabel.apiserver.output
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
