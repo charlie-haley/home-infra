@@ -6,6 +6,7 @@ helm:
 
 values:
   controller:
+    type: 'daemonset'
     volumes:
       extra:
       - name: proc
@@ -37,8 +38,6 @@ values:
     mode: 'flow'
     clustering:
       enabled: false
-    controller:
-      type: 'daemonset'
     configMap:
       create: true
       content: |-
