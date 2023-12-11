@@ -82,7 +82,7 @@ values:
             source_labels = ["__meta_kubernetes_pod_uid", "__meta_kubernetes_pod_container_name"]
             separator     = "/"
             action        = "replace"
-            replacement   = "/var/log/pods/*\$1/*.log"
+            replacement   = "/var/log/pods/*{{ printf "$" }}1/*.log"
             target_label  = "__path__"
           }
         }
