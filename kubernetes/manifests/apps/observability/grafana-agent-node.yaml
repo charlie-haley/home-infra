@@ -52,7 +52,6 @@ values:
         // Loki config
         discovery.kubernetes "pods" {
           role = "pod"
-          // limit to pods on this node to reduce the amount we need to filter
           selectors {
             role  = "pod"
             field = "spec.nodeName=" + env("HOSTNAME")
@@ -82,7 +81,7 @@ values:
             source_labels = ["__meta_kubernetes_pod_uid", "__meta_kubernetes_pod_container_name"]
             separator     = "/"
             action        = "replace"
-            replacement   = "/var/log/pods/*$${1}/*.log"
+            replacement   = "/var/log/pods/*$1/*.log"
             target_label  = "__path__"
           }
         }
@@ -102,7 +101,8 @@ values:
           stage.match {
             selector = "{tmp_container_runtime=\"containerd\"}"
             // the cri processing stage extracts the following k/v pairs log, stream, time, flags
-            stage.cri {}
+            stage.cri {
+            }
             // Set the extract flags and stream values as labels
             stage.labels {
               values = {
@@ -116,7 +116,8 @@ values:
           stage.match {
             selector = "{tmp_container_runtime=\"docker\"}"
             // the docker processing stage extracts the following k/v pairs log, stream, time
-            stage.docker {}
+            stage.docker {
+            }
 
             // Set the extract stream value as a label
             stage.labels {
