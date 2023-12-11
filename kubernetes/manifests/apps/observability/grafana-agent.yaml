@@ -31,7 +31,7 @@ values:
       scrape_interval: 60s
       static_configs:
         - targets:
-            - narya:9100
+            - narya.${SECRET_INTERNAL_DOMAIN}:9100
       relabel_configs:
       - action: hashmod
         modulus: $(SHARDS)
@@ -47,7 +47,7 @@ values:
       scrape_interval: 60s
       static_configs:
         - targets:
-            - zigbeemqtt:9100
+            - zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9100
       relabel_configs:
       - action: hashmod
         modulus: $(SHARDS)
@@ -63,7 +63,7 @@ values:
       scrape_interval: 60s
       static_configs:
         - targets:
-            - zigbeemqtt:9641
+            - zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9641
       relabel_configs:
       - action: hashmod
         modulus: $(SHARDS)
