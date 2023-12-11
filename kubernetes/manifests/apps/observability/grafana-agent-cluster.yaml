@@ -27,14 +27,14 @@ values:
         prometheus.operator.podmonitors "main" {
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
           scrape {
-            default_scrape_timeout = 8s
+            default_scrape_timeout = "8s"
           }
         }
 
         prometheus.operator.servicemonitors "main" {
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
           scrape {
-            default_scrape_timeout = 8s
+            default_scrape_timeout = "8s"
           }
         }
 
