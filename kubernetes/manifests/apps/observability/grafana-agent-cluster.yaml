@@ -62,7 +62,7 @@ values:
 
         // Mimir rules integration
         mimir.rules.kubernetes "mimir_rules" {
-          address = "https://mimir.${SECRET_DOMAIN}:"
+          address = "https://mimir.${SECRET_DOMAIN}"
         }
 
         // API Server
