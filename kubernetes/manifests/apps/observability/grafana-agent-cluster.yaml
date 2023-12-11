@@ -1,0 +1,53 @@
+---
+helm:
+  repo: https://grafana.github.io/helm-charts
+  chart: grafana-agent
+  version: 0.38.1
+
+values:
+  controller:
+    type: 'statefulset'
+    replicas: 2
+  crds:
+    create: false
+  agent:
+    mode: 'flow'
+    clustering:
+      enabled: true
+    configMap:
+      create: true
+      content: |
+        // Prometheus configuration
+        prometheus.remote_write "mimir_metrics" {
+            endpoint {
+                url = "https://mimir.k3pi.xyz/api/v1/push"
+            }
+        }
+
+        prometheus.operator.podmonitors "main" {
+            forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+        }
+
+        prometheus.operator.servicemonitors "main" {
+            forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+        }
+
+        prometheus.scrape "node" {
+          targets    = ["narya.${SECRET_INTERNAL_DOMAIN}:9100", "zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9100"]
+          forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+        }
+
+        prometheus.scrape "telegraf" {
+          targets    = ["192.168.0.1:9273"]
+          forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+        }
+
+        prometheus.scrape "mqtt" {
+          targets    = ["zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9641"]
+          forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+        }
+
+        // Mimir rules integration
+        mimir.rules.kubernetes "mimir_rules" {
+          address = mimir-ruler:8080
+        }
