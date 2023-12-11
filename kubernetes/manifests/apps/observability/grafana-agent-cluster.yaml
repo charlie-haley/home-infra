@@ -56,5 +56,5 @@ values:
 
         // Mimir rules integration
         mimir.rules.kubernetes "mimir_rules" {
-          address = "http://mimir-ruler:8080"
+          address = "https://mimir.${SECRET_DOMAIN}:"
         }
