@@ -34,22 +34,22 @@ values:
 
         prometheus.scrape "node" {
           targets = [
-            "narya-node"="narya.${SECRET_INTERNAL_DOMAIN}:9100",
-            "zigbeemqtt-node"="zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9100",
+            {"__address__" = "narya.${SECRET_INTERNAL_DOMAIN}:9100"},
+            {"__address__" = "zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9100"},
           ]
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
         }
 
         prometheus.scrape "telegraf" {
           targets    = [
-            "ash-nazg"="192.168.0.1:9273",
+            {"__address__" = "192.168.0.1:9273"},
           ]
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
         }
 
         prometheus.scrape "mqtt" {
           targets = [
-            "zigbeemqtt-mqtt"="zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9641",
+            {"__address__" = "zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9641"},
           ]
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
         }
