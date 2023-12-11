@@ -16,18 +16,61 @@ values:
       static_configs:
         - targets:
             - 192.168.0.1:9273
+      relabel_configs:
+      - action: hashmod
+        modulus: $(SHARDS)
+        source_labels:
+        - __address__
+        target_label: __tmp_hash
+      - action: keep
+        regex: $(SHARD)
+        source_labels:
+        - __tmp_hash
+        
     - job_name: narya-node
       scrape_interval: 60s
       static_configs:
         - targets:
             - narya:9100
+      relabel_configs:
+      - action: hashmod
+        modulus: $(SHARDS)
+        source_labels:
+        - __address__
+        target_label: __tmp_hash
+      - action: keep
+        regex: $(SHARD)
+        source_labels:
+        - __tmp_hash
+        
     - job_name: zigbeemqtt-node
       scrape_interval: 60s
       static_configs:
         - targets:
             - zigbeemqtt:9100
+      relabel_configs:
+      - action: hashmod
+        modulus: $(SHARDS)
+        source_labels:
+        - __address__
+        target_label: __tmp_hash
+      - action: keep
+        regex: $(SHARD)
+        source_labels:
+        - __tmp_hash
+        
     - job_name: zigbeemqtt-mqtt
       scrape_interval: 60s
       static_configs:
         - targets:
             - zigbeemqtt:9641
+      relabel_configs:
+      - action: hashmod
+        modulus: $(SHARDS)
+        source_labels:
+        - __address__
+        target_label: __tmp_hash
+      - action: keep
+        regex: $(SHARD)
+        source_labels:
+        - __tmp_hash
