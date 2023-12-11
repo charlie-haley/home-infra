@@ -28,8 +28,20 @@ values:
       tolerations:
       - operator: Exists
     configMap:
-      create: true
-      content: |
+      create: false
+      name: "grafana-agent-node-conf"
+      key: "config.yaml"
+
+resources:
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: grafana-agent-node-conf
+      namespace: observability
+    annotations:
+      kustomize.toolkit.fluxcd.io/substitute: disabled
+    data:
+      config.yaml: |
         // Node exporter
         prometheus.exporter.unix "node" { 
           procfs_path = "/host/proc"
@@ -78,7 +90,6 @@ values:
             separator     = "/"
             target_label  = "job"
           }
-          {{`
           rule {
             source_labels = ["__meta_kubernetes_pod_uid", "__meta_kubernetes_pod_container_name"]
             separator     = "/"
@@ -86,7 +97,6 @@ values:
             replacement   = "/var/log/pods/*$1/*.log"
             target_label  = "__path__"
           }
-          `}}
         }
 
         local.file_match "pod_logs" {
