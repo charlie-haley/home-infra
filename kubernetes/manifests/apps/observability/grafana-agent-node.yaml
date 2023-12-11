@@ -20,17 +20,18 @@ values:
         mountPropagation: HostToContainer
         readOnly: true
   agent:
-    mode: 'flow'
+    mode: flow
     clustering:
       enabled: false
     controller:
-      type: 'daemonset'
+      type: daemonset
       tolerations:
-      - operator: Exists
+        - effect: NoSchedule
+          operator: Exists
     configMap:
       create: false
       name: "grafana-agent-node-conf"
-      key: "config"
+      key: "config.file"
 
 resources:
   - apiVersion: v1
@@ -41,7 +42,7 @@ resources:
       annotations:
         kustomize.toolkit.fluxcd.io/substitute: disabled
     data:
-      config: |-
+      config.file: |
             // Node exporter
             prometheus.exporter.unix "node" { 
               procfs_path = "/host/proc"
