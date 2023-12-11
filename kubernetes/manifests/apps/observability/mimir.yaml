@@ -46,6 +46,8 @@ values:
     persistentVolume:
       storageClass: ceph-block
   metaMonitoring:
+    prometheusRule:
+      enabled: true
     dashboards:
       enabled: true
     serviceMonitor:
