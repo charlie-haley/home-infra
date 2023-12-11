@@ -63,6 +63,7 @@ spec:
     - url: "{{ .Values.metrics.endpoint }}/api/v1/push"
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
+  enableConfigReadAPI: true
   additionalScrapeConfigs:
     name: {{ .Release.Name }}-scrape-config
     key: additional-scrape-configs.yaml
