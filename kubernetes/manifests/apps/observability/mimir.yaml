@@ -48,6 +48,8 @@ values:
   metaMonitoring:
     prometheusRule:
       enabled: true
+      mimirAlerts: true
+      mimirRules: true
     dashboards:
       enabled: true
     serviceMonitor:
