@@ -41,7 +41,7 @@ resources:
       annotations:
         kustomize.toolkit.fluxcd.io/substitute: disabled
     data:
-      config: |
+      config: |-
             // Node exporter
             prometheus.exporter.unix "node" { 
               procfs_path = "/host/proc"
