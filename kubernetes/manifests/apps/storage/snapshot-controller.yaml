@@ -5,7 +5,7 @@ helm:
   version: 2.0.3
 
 dependsOn:
-  - name: observability-grafana-agent
+  - name: observability-grafana-agent-cluster
 
 values:
   controller:

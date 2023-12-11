@@ -53,7 +53,7 @@ values:
           // limit to pods on this node to reduce the amount we need to filter
           selectors {
             role  = "pod"
-            field = "spec.nodeName=" + env("HOSTNAME")
+            field = "spec.nodeName=" + env("NODE_NAME")
           }
         }
 

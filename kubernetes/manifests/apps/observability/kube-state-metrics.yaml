@@ -5,7 +5,7 @@ helm:
   version: 5.15.2
 
 dependsOn:
-  - name: observability-grafana-agent
+  - name: observability-grafana-agent-cluster
 
 values:
   releaseLabel: true

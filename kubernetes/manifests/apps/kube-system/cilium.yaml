@@ -6,7 +6,7 @@ helm:
 
 dependsOn:
   - name: cert-manager-cert-manager
-  - name: observability-grafana-agent
+  - name: observability-grafana-agent-cluster
 values:
   prometheus:
     enabled: true

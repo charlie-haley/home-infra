@@ -5,7 +5,7 @@ helm:
   version: 5.39.0
 
 dependsOn:
-  - name: observability-grafana-agent
+  - name: observability-grafana-agent-cluster
 
 values:
   loki:

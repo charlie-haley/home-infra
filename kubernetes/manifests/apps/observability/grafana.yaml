@@ -5,7 +5,7 @@ helm:
   version: 7.0.11
 
 dependsOn:
-  - name: observability-grafana-agent
+  - name: observability-grafana-agent-cluster
 
 backup:
   pvc: "grafana"

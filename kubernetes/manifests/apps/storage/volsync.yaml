@@ -5,7 +5,7 @@ helm:
   version: 0.8.0
 
 dependsOn:
-  - name: observability-grafana-agent
+  - name: observability-grafana-agent-cluster
   - name: storage-snapshot-controller
 
 values:

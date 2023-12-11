@@ -5,7 +5,7 @@ helm:
   version: v1.12.9
 
 dependsOn:
-  - name: observability-grafana-agent
+  - name: observability-grafana-agent-cluster
   - name: storage-rook-ceph-operator
 
 values:
