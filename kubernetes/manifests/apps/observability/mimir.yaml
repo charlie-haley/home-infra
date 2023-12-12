@@ -43,7 +43,7 @@ values:
       receivers:
       - name: discord
         slack_configs:
-        - webhook_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
+        - api_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
   distributor:
     replicas: 1
   ingester:
