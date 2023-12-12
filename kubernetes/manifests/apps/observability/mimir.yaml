@@ -42,24 +42,8 @@ values:
 
       receivers:
       - name: discord
-        slack_configs:
-        - channel: '#alerts'
-          api_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
-          send_resolved: true
-          icon_url: https://avatars3.githubusercontent.com/u/3380462
-          title: |-
-            [{{ .Status | toUpper -}}
-                {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
-                ]
-          text: |-
-            {{ range .Alerts }}
-                {{- if .Annotations.message }}
-                    {{ .Annotations.message }}
-                {{- end }}
-                {{- if .Annotations.description }}
-                    {{ .Annotations.description }}
-                {{- end }}
-            {{- end }}
+        discord_config:
+        - webhook_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
 
   distributor:
     replicas: 1
