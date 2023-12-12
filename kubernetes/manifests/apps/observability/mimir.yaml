@@ -32,6 +32,18 @@ values:
     replicas: 1
     persistentVolume:
       storageClass: ceph-block
+    fallbackConfig: |
+      route:
+        group_by: ['alertname', 'job']
+        group_wait: 30s
+        group_interval: 5m
+        repeat_interval: 3h
+        receiver: discord
+
+      receivers:
+      - name: discord
+        slack_configs:
+        - webhook_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
   distributor:
     replicas: 1
   ingester:
