@@ -27,9 +27,6 @@ values:
           hosts:
             - rook.${SECRET_DOMAIN}
   cephClusterSpec:
-    monitoring:
-      enabled: true
-      interval: 30s
     dashboard:
       enabled: true
       urlPrefix: /
