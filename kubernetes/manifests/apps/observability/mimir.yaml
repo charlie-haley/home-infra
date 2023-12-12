@@ -37,13 +37,16 @@ values:
   ingester:
     replicas: 1
     persistentVolume:
+      size: 50Gi
       storageClass: ceph-block
   store_gateway:
     replicas: 1
     persistentVolume:
+      size: 50Gi
       storageClass: ceph-block
   compactor:
     persistentVolume:
+      size: 50Gi
       storageClass: ceph-block
   metaMonitoring:
     prometheusRule:
