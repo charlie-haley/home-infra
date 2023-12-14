@@ -94,6 +94,24 @@ EOF`
         res_kustomize_files=""
         readarray resourceArray < <(cat $f | yq e -o=j -I=0 '.resources[]')
         for rs in "${resourceArray[@]}"; do
+
+          # If contains 'url', fetch the resource from remote
+          url=`cat $f | yq .url`
+          if [[ "$url" != "null" ]]; then
+            256sum=`cat $f | yq .256sum`
+            curl $rs > "$app_dir/$256sum"
+
+            # Validate checksum of remote resource
+            filesum=`cat "$app_dir/$256sum" | sha256sum`
+            if [[ "$filesum" != "$256sum" ]]; then
+              printf "❌ ERROR! Checksum of specified file doesn't match! $url\n"
+              exit 1
+            fi
+
+            res_kustomize_files="$res_kustomize_files\n- $256sum"
+            continue
+          fi
+
           res_name=`printf "$rs" | yq .metadata.name`
           res_kind=`printf "$rs" | yq .kind`
           resource_filename="$res_name-$res_kind.yaml"
