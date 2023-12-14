@@ -96,19 +96,19 @@ EOF`
         for rs in "${resourceArray[@]}"; do
 
           # If contains 'url', fetch the resource from remote
-          url=`cat $rs | yq .url`
+          url=`printf "$rs" | yq .url`
           if [[ "$url" != "null" ]]; then
-            256sum=`cat $rs | yq .256sum`
-            curl $rs > "$app_dir/$256sum"
+            checksum=`printf "$rs" | yq .256sum`
+            curl $url > "$app_dir/$checksum"
 
             # Validate checksum of remote resource
-            filesum=`cat "$app_dir/$256sum" | sha256sum`
-            if [[ "$filesum" != "$256sum" ]]; then
-              printf "❌ ERROR! Checksum of specified file doesn't match! $url\n"
+            filesum=`sha256sum "$app_dir/$checksum" | awk '{ print $1 }'`
+            if [[ "$filesum" != "$checksum" ]]; then
+              printf "❌ ERROR! Checksum of specified file doesn't match! Expected: $checksum Got: $filesum URL: $url\n"
               exit 1
             fi
 
-            res_kustomize_files="$res_kustomize_files\n- $256sum"
+            res_kustomize_files="$res_kustomize_files\n- $checksum"
             continue
           fi
 
