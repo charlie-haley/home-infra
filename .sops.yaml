@@ -1,5 +1,5 @@
 # Public keys for signing secrets.
 creation_rules:
-  - pgp: "7F30678CF4053CEDDCB852EB7AC0F35EF1924EEA"
+  - pgp: "1A7742F3A542F0AF821B5728C63A01FBC1B86B44"
     age: "age1c000ffrkz0lwqdhmkqurvj4tc2zvluhm3zh5l4ppmu5dq6y5qfls2t3vfw"
     encrypted_regex: ^(data|stringData)$
