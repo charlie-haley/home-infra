@@ -96,9 +96,9 @@ EOF`
         for rs in "${resourceArray[@]}"; do
 
           # If contains 'url', fetch the resource from remote
-          url=`cat $f | yq .url`
+          url=`cat $rs | yq .url`
           if [[ "$url" != "null" ]]; then
-            256sum=`cat $f | yq .256sum`
+            256sum=`cat $rs | yq .256sum`
             curl $rs > "$app_dir/$256sum"
 
             # Validate checksum of remote resource
