@@ -13,6 +13,7 @@ values:
   monitoring:
     enabled: true
     createPrometheusRules: true
+    interval: 30s
   ingress:
     dashboard:
       ingressClassName: traefik
@@ -27,8 +28,6 @@ values:
           hosts:
             - rook.${SECRET_DOMAIN}
   cephClusterSpec:
-    monitoring:
-      interval: 30s
     dashboard:
       enabled: true
       urlPrefix: /
