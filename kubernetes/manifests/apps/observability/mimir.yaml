@@ -178,13 +178,3 @@ resources:
   # Monitoring mixins
   - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-prometheusRule.yaml
     256sum: 55b56c5b92fe6b43c47b659238a04487c41bb20f3789f7e66e47559f8e35757c
-  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-serviceMonitorKubelet.yaml
-    256sum: f191f354f179d57de9a737bb7121695d584554aedcf67e141906d76edf92c314
-  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-serviceMonitorKubeScheduler.yaml
-    256sum: e36c0481b9f92e6d1dc58fb9ff52f1ad049d47278e883e0bfb7e4022e77cd7d1
-  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-serviceMonitorKubeControllerManager.yaml
-    256sum: 37b9879c83302fa7ef6a68a322c41e629eb5d500178bea405a62cee6a3f720de
-  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-serviceMonitorApiserver.yaml
-    256sum: 449f6c239f9e61f6aed0a200c293737c751f84e6cf45ee49a669e0a7cfea0df7
-  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-serviceMonitorCoreDNS.yaml
-    256sum: db510ef74d4bf39d59a0b51a668bbdb2ca990bdf87714c6989cdc54410767b97
