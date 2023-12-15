@@ -13,8 +13,3 @@ values:
     monitor:
       enabled: true
       honorLabels: true
-  metricLabelsAllowlist:
-    - deployments=[*]
-    - statefulsets=[*]
-    - persistentvolumeclaims=[*]
-    - pods=[*]
