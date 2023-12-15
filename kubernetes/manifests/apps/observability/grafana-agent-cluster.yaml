@@ -76,6 +76,8 @@ values:
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
             job_label = "kubelet"
+            git_repo = "https://github.com/charlie-haley/agent-modules.git"
+            git_rev = "main"
           }
         }
 
@@ -87,6 +89,8 @@ values:
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
             job_label = "kubelet"
+            git_repo = "https://github.com/charlie-haley/agent-modules.git"
+            git_rev = "main"
           }
         }
 
@@ -98,6 +102,8 @@ values:
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
             job_label = "kubelet"
+            git_repo = "https://github.com/charlie-haley/agent-modules.git"
+            git_rev = "main"
           }
         }
 
@@ -109,6 +115,8 @@ values:
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
             job_label = "apiserver"
+            git_repo = "https://github.com/charlie-haley/agent-modules.git"
+            git_rev = "main"
           }
         }
 
