@@ -70,7 +70,7 @@ values:
         // Kubernetes scrape targets using modules
         module.git "scrape_kubelet_cadvisor" {
           repository = "https://github.com/charlie-haley/agent-modules.git"
-          revision   = "feat/add-job-labels"
+          revision   = "main"
           path = "modules/kubernetes/metrics/scrapes/kubelet-cadvisor.river"
 
           arguments {
@@ -81,7 +81,7 @@ values:
 
         module.git "scrape_kubelet" {
           repository = "https://github.com/charlie-haley/agent-modules.git"
-          revision   = "feat/add-job-labels"
+          revision   = "main"
           path = "modules/kubernetes/metrics/scrapes/kubelet.river"
 
           arguments {
@@ -92,7 +92,7 @@ values:
 
         module.git "scrape_kubelet_probes" {
           repository = "https://github.com/charlie-haley/agent-modules.git"
-          revision   = "feat/add-job-labels"
+          revision   = "main"
           path = "modules/kubernetes/metrics/scrapes/kubelet-probes.river"
 
           arguments {
@@ -103,7 +103,7 @@ values:
 
         module.git "scrape_kube_apiserver" {
           repository = "https://github.com/charlie-haley/agent-modules.git"
-          revision   = "feat/add-job-labels"
+          revision   = "main"
           path = "modules/kubernetes/metrics/scrapes/kube-apiserver.river"
 
           arguments {
