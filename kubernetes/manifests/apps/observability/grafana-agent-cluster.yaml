@@ -24,6 +24,16 @@ values:
           }
         }
 
+        // This is needed due to the prometheus mixins.
+        prometheus.remote_write "mimir_metrics_kubelet" {
+          endpoint {
+            url = "https://mimir.${SECRET_DOMAIN}/api/v1/push"
+          }
+          external labels {
+            metrics_path = "/metrics"
+          }
+        }
+
         prometheus.operator.podmonitors "main" {
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
           scrape {
@@ -74,7 +84,7 @@ values:
           path = "modules/kubernetes/metrics/scrapes/kubelet-cadvisor.river"
 
           arguments {
-            forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+            forward_to = [prometheus.remote_write.mimir_metrics_kubelet.receiver]
             job_label = "kubelet"
             git_repo = "https://github.com/charlie-haley/agent-modules.git"
             git_rev = "feat/add-job-labels"
@@ -87,7 +97,7 @@ values:
           path = "modules/kubernetes/metrics/scrapes/kubelet.river"
 
           arguments {
-            forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+            forward_to = [prometheus.remote_write.mimir_metrics_kubelet.receiver]
             job_label = "kubelet"
             git_repo = "https://github.com/charlie-haley/agent-modules.git"
             git_rev = "feat/add-job-labels"
@@ -100,7 +110,7 @@ values:
           path = "modules/kubernetes/metrics/scrapes/kubelet-probes.river"
 
           arguments {
-            forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+            forward_to = [prometheus.remote_write.mimir_metrics_kubelet.receiver]
             job_label = "kubelet"
             git_repo = "https://github.com/charlie-haley/agent-modules.git"
             git_rev = "feat/add-job-labels"
