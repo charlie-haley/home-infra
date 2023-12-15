@@ -69,8 +69,8 @@ values:
 
         // Kubernetes scrape targets using modules
         module.git "scrape_kubelet_cadvisor" {
-          repository = "https://github.com/grafana/agent-modules.git"
-          revision   = "main"
+          repository = "https://github.com/charlie-haley/agent-modules.git"
+          revision   = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet-cadvisor.river"
           job_label = "kubelet"
 
@@ -80,8 +80,8 @@ values:
         }
 
         module.git "scrape_kubelet" {
-          repository = "https://github.com/grafana/agent-modules.git"
-          revision   = "main"
+          repository = "https://github.com/charlie-haley/agent-modules.git"
+          revision   = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet.river"
           job_label = "kubelet"
 
@@ -91,8 +91,8 @@ values:
         }
 
         module.git "scrape_kubelet_probes" {
-          repository = "https://github.com/grafana/agent-modules.git"
-          revision   = "main"
+          repository = "https://github.com/charlie-haley/agent-modules.git"
+          revision   = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet-probes.river"
           job_label = "kubelet"
 
@@ -102,8 +102,8 @@ values:
         }
 
         module.git "scrape_kube_apiserver" {
-          repository = "https://github.com/grafana/agent-modules.git"
-          revision   = "main"
+          repository = "https://github.com/charlie-haley/agent-modules.git"
+          revision   = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kube-apiserver.river"
           job_label = "apiserver"
 
