@@ -14,8 +14,8 @@ values:
     enabled: true
   resources:
     requests:
-      cpu: 600m
+      cpu: 1000m
       memory: 128Mi
     limits:
-      cpu: 1000m
+      cpu: 1200m
       memory: 256Mi
