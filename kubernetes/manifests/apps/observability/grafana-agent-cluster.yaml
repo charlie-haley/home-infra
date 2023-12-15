@@ -29,7 +29,7 @@ values:
           endpoint {
             url = "https://mimir.${SECRET_DOMAIN}/api/v1/push"
           }
-          external labels {
+          external_labels {
             metrics_path = "/metrics"
           }
         }
