@@ -32,27 +32,27 @@ values:
     replicas: 1
     persistentVolume:
       storageClass: ceph-block
-      fallbackConfig: |
-        global:
-          resolve_timeout: 5m
+    fallbackConfig: |
+      global:
+        resolve_timeout: 5m
+        http_config:
+          follow_redirects: true
+          enable_http2: true
+
+      route:
+        receiver: Discord
+        continue: false
+
+      receivers:
+      - name: Discord
+        discord_configs:
+        - send_resolved: true
           http_config:
             follow_redirects: true
             enable_http2: true
-
-        route:
-          receiver: Discord
-          continue: false
-
-        receivers:
-        - name: Discord
-          discord_configs:
-          - send_resolved: true
-            http_config:
-              follow_redirects: true
-              enable_http2: true
-            webhook_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
-            title: '{{ template "discord.default.title" . }}'
-            message: '{{ template "discord.default.message" . }}'
+          webhook_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
+          title: '{{ template "discord.default.title" . }}'
+          message: '{{ template "discord.default.message" . }}'
   distributor:
     replicas: 1
   ingester:
