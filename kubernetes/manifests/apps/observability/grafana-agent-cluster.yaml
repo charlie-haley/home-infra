@@ -48,7 +48,7 @@ values:
         }
 
         prometheus.scrape "telegraf" {
-          targets    = [
+          targets  = [
             {"__address__" = "192.168.0.1:9273"},
           ]
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
@@ -70,53 +70,53 @@ values:
         // Kubernetes scrape targets using modules
         module.git "scrape_kubelet_cadvisor" {
           repository = "https://github.com/charlie-haley/agent-modules.git"
-          revision   = "main"
+          revision = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet-cadvisor.river"
 
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
             job_label = "kubelet"
             git_repo = "https://github.com/charlie-haley/agent-modules.git"
-            git_rev = "main"
+            git_rev = "feat/add-job-labels"
           }
         }
 
         module.git "scrape_kubelet" {
           repository = "https://github.com/charlie-haley/agent-modules.git"
-          revision   = "main"
+          revision = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet.river"
 
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
             job_label = "kubelet"
             git_repo = "https://github.com/charlie-haley/agent-modules.git"
-            git_rev = "main"
+            git_rev = "feat/add-job-labels"
           }
         }
 
         module.git "scrape_kubelet_probes" {
           repository = "https://github.com/charlie-haley/agent-modules.git"
-          revision   = "main"
+          revision = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet-probes.river"
 
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
             job_label = "kubelet"
             git_repo = "https://github.com/charlie-haley/agent-modules.git"
-            git_rev = "main"
+            git_rev = "feat/add-job-labels"
           }
         }
 
         module.git "scrape_kube_apiserver" {
           repository = "https://github.com/charlie-haley/agent-modules.git"
-          revision   = "main"
+          revision = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kube-apiserver.river"
 
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
             job_label = "apiserver"
             git_repo = "https://github.com/charlie-haley/agent-modules.git"
-            git_rev = "main"
+            git_rev = "feat/add-job-labels"
           }
         }
 
