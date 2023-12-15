@@ -50,7 +50,7 @@ values:
       providers:
         - name: default
           orgId: 1
-          folder: ""
+          folder: Default
           type: file
           disableDeletion: false
           editable: true
@@ -219,5 +219,3 @@ values:
     size: 10Gi
     accessModes:
       - ReadWriteOnce
-  podAnnotations:
-    configmap.reloader.stakater.com/reload: grafana

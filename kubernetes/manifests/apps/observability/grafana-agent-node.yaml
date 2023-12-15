@@ -52,7 +52,7 @@ values:
         prometheus.scrape "node" {
           targets    = prometheus.exporter.unix.node.targets
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
-          job_name = "node_exporter"
+          job_name = "node-exporter"
         }
 
         prometheus.remote_write "mimir_metrics" {

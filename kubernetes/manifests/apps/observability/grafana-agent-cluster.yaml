@@ -44,7 +44,7 @@ values:
             {"__address__" = "zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9100"},
           ]
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
-          job_name = "node_exporter"
+          job_name = "node-exporter"
         }
 
         prometheus.scrape "telegraf" {
