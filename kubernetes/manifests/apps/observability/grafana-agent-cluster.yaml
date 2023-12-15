@@ -72,10 +72,10 @@ values:
           repository = "https://github.com/charlie-haley/agent-modules.git"
           revision   = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet-cadvisor.river"
-          job_label = "kubelet"
 
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+            job_label = "kubelet"
           }
         }
 
@@ -83,10 +83,10 @@ values:
           repository = "https://github.com/charlie-haley/agent-modules.git"
           revision   = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet.river"
-          job_label = "kubelet"
 
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+            job_label = "kubelet"
           }
         }
 
@@ -94,10 +94,10 @@ values:
           repository = "https://github.com/charlie-haley/agent-modules.git"
           revision   = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kubelet-probes.river"
-          job_label = "kubelet"
 
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+            job_label = "kubelet"
           }
         }
 
@@ -105,10 +105,10 @@ values:
           repository = "https://github.com/charlie-haley/agent-modules.git"
           revision   = "feat/add-job-labels"
           path = "modules/kubernetes/metrics/scrapes/kube-apiserver.river"
-          job_label = "apiserver"
 
           arguments {
             forward_to = [prometheus.remote_write.mimir_metrics.receiver]
+            job_label = "apiserver"
           }
         }
 
