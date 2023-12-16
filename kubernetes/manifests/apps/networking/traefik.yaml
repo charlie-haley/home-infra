@@ -21,15 +21,6 @@ values:
     enabled: true
     isDefaultClass: true
     fallbackApiVersion: v1
-  ingressRoute:
-    dashboard:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        cert-manager.io/cluster-issuer: letsencrypt-production
-      matchRule: Host(`traefik.${SECRET_DOMAIN}`)
-      tls:
-        secretName: ${SECRET_DOMAIN/./-}
   globalArguments:
     - --serverstransport.insecureskipverify=true
     - --providers.kubernetesingress.ingressclass=traefik
