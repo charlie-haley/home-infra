@@ -17,5 +17,5 @@ resources:
           protocol: TCP
           targetPort: 10259
       selector:
-        component: kube-scheduler
+        k8s-app: kube-scheduler
       type: ClusterIP

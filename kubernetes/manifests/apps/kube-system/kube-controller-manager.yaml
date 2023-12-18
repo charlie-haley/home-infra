@@ -17,5 +17,5 @@ resources:
           protocol: TCP
           targetPort: 10257
       selector:
-        component: kube-controller-manager
+        k8s-app: kube-controller-manager
       type: ClusterIP
