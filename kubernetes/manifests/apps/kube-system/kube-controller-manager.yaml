@@ -12,7 +12,7 @@ resources:
     spec:
       clusterIP: None
       ports:
-        - name: http-metrics
+        - name: https-metrics
           port: 10257
           protocol: TCP
           targetPort: 10257
