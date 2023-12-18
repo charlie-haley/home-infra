@@ -12,9 +12,9 @@ resources:
     spec:
       ports:
         - name: https-metrics
-          port: 10257
+          port: 10252
           protocol: TCP
-          targetPort: 10257
+          targetPort: 10252
       selector:
         k8s-app: kube-controller-manager
       type: ClusterIP
