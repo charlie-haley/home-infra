@@ -10,7 +10,6 @@ resources:
         jobLabel: kube-controller-manager
       namespace: kube-system
     spec:
-      clusterIP: None
       ports:
         - name: https-metrics
           port: 10257

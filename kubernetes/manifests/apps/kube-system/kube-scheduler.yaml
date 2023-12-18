@@ -10,7 +10,6 @@ resources:
         jobLabel: kube-scheduler
       namespace: kube-system
     spec:
-      clusterIP: None
       ports:
         - name: https-metrics
           port: 10259
