@@ -51,8 +51,20 @@ values:
             follow_redirects: true
             enable_http2: true
           webhook_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
-          title: '{{ template "discord.default.title" . }}'
-          message: '{{ template "discord.default.message" . }}'
+          title: |
+            FIRING: {{ .GroupLabels.SortedPairs.Values | join " " }}
+          message: |
+            {{ range .Alerts.Firing }}
+              Alert: **{{ printf "%.150s" .Annotations.summary }}** ({{ .Labels.severity }})
+              Description: {{ printf "%.150s" .Annotations.description }}
+              Alertname: {{ .Labels.alertname }}
+              Namespace: {{ .Labels.namespace }}
+              Service: {{ .Labels.service }}
+            {{ end }}
+
+            {{ if gt (len .Alerts.Resolved) 0 }}
+                Also {{ .Alerts.Resolved | len }} resolved alerts.
+            {{ end }}
   distributor:
     replicas: 1
   ingester:
