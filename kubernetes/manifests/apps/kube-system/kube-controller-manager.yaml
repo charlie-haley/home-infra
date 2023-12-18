@@ -1,0 +1,21 @@
+---
+# Service for kube-controller-manager, this is used for monitoring
+
+resources:
+  - kind: Service
+    metadata:
+      name: kube-controller-manager
+      labels:
+        app.kubernetes.io/name: kube-controller-manager
+        jobLabel: kube-controller-manager
+      namespace: kube-system
+    spec:
+      clusterIP: None
+      ports:
+        - name: http-metrics
+          port: 10257
+          protocol: TCP
+          targetPort: 10257
+      selector:
+        component: kube-controller-manager
+      type: ClusterIP
