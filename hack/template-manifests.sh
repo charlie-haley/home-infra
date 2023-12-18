@@ -127,7 +127,7 @@ EOF`
           printf "$res_kustomize_files" >> $kustomize_file
         else
           # Kustomization doesn't exist, create it and append resources
-          create_kustomize "$kustomize"
+          create_kustomize "$res_kustomize_files"
         fi
       fi
 
