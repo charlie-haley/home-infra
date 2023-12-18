@@ -2,7 +2,8 @@
 # Service for kube-controller-manager, this is used for monitoring
 
 resources:
-  - kind: Service
+  - apiVersion: v1
+    kind: Service
     metadata:
       name: kube-controller-manager
       labels:
