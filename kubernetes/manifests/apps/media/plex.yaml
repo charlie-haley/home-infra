@@ -60,7 +60,7 @@ values:
       enabled: true
       type: nfs
       server: narya.${SECRET_INTERNAL_DOMAIN}
-      path: /media
+      path: /mnt/data/media
       mountPath: /data
     transcode:
       enabled: true
