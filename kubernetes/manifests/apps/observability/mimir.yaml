@@ -76,6 +76,9 @@ values:
       mimirRules: true
     dashboards:
       enabled: true
+      annotations:
+        k8s-sidecar-target-directory: /tmp/dashboards/Mimir Dashboards
+        grafana_folder: "Mimir"
     serviceMonitor:
       enabled: true
       interval: 1m
