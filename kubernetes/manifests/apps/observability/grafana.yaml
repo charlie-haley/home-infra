@@ -128,23 +128,33 @@ values:
         url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/logs.json
         datasource: Prometheus
     kubernetes:
-      k8s-system-api-server:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
-        datasource: Prometheus
-      k8s-system-coredns:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
-        datasource: Prometheus
-      k8s-views-global:
+      kubernetes-api-server:
         url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
         datasource: Prometheus
-      k8s-views-namespaces:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
+      kubernetes-coredns:
+        # renovate: depName="Kubernetes / System / CoreDNS"
+        gnetId: 15762
+        revision: 13
         datasource: Prometheus
-      k8s-views-nodes:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
+      kubernetes-global:
+        # renovate: depName="Kubernetes / Views / Global"
+        gnetId: 15757
+        revision: 32
         datasource: Prometheus
-      k8s-views-pods:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+      kubernetes-namespaces:
+        # renovate: depName="Kubernetes / Views / Namespaces"
+        gnetId: 15758
+        revision: 28
+        datasource: Prometheus
+      kubernetes-nodes:
+        # renovate: depName="Kubernetes / Views / Nodes"
+        gnetId: 15759
+        revision: 22
+        datasource: Prometheus
+      kubernetes-pods:
+        # renovate: depName="Kubernetes / Views / Pods"
+        gNetId: 15760
+        revision: 24
         datasource: Prometheus
       kubernetes-volumes:
         # renovate: depName="K8s / Storage / Volumes / Cluster"
@@ -157,6 +167,7 @@ values:
       datasources:
         - name: Prometheus
           type: prometheus
+          uid: prometheus
           url: https://mimir.${SECRET_DOMAIN}/prometheus
           access: proxy
           isDefault: true
@@ -164,6 +175,7 @@ values:
             prometheusType: Mimir
         - name: Loki
           type: loki
+          uid: loki
           access: proxy
           url: https://loki.${SECRET_DOMAIN}
         - name: Alertmanager
