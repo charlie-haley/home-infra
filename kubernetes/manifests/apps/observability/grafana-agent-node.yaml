@@ -59,6 +59,9 @@ values:
             endpoint {
                 url = "https://mimir.${SECRET_DOMAIN}/api/v1/push"
             }
+            external_labels = {
+              cluster = "vilya",
+            }
         }
 
         // Loki config
@@ -148,5 +151,8 @@ values:
         loki.write "loki" {
           endpoint {
             url = "https://loki.${SECRET_DOMAIN}/loki/api/v1/push"
+          }
+          external_labels = {
+              cluster = "vilya",
           }
         }
