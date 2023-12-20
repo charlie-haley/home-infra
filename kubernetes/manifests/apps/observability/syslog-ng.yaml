@@ -16,6 +16,13 @@ values:
             command:
               - -f
               - /config/config.yml
+          probes:
+            liveness:
+              type: UDP
+            readiness:
+              type: UDP
+            startup:
+              type: UDP
   service:
     main:
       type: LoadBalancer
