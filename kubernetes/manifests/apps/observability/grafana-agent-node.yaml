@@ -72,11 +72,11 @@ values:
         // Loki config
 
         // Syslog receiver
-        loki.source.syslog "LABEL" {
+        loki.source.syslog "syslog" {
           listener {
             address = "0.0.0.0:51414"
             labels = {
-              receiver = "syslog"
+              receiver = "syslog",
             }
           }
 
