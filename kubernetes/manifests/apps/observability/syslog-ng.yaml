@@ -45,10 +45,6 @@ values:
           @version: 4.5
           @include "scl.conf"
 
-          source s_local {
-            internal();
-          };
-
           source s_network_udp {
             network(
               port(514)
@@ -65,19 +61,12 @@ values:
             );
           };
 
-          filter f_syslconn {
-            not match("Syslog connection accepted;" type("string"));
-            not match("Syslog connection closed;" type("string"));
-          };
-
           destination d_loki {
             syslog("grafana-agent-node.observability.svc.cluster.local" transport("udp") port("51414"));
           };
 
           log {
-            source(s_local);
             source(s_network_udp);
             source(s_network_tcp);
-            filter(f_syslconn);
             destination(d_loki);
           };
