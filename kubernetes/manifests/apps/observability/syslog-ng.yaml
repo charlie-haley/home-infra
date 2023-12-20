@@ -1,0 +1,52 @@
+---
+helm:
+  repo: https://bjw-s.github.io/helm-charts
+  chart: app-template
+  version: 1.5.1
+
+values:
+  controllers:
+    main:
+      type: deployment
+      containers:
+        main:
+          image:
+            repository: balabit/syslog-ng
+            tag: 4.5.0
+  service:
+    main:
+      type: LoadBalancer
+      annotations:
+        "io.cilium/lb-ipam-ips": "192.168.2.15"
+      ports:
+        http:
+          port: 51444
+  persistence:
+    config:
+      enabled: true
+      type: configMap
+      name: syslog-ng-config
+  configMaps:
+    config:
+      enabled: true
+      data: |
+        @version: 3.29
+        @include "scl.conf"
+
+        source s_local {
+          internal();
+        };
+
+        source s_network {
+            default-network-drivers();
+        };
+
+        destination d_loki {
+          syslog("grafana-agent-node.observability.svc.cluster.local" transport("udp") port("51414"));
+        };
+
+        log {
+          source(s_local);
+          source(s_network);
+          destination(d_loki);
+        };

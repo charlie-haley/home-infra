@@ -176,25 +176,3 @@ values:
               cluster = "vilya",
           }
         }
-
-resources:
-  - apiVersion: v1
-    kind: Service
-    metadata:
-      name: grafana-agent-syslog
-      namespace: observability
-      labels:
-        app.kubernetes.io/instance: grafana-agent-node
-        app.kubernetes.io/name: grafana-agent
-      annotations:
-        "io.cilium/lb-ipam-ips": "192.168.2.14"
-    spec:
-      type: LoadBalancer
-      selector:
-        app.kubernetes.io/instance: grafana-agent-node
-        app.kubernetes.io/name: grafana-agent
-      ports:
-        - name: "syslog"
-          port: 51414
-          targetPort: 51414
-          protocol: "UDP"
