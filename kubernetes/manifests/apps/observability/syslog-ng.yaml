@@ -56,8 +56,8 @@ values:
           };
 
           filter f_syslconn {
-            not_match("Syslog connection accepted;" type("string"));
-            not_match("Syslog connection closed;" type("string"));
+            not match("Syslog connection accepted;" type("string"));
+            not match("Syslog connection closed;" type("string"));
           };
 
           destination d_loki {
