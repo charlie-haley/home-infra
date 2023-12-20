@@ -75,8 +75,10 @@ values:
         loki.source.syslog "LABEL" {
           listener {
             address = "0.0.0.0:51414"
+            labels = {
+              receiver = "syslog"
+            }
           }
-          ...
 
           forward_to = [loki.write.loki.receiver]
         }
