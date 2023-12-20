@@ -50,9 +50,11 @@ values:
           };
 
           source s_network {
-              default-network-drivers(
-                flags(no-parse)
-              );
+            syslog(
+              udp-port(514)
+              transport("tls")
+              flags(no-parse)
+            );
           };
 
           filter f_syslconn {
