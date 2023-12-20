@@ -25,7 +25,7 @@ values:
       - name: "syslog"
         port: 51414
         targetPort: 51414
-        protocol: "UDP"
+        protocol: "TCP"
     mounts:
       varlog: true
       dockercontainers: true
@@ -75,6 +75,7 @@ values:
         loki.source.syslog "syslog" {
           listener {
             address = "0.0.0.0:51414"
+            protocol = "tcp"
             labels = {
               receiver = "syslog",
             }
@@ -195,4 +196,4 @@ resources:
         - name: "syslog"
           port: 51414
           targetPort: 51414
-          protocol: "UDP"
+          protocol: "TCP"
