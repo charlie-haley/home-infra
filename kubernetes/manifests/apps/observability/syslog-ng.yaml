@@ -13,11 +13,10 @@ values:
           image:
             repository: balabit/syslog-ng
             tag: 4.5.0
-            command:
-              - -d
-              - --no-caps
-              - -f
-              - /config/config.yml
+          command:
+            - --no-caps
+            - -f
+            - /config/config.yml
           probes:
             liveness:
               type: UDP
