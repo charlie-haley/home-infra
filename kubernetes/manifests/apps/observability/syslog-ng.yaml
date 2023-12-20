@@ -30,7 +30,7 @@ values:
         "io.cilium/lb-ipam-ips": "192.168.2.15"
       ports:
         http:
-          port: 51444
+          port: 514
   persistence:
     config:
       enabled: true
