@@ -42,7 +42,7 @@ values:
       enabled: true
       data:
         config.yml: |
-          @version: 3.29
+          @version: 4.5
           @include "scl.conf"
 
           source s_local {
@@ -50,7 +50,14 @@ values:
           };
 
           source s_network {
-              default-network-drivers();
+              default-network-drivers(
+                flags(no-parse)
+              );
+          };
+
+          filter f_syslconn {
+            not_match("Syslog connection accepted;" type("string"));
+            not_match("Syslog connection closed;" type("string"));
           };
 
           destination d_loki {
@@ -58,7 +65,7 @@ values:
           };
 
           log {
-            source(s_local);
             source(s_network);
+            filter(f_syslconn);
             destination(d_loki);
           };
