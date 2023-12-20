@@ -67,7 +67,7 @@ values:
       type: nfs
       server: narya.${SECRET_INTERNAL_DOMAIN}
       path: /mnt/data/media
-      mountPath: /data
+      mountPath: /nas
     incomplete:
       enabled: true
       type: emptyDir
