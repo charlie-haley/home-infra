@@ -49,10 +49,18 @@ values:
             internal();
           };
 
-          source s_network {
-            syslog(
-              udp-port(514)
-              transport("tls")
+          source s_network_udp {
+            network(
+              port(514)
+              transport("udp")
+              flags(no-parse)
+            );
+          };
+
+          source s_network_tcp {
+            network(
+              port(514)
+              transport("tcp")
               flags(no-parse)
             );
           };
@@ -67,7 +75,9 @@ values:
           };
 
           log {
-            source(s_network);
+            source(s_local);
+            source(s_network_udp);
+            source(s_network_tcp);
             filter(f_syslconn);
             destination(d_loki);
           };
