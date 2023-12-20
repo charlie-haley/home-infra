@@ -6,28 +6,33 @@ helm:
 
 values:
   controller:
-    type: 'daemonset'
+    type: "daemonset"
     volumes:
       extra:
-      - name: proc
-        hostPath:
-          path: /proc
-      - name: sys
-        hostPath:
-          path: /sys
-      - name: root
-        hostPath:
-          path: /
+        - name: proc
+          hostPath:
+            path: /proc
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: root
+          hostPath:
+            path: /
     tolerations:
       - operator: Exists
   agent:
+    extraPorts:
+      - name: "syslog"
+        port: 51414
+        targetPort: 51414
+        protocol: "UDP"
     mounts:
       varlog: true
       dockercontainers: true
       extra:
         - name: proc
           mountPath: /host/proc
-          readOnly:  true
+          readOnly: true
         - name: sys
           mountPath: /host/sys
           readOnly: true
@@ -35,7 +40,7 @@ values:
           mountPath: /host/root
           mountPropagation: HostToContainer
           readOnly: true
-    mode: 'flow'
+    mode: "flow"
     clustering:
       enabled: false
     configMap:
@@ -65,6 +70,17 @@ values:
         }
 
         // Loki config
+
+        // Syslog receiver
+        loki.source.syslog "LABEL" {
+          listener {
+            address = "0.0.0.0:51414"
+          }
+          ...
+
+          forward_to = [loki.write.loki.receiver]
+        }
+
         discovery.kubernetes "pods" {
           role = "pod"
           selectors {
@@ -156,3 +172,25 @@ values:
               cluster = "vilya",
           }
         }
+
+resources:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: grafana-agent-syslog
+      namespace: observability
+      labels:
+        app.kubernetes.io/instance: grafana-agent-node
+        app.kubernetes.io/name: grafana-agent
+      annotations:
+        "io.cilium/lb-ipam-ips": "192.168.2.14"
+    spec:
+      type: LoadBalancer
+      selector:
+        app.kubernetes.io/instance: grafana-agent-node
+        app.kubernetes.io/name: grafana-agent
+      ports:
+        - name: "syslog"
+          port: 51414
+          targetPort: 51414
+          protocol: "UDP"
