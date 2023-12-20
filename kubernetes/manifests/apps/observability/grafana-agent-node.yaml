@@ -76,6 +76,7 @@ values:
           listener {
             address = "0.0.0.0:51414"
             protocol = "udp"
+            use_rfc5424_message = true
             labels = {
               receiver = "syslog",
             }
