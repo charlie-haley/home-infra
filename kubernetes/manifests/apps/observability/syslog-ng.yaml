@@ -13,7 +13,7 @@ values:
           image:
             repository: balabit/syslog-ng
             tag: 4.5.0
-          command:
+          args:
             - --no-caps
             - -f
             - /config/config.yml
