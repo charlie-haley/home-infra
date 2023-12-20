@@ -1,0 +1,105 @@
+---
+name: grafana-agent
+runtime: yaml
+description: Pulumi project for deploying Grafana Agent to various different nodes
+outputs: {}
+
+resources:
+  docker-provider:
+    type: pulumi:providers:docker
+    properties:
+      host: ${host}
+
+  agent-image:
+    type: docker:RemoteImage
+    properties:
+      name: "docker.io/grafana/agent:v0.38.1"
+    options:
+      provider: ${docker-provider}
+
+  agent-container:
+    type: docker:Container
+    properties:
+      image: ${agent-image.imageId}
+      restart: always
+      pidMode: host
+      networkMode: host
+      envs:
+        - "AGENT_MODE=flow"
+      capabilities:
+        adds:
+          - SYS_TIME
+      mounts:
+        - type: bind
+          target: /host/proc
+          source: /proc
+          bindOptions:
+            propagation: rslave
+        - type: bind
+          target: /host/sys
+          source: /sys
+          bindOptions:
+            propagation: rslave
+          readOnly: true
+        - type: bind
+          target: /host/root
+          source: /
+          bindOptions:
+            propagation: rslave
+          readOnly: true
+      command:
+        - run
+        - --server.http.listen-addr=0.0.0.0:12345
+        - /config.river
+      uploads:
+        - file: /config.river
+          content: |
+            // Logs
+            local.file_match "log_files" {
+              path_targets = [{
+                __address__ = "localhost",
+                __path__    = "/var/log/*.log",
+              }]
+            }
+
+            loki.source.file "loki" {
+              targets    = local.file_match.log_files.targets
+              forward_to = [loki.write.loki.receiver]
+            }
+
+            loki.write "loki" {
+              endpoint {
+                url = "${logsEndpoint} "
+              }
+              external_labels = {
+                instance = "${instance}",
+              }
+            }
+
+            // Node exporter
+            prometheus.exporter.unix "node" {
+              procfs_path = "/host/proc"
+              sysfs_path = "/host/sys"
+              rootfs_path = "/host/root"
+              udev_data_path = "/host/root/run/udev/data"
+            }
+
+            prometheus.scrape "node" {
+              targets    = prometheus.exporter.unix.node.targets
+              forward_to = [prometheus.remote_write.mimir.receiver]
+              job_name = "node-exporter"
+            }
+
+            prometheus.remote_write "mimir" {
+              endpoint {
+                url = "${metricsEndpoint}"
+              }
+              external_labels = {
+                instance = "${instance}",
+              }
+            }
+
+    options:
+      provider: ${docker-provider}
+
+variables:
