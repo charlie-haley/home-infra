@@ -69,7 +69,7 @@ values:
   resources:
     requests:
       gpu.intel.com/i915: 1
-      cpu: 500m
+      cpu: 1000m
       memory: 3000Mi
     limits:
       gpu.intel.com/i915: 1
