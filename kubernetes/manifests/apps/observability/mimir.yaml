@@ -181,3 +181,7 @@ resources:
   # Monitoring mixins
   - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-prometheusRule.yaml
     256sum: 3738f316b6b12c83f3e025f0948a78db09c2f4b04abe680cf053391f9fb3ce9f
+  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-serviceMonitorKubeControllerManager.yaml
+    256sum: 37b9879c83302fa7ef6a68a322c41e629eb5d500178bea405a62cee6a3f720de
+  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-serviceMonitorKubeScheduler.yaml
+    256sum: e36c0481b9f92e6d1dc58fb9ff52f1ad049d47278e883e0bfb7e4022e77cd7d1
