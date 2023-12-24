@@ -116,6 +116,7 @@ resources:
           neighbors:
             - peerAddress: "${NETWORK_BGP_PEER}/32"
               peerASN: 64512
+              eBGPMultihopTTL: 2
   - apiVersion: "cilium.io/v2alpha1"
     kind: CiliumLoadBalancerIPPool
     metadata:
