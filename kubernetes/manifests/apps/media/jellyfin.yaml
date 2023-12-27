@@ -22,7 +22,7 @@ values:
       externalTrafficPolicy: Local
       ports:
         http:
-          port: 32400
+          port: 8906
   ingress:
     main:
       enabled: true
