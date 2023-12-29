@@ -23,6 +23,18 @@ values:
       mountPath: "/etc/ssh/pulumi"
 
 resources:
+  - apiVersion: source.toolkit.fluxcd.io/v1
+    kind: GitRepository
+    metadata:
+      name: home-infra
+    spec:
+      interval: 60m
+      ref:
+        branch: main
+      url: ssh://github.com/charlie-haley/home-infra
+      secretRef:
+        name: ssh-credentials
+
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
