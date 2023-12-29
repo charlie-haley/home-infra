@@ -1,0 +1,20 @@
+---
+helm:
+  repo: https://pulumi.github.io/pulumi-kubernetes-operator/
+  chart: pulumi-kubernetes-operator
+  version: 0.5.0
+
+values:
+  image:
+    repository: pulumi/pulumi-kubernetes-operator
+    tag: 1.14.0
+  serviceMontior:
+    enabled: true
+  extraVolumes:
+    - name: ssh-auth
+      secret:
+        secretName: pulumi-ssh-credentials
+  extraVolumeMounts:
+    - name: ssh-auth
+      readOnly: true
+      mountPath: "/etc/ssh/pulumi"

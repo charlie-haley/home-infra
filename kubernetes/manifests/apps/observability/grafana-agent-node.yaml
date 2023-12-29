@@ -55,9 +55,18 @@ values:
         }
 
         prometheus.scrape "node" {
-          targets    = prometheus.exporter.unix.node.targets
+          targets    = discovery.relabel.node.output
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
           job_name = "node-exporter"
+        }
+
+        discovery.relabel "node" {
+          targets    = prometheus.exporter.unix.node.targets
+
+          rule {
+            action = "labeldrop"
+            regex  = "job"
+          }
         }
 
         prometheus.remote_write "mimir_metrics" {
