@@ -51,7 +51,7 @@ values:
     config:
       enabled: true
       mountPath: /config
-      size: 5Gi
+      size: 15Gi
     dri:
       enabled: true
       type: hostPath
