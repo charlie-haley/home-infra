@@ -1,6 +1,6 @@
 ---
 helm:
-  repo: oci://ghcr.io/pulumi/helm-charts/pulumi-kubernetes-operator
+  repo: https://raw.githubusercontent.com/pulumi/pulumi-kubernetes-operator/gh-pages/
   chart: pulumi-kubernetes-operator
   version: 0.5.0
 
