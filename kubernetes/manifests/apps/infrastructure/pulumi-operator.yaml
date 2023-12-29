@@ -10,7 +10,7 @@ values:
     tag: 1.14.0
   serviceAccount:
     create: false
-    name: "pulumi-operator"
+    name: "pulumi-operator-pulumi-kubernetes-operator"
   extraVolumes:
     - name: ssh-auth
       secret:
