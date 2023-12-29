@@ -26,7 +26,7 @@ resources:
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
-      name: pulumi-operator
+      name: pulumi-operator-pulumi-kubernetes-operator
 
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
@@ -38,7 +38,7 @@ resources:
       name: pulumi-operator
     subjects:
       - kind: ServiceAccount
-        name: pulumi-operator
+        name: pulumi-operator-pulumi-kubernetes-operator
 
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
@@ -50,7 +50,7 @@ resources:
       name: pulumi-operator
     subjects:
       - kind: ServiceAccount
-        name: pulumi-operator
+        name: pulumi-operator-pulumi-kubernetes-operator
 
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
