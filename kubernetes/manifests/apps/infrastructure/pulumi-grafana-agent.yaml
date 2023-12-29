@@ -1,4 +1,7 @@
 ---
+dependsOn:
+  - name: infrastructure-pulumi-operator
+
 resources:
   - apiVersion: v1
     kind: Secret
