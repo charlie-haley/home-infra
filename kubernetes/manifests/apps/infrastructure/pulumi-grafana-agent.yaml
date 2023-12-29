@@ -21,7 +21,7 @@ resources:
           apiVersion: source.toolkit.fluxcd.io/v1
           kind: GitRepository
           name: home-infra
-          namespaces: flux-system
+          namespace: flux-system
         dir: pulumi/grafana-agent/
       destroyOnFinalize: true
       envRefs:
