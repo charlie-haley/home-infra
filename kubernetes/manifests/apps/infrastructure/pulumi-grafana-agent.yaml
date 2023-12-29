@@ -15,7 +15,7 @@ resources:
     metadata:
       name: narya-grafana-agent
     spec:
-      stack: home-infra/grafana-agent/dev
+      stack: home-infra/grafana-agent/narya
       fluxSource:
         sourceRef:
           apiVersion: source.toolkit.fluxcd.io/v1
