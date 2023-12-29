@@ -8,8 +8,11 @@ values:
   image:
     repository: pulumi/pulumi-kubernetes-operator
     tag: 1.14.0
-  serviceMontior:
+  serviceMonitor:
     enabled: true
+  serviceAccount:
+    create: false
+    name: "pulumi-operator"
   extraVolumes:
     - name: ssh-auth
       secret:
@@ -18,3 +21,118 @@ values:
     - name: ssh-auth
       readOnly: true
       mountPath: "/etc/ssh/pulumi"
+
+resources:
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: pulumi-operator
+
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: pulumi-operator
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: pulumi-operator
+    subjects:
+      - kind: ServiceAccount
+        name: pulumi-operator
+
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: pulumi-operator
+    rules:
+      - apiGroups:
+          - ""
+        resources:
+          - pods
+          - services
+          - services/finalizers
+          - endpoints
+          - persistentvolumeclaims
+          - events
+          - configmaps
+          - secrets
+        verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+      - apiGroups:
+          - apps
+        resources:
+          - deployments
+          - daemonsets
+          - replicasets
+          - statefulsets
+        verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+      - apiGroups:
+          - monitoring.coreos.com
+        resources:
+          - servicemonitors
+        verbs:
+          - get
+          - create
+      - apiGroups:
+          - source.toolkit.fluxcd.io
+        resources:
+          - gitrepositories
+        verbs:
+          - get
+          - list
+          - watch
+      - apiGroups:
+          - apps
+        resourceNames:
+          - pulumi-kubernetes-operator
+        resources:
+          - deployments/finalizers
+        verbs:
+          - update
+      - apiGroups:
+          - ""
+        resources:
+          - pods
+        verbs:
+          - get
+      - apiGroups:
+          - apps
+        resources:
+          - replicasets
+          - deployments
+        verbs:
+          - get
+      - apiGroups:
+          - pulumi.com
+        resources:
+          - "*"
+        verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+      - apiGroups:
+          - coordination.k8s.io
+        resources:
+          - leases
+        verbs:
+          - create
+          - get
+          - list
+          - update
