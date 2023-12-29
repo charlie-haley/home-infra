@@ -13,7 +13,7 @@ values:
     type: statefulset
   image:
     repository: ghcr.io/onedr0p/sonarr-develop
-    tag: 4.0.0.575
+    tag: 4.0.0.738
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
@@ -58,5 +58,5 @@ values:
       enabled: true
       type: nfs
       server: narya.${SECRET_INTERNAL_DOMAIN}
-      path: /media
+      path: /mnt/data/media
       mountPath: /data

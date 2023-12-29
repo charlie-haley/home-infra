@@ -2,7 +2,7 @@
 helm:
   repo: https://grafana.github.io/helm-charts
   chart: grafana
-  version: 7.0.17
+  version: 7.0.19
 
 dependsOn:
   - name: observability-grafana-agent-cluster
@@ -129,9 +129,7 @@ values:
         datasource: Prometheus
     kubernetes:
       kubernetes-api-server:
-        # renovate: depName="Kubernetes / System / API Server"
-        gnetId: 15761
-        revision: 14
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
         datasource: Prometheus
       kubernetes-coredns:
         # renovate: depName="Kubernetes / System / CoreDNS"
@@ -141,22 +139,22 @@ values:
       kubernetes-global:
         # renovate: depName="Kubernetes / Views / Global"
         gnetId: 15757
-        revision: 31
+        revision: 32
         datasource: Prometheus
       kubernetes-namespaces:
         # renovate: depName="Kubernetes / Views / Namespaces"
         gnetId: 15758
-        revision: 27
+        revision: 28
         datasource: Prometheus
       kubernetes-nodes:
         # renovate: depName="Kubernetes / Views / Nodes"
         gnetId: 15759
-        revision: 19
+        revision: 22
         datasource: Prometheus
       kubernetes-pods:
         # renovate: depName="Kubernetes / Views / Pods"
         gNetId: 15760
-        revision: 21
+        revision: 24
         datasource: Prometheus
       kubernetes-volumes:
         # renovate: depName="K8s / Storage / Volumes / Cluster"
@@ -169,22 +167,27 @@ values:
       datasources:
         - name: Prometheus
           type: prometheus
-          url: https://mimir.k3pi.xyz/prometheus
+          uid: prometheus
+          url: https://mimir.${SECRET_DOMAIN}/prometheus
           access: proxy
           isDefault: true
+          jsonData:
+            prometheusType: Mimir
         - name: Loki
           type: loki
+          uid: loki
           access: proxy
-          url: https://loki.k3pi.xyz
+          url: https://loki.${SECRET_DOMAIN}
         - name: Alertmanager
           type: alertmanager
           uid: alertmanager
-          url: https://mimir.k3pi.xyz
+          url: https://mimir.${SECRET_DOMAIN}
           jsonData:
             implementation: mimir
   sidecar:
     dashboards:
       enabled: true
+      defaultFolderName: "General"
       searchNamespace: ALL
       folderAnnotation: grafana_folder
       provider:

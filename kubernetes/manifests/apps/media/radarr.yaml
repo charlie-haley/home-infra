@@ -13,7 +13,7 @@ values:
     type: statefulset
   image:
     repository: ghcr.io/onedr0p/radarr
-    tag: 4.6.4.7568
+    tag: 5.2.6
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
@@ -58,5 +58,5 @@ values:
       enabled: true
       type: nfs
       server: narya.${SECRET_INTERNAL_DOMAIN}
-      path: /media
+      path: /mnt/data/media
       mountPath: /data

@@ -21,7 +21,7 @@ values:
       sabnzbd.${SECRET_DOMAIN}
   image:
     repository: ghcr.io/onedr0p/sabnzbd
-    tag: 4.0.3
+    tag: 4.1.0
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
@@ -52,10 +52,10 @@ values:
             - sabnzbd.${SECRET_DOMAIN}
   resources:
     requests:
-      cpu: 500m
+      cpu: 600m
       memory: 256Mi
     limits:
-      cpu: 800m
+      cpu: 1200m
       memory: 1024Mi
   persistence:
     config:
@@ -66,7 +66,7 @@ values:
       enabled: true
       type: nfs
       server: narya.${SECRET_INTERNAL_DOMAIN}
-      path: /media
+      path: /mnt/data/media
       mountPath: /data
     incomplete:
       enabled: true

@@ -22,6 +22,9 @@ values:
           endpoint {
             url = "https://mimir.${SECRET_DOMAIN}/api/v1/push"
           }
+          external_labels = {
+            cluster = "vilya",
+          }
         }
 
         // This is needed due to the prometheus mixins.
@@ -31,6 +34,7 @@ values:
           }
           external_labels = {
             metrics_path = "/metrics",
+            cluster = "vilya",
           }
         }
 

@@ -21,6 +21,11 @@ values:
     tolerations:
       - operator: Exists
   agent:
+    extraPorts:
+      - name: "syslog"
+        port: 51414
+        targetPort: 51414
+        protocol: "UDP"
     mounts:
       varlog: true
       dockercontainers: true
@@ -68,9 +73,27 @@ values:
             endpoint {
                 url = "https://mimir.${SECRET_DOMAIN}/api/v1/push"
             }
+            external_labels = {
+              cluster = "vilya",
+            }
         }
 
         // Loki config
+
+        // Syslog receiver
+        loki.source.syslog "syslog" {
+          listener {
+            address = "0.0.0.0:51414"
+            protocol = "udp"
+            use_rfc5424_message = true
+            labels = {
+              receiver = "syslog",
+            }
+          }
+
+          forward_to = [loki.write.loki.receiver]
+        }
+
         discovery.kubernetes "pods" {
           role = "pod"
           selectors {
@@ -157,5 +180,8 @@ values:
         loki.write "loki" {
           endpoint {
             url = "https://loki.${SECRET_DOMAIN}/loki/api/v1/push"
+          }
+          external_labels = {
+              cluster = "vilya",
           }
         }
