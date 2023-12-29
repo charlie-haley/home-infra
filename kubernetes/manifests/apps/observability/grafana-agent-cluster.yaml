@@ -48,30 +48,6 @@ values:
           }
         }
 
-        prometheus.scrape "node" {
-          targets = [
-            {"__address__" = "narya.${SECRET_INTERNAL_DOMAIN}:9100"},
-            {"__address__" = "zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9100"},
-          ]
-          forward_to = [prometheus.remote_write.mimir_metrics.receiver]
-          job_name = "node-exporter"
-        }
-
-        prometheus.scrape "telegraf" {
-          targets  = [
-            {"__address__" = "192.168.0.1:9273"},
-          ]
-          forward_to = [prometheus.remote_write.mimir_metrics.receiver]
-          job_name = "telegraf"
-        }
-
-        prometheus.scrape "mqtt" {
-          targets = [
-            {"__address__" = "zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:9641"},
-          ]
-          forward_to = [prometheus.remote_write.mimir_metrics.receiver]
-        }
-
         // Mimir rules integration
         mimir.rules.kubernetes "mimir_rules" {
           address = "https://mimir.${SECRET_DOMAIN}"

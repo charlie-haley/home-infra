@@ -6,18 +6,18 @@ helm:
 
 values:
   controller:
-    type: 'daemonset'
+    type: "daemonset"
     volumes:
       extra:
-      - name: proc
-        hostPath:
-          path: /proc
-      - name: sys
-        hostPath:
-          path: /sys
-      - name: root
-        hostPath:
-          path: /
+        - name: proc
+          hostPath:
+            path: /proc
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: root
+          hostPath:
+            path: /
     tolerations:
       - operator: Exists
   agent:
@@ -27,7 +27,7 @@ values:
       extra:
         - name: proc
           mountPath: /host/proc
-          readOnly:  true
+          readOnly: true
         - name: sys
           mountPath: /host/sys
           readOnly: true
@@ -35,7 +35,7 @@ values:
           mountPath: /host/root
           mountPropagation: HostToContainer
           readOnly: true
-    mode: 'flow'
+    mode: "flow"
     clustering:
       enabled: false
     configMap:
@@ -50,9 +50,18 @@ values:
         }
 
         prometheus.scrape "node" {
-          targets    = prometheus.exporter.unix.node.targets
+          targets    = discovery.relabel.node.output
           forward_to = [prometheus.remote_write.mimir_metrics.receiver]
           job_name = "node-exporter"
+        }
+
+        discovery.relabel "node" {
+          targets    = prometheus.exporter.unix.node.targets
+
+          rule {
+            action = "labeldrop"
+            regex  = "job"
+          }
         }
 
         prometheus.remote_write "mimir_metrics" {

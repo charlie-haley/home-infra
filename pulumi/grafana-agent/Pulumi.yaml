@@ -9,6 +9,11 @@ resources:
     type: pulumi:providers:docker
     properties:
       host: ${host}
+      sshOpts:
+        - "-o"
+        - "StrictHostKeyChecking=no"
+        - "-i"
+        - "/etc/ssh/pulumi/identity"
 
   agent-image:
     type: docker:RemoteImage
@@ -84,8 +89,17 @@ resources:
               udev_data_path = "/host/root/run/udev/data"
             }
 
-            prometheus.scrape "node" {
+            discovery.relabel "node" {
               targets    = prometheus.exporter.unix.node.targets
+
+              rule {
+                action = "labeldrop"
+                regex  = "job"
+              }
+            }
+
+            prometheus.scrape "node" {
+              targets    = discovery.relabel.node.output
               forward_to = [prometheus.remote_write.mimir.receiver]
               job_name = "node-exporter"
             }
@@ -101,5 +115,3 @@ resources:
 
     options:
       provider: ${docker-provider}
-
-variables:
