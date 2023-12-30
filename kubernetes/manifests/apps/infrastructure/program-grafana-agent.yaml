@@ -18,18 +18,16 @@ resources:
               - "StrictHostKeyChecking=no"
               - "-i"
               - "/etc/ssh/pulumi/identity"
-
         agent-image:
           type: docker:RemoteImage
           properties:
             name: "docker.io/grafana/agent:v0.38.1"
           options:
-            provider: ${docker-provider}
-
+            provider: $${docker-provider}
         agent-container:
           type: docker:Container
           properties:
-            image: ${agent-image.imageId}
+            image: $${agent-image.imageId}
             restart: always
             pidMode: host
             networkMode: host
@@ -78,10 +76,10 @@ resources:
 
                   loki.write "loki" {
                     endpoint {
-                      url = "${logsEndpoint} "
+                      url = "$${logsEndpoint} "
                     }
                     external_labels = {
-                      instance = "${instance}",
+                      instance = "$${instance}",
                     }
                   }
 
@@ -110,12 +108,11 @@ resources:
 
                   prometheus.remote_write "mimir" {
                     endpoint {
-                      url = "${metricsEndpoint}"
+                      url = "$${metricsEndpoint}"
                     }
                     external_labels = {
-                      instance = "${instance}",
+                      instance = "$${instance}",
                     }
                   }
-
           options:
-            provider: ${docker-provider}
+            provider: $${docker-provider}
