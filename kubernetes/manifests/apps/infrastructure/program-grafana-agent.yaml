@@ -34,7 +34,6 @@ resources:
             usernsMode: host
             groupAdds:
               - adm
-              - systemd-journal
             envs:
               - "AGENT_MODE=flow"
               # This can also be removed once the content is no longer b64 encoded. See below for further comments.
