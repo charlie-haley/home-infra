@@ -30,6 +30,7 @@ resources:
             image: $${agent-image.imageId}
             restart: always
             pidMode: host
+            privileged: true
             networkMode: host
             envs:
               - "AGENT_MODE=flow"
