@@ -46,11 +46,13 @@ resources:
                 source: /var/log/journal
                 bindOptions:
                   propagation: rslave
+                readOnly: true
               - type: bind
                 target: /run/log/journal
                 source: /run/log/journal
                 bindOptions:
                   propagation: rslave
+                readOnly: true
               - type: bind
                 target: /host/proc
                 source: /proc
