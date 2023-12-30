@@ -30,8 +30,8 @@ resources:
             image: $${agent-image.imageId}
             restart: always
             pidMode: host
-            privileged: true
             networkMode: host
+            usernsMode: host
             envs:
               - "AGENT_MODE=flow"
               # This can also be removed once the content is no longer b64 encoded. See below for further comments.
