@@ -16,12 +16,8 @@ resources:
       name: narya-grafana-agent
     spec:
       stack: home-infra/grafana-agent/narya
-      fluxSource:
-        sourceRef:
-          apiVersion: source.toolkit.fluxcd.io/v1
-          kind: GitRepository
-          name: home-infra
-        dir: pulumi/grafana-agent/
+      programRef:
+        name: grafana-agent
       destroyOnFinalize: true
       envRefs:
         PULUMI_ACCESS_TOKEN:
