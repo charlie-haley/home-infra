@@ -33,9 +33,10 @@ resources:
             networkMode: host
             envs:
               - "AGENT_MODE=flow"
-              - "LOG_ENDPOINT=${logsEndpoint}"
-              - "METRICS_ENDPOINT=${metricsEndpoint}"
-              - "INSTANCE=${instance}"
+              # This can also be removed once the content is no longer b64 encoded. See below for further comments.
+              - "LOG_ENDPOINT=$${logsEndpoint}"
+              - "METRICS_ENDPOINT=$${metricsEndpoint}"
+              - "INSTANCE=$${instance}"
             capabilities:
               adds:
                 - SYS_TIME
