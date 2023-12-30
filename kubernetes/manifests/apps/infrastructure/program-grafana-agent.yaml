@@ -12,7 +12,7 @@ resources:
         docker-provider:
           type: pulumi:providers:docker
           properties:
-            host: ${host}
+            host: $${host}
             sshOpts:
               - "-o"
               - "StrictHostKeyChecking=no"
