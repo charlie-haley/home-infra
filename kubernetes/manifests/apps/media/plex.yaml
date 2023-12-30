@@ -5,15 +5,15 @@ helm:
   version: 1.5.1
 
 backup:
-  pvc: "jellyfin-config"
+  pvc: "plex-config"
 
 values:
   automountServiceAccountToken: false
   controller:
     type: statefulset
   image:
-    repository: ghcr.io/onedr0p/jellyfin
-    tag: 10.8.10
+    repository: ghcr.io/onedr0p/plex
+    tag: 1.32.7.7621-871adbd44
   env:
     TZ: Europe/London
   service:
@@ -22,7 +22,7 @@ values:
       externalTrafficPolicy: Local
       ports:
         http:
-          port: 8096
+          port: 32400
   ingress:
     main:
       enabled: true
@@ -31,14 +31,14 @@ values:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
-        - host: jellyfin.${SECRET_DOMAIN}
+        - host: plex.${SECRET_DOMAIN}
           paths:
             - path: /
               pathType: Prefix
       tls:
-        - secretName: jellyfin-tls
+        - secretName: plex-tls
           hosts:
-            - jellyfin.${SECRET_DOMAIN}
+            - plex.${SECRET_DOMAIN}
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
