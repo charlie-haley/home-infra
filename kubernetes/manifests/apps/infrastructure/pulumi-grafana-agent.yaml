@@ -27,6 +27,6 @@ resources:
             key: PULUMI_ACCESS_TOKEN
       config:
         grafana-agent:host: "ssh://pulumi@narya:22"
-        grafana-agent:instance: "narya"
+        grafana-agent:instance: "narya.${SECRET_INTERNAL_DOMAIN}"
         grafana-agent:metricsEndpoint: "https://mimir.${SECRET_DOMAIN}/api/v1/push"
         grafana-agent:logsEndpoint: "https://loki.${SECRET_DOMAIN}/api/v1/push"
