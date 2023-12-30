@@ -29,7 +29,6 @@ resources:
           properties:
             image: $${agent-image.imageId}
             restart: always
-            user: 1001:1001
             pidMode: host
             networkMode: host
             envs:
