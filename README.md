@@ -34,7 +34,7 @@ I run a bare metal cluster provisioned using [Talos Linux](https://www.talos.dev
 I use Flux to manage deployments to the cluster, everything that is deployed to my cluster is defined as YAML files in the `kubernetes/manifests/` directory.
 
 ```
-├── apps                # Apps deployed to the cluster
+├── manifests                # Manifests deployed to the cluster
 │   ├── cert-manager      # The namespace for all the files in the directory to be deployed to
 │   ├── home
 │   └── storage
