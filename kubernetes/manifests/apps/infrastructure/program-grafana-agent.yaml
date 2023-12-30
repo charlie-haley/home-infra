@@ -42,8 +42,13 @@ resources:
                 - SYS_TIME
             mounts:
               - type: bind
-                target: /run/systemd/journal/socket
-                source: /run/systemd/journal/socket
+                target: /var/log/journal
+                source: /var/log/journal
+                bindOptions:
+                  propagation: rslave
+              - type: bind
+                target: /run/log/journal
+                source: /run/log/journal
                 bindOptions:
                   propagation: rslave
               - type: bind
