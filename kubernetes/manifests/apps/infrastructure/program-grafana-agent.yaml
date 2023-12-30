@@ -60,59 +60,10 @@ resources:
               - /config.river
             uploads:
               - file: /config.river
-                content: |
-                  // Logs
-                  local.file_match "log_files" {
-                    path_targets = [{
-                      __address__ = "localhost",
-                      __path__    = "/var/log/*.log",
-                    }]
-                  }
-
-                  loki.source.file "loki" {
-                    targets    = local.file_match.log_files.targets
-                    forward_to = [loki.write.loki.receiver]
-                  }
-
-                  loki.write "loki" {
-                    endpoint {
-                      url = "$${logsEndpoint} "
-                    }
-                    external_labels = {
-                      instance = "$${instance}",
-                    }
-                  }
-
-                  // Node exporter
-                  prometheus.exporter.unix "node" {
-                    procfs_path = "/host/proc"
-                    sysfs_path = "/host/sys"
-                    rootfs_path = "/host/root"
-                    udev_data_path = "/host/root/run/udev/data"
-                  }
-
-                  discovery.relabel "node" {
-                    targets    = prometheus.exporter.unix.node.targets
-
-                    rule {
-                      action = "labeldrop"
-                      regex  = "job"
-                    }
-                  }
-
-                  prometheus.scrape "node" {
-                    targets    = discovery.relabel.node.output
-                    forward_to = [prometheus.remote_write.mimir.receiver]
-                    job_name = "node-exporter"
-                  }
-
-                  prometheus.remote_write "mimir" {
-                    endpoint {
-                      url = "$${metricsEndpoint}"
-                    }
-                    external_labels = {
-                      instance = "$${instance}",
-                    }
-                  }
+                # This has to be base64 encoded for now due to a bug with YQ and multiline strings...
+                # https://github.com/mikefarah/yq/issues/566
+                # This can be removed once the templating logic is moved to a programming language
+                content_base64: |
+                  Ly8gTG9ncwpsb2NhbC5maWxlX21hdGNoICJsb2dfZmlsZXMiIHsKICBwYXRoX3RhcmdldHMgPSBbewogICAgX19hZGRyZXNzX18gPSAibG9jYWxob3N0IiwKICAgIF9fcGF0aF9fICAgID0gIi92YXIvbG9nLyoubG9nIiwKICB9XQp9Cgpsb2tpLnNvdXJjZS5maWxlICJsb2tpIiB7CiAgdGFyZ2V0cyAgICA9IGxvY2FsLmZpbGVfbWF0Y2gubG9nX2ZpbGVzLnRhcmdldHMKICBmb3J3YXJkX3RvID0gW2xva2kud3JpdGUubG9raS5yZWNlaXZlcl0KfQoKbG9raS53cml0ZSAibG9raSIgewogIGVuZHBvaW50IHsKICAgIHVybCA9ICIkJHtsb2dzRW5kcG9pbnR9IgogIH0KICBleHRlcm5hbF9sYWJlbHMgPSB7CiAgICBpbnN0YW5jZSA9ICIkJHtpbnN0YW5jZX0iLAogIH0KfQoKLy8gTm9kZSBleHBvcnRlcgpwcm9tZXRoZXVzLmV4cG9ydGVyLnVuaXggIm5vZGUiIHsKICBwcm9jZnNfcGF0aCA9ICIvaG9zdC9wcm9jIgogIHN5c2ZzX3BhdGggPSAiL2hvc3Qvc3lzIgogIHJvb3Rmc19wYXRoID0gIi9ob3N0L3Jvb3QiCiAgdWRldl9kYXRhX3BhdGggPSAiL2hvc3Qvcm9vdC9ydW4vdWRldi9kYXRhIgp9CgpkaXNjb3ZlcnkucmVsYWJlbCAibm9kZSIgewogIHRhcmdldHMgICAgPSBwcm9tZXRoZXVzLmV4cG9ydGVyLnVuaXgubm9kZS50YXJnZXRzCgogIHJ1bGUgewogICAgYWN0aW9uID0gImxhYmVsZHJvcCIKICAgIHJlZ2V4ICA9ICJqb2IiCiAgfQp9Cgpwcm9tZXRoZXVzLnNjcmFwZSAibm9kZSIgewogIHRhcmdldHMgICAgPSBkaXNjb3ZlcnkucmVsYWJlbC5ub2RlLm91dHB1dAogIGZvcndhcmRfdG8gPSBbcHJvbWV0aGV1cy5yZW1vdGVfd3JpdGUubWltaXIucmVjZWl2ZXJdCiAgam9iX25hbWUgPSAibm9kZS1leHBvcnRlciIKfQoKcHJvbWV0aGV1cy5yZW1vdGVfd3JpdGUgIm1pbWlyIiB7CiAgZW5kcG9pbnQgewogICAgdXJsID0gIiQke21ldHJpY3NFbmRwb2ludH0iCiAgfQogIGV4dGVybmFsX2xhYmVscyA9IHsKICAgIGluc3RhbmNlID0gIiQke2luc3RhbmNlfSIsCiAgfQp9Cg==
           options:
             provider: $${docker-provider}
