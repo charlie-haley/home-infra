@@ -29,8 +29,8 @@ resources:
           properties:
             image: $${agent-image.imageId}
             ports:
-              internal: 12345
-              external: 12345
+              - internal: 12345
+                external: 12345
             restart: always
             pidMode: host
             networkMode: host
