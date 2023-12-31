@@ -2,7 +2,7 @@
 helm:
   repo: https://prometheus-community.github.io/helm-charts
   chart: kube-state-metrics
-  version: 5.15.2
+  version: 5.15.3
 
 dependsOn:
   - name: observability-grafana-agent-cluster
