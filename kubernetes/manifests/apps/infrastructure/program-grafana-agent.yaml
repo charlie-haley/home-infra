@@ -29,6 +29,7 @@ resources:
           properties:
             image: $${agent-image.imageId}
             restart: always
+            privileged: true
             pidMode: host
             networkMode: host
             usernsMode: host
