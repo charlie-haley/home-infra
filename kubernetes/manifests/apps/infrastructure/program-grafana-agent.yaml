@@ -46,6 +46,9 @@ resources:
                 - SYS_TIME
             mounts:
               - type: bind
+                target: /var/run/docker.sock
+                source: /var/run/docker.sock
+              - type: bind
                 target: /host/proc
                 source: /proc
                 bindOptions:
