@@ -30,3 +30,24 @@ resources:
         grafana-agent:instance: "narya"
         grafana-agent:metricsEndpoint: "https://mimir.${SECRET_DOMAIN}/api/v1/push"
         grafana-agent:logsEndpoint: "https://loki.${SECRET_DOMAIN}/loki/api/v1/push"
+
+  - apiVersion: pulumi.com/v1
+    kind: Stack
+    metadata:
+      name: zigbeemqtt-grafana-agent
+    spec:
+      stack: charlie-haley/grafana-agent/zigbeemqtt
+      programRef:
+        name: grafana-agent
+      destroyOnFinalize: true
+      envRefs:
+        PULUMI_ACCESS_TOKEN:
+          type: Secret
+          secret:
+            name: pulumi-secrets
+            key: PULUMI_ACCESS_TOKEN
+      config:
+        grafana-agent:host: "ssh://pulumi@zigbeemqtt.${SECRET_INTERNAL_DOMAIN}:22"
+        grafana-agent:instance: "zigbeemqtt"
+        grafana-agent:metricsEndpoint: "https://mimir.${SECRET_DOMAIN}/api/v1/push"
+        grafana-agent:logsEndpoint: "https://loki.${SECRET_DOMAIN}/loki/api/v1/push"
