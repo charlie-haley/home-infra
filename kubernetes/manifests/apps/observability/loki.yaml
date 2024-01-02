@@ -52,7 +52,7 @@ values:
       ruler:
         enable_api: true
         enable_alertmanager_v2: true
-        alertmanager_url: http://mimir-alertmanager:9093
+        alertmanager_url: http://mimir.${SECRET_DOMAIN}/alertmanager
         storage:
           type: local
           local:
