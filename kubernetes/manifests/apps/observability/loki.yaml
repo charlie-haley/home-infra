@@ -52,7 +52,7 @@ values:
       ruler:
         enable_api: true
         enable_alertmanager_v2: true
-        alertmanager_url: http://prometheus-alertmanager:9093
+        alertmanager_url: http://mimir-alertmanager:9093
         storage:
           type: local
           local:
@@ -125,6 +125,8 @@ values:
           mountPath: /tmp/scratch
       extraVolumes:
         - name: rules
+          configMap:
+            name: loki-alerting-rules
         - name: scratch
           emptyDir: {}
   monitoring:
@@ -166,3 +168,89 @@ resources:
     spec:
       bucketName: loki-v3
       storageClassName: ceph-bucket
+
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: loki-alerting-rules
+    data:
+      loki-alerting-rules.yaml: |
+        ---
+        groups:
+          - name: smart
+            rules:
+              - alert: SMARTFailure
+                expr: |
+                  sum by (hostname) (count_over_time({hostname=~".+"} | json | _SYSTEMD_UNIT = "smartmontools.service" !~ "(?i)previous self-test completed without error" !~ "(?i)Prefailure" |~ "(?i)(error|fail)"[2m])) > 0
+                for: 2m
+                labels:
+                  severity: critical
+                  category: logs
+                annotations:
+                  instance: "{{ $labels.instance }}"
+                  summary: "{{ $labels.instance }} has reported SMART failures"
+
+          - name: zigbee2mqtt
+            rules:
+              - alert: ZigbeeMQTTUnreachable
+                expr: |
+                  sum(count_over_time({instance="zigbee2mqtt"} |~ "(?i)not connected to mqtt server"[2m])) > 0
+                for: 2m
+                labels:
+                  severity: critical
+                  category: logs
+                annotations:
+                  instance: "{{ $labels.instance }}"
+                  summary: "{{ $labels.instance }} is unable to reach MQTT"
+
+          - name: sshsuccess
+            rules:
+              - alert: SSHSuccessfulLoginDetected
+                expr: |
+                  {instance=~".+"} |~ "sshd.+session opened"
+                for: 2m
+                labels:
+                  severity: critical
+                  category: logs
+                annotations:
+                  instance: "{{ $labels.instance }}"
+                  summary: "SSH login detected on {{ $labels.instance }}"
+
+          - name: sshinvaliduser
+            rules:
+              - alert: SSHInvalidUserDetected
+                expr: |
+                  {instance=~".+"} |~ "sshd.+Invalid user"
+                for: 2m
+                labels:
+                  severity: critical
+                  category: logs
+                annotations:
+                  instance: "{{ $labels.instance }}"
+                  summary: "Invalid user attempted to login to {{ $labels.instance }}"
+
+          - name: sshfailure
+            rules:
+              - alert: SSHFailedLoginDetected
+                expr: |
+                  {instance=~".+"} |~ "sshd.+Failed password"
+                for: 2m
+                labels:
+                  severity: critical
+                  category: logs
+                annotations:
+                  instance: "{{ $labels.instance }}"
+                  summary: "Attempted SSH login on {{ $labels.instance }}"
+
+          - name: sshinternalattempt
+            rules:
+              - alert: InternalSSHAttemptBlocked
+                expr: |
+                  {instance=~"ash-nazg"} |~ "ipv4-USERS-TO-INFRA.+DPT=22 "
+                for: 2m
+                labels:
+                  severity: critical
+                  category: logs
+                annotations:
+                  instance: "{{ $labels.instance }}"
+                  summary: "Internal SSH attempt was made from a blocked network."
