@@ -202,7 +202,7 @@ resources:
                   instance: "{{ $labels.instance }}"
                   summary: "{{ $labels.instance }} is unable to reach MQTT"
 
-          - name: sshsuccess
+          - name: ssh
             rules:
               - alert: SSHSuccessfulLoginDetected
                 expr: |
@@ -215,8 +215,6 @@ resources:
                   instance: "{{ $labels.instance }}"
                   summary: "SSH login detected on {{ $labels.instance }}"
 
-          - name: sshinvaliduser
-            rules:
               - alert: SSHInvalidUserDetected
                 expr: |
                   {instance=~".+"} |~ "sshd.+Invalid user"
@@ -228,8 +226,6 @@ resources:
                   instance: "{{ $labels.instance }}"
                   summary: "Invalid user attempted to login to {{ $labels.instance }}"
 
-          - name: sshfailure
-            rules:
               - alert: SSHFailedLoginDetected
                 expr: |
                   {instance=~".+"} |~ "sshd.+Failed password"
@@ -241,8 +237,6 @@ resources:
                   instance: "{{ $labels.instance }}"
                   summary: "Attempted SSH login on {{ $labels.instance }}"
 
-          - name: sshinternalattempt
-            rules:
               - alert: InternalSSHAttemptBlocked
                 expr: |
                   {instance=~"ash-nazg"} |~ "ipv4-USERS-TO-INFRA.+DPT=22 "
