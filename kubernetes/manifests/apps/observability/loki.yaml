@@ -175,7 +175,6 @@ resources:
       name: loki-alerting-rules
     data:
       loki-alerting-rules.yaml: |
-        ---
         groups:
           - name: smart
             rules:
