@@ -30,6 +30,7 @@ resources:
         grafana-agent:instance: "narya"
         grafana-agent:metricsEndpoint: "https://mimir.${SECRET_DOMAIN}/api/v1/push"
         grafana-agent:logsEndpoint: "https://loki.${SECRET_DOMAIN}/loki/api/v1/push"
+        grafana-agent:dockerSocket: "/run/user/1001/docker.sock"
 
   - apiVersion: pulumi.com/v1
     kind: Stack
@@ -51,3 +52,4 @@ resources:
         grafana-agent:instance: "zigbeemqtt"
         grafana-agent:metricsEndpoint: "https://mimir.${SECRET_DOMAIN}/api/v1/push"
         grafana-agent:logsEndpoint: "https://loki.${SECRET_DOMAIN}/loki/api/v1/push"
+        grafana-agent:dockerSocket: "/var/run/docker.sock"
