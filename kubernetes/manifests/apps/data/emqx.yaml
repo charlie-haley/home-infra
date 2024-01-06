@@ -2,7 +2,7 @@
 helm:
   repo: https://repos.emqx.io/charts
   chart: emqx
-  version: 5.3.2
+  version: 5.4.0
 
 values:
   replicaCount: 1
