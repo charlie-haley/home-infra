@@ -32,11 +32,6 @@
             "manifests/.+\\.ya?ml$"
         ]
     },
-    "docker": {
-        "fileMatch": [
-            "manifests/.+\\.ya?ml$"
-        ]
-    },
     "ignoreDeps": [
         "ghcr.io/fluxcd/helm-controller",
         "ghcr.io/fluxcd/image-automation-controller",
