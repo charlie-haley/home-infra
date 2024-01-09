@@ -12,7 +12,7 @@ values:
     type: statefulset
   image:
     repository: ghcr.io/onedr0p/bazarr
-    tag: 1.2.3
+    tag: 1.4.0
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
