@@ -5,6 +5,7 @@
     "dependencyDashboard": true,
     "dependencyDashboardTitle": "Renovate Dashboard",
     "commitBody": "Signed-off-by: Charlie Haley <charlie-haley@users.noreply.github.com>",
+    "pinDigests": false
     "suppressNotifications": [
         "prIgnoreNotification"
     ],
