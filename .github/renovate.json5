@@ -55,7 +55,7 @@
                 "manifests/apps/.+\\.ya?ml$"
             ],
             "matchStrings": [
-                "image:\n *repository:(?<depName>.*?)\n *tag: (?<currentValue>.*)\n"
+                "image:\n*repository:(?<depName>.*?)\n *tag: (?<currentValue>.*)\n"
             ],
             "datasourceTemplate": "docker"
         },
