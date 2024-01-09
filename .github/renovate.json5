@@ -37,8 +37,6 @@
         ]
     },
     "ignoreDeps": [
-        "kubesphere/kubectl",
-        "containous/orbula",
         "ghcr.io/fluxcd/helm-controller",
         "ghcr.io/fluxcd/image-automation-controller",
         "ghcr.io/fluxcd/image-reflector-controller",
@@ -55,7 +53,16 @@
                 "helm:\n *repo:(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
             ],
             "datasourceTemplate": "helm"
-        }
+        },
+        {
+            "fileMatch": [
+                "manifests/apps/.+\\.ya?ml$"
+            ],
+            "matchStrings": [
+                "repository:\n *repository:(?<depName>.*?)\n *tag: (?<currentValue>.*)\n"
+            ],
+            "datasourceTemplate": "docker"
+        },
     ],
     "packageRules": [
         {
