@@ -2,7 +2,7 @@
 helm:
   repo: https://grafana.github.io/helm-charts
   chart: grafana
-  version: 7.0.19
+  version: 7.0.21
 
 dependsOn:
   - name: observability-grafana-agent-cluster
