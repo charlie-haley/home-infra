@@ -15,16 +15,43 @@ values:
             tag: v2.1.1
           probes:
             liveness:
-              type: UDP
+              custom: true
+              spec:
+                failureThreshold: 3
+                periodSeconds: 10
+                successThreshold: 1
+                httpGet:
+                  path: /metrics
+                  port: 8080
+                timeoutSeconds: 1
             readiness:
-              type: UDP
+              custom: true
+              spec:
+                failureThreshold: 3
+                periodSeconds: 10
+                successThreshold: 1
+                httpGet:
+                  path: /metrics
+                  port: 8080
+                timeoutSeconds: 1
             startup:
-              type: UDP
+              custom: true
+              spec:
+                failureThreshold: 3
+                periodSeconds: 10
+                successThreshold: 1
+                httpGet:
+                  path: /metrics
+                  port: 8080
+                timeoutSeconds: 1
   service:
     main:
       type: LoadBalancer
       annotations:
         "io.cilium/lb-ipam-ips": "192.168.2.20"
       ports:
-        http:
+        udp:
+          enabled: true
+          primary: true
+          protocol: UDP
           port: 6343
