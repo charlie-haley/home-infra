@@ -61,11 +61,11 @@ values:
     resources:
       mon:
         requests:
-          cpu: 600m
+          cpu: 500m
           memory: 1300Mi
       osd:
         requests:
-          cpu: 600m
+          cpu: 500m
           memory: 4Gi
   cephBlockPoolsVolumeSnapshotClass:
     enabled: true
