@@ -6,7 +6,7 @@ metadata:
   annotations:
     volsync.backube/privileged-movers: "true"
 # Bit of a hack until I sort out privileged in the templates
-{{- if or (eq $namespace "observability") (eq $namespace "storage") (eq $namespace "media") }}
+{{- if or (eq $namespace "observability") (eq $namespace "storage") (eq $namespace "media") (eq $namespace "data") }}
   labels:
     # These have to be set currently due to node exporter.
     pod-security.kubernetes.io/warn: privileged
