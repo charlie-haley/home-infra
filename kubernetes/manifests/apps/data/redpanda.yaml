@@ -16,18 +16,17 @@ values:
         "io.cilium/lb-ipam-ips": "192.168.2.30"
   console:
     ingress:
-      dashboard:
-        enabled: true
-        className: traefik
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          cert-manager.io/cluster-issuer: letsencrypt-production
-        hosts:
-          - redpanda.${SECRET_DOMAIN}
-        tls:
-          - secretName: redpanda-tls
-            hosts:
-              - redpanda.${SECRET_DOMAIN}
+      enabled: true
+      className: traefik
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      hosts:
+        - redpanda.${SECRET_DOMAIN}
+      tls:
+        - secretName: redpanda-tls
+          hosts:
+            - redpanda.${SECRET_DOMAIN}
   storage:
     persistentVolume:
       enabled: true
