@@ -23,6 +23,8 @@ values:
         - secretName: redpanda-tls
           hosts:
             - redpanda.${SECRET_DOMAIN}
+  console:
+    enabled: false
   storage:
     persistentVolume:
       enabled: true
