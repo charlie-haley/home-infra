@@ -5,6 +5,8 @@ helm:
   version: 5.7.9
 
 values:
+  statefulset:
+    replicas: 1
   external:
     service:
       type: LoadBalancer
