@@ -7,4 +7,4 @@ spec:
   interval: 30m
   url: oci://ghcr.io/charlie-haley/home-infra/manifests
   ref:
-    tag: "63b6baa-1705965997" # {"$imagepolicy": "flux-system:home-infra-manifests:tag"}
+    tag: "60d2375-1705966135" # {"$imagepolicy": "flux-system:home-infra-manifests:tag"}
