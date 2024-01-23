@@ -2,7 +2,7 @@
 helm:
   repo: https://grafana.github.io/helm-charts
   chart: grafana-agent
-  version: 0.31.0
+  version: 0.31.1
 
 values:
   controller:
