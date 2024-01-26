@@ -12,7 +12,7 @@ resources:
       config:
         input:
           generate:
-            mapping: root = 'woof'
+            mapping: 'root = "woof"'
             interval: 60s
             count: 0
         pipeline:
