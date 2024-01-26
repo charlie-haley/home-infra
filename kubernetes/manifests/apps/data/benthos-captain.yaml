@@ -1,0 +1,3 @@
+---
+kustomize:
+  - https://github.com/benthosdev/benthos-captain/config?ref=v0.1.0
