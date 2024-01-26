@@ -1,3 +1,4 @@
+---
 resources:
   - apiVersion: captain.benthos.dev/v1alpha1
     kind: Pipeline
