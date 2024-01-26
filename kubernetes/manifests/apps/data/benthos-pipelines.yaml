@@ -20,5 +20,5 @@ resources:
             - mapping: root = content().uppercase()
         output:
           kafka:
-            addresses: ["redpanda-broker.${SECRET_DOMAIN}:9094"]
+            addresses: ["redpanda-broker.${SECRET_DOMAIN}:31092"]
             topic: "test-topic"
