@@ -1,0 +1,22 @@
+resources:
+  - apiVersion: captain.benthos.dev/v1alpha1
+    kind: Pipeline
+    metadata:
+      name: pipeline-woof
+    spec:
+      replicas: 1
+      config:
+        input:
+          generate:
+            mapping: root = "woof"
+            interval: 60s
+            count: 0
+
+        pipeline:
+          processors:
+            - mapping: root = content().uppercase()
+
+        output:
+          kafka:
+            addresses: ["192.168.2.30:9094"]
+            topic: "test-topic"
