@@ -6,13 +6,13 @@ resources:
   - apiVersion: captain.benthos.dev/v1alpha1
     kind: Pipeline
     metadata:
-      name: pipeline-woof
+      name: woof
     spec:
       replicas: 1
       config:
         input:
           generate:
-            mapping: root = "woof"
+            mapping: root = 'woof'
             interval: 60s
             count: 0
         pipeline:
