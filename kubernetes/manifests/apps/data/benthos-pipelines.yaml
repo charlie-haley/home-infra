@@ -1,4 +1,7 @@
 ---
+dependsOn:
+  - name: data-benthos-captain
+
 resources:
   - apiVersion: captain.benthos.dev/v1alpha1
     kind: Pipeline
@@ -12,11 +15,9 @@ resources:
             mapping: root = "woof"
             interval: 60s
             count: 0
-
         pipeline:
           processors:
             - mapping: root = content().uppercase()
-
         output:
           kafka:
             addresses: ["192.168.2.30:9094"]
