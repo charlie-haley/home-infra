@@ -8,7 +8,9 @@ values:
   statefulset:
     replicas: 1
   external:
+    enabled: true
     type: LoadBalancer
+    domain: redpanda-broker.${SECRET_DOMAIN}
     addresses:
     - redpanda-0
     annotations:
