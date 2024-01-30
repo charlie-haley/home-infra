@@ -8,6 +8,15 @@ backup:
   pvc: "sabnzbd-config"
 
 values:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - vilya-w01
   automountServiceAccountToken: false
   controller:
     type: statefulset
@@ -52,7 +61,7 @@ values:
             - sabnzbd.${SECRET_DOMAIN}
   resources:
     requests:
-      cpu: 600m
+      cpu: 300m
       memory: 256Mi
     limits:
       memory: 1024Mi
