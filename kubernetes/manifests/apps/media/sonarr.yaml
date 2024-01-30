@@ -8,15 +8,6 @@ backup:
   pvc: "sonarr-config"
 
 values:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: kubernetes.io/hostname
-            operator: In
-            values:
-            - vilya-w01
   automountServiceAccountToken: false
   controller:
     type: statefulset
@@ -69,7 +60,3 @@ values:
       server: narya.${SECRET_INTERNAL_DOMAIN}
       path: /mnt/data/media
       mountPath: /data
-    incomplete:
-      enabled: true
-      type: emptyDir
-      mountPath: /incomplete

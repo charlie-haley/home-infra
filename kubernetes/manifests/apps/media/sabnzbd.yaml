@@ -8,15 +8,6 @@ backup:
   pvc: "sabnzbd-config"
 
 values:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: kubernetes.io/hostname
-            operator: In
-            values:
-            - vilya-w01
   automountServiceAccountToken: false
   controller:
     type: statefulset
