@@ -55,7 +55,7 @@ values:
       cpu: 300m
       memory: 256Mi
     limits:
-      memory: 1024Mi
+      memory: 4096Mi
   persistence:
     config:
       enabled: true
