@@ -2,7 +2,7 @@
 helm:
   repo: https://charts.redpanda.com
   chart: redpanda
-  version: 5.7.21
+  version: 5.7.22
 
 values:
   statefulset:
