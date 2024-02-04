@@ -273,6 +273,6 @@ func addKustomizationResource(app string, namespace string, dependsOn []fluxmeta
             },
         },
     }
-    ks.SetGroupVersionKind(schema.GroupVersionKind{Group: "kustomize.toolkit.fluxcd.io/v1", Version: "v1", Kind: "Kustomization"})
+    ks.SetGroupVersionKind(schema.GroupVersionKind{Group: "kustomize.toolkit.fluxcd.io", Version: "v1", Kind: "Kustomization"})
     frameworkResources = append(frameworkResources, ks)
 }
