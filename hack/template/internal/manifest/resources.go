@@ -41,6 +41,7 @@ func (m *Manifest) ProcessResources(app string, namespace string, appDir string)
                 return err
             }
 
+            // Validate checksum of remote resource
             sum := sha256.Sum256(buf.Bytes())
             if hex.EncodeToString(sum[:]) != *remote.Sha256 {
                 return errors.New("ERROR: checksum of remote file doesn't match")
