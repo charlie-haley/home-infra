@@ -178,7 +178,7 @@ func template(dir string) error {
     // Push files, this should move to code at some point to remove dependency on Flux CLI
     if publish {
         // Docker login, as with the above, this can be moved to code at some point to reduce manual system calls
-        out, err := exec.Command("bash", "-c", "echo" + pass + " | docker login " + registry + " -u " + user + " --password-stdin").CombinedOutput()
+        out, err := exec.Command("bash", "-c", "echo " + pass + " | docker login " + registry + " -u " + user + " --password-stdin").CombinedOutput()
         println(string(out))
         if err != nil {
             return err
