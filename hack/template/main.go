@@ -196,7 +196,7 @@ func template(dir string) error {
         os.Remove(frameworkFile)
 
         out, err = exec.Command("flux", "push", "artifact", "oci://"+image+"/manifests:"+tag, "--source", "https://github.com/charlie-haley/home-infra", "--revision", gitSha, "--path", outputDir).CombinedOutput()
-        println(out)
+        println(string(out))
         return err
     }
     return nil
