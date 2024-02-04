@@ -178,7 +178,7 @@ func template(dir string) error {
     // Push files, this should move to code at some point to remove dependency on Flux CLI
     if publish {
         // Docker login, as with the above, this can be moved to code at some point to reduce manual system calls
-        out, err := exec.Command("echo", pass, "|", "docker", "login", registry, "-u", user, "--password-stdin").CombinedOutput()
+        out, err := exec.Command("bash", "-c", "echo" + pass "| docker login" + registry + "-u" + user + "--password-stdin").CombinedOutput()
         println(string(out))
         if err != nil {
             return err
@@ -276,42 +276,3 @@ func addKustomizationResource(app string, namespace string, dependsOn []fluxmeta
     ks.SetGroupVersionKind(schema.GroupVersionKind{Group: "kustomize.toolkit.fluxcd.io/v1", Version: "v1", Kind: "Kustomization"})
     frameworkResources = append(frameworkResources, ks)
 }
-
-//
-// app: foo
-// namespace: flux-system
-//
-// sourceRef:
-//   kind: OCIRepository
-//   name: manifests
-
-// apiVersion: kustomize.toolkit.fluxcd.io/v1
-// kind: Kustomization
-// metadata:
-//   name: {{ $namespace }}-{{ $name }}
-//   namespace: {{ $.Values.namespace }}
-// spec:
-//   interval: 10m
-//   wait: true
-//   targetNamespace: {{ $namespace }}
-//   prune: true
-//   sourceRef:
-//     kind: {{ $.Values.sourceRef.kind }}
-//     name: {{ $.Values.sourceRef.name }}
-//     namespace: {{ $.Values.namespace }}
-//   path: ./{{ $namespace }}/{{ $name }}
-// {{- with $config.dependsOn }}
-//   dependsOn:
-//   {{- toYaml . | nindent 4 }}
-// {{- end }}
-//   postBuild:
-//     substituteFrom:
-//       - kind: Secret
-//         name: vilya-flux
-//       - kind: ConfigMap
-//         name: vilya-flux
-//   decryption:
-//     provider: sops
-//     secretRef:
-//       name: sops-age
-//
