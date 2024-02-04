@@ -1,5 +1,0 @@
-apiVersion: v2
-name: helmrelease
-description: A local chart designed to template a Flux Helm Release structure
-type: application
-version: 0.1.0

@@ -1,10 +1,10 @@
 ROOT_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 
 deploy:
-	docker run -e GIT_SHA=$(GITHUB_SHA) -e REGISTRY -e USER -e PASS -e IMAGE -e PUBLISH -v $(ROOT_DIR)kubernetes/manifests/apps/:/manifests/ -v $(ROOT_DIR)kubernetes/templates/:/templates/ $(IMAGE)/tools
+	docker run -e GIT_SHA=$(GITHUB_SHA) -e REGISTRY -e USER -e PASS -e IMAGE -e PUBLISH -v $(ROOT_DIR)kubernetes/manifests/apps/:/manifests/ -v $(ROOT_DIR)kubernetes/templates/:/templates/ $(IMAGE)/tools /mirdain template
 
 deploy-dry-run: build-image
-	docker run -e GIT_SHA=$(GITHUB_SHA) -v $(ROOT_DIR)kubernetes/manifests/apps/:/manifests/ -v $(ROOT_DIR)kubernetes/templates/:/templates/ $(IMAGE)/tools
+	docker run -e GIT_SHA=$(GITHUB_SHA) -v $(ROOT_DIR)kubernetes/manifests/apps/:/manifests/ -v $(ROOT_DIR)kubernetes/templates/:/templates/ $(IMAGE)/tools /mirdain template
 
 build-image:
 	docker build --tag $(IMAGE)/tools . -f "$(ROOT_DIR)hack/Dockerfile.tools"

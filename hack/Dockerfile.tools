@@ -1,10 +1,22 @@
+FROM golang:1.21 AS builder
+
+WORKDIR /template
+
+COPY ./hack/template/ ./
+RUN go mod download
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o /mirdain
+
 FROM alpine:3.19.1
+
+COPY --from=builder /mirdain /mirdain
 
 RUN apk add --update curl bash
 
 RUN curl -s https://fluxcd.io/install.sh | bash
 RUN apk add --update docker openrc
 RUN apk add --update kubectl helm yq --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
-COPY hack/template-manifests.sh ./
 
-CMD ["./template-manifests.sh"]
+RUN mkdir -p /output
+
+CMD ["/mirdain"]

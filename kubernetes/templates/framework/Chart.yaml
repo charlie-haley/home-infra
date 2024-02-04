@@ -1,5 +1,0 @@
-apiVersion: v2
-name: kustomizations
-description: A local chart designed to template a Flux Kustomziation structure.
-type: application
-version: 0.1.0
