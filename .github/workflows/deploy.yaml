@@ -6,7 +6,7 @@ on:
       - "main"
     paths-ignore:
       - "Dockerfile"
-      - "hack/template-manifests.sh"
+      - "hack/template/*"
       # Don't update when changes to OCI sources are made
       - "kubernetes/manifests/gitops/flux-system/sources/oci/framework.yaml"
       - "kubernetes/manifests/gitops/flux-system/sources/oci/manifests.yaml"
