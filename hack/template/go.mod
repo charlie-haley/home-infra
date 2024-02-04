@@ -7,7 +7,7 @@ require (
 	github.com/fluxcd/helm-controller/api v0.37.3
 	github.com/fluxcd/kustomize-controller/api v1.2.1
 	github.com/fluxcd/pkg/apis/meta v1.3.0
-	github.com/fluxcd/source-controller/api v1.2.3
+	github.com/fluxcd/source-controller/api v1.2.4
 	github.com/urfave/cli/v2 v2.27.1
 	k8s.io/api v0.29.1
 	k8s.io/apiextensions-apiserver v0.29.1
