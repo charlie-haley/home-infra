@@ -6,7 +6,7 @@ on:
       - "main"
     paths:
       - "hack/Dockerfile.tools"
-      - "hack/template
+      - "hack/template/"
 permissions:
   contents: read
   packages: write
