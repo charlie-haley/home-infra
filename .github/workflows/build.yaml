@@ -6,8 +6,7 @@ on:
       - "main"
     paths:
       - "hack/Dockerfile.tools"
-      - "hack/template-manifests.sh"
-
+      - "hack/template
 permissions:
   contents: read
   packages: write
