@@ -7,13 +7,14 @@ import (
     apiextensionsv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
     "k8s.io/apimachinery/pkg/runtime"
     "k8s.io/cli-runtime/pkg/printers"
+    helmv2 "github.com/fluxcd/helm-controller/api/v2beta2"
 )
 
 type Manifest struct {
     Helm        *Helm                                  `json:"helm,omitempty"`
     DependsOn   []fluxmetav1.NamespacedObjectReference `json:"dependsOn"`
     Values      *apiextensionsv1.JSON                  `json:"values,omitempty"`
-    ValuesFrom  *apiextensionsv1.JSON                  `json:"valuesFrom,omitempty"`
+    ValuesFrom  helmv2.ValuesReference               `json:"valuesFrom,omitempty"`
     Resources   []*apiextensionsv1.JSON                `json:"resources,omitempty"`
     Kustomize   []string                               `json:"kustomize,omitempty"`
     Backup      *Backup                                `json:"backup,omitempty"`
