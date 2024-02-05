@@ -10,12 +10,13 @@ import (
 )
 
 type Manifest struct {
-    Helm      *Helm                                  `json:"helm,omitempty"`
-    DependsOn []fluxmetav1.NamespacedObjectReference `json:"dependsOn"`
-    Values    *apiextensionsv1.JSON                  `json:"values,omitempty"`
-    Resources []*apiextensionsv1.JSON                `json:"resources,omitempty"`
-    Kustomize []string                               `json:"kustomize,omitempty"`
-    Backup    *Backup                                `json:"backup,omitempty"`
+    Helm        *Helm                                  `json:"helm,omitempty"`
+    DependsOn   []fluxmetav1.NamespacedObjectReference `json:"dependsOn"`
+    Values      *apiextensionsv1.JSON                  `json:"values,omitempty"`
+    ValuesFrom  *apiextensionsv1.JSON                  `json:"valuesFrom,omitempty"`
+    Resources   []*apiextensionsv1.JSON                `json:"resources,omitempty"`
+    Kustomize   []string                               `json:"kustomize,omitempty"`
+    Backup      *Backup                                `json:"backup,omitempty"`
 }
 
 type Helm struct {

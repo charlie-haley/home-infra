@@ -103,53 +103,53 @@ values:
 
 valuesFrom:
   - targetPath: mimir.structuredConfig.blocks_storage.s3.bucket_name
-    name: mimir-blocks-v2
+    name: mimir-blocks-v1
     kind: ConfigMap
     valuesKey: BUCKET_NAME
   - targetPath: mimir.structuredConfig.blocks_storage.s3.endpoint
-    name: mimir-blocks-v2
+    name: mimir-blocks-v1
     kind: ConfigMap
     valuesKey: BUCKET_HOST
   - targetPath: mimir.structuredConfig.blocks_storage.s3.access_key_id
-    name: mimir-blocks-v2
+    name: mimir-blocks-v1
     kind: Secret
     valuesKey: AWS_ACCESS_KEY_ID
   - targetPath: mimir.structuredConfig.blocks_storage.s3.secret_access_key
-    name: mimir-blocks-v2
+    name: mimir-blocks-v1
     kind: Secret
     valuesKey: AWS_SECRET_ACCESS_KEY
 
   - targetPath: mimir.structuredConfig.alertmanager_storage.s3.bucket_name
-    name: mimir-alertmanager-v2
+    name: mimir-alertmanager-v1
     kind: ConfigMap
     valuesKey: BUCKET_NAME
   - targetPath: mimir.structuredConfig.alertmanager_storage.s3.endpoint
-    name: mimir-alertmanager-v2
+    name: mimir-alertmanager-v1
     kind: ConfigMap
     valuesKey: BUCKET_HOST
   - targetPath: mimir.structuredConfig.alertmanager_storage.s3.access_key_id
-    name: mimir-alertmanager-v2
+    name: mimir-alertmanager-v1
     kind: Secret
     valuesKey: AWS_ACCESS_KEY_ID
   - targetPath: mimir.structuredConfig.alertmanager_storage.s3.secret_access_key
-    name: mimir-alertmanager-v2
+    name: mimir-alertmanager-v1
     kind: Secret
     valuesKey: AWS_SECRET_ACCESS_KEY
 
   - targetPath: mimir.structuredConfig.ruler_storage.s3.bucket_name
-    name: mimir-ruler-v2
+    name: mimir-ruler-v1
     kind: ConfigMap
     valuesKey: BUCKET_NAME
   - targetPath: mimir.structuredConfig.ruler_storage.s3.endpoint
-    name: mimir-ruler-v2
+    name: mimir-ruler-v1
     kind: ConfigMap
     valuesKey: BUCKET_HOST
   - targetPath: mimir.structuredConfig.ruler_storage.s3.access_key_id
-    name: mimir-ruler-v2
+    name: mimir-ruler-v1
     kind: Secret
     valuesKey: AWS_ACCESS_KEY_ID
   - targetPath: mimir.structuredConfig.ruler_storage.s3.secret_access_key
-    name: mimir-ruler-v2
+    name: mimir-ruler-v1
     kind: Secret
     valuesKey: AWS_SECRET_ACCESS_KEY
 
@@ -157,25 +157,25 @@ resources:
   - apiVersion: objectbucket.io/v1alpha1
     kind: ObjectBucketClaim
     metadata:
-      name: mimir-blocks-v2
+      name: mimir-blocks-v1
     spec:
-      bucketName: mimir-blocks-v2
+      bucketName: mimir-blocks-v1
       storageClassName: ceph-bucket
 
   - apiVersion: objectbucket.io/v1alpha1
     kind: ObjectBucketClaim
     metadata:
-      name: mimir-alertmanager-v2
+      name: mimir-alertmanager-v1
     spec:
-      bucketName: mimir-alertmanager-v2
+      bucketName: mimir-alertmanager-v
       storageClassName: ceph-bucket
 
   - apiVersion: objectbucket.io/v1alpha1
     kind: ObjectBucketClaim
     metadata:
-      name: mimir-ruler-v2
+      name: mimir-ruler-v1
     spec:
-      bucketName: mimir-ruler-v2
+      bucketName: mimir-ruler-v1
       storageClassName: ceph-bucket
 
   # Monitoring mixins

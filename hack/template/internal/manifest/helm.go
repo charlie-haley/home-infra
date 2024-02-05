@@ -33,6 +33,9 @@ func (m *Manifest) ProcessHelm(app string, namespace string, appDir string) erro
             Values: m.Values,
         },
     }
+    if m.ValuesFrom != nil {
+        hr.ValuesFrom = m.ValuesFrom
+    }
     hr.SetGroupVersionKind(schema.GroupVersionKind{Group: "helm.toolkit.fluxcd.io", Version: "v2beta2", Kind: "HelmRelease"})
 
     err := createFile(hr, "/helm-release.yaml", appDir)
