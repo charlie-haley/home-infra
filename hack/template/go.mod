@@ -1,6 +1,6 @@
 module github.com/charlie-haley/home-infra/template
 
-go 1.21.6
+go 1.21.7
 
 require (
 	github.com/backube/volsync v0.8.0
