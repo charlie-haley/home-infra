@@ -2,7 +2,7 @@
 helm:
   repo: https://raw.githubusercontent.com/pulumi/pulumi-kubernetes-operator/gh-pages/
   chart: pulumi-kubernetes-operator
-  version: 0.5.0
+  version: 0.6.0
 
 values:
   image:
