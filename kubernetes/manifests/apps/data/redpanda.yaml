@@ -5,6 +5,13 @@ helm:
   version: 5.7.23
 
 values:
+  auth:
+    sasl:
+      enabled: true
+      users:
+        - name: benthos
+          password: "${REDPANDA_PASS}"
+          mechanism: SCRAM-SHA-256
   statefulset:
     replicas: 1
   console:
