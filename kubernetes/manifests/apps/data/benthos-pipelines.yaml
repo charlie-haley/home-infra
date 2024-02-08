@@ -20,7 +20,7 @@ resources:
             - mapping: root = content().uppercase()
         output:
           kafka:
-            addresses: ["redpanda-0.redpanda.data.svc.cluster.local:9093"]
+            addresses: ["redpanda-0.redpanda.data.svc.cluster.local:8083"]
             topic: "test-topic"
             sasl:
               mechanism: SCRAM-SHA-256
