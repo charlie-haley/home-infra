@@ -22,7 +22,10 @@ resources:
           kafka:
             addresses: ["redpanda-0.redpanda.data.svc.cluster.local:9093"]
             topic: "test-topic"
+            tls:
+              enabled: true
+              skip_cert_verify: true
             sasl:
               mechanism: SCRAM-SHA-256
               user: "benthos-woof"
-              password: ${REDPANDA_PASS}
+              password: "${REDPANDA_PASS}"
