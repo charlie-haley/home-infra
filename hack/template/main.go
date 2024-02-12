@@ -219,14 +219,17 @@ func createFrameworkResources() error {
 
 func addNamespaceResource(namespace string) {
     annotations := map[string]string{"volsync.backube/privileged-movers": "true"}
+    labels := map[string]string{}
+
     if namespace == "data" || namespace == "media" || namespace == "storage" {
-        annotations["pod-security.kubernetes.io/warn"] = "privileged"
-        annotations["pod-security.kubernetes.io/enforce"] = "privileged"
+        labels["pod-security.kubernetes.io/warn"] = "privileged"
+        labels["pod-security.kubernetes.io/enforce"] = "privileged"
     }
     ns := &corev1.Namespace{
         ObjectMeta: metav1.ObjectMeta{
             Name:        namespace,
             Annotations: annotations,
+            Labels:      labels,
         },
     }
     ns.SetGroupVersionKind(schema.GroupVersionKind{Group: "", Version: "v1", Kind: "Namespace"})
