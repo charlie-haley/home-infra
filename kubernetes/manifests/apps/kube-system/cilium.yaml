@@ -51,7 +51,6 @@ values:
   loadBalancer:
     algorithm: maglev
     mode: dsr
-  tunnel: disabled
   endpointRoutes:
     enabled: true
   autoDirectNodeRoutes: true
