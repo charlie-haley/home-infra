@@ -15,9 +15,11 @@ values:
   cluster:
     name: vilya
     id: 1
+  bpf:
+    masquerade: true
   rollOutCiliumPods: true
   localRedirectPolicy: true
-  kubeProxyReplacement: strict
+  kubeProxyReplacement: true
   kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
   ipv4NativeRoutingCIDR: 10.244.0.0/16
   ipam:
@@ -57,6 +59,10 @@ values:
     enabled: false
   operator:
     rollOutPods: true
+    dashboards:
+      enabled: true
+      annotations:
+        grafana_folder: Cilium
     prometheus:
       enabled: true
       serviceMonitor:
@@ -79,6 +85,9 @@ values:
     relay:
       enabled: true
       rollOutPods: true
+      prometheus:
+        serviceMonitor:
+          enabled: true
     ui:
       enabled: true
       rollOutPods: true
