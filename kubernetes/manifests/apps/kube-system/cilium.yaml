@@ -22,7 +22,6 @@ values:
   kubeProxyReplacement: true
   enableRuntimeDeviceDetection: true
   routingMode: native
-  devices: enp+
   kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
   ipv4NativeRoutingCIDR: 10.244.0.0/16
   ipam:
