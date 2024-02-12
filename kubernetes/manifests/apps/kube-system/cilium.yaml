@@ -20,7 +20,6 @@ values:
   rollOutCiliumPods: true
   localRedirectPolicy: true
   kubeProxyReplacement: true
-  enableRuntimeDeviceDetection: true
   routingMode: native
   kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
   ipv4NativeRoutingCIDR: 10.244.0.0/16
