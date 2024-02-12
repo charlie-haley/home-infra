@@ -46,8 +46,8 @@ values:
     autoMount:
       enabled: false
     hostRoot: /sys/fs/cgroup
-  k8sServiceHost: 127.0.0.1
-  k8sServicePort: 7445
+  k8sServiceHost: 192.168.100.100
+  k8sServicePort: 6443
   loadBalancer:
     algorithm: maglev
     mode: dsr
