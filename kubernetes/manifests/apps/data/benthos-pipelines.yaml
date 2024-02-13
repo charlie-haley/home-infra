@@ -20,6 +20,8 @@ resources:
             - mapping: root = content().uppercase()
         output:
           kafka:
+            tls:
+              enabled: true
             addresses: ["redpanda-0.redpanda.data.svc.cluster.local:9093"]
             topic: "test-topic"
             sasl:
