@@ -6,7 +6,7 @@ helm:
 
 values:
   tls:
-    enabled: true
+    enabled: false
   statefulset:
     replicas: 1
   console:
