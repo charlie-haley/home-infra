@@ -5,8 +5,6 @@ helm:
   version: 5.7.23
 
 values:
-  statefulset:
-    replicas: 1
   console:
     ingress:
       enabled: true
