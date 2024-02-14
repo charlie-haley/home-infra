@@ -2,7 +2,7 @@
 helm:
   repo: https://piraeus.io/helm-charts/
   chart: snapshot-controller
-  version: 2.1.0
+  version: 2.1.1
 
 dependsOn:
   - name: observability-grafana-agent-cluster
