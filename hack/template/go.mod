@@ -11,7 +11,7 @@ require (
 	github.com/urfave/cli/v2 v2.27.1
 	k8s.io/api v0.29.1
 	k8s.io/apiextensions-apiserver v0.29.1
-	k8s.io/apimachinery v0.29.1
+	k8s.io/apimachinery v0.29.2
 	k8s.io/cli-runtime v0.29.1
 	sigs.k8s.io/kustomize/api v0.13.5-0.20230601165947-6ce0bf390ce3
 	sigs.k8s.io/yaml v1.4.0
