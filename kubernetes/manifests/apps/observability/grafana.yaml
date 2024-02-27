@@ -182,7 +182,7 @@ values:
             implementation: mimir
   sidecar:
     dashboards:
-      enabled: true
+      enabled: false
       searchNamespace: ALL
       folderAnnotation: grafana_folder
       provider:
