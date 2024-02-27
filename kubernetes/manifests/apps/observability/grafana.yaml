@@ -188,7 +188,7 @@ values:
       provider:
         foldersFromFilesStructure: true
     datasources:
-      enabled: true
+      enabled: false
       searchNamespace: ALL
   plugins:
     - natel-discrete-panel
