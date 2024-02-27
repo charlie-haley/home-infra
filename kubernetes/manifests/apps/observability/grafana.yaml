@@ -183,7 +183,6 @@ values:
   sidecar:
     dashboards:
       enabled: true
-      defaultFolderName: "General"
       searchNamespace: ALL
       folderAnnotation: grafana_folder
       provider:
