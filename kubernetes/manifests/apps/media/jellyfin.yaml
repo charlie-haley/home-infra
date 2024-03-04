@@ -16,6 +16,9 @@ values:
     tag: 10.8.11
   env:
     TZ: Europe/London
+    DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
+    JELLYFIN_FFmpeg__probesize: 50000000
+    JELLYFIN_FFmpeg__analyzeduration: 500000000
   service:
     main:
       type: LoadBalancer
@@ -52,10 +55,6 @@ values:
       enabled: true
       mountPath: /config
       size: 15Gi
-    dri:
-      enabled: true
-      type: hostPath
-      hostPath: /dev/dri/renderD128
     media:
       enabled: true
       type: nfs
