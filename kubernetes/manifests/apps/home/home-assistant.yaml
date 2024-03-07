@@ -12,7 +12,7 @@ values:
     type: statefulset
   image:
     repository: ghcr.io/home-assistant/home-assistant
-    tag: 2024.2.5
+    tag: 2024.3.0
   service:
     main:
       ports:
