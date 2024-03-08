@@ -2,7 +2,7 @@
 helm:
   repo: https://backube.github.io/helm-charts/
   chart: volsync
-  version: 0.8.0
+  version: 0.8.1
 
 dependsOn:
   - name: observability-grafana-agent-cluster
