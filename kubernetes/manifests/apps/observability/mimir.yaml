@@ -180,4 +180,4 @@ resources:
 
   # Monitoring mixins
   - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-prometheusRule.yaml
-    256sum: 706a4be79bccaa31ff38ff3d6f3cc5b7fbaede4e5fdcfe4de659fb9271a9c1a7
+    256sum: e86d1cf5203705df650a4ad1c527d90329602041f837e818425885a06a9822e9
