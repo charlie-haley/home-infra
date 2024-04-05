@@ -40,6 +40,8 @@ github.com/fluxcd/source-controller/api v1.2.3 h1:71mXv3Qg9HEhcpqOq1ObmoE+P/HuZN
 github.com/fluxcd/source-controller/api v1.2.3/go.mod h1:5gaIVVH7hgb8p3HKFp8P6hGmZEC8fKSt4EcrG3g5vZI=
 github.com/fluxcd/source-controller/api v1.2.4 h1:XjKTWhSSeLGsogWnTcLl5sUnyMlC5TKDbbBgP9SyJ5c=
 github.com/fluxcd/source-controller/api v1.2.4/go.mod h1:j3QSHpIPBP5sjaGIkVtsgWCx8JcOmcsutRmdJmRMOZg=
+github.com/fluxcd/source-controller/api v1.2.5 h1:MgGrOfPh7Grhl40GUM9lEs+lmgTx3hLAwI0MVqaJkQ8=
+github.com/fluxcd/source-controller/api v1.2.5/go.mod h1:j3QSHpIPBP5sjaGIkVtsgWCx8JcOmcsutRmdJmRMOZg=
 github.com/go-errors/errors v1.4.2 h1:J6MZopCL4uSllY1OfXM374weqZFFItUbrImctkmUxIA=
 github.com/go-errors/errors v1.4.2/go.mod h1:sIVyrIiJhuEF+Pj9Ebtd6P/rEYROXFi3BopGUQ5a5Og=
 github.com/go-logr/logr v1.3.0 h1:2y3SDp0ZXuc6/cjLSZ+Q3ir+QB9T/iG5yYRXqsagWSY=
