@@ -2,7 +2,7 @@
 helm:
   repo: https://charts.redpanda.com
   chart: redpanda
-  version: 5.7.38
+  version: 5.7.39
 
 values:
   tls:
