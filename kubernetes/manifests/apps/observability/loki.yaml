@@ -2,7 +2,7 @@
 helm:
   repo: https://grafana.github.io/helm-charts
   chart: loki
-  version: 5.47.2
+  version: 6.1.0
 
 dependsOn:
   - name: observability-grafana-agent-cluster
