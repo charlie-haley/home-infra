@@ -20,7 +20,6 @@ values:
         join_members: ["loki-memberlist"]
       limits_config:
         retention_period: 14d
-        enforce_metric_name: false
         reject_old_samples: true
         reject_old_samples_max_age: 168h
         max_cache_freshness_per_query: 10m
@@ -73,13 +72,6 @@ values:
         ring:
           kvstore:
             store: memberlist
-      compactor:
-        working_directory: /var/loki/boltdb-shipper-compactor
-        shared_store: s3
-        compaction_interval: 10m
-        retention_enabled: true
-        retention_delete_delay: 2h
-        retention_delete_worker_count: 150
       ingester:
         max_chunk_age: 1h
         lifecycler:
