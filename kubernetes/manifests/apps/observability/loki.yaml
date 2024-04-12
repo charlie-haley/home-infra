@@ -11,7 +11,7 @@ values:
   deploymentMode: SimpleScalable
   loki:
     chunksCache:
-    allocatedMemory: 4096
+      allocatedMemory: 2048
     structuredConfig:
       auth_enabled: false
       server:
