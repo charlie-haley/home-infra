@@ -8,32 +8,31 @@ dependsOn:
   - name: observability-grafana-agent-cluster
 
 values:
+  deploymentMode: SimpleScalable
   loki:
-    auth_enabled: false
     structuredConfig:
       auth_enabled: false
       server:
         log_level: info
         http_listen_port: 3100
         grpc_listen_port: 9095
-      memberlist:
-        join_members: ["loki-memberlist"]
+
       limits_config:
         retention_period: 14d
         allow_structured_metadata: false
         reject_old_samples: true
         reject_old_samples_max_age: 168h
-        split_queries_by_interval: 15m
+        split_queries_by_interval: 1h
         max_query_parallelism: 32
-        ingestion_rate_mb: 8
-        ingestion_burst_size_mb: 16
+        ingestion_rate_mb: 64
+        ingestion_burst_size_mb: 128
+        shard_streams:
+          enabled: true
 
       query_scheduler:
         max_outstanding_requests_per_tenant: 4096
       frontend:
         max_outstanding_per_tenant: 4096
-      query_range:
-        parallelise_shardable_queries: true
 
       schema_config:
         configs:
@@ -65,15 +64,10 @@ values:
           local:
             directory: /rules
         rule_path: /tmp/scratch
-        ring:
-          kvstore:
-            store: memberlist
-      distributor:
-        ring:
-          kvstore:
-            store: memberlist
+
       ingester:
         chunk_encoding: snappy
+
       analytics:
         reporting_enabled: false
   gateway:
@@ -96,12 +90,12 @@ values:
   write:
     replicas: 2
     persistence:
-      size: 10Gi
+      size: 20Gi
       storageClass: ceph-block
   read:
     replicas: 2
     persistence:
-      size: 10Gi
+      size: 20Gi
       storageClass: ceph-block
     extraVolumeMounts:
       - name: rules
@@ -112,7 +106,7 @@ values:
   backend:
     replicas: 2
     persistence:
-      size: 10Gi
+      size: 20Gi
       storageClass: ceph-block
       extraVolumeMounts:
         - name: rules
