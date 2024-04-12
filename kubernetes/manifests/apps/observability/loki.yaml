@@ -151,19 +151,23 @@ values:
     enabled: false
 
 valuesFrom:
-  - targetPath: loki.structuredConfig.common.storage.s3.bucketnames
+  - targetPath: loki.storage.s3.region
+    kind: ConfigMap
+    name: loki-v3
+    valuesKey: BUCKET_REGION
+  - targetPath: loki.storage.bucketNames.chunks
     kind: ConfigMap
     name: loki-v3
     valuesKey: BUCKET_NAME
-  - targetPath: loki.structuredConfig.common.storage.s3.endpoint
+  - targetPath: loki.storage.s3.endpoint
     kind: ConfigMap
     name: loki-v3
     valuesKey: BUCKET_HOST
-  - targetPath: loki.structuredConfig.common.storage.s3.access_key_id
+  - targetPath: loki.storage.s3.accessKeyId
     kind: Secret
     name: loki-v3
     valuesKey: AWS_ACCESS_KEY_ID
-  - targetPath: loki.structuredConfig.common.storage.s3.secret_access_key
+  - targetPath: loki.storage.s3.secretAccessKey
     kind: Secret
     name: loki-v3
     valuesKey: AWS_SECRET_ACCESS_KEY
