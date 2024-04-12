@@ -2,7 +2,7 @@
 helm:
   repo: https://traefik.github.io/charts
   chart: traefik
-  version: 27.0.1
+  version: 27.0.2
 
 dependsOn:
   - name: observability-grafana-agent-cluster
