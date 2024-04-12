@@ -23,7 +23,6 @@ values:
         allow_structured_metadata: false
         reject_old_samples: true
         reject_old_samples_max_age: 168h
-        max_cache_freshness_per_query: 10m
         split_queries_by_interval: 15m
         max_query_parallelism: 32
         ingestion_rate_mb: 8
@@ -38,8 +37,8 @@ values:
 
       schema_config:
         configs:
-          - from: "2022-01-11"
-            store: boltdb-shipper
+          - from: "2024-04-01"
+            store: tsdb
             object_store: s3
             schema: v13
             index:
@@ -74,11 +73,7 @@ values:
           kvstore:
             store: memberlist
       ingester:
-        max_chunk_age: 1h
-        lifecycler:
-          ring:
-            kvstore:
-              store: memberlist
+        chunk_encoding: snappy
       analytics:
         reporting_enabled: false
   gateway:
