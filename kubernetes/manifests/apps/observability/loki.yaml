@@ -9,9 +9,9 @@ dependsOn:
 
 values:
   deploymentMode: SimpleScalable
+  chunksCache:
+    allocatedMemory: 2048
   loki:
-    chunksCache:
-      allocatedMemory: 2048
     structuredConfig:
       auth_enabled: false
       server:
