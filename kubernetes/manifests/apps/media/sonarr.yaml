@@ -13,7 +13,7 @@ values:
     type: statefulset
   image:
     repository: ghcr.io/onedr0p/sonarr-develop
-    tag: 4.0.3.1486
+    tag: 4.0.4.1515
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
