@@ -28,6 +28,7 @@ values:
         ingestion_rate: 400000
         ingestion_burst_size: 8000000
         compactor_blocks_retention_period: 1y
+        out_of_order_time_window: 5m
   alertmanager:
     replicas: 1
     persistentVolume:
