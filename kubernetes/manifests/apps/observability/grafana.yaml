@@ -180,6 +180,7 @@ values:
           url: https://mimir.${SECRET_DOMAIN}
           jsonData:
             implementation: mimir
+            timeout: 60
   sidecar:
     dashboards:
       enabled: false
