@@ -12,7 +12,7 @@ values:
   controller:
     type: statefulset
   image:
-    repository: ghcr.io/onedr0p/jellyfin
+    repository: ghcr.io/jellyfin/jellyfin
     tag: 10.9.2
   env:
     TZ: Europe/London
