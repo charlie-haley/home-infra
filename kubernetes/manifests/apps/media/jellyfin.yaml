@@ -13,7 +13,7 @@ values:
     type: statefulset
   image:
     repository: ghcr.io/jellyfin/jellyfin
-    tag: 10.9.2
+    tag: 10.9.8
   env:
     TZ: Europe/London
     DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
