@@ -50,7 +50,7 @@ func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) er
 				Unlock:            "false",
 				PruneIntervalDays: &retainDays,
 				Repository:        resticRepo,
-				CacheCapacity:     resource.MustParse("5Gi"),
+				CacheCapacity:     &resource.MustParse("5Gi"),
 				Retain: &volsyncv1.ResticRetainPolicy{
 					Daily: &retainDays,
 				},
