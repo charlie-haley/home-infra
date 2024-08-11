@@ -5,6 +5,7 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/apimachinery/pkg/api/resource"
 )
 
 func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) error {
@@ -49,6 +50,7 @@ func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) er
 				Unlock:            "false",
 				PruneIntervalDays: &retainDays,
 				Repository:        resticRepo,
+				CacheCapacity:     resource.MustParse("5Gi"),
 				Retain: &volsyncv1.ResticRetainPolicy{
 					Daily: &retainDays,
 				},
