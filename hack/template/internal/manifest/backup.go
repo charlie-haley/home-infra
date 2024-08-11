@@ -46,7 +46,7 @@ func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) er
 				Schedule: &schedule,
 			},
 			Restic: &volsyncv1.ReplicationSourceResticSpec{
-				Unlock:            "true",
+				Unlock:            "false",
 				PruneIntervalDays: &retainDays,
 				Repository:        resticRepo,
 				Retain: &volsyncv1.ResticRetainPolicy{
