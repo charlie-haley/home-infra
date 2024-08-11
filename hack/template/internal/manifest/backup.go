@@ -35,6 +35,7 @@ func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) er
 
 	schedule := "0 3 * * *"
 	retainDays := int32(14)
+	cacheSize := resource.MustParse("5Gi")
 	rs := &volsyncv1.ReplicationSource{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:        app,
@@ -50,7 +51,7 @@ func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) er
 				Unlock:            "false",
 				PruneIntervalDays: &retainDays,
 				Repository:        resticRepo,
-				CacheCapacity:     &resource.MustParse("5Gi"),
+				CacheCapacity:     &cacheSize,
 				Retain: &volsyncv1.ResticRetainPolicy{
 					Daily: &retainDays,
 				},
