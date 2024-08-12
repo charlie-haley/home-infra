@@ -3,3 +3,6 @@ helm:
   repo: https://benthosdev.github.io/charts/
   chart: benthos-captain
   version: 0.0.1
+
+values:
+  replicas: 1
