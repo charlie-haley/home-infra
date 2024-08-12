@@ -169,7 +169,7 @@ resources:
     kind: ConfigMap
     metadata:
       name: loki-alerting-rules
-    binaryData:
+    data:
       loki-alerting-rules.yaml: |
         groups:
         - name: smart
