@@ -36,5 +36,6 @@ values:
         options: default
     metrics:
       port: 8082
-      expose: true
+      expose:
+        default: true
       exposedPort: 8082
