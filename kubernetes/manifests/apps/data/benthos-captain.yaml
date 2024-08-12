@@ -2,7 +2,7 @@
 helm:
   repo: https://benthosdev.github.io/charts/
   chart: benthos-captain
-  version: 0.0.1
+  version: 0.1.0
 
 values:
   replicas: 1
