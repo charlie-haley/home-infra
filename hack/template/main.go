@@ -224,6 +224,7 @@ func addNamespaceResource(namespace string) {
 	if namespace == "data" || namespace == "media" || namespace == "storage" || namespace == "observability" {
 		labels["pod-security.kubernetes.io/warn"] = "privileged"
 		labels["pod-security.kubernetes.io/enforce"] = "privileged"
+		labels["pod-security.kubernetes.io/audit"] = "privileged"
 	}
 	ns := &corev1.Namespace{
 		ObjectMeta: metav1.ObjectMeta{
