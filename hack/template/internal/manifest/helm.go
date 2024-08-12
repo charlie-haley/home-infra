@@ -20,7 +20,7 @@ func (m *Manifest) ProcessHelm(app string, namespace string, appDir string) erro
 			Interval: metav1.Duration{
 				Duration: 15 * time.Minute,
 			},
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart:   m.Helm.Chart,
 					Version: m.Helm.Version,
