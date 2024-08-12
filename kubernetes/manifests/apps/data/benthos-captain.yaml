@@ -1,3 +1,5 @@
 ---
-kustomize:
-  - https://github.com/benthosdev/benthos-captain/config/default?ref=v0.1.0
+helm:
+  repo: https://benthosdev.github.io/charts/
+  chart: benthos-captain
+  version: 0.0.1
