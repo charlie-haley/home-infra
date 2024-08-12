@@ -21,7 +21,7 @@ resources:
         output:
           kafka:
             tls:
-              enabled: false
+              enabled: true
             addresses: ["redpanda.data.svc.cluster.local:9092"]
             topic: "test-topic"
             sasl:
