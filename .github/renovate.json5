@@ -15,7 +15,7 @@
     "rebaseWhen": "conflicted",
     "kubernetes": {
         "fileMatch": [
-            "manifests/.+\\.yaml$"
+            "kubernetes/manifests/.+\\.yaml$"
         ],
         "ignorePaths": [
             "manifests/flux-system/",
@@ -24,12 +24,12 @@
     },
     "helm-values": {
         "fileMatch": [
-            "manifests/.+helm-release\\.yaml$"
+            "kubernetes/manifests/.+\\.yaml$"
         ]
     },
     "flux": {
         "fileMatch": [
-            "manifests/.+\\.ya?ml$"
+            "kubernetes/manifests/gitops/.+\\.ya?ml$"
         ]
     },
     "ignoreDeps": [
