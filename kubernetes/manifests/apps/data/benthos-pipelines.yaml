@@ -21,9 +21,8 @@ resources:
         output:
           kafka:
             tls:
-              enabled: true
-              skip_cert_verify: true
-            addresses: ["redpanda.data.svc.cluster.local:9093"]
+              enabled: false
+            addresses: ["redpanda.data.svc.cluster.local:9092"]
             topic: "test-topic"
             sasl:
               mechanism: SCRAM-SHA-256
