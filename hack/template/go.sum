@@ -22,6 +22,8 @@ github.com/fluxcd/pkg/apis/meta v1.5.0 h1:/G82d2Az5D9op3F+wJUpD8jw/eTV0suM6P7+cS
 github.com/fluxcd/pkg/apis/meta v1.5.0/go.mod h1:Y3u7JomuuKtr5fvP1Iji2/50FdRe5GcBug2jawNVkdM=
 github.com/fluxcd/source-controller/api v1.3.0 h1:Z5Lq0aJY87yg0cQDEuwGLKS60GhdErCHtsi546HUt10=
 github.com/fluxcd/source-controller/api v1.3.0/go.mod h1:+tfd0vltjcVs/bbnq9AlYR9AAHSVfM/Z4v4TpQmdJf4=
+github.com/fxamacker/cbor/v2 v2.7.0 h1:iM5WgngdRBanHcxugY4JySA0nk1wZorNOpTgCMedv5E=
+github.com/fxamacker/cbor/v2 v2.7.0/go.mod h1:pxXPTn3joSm21Gbwsv0w9OSA2y1HFR9qXEeXQVeNoDQ=
 github.com/go-errors/errors v1.5.1 h1:ZwEMSLRCapFLflTpT7NKaAc7ukJ8ZPEjzlxt8rPN8bk=
 github.com/go-errors/errors v1.5.1/go.mod h1:sIVyrIiJhuEF+Pj9Ebtd6P/rEYROXFi3BopGUQ5a5Og=
 github.com/go-logr/logr v1.4.2 h1:6pFjapn8bFcIbiKo3XT4j/BhANplGihG6tvd+8rYgrY=
@@ -89,6 +91,8 @@ github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsT
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/urfave/cli/v2 v2.27.4 h1:o1owoI+02Eb+K107p27wEX9Bb8eqIoZCfLXloLUSWJ8=
 github.com/urfave/cli/v2 v2.27.4/go.mod h1:m4QzxcD2qpra4z7WhzEGn74WZLViBnMpb1ToCAKdGRQ=
+github.com/x448/float16 v0.8.4 h1:qLwI1I70+NjRFUR3zs1JPUCgaCXSh3SW62uAKT1mSBM=
+github.com/x448/float16 v0.8.4/go.mod h1:14CWIYCyZA/cWjXOioeEpHeN/83MdbZDRQHoFcYsOfg=
 github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1 h1:gEOO8jv9F4OT7lGCjxCBTO/36wtF6j2nSip77qHd4x4=
 github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1/go.mod h1:Ohn+xnUBiLI6FVj/9LpzZWtj1/D6lUovWYBkxHVV3aM=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
@@ -147,6 +151,8 @@ k8s.io/apiextensions-apiserver v0.30.3 h1:oChu5li2vsZHx2IvnGP3ah8Nj3KyqG3kRSaKmi
 k8s.io/apiextensions-apiserver v0.30.3/go.mod h1:uhXxYDkMAvl6CJw4lrDN4CPbONkF3+XL9cacCT44kV4=
 k8s.io/apimachinery v0.30.3 h1:q1laaWCmrszyQuSQCfNB8cFgCuDAoPszKY4ucAjDwHc=
 k8s.io/apimachinery v0.30.3/go.mod h1:iexa2somDaxdnj7bha06bhb43Zpa6eWH8N8dbqVjTUc=
+k8s.io/apimachinery v0.31.0 h1:m9jOiSr3FoSSL5WO9bjm1n6B9KROYYgNZOb4tyZ1lBc=
+k8s.io/apimachinery v0.31.0/go.mod h1:rsPdaZJfTfLsNJSQzNHQvYoTmxhoOEofxtOsF3rtsMo=
 k8s.io/cli-runtime v0.30.3 h1:aG69oRzJuP2Q4o8dm+f5WJIX4ZBEwrvdID0+MXyUY6k=
 k8s.io/cli-runtime v0.30.3/go.mod h1:hwrrRdd9P84CXSKzhHxrOivAR9BRnkMt0OeP5mj7X30=
 k8s.io/client-go v0.30.3 h1:bHrJu3xQZNXIi8/MoxYtZBBWQQXwy16zqJwloXXfD3k=
