@@ -111,12 +111,17 @@ resources:
     metadata:
       name: bgp-cluster-config
     spec:
+      nodeSelector:
+        matchLabels:
+          kubernetes.io/os: "linux"
       bgpInstances:
-        - asn: 64513
-          routerID: "{{ .NodeIP }}"
-          exportPodCIDR: true
-          neighbors:
-            - peerConfigRef: 
+        - name: main-instance
+          localASN: 64513
+          peers:
+            - name: main-peer
+              peerASN: 64512
+              peerAddress: ${NETWORK_BGP_PEER}
+              peerConfigRef:
                 name: main-peer-config
 
   - apiVersion: cilium.io/v2alpha1
@@ -124,8 +129,12 @@ resources:
     metadata:
       name: main-peer-config
     spec:
-      peerAddress: "${NETWORK_BGP_PEER}/32"
-      peerASN: 64512
+      families:
+        - afi: ipv4
+          safi: unicast
+          advertisements:
+            matchLabels:
+              advertise: bgp
       gracefulRestart:
         enabled: true
         restartTimeSeconds: 120
@@ -133,20 +142,27 @@ resources:
   - apiVersion: cilium.io/v2alpha1
     kind: CiliumBGPAdvertisement
     metadata:
-      name: service-advertisement
+      name: service-advertisements
+      labels:
+        advertise: bgp
     spec:
-      prefixes:
-        - 192.168.2.0/24
-      serviceSelector:
-        matchExpressions:
-          - key: somekey
-            operator: NotIn
-            values: ["announce-all-services"]
+      advertisements:
+        - advertisementType: "Service"
+          service:
+            addresses:
+              - ExternalIP
+              - LoadBalancerIP
+          selector:
+            matchExpressions:
+              - key: somekey
+                operator: NotIn
+                values: ["announce-all-services"]
 
-  - apiVersion: "cilium.io/v2alpha1"
+  - apiVersion: cilium.io/v2alpha1
     kind: CiliumLoadBalancerIPPool
     metadata:
-      name: "blue-pool"
+      name: blue-pool
     spec:
-      cidrs:
+      blocks:
         - cidr: 192.168.2.0/24
+
