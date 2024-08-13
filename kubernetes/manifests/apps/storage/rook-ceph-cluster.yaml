@@ -2,7 +2,7 @@
 helm:
   repo: https://charts.rook.io/release
   chart: rook-ceph-cluster
-  version: v1.14.2
+  version: v1.14.9
 
 dependsOn:
   - name: observability-grafana-agent-cluster
