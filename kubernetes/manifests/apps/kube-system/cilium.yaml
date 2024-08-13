@@ -131,9 +131,9 @@ resources:
         restartTimeSeconds: 120
 
   - apiVersion: cilium.io/v2alpha1
-    kind: CiliumBGPAdvertisements
+    kind: CiliumBGPAdvertisement
     metadata:
-      name: service-advertisements
+      name: service-advertisement
     spec:
       prefixes:
         - 192.168.2.0/24
