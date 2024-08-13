@@ -10,6 +10,10 @@ dependsOn:
 values:
   deployment:
     replicas: 3
+  service:
+    type: LoadBalancer
+    annotations:
+      "io.cilium/lb-ipam-ips": "192.168.2.100"
   logs:
     general:
       format: json
