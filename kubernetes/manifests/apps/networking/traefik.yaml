@@ -13,7 +13,7 @@ values:
   service:
     type: LoadBalancer
     annotations:
-      "io.cilium/lb-ipam-ips": "192.168.2.100"
+      "iolbipam.cilium.io/ips": "192.168.2.100"
   logs:
     general:
       format: json
