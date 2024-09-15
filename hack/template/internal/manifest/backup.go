@@ -3,9 +3,9 @@ package manifest
 import (
 	volsyncv1 "github.com/backube/volsync/api/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
+	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
-	"k8s.io/apimachinery/pkg/api/resource"
 )
 
 func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) error {
@@ -48,7 +48,6 @@ func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) er
 				Schedule: &schedule,
 			},
 			Restic: &volsyncv1.ReplicationSourceResticSpec{
-				Unlock:            "false",
 				PruneIntervalDays: &retainDays,
 				Repository:        resticRepo,
 				CacheCapacity:     &cacheSize,
