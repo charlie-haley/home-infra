@@ -180,5 +180,5 @@ resources:
       storageClassName: ceph-bucket
 
   # Monitoring mixins
-  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/kubernetesControlPlane-prometheusRule.yaml
+  - url: https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/7e5a571a3fb735c78e17c76a637eb7e8bb5dd086/manifests/kubernetesControlPlane-prometheusRule.yaml
     256sum: 8f824cdac3bfec4d5eb23ce10a3899c81654b5010b5cfb76734071502956327a
