@@ -2,7 +2,7 @@
 helm:
   repo: https://bjw-s.github.io/helm-charts
   chart: app-template
-  version: 1.5.1
+  version: 3.7.3
 
 backup:
   pvc: "jellyfin-config"
