@@ -8,7 +8,7 @@ require (
 	github.com/backube/volsync v0.10.0
 	github.com/fluxcd/helm-controller/api v1.0.1
 	github.com/fluxcd/kustomize-controller/api v1.3.0
-	github.com/fluxcd/pkg/apis/meta v1.5.0
+	github.com/fluxcd/pkg/apis/meta v1.12.0
 	github.com/fluxcd/source-controller/api v1.3.0
 	github.com/urfave/cli/v2 v2.27.4
 	k8s.io/api v0.31.0
