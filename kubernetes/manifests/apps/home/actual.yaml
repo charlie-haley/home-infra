@@ -1,4 +1,3 @@
-
 ---
 helm:
   repo: https://bjw-s-labs.github.io/helm-charts
@@ -12,8 +11,8 @@ values:
       containers:
         main:
           image:
-            repository: ghcr.io/actualbudget/actual
-            tag: 25.5.0
+            repository: actualbudget/actual-server
+            tag: latest
           env:
             - name: SERVER_PORT
               value: "5006"
@@ -24,17 +23,17 @@ values:
           probes:
             liveness:
               enabled: true
-              type: http
+              type: HTTP
               path: /
               port: 5006
             readiness:
               enabled: true
-              type: http
+              type: HTTP
               path: /
               port: 5006
             startup:
               enabled: true
-              type: http
+              type: HTTP
               path: /
               port: 5006
   
@@ -54,7 +53,7 @@ values:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: "traefik-system-internal@kubernetescrd"
       hosts:
-        - host: "actual.${SECRET_DOMAIN}"
+        - host: "budget.${SECRET_DOMAIN}"
           paths:
             - path: /
               pathType: Prefix
@@ -64,7 +63,7 @@ values:
       tls:
         - secretName: "budget-tls"
           hosts:
-            - "actual.${SECRET_DOMAIN}"
+            - "budget.${SECRET_DOMAIN}"
 
   persistence:
     config:
