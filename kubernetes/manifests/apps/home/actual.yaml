@@ -58,7 +58,7 @@ values:
             - path: /
               pathType: Prefix
               service:
-                name: main
+                name: actual
                 port: 5006
       tls:
         - secretName: "actual-tls"
