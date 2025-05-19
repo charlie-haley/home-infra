@@ -1,0 +1,93 @@
+
+---
+helm:
+  repo: https://bjw-s-labs.github.io/helm-charts
+  chart: app-template
+  version: 4.0.1
+
+values:
+  controllers:
+    main:
+      type: deployment
+      containers:
+        main:
+          image:
+            repository: ghcr.io/actualbudget/actual
+            tag: 25.5.0
+          env:
+            - name: SERVER_PORT
+              value: "5006"
+            - name: CONFIG_DIR
+              value: "/config"
+            - name: STORAGE_DIR
+              value: "/data"
+          probes:
+            liveness:
+              enabled: true
+              type: http
+              path: /
+              port: 5006
+            readiness:
+              enabled: true
+              type: http
+              path: /
+              port: 5006
+            startup:
+              enabled: true
+              type: http
+              path: /
+              port: 5006
+  
+  service:
+    main:
+      type: ClusterIP
+      ports:
+        http:
+          port: 5006
+          protocol: TCP
+
+  ingress:
+    main:
+      enabled: true
+      className: "traefik"
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.middlewares: "traefik-system-internal@kubernetescrd"
+      hosts:
+        - host: "actual.${SECRET_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
+              service:
+                name: main
+                port: 5006
+      tls:
+        - secretName: "budget-tls"
+          hosts:
+            - "actual.${SECRET_DOMAIN}"
+
+  persistence:
+    config:
+      enabled: true
+      type: persistentVolumeClaim
+      size: 1Gi
+      accessMode: ReadWriteOnce
+      globalMounts:
+        - path: /config
+    data:
+      enabled: true
+      type: persistentVolumeClaim
+      size: 10Gi
+      accessMode: ReadWriteOnce
+      globalMounts:
+        - path: /data
+
+  configMaps:
+    config:
+      enabled: true
+      data:
+        server-config.json: |
+          {
+            "serverPort": 5006,
+            "dataDirectory": "/data"
+          }
