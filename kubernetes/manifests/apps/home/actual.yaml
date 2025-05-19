@@ -11,8 +11,8 @@ values:
       containers:
         main:
           image:
-            repository: actualbudget/actual-server
-            tag: latest
+            repository: ghcr.io/actualbudget/actual
+            tag: 25.5.0
           env:
             - name: SERVER_PORT
               value: "5006"
@@ -53,7 +53,7 @@ values:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: "traefik-system-internal@kubernetescrd"
       hosts:
-        - host: "budget.${SECRET_DOMAIN}"
+        - host: "actual.${SECRET_DOMAIN}"
           paths:
             - path: /
               pathType: Prefix
@@ -61,9 +61,9 @@ values:
                 name: main
                 port: 5006
       tls:
-        - secretName: "budget-tls"
+        - secretName: "actual-tls"
           hosts:
-            - "budget.${SECRET_DOMAIN}"
+            - "actual.${SECRET_DOMAIN}"
 
   persistence:
     config:
