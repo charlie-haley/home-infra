@@ -2,7 +2,7 @@
 helm:
   repo: https://bjw-s-labs.github.io/helm-charts
   chart: app-template
-  version: 4.0.1
+  version: 4.0.1  # Latest version
 
 values:
   controllers:
@@ -15,7 +15,7 @@ values:
         main:
           image:
             repository: ghcr.io/alexxit/go2rtc
-            tag: latest
+            tag: v1.9.9
             pullPolicy: IfNotPresent
           
           env:
@@ -52,17 +52,13 @@ values:
       ports:
         http:
           enabled: true
-          port: 80
+          port: 1984
           protocol: HTTP
           primary: true
         rtsp:
           enabled: true
-          port: 554
+          port: 8554
           protocol: TCP
-        webrtc:
-          enabled: true
-          port: 8555
-          protocol: UDP
 
   ingress:
     main:
@@ -89,9 +85,8 @@ values:
       enabled: true
       data:
         go2rtc.yaml: |
-          api:
-            listen: :80
-          rtsp:
-            listen: :554
           streams:
-            elegoo: ffmpeg:rtsp://192.168.50.36:554/video?#input=rtsp/udp#video=h264#media=video#resolution=960x540
+            driveway:
+              - rtspx://192.168.1.1:7441/xxx
+            garage:
+              - rtspx://192.168.1.1:7441/xxx
