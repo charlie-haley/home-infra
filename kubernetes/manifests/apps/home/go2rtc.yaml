@@ -15,7 +15,7 @@ values:
         main:
           image:
             repository: ghcr.io/alexxit/go2rtc
-            tag: v1.9.9
+            tag: 1.9.9
             pullPolicy: IfNotPresent
           
           env:
