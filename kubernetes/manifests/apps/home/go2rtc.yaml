@@ -1,0 +1,97 @@
+---
+helm:
+  repo: https://bjw-s-labs.github.io/helm-charts
+  chart: app-template
+  version: 4.0.1
+
+values:
+  controllers:
+    main:
+      enabled: true
+      type: deployment
+      replicas: 1
+      
+      containers:
+        main:
+          image:
+            repository: ghcr.io/alexxit/go2rtc
+            tag: latest
+            pullPolicy: IfNotPresent
+          
+          env:
+            TZ: UTC
+          
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+      pod:
+        securityContext:
+          runAsUser: 65534
+          runAsGroup: 65534
+          runAsNonRoot: true
+          fsGroup: 65534
+          fsGroupChangePolicy: OnRootMismatch
+
+  service:
+    main:
+      enabled: true
+      controller: main
+      type: ClusterIP
+      ports:
+        http:
+          enabled: true
+          port: 80
+          protocol: HTTP
+          primary: true
+        rtsp:
+          enabled: true
+          port: 554
+          protocol: TCP
+        webrtc:
+          enabled: true
+          port: 8555
+          protocol: UDP
+
+  ingress:
+    main:
+      enabled: true
+      className: traefik
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      hosts:
+        - host: go2rtc.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+              service:
+                identifier: main
+                port: http
+      tls:
+        - secretName: go2rtc-tls
+          hosts:
+            - go2rtc.${SECRET_DOMAIN}
+
+  configMaps:
+    config:
+      enabled: true
+      data:
+        go2rtc.yaml: |
+          api:
+            listen: :80
+          rtsp:
+            listen: :554
+          streams:
+            elegoo: ffmpeg:rtsp://192.168.50.36:554/video?#input=rtsp/udp#video=h264#media=video#resolution=960x540
