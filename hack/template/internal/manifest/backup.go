@@ -19,7 +19,7 @@ func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) er
 			Annotations: a,
 		},
 		StringData: map[string]string{
-			"RESTIC_REPOSITORY": "${RESTIC_REPOSITORY}/" + namespace + "/" + app,
+			"RESTIC_REPOSITORY": "${RESTIC_REPOSITORY}:" + namespace + "/" + app,
 			"RESTIC_PASSWORD":   "${RESTIC_PASSWORD}",
 			"B2_ACCOUNT_ID":     "${AWS_ACCESS_KEY_RESTIC}",
 			"B2_ACCOUNT_KEY":    "${AWS_SECRET_KEY_RESTIC}",
