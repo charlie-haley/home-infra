@@ -221,7 +221,7 @@ func addNamespaceResource(namespace string) {
 	annotations := map[string]string{"volsync.backube/privileged-movers": "true"}
 	labels := map[string]string{}
 
-	if namespace == "data" || namespace == "media" || namespace == "storage" || namespace == "observability" {
+	if namespace == "data" || namespace == "media" || namespace == "storage" || namespace == "observability" || namespace == "home" {
 		labels["pod-security.kubernetes.io/warn"] = "privileged"
 		labels["pod-security.kubernetes.io/enforce"] = "privileged"
 		labels["pod-security.kubernetes.io/audit"] = "privileged"
