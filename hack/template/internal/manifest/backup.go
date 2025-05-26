@@ -19,12 +19,10 @@ func (m *Manifest) ProcessBackup(app string, namespace string, appDir string) er
 			Annotations: a,
 		},
 		StringData: map[string]string{
-			"RESTIC_REPOSITORY":       "${RESTIC_REPOSITORY}/" + namespace + "/" + app,
-			"RESTIC_PASSWORD":         "${RESTIC_PASSWORD}",
-			"AWS_ACCESS_KEY_ID":       "${AWS_ACCESS_KEY_RESTIC}",
-			"AWS_SECRET_ACCESS_KEY":   "${AWS_SECRET_KEY_RESTIC}",
-			"AWS_DEFAULT_REGION":      "eu-central-003",
-			"AWS_S3_FORCE_PATH_STYLE": "true",
+			"RESTIC_REPOSITORY": "${RESTIC_REPOSITORY}/" + namespace + "/" + app,
+			"RESTIC_PASSWORD":   "${RESTIC_PASSWORD}",
+			"B2_ACCOUNT_ID":     "${AWS_ACCESS_KEY_RESTIC}",
+			"B2_ACCOUNT_KEY":    "${AWS_SECRET_KEY_RESTIC}",
 		},
 	}
 	s.SetGroupVersionKind(schema.GroupVersionKind{Group: "", Version: "v1", Kind: "Secret"})
