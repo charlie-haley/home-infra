@@ -2,7 +2,7 @@
 helm:
   repo: https://bjw-s-labs.github.io/helm-charts
   chart: app-template
-  version: 4.0.1  # Latest version
+  version: 4.0.1
 
 values:
   controllers:
@@ -23,9 +23,11 @@ values:
           
           resources:
             requests:
+              gpu.intel.com/i915: 1
               cpu: 100m
               memory: 128Mi
             limits:
+              gpu.intel.com/i915: 1
               cpu: 500m
               memory: 256Mi
           
@@ -43,12 +45,17 @@ values:
           runAsNonRoot: true
           fsGroup: 65534
           fsGroupChangePolicy: OnRootMismatch
+          supplementalGroups:
+            - 44
+            - 109
 
   service:
     main:
       enabled: true
       controller: main
-      type: ClusterIP
+      type: LoadBalancer
+      annotations:
+        "io.cilium/lb-ipam-ips": "192.168.2.16"
       ports:
         http:
           enabled: true
@@ -74,7 +81,7 @@ values:
               pathType: Prefix
               service:
                 identifier: main
-                port: http
+                port: 1984
       tls:
         - secretName: go2rtc-tls
           hosts:
@@ -86,7 +93,20 @@ values:
       data:
         go2rtc.yaml: |
           streams:
-            driveway:
-              - rtspx://192.168.1.1:7441/xxx
-            garage:
-              - rtspx://192.168.1.1:7441/xxx
+            elegoo:
+              - ffmpeg:rtsp://192.168.50.36:554/video?#input=rtsp/udp#video=h264#media=video#resolution=960x540
+
+  persistence:
+    config:
+      enabled: true
+      type: configMap
+      identifier: config
+      globalMounts:
+        - path: /config
+    
+    dev-dri:
+      enabled: true
+      type: hostPath
+      hostPath: /dev/dri
+      globalMounts:
+        - path: /dev/dri
