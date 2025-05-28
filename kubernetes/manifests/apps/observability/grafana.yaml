@@ -83,6 +83,13 @@ values:
           editable: true
           options:
             path: /var/lib/grafana/dashboards/nats
+        - name: redpanda
+          orgId: 1
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/redpanda
   dashboards:
     default:
       cloudflared:
