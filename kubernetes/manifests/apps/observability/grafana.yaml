@@ -170,6 +170,11 @@ values:
         gnetId: 14862
         revision: 2
         datasource: Prometheus
+      nats-server:
+        # renovate: depName="NATS Server Dashboard"
+        gnetId: 13707
+        revision: 1
+        datasource: Prometheus
   datasources:
     datasources.yaml:
       apiVersion: 1
