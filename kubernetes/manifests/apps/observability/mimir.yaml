@@ -52,8 +52,18 @@ values:
             follow_redirects: true
             enable_http2: true
           webhook_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
-          title: '{{ .Status | toUpper }}: {{ .GroupLabels.alertname }}'
-          message: '{{ range .Alerts }}{{ .Annotations.summary }} ({{ .Labels.namespace }}/{{ .Labels.pod | regexReplaceAll "^([^-]+-[^-]+).*" "${1}..." }}){{ end }}'
+          title: |
+            {{ if eq .Status "firing" }}🔥{{ else }}✅{{ end }} 
+            [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] 
+            {{ .CommonLabels.alertname }}
+          message: |
+            {{ range .Alerts }}
+            {{- if .Annotations.summary }}{{ .Annotations.summary }}{{ end }}
+            {{- if .Annotations.description }}
+            {{ .Annotations.description }}{{ end }}
+            {{- end }}
+            
+            **Silence:** {{ .ExternalURL }}/#/silences/new?filter={{ .CommonLabels.alertname }}
   distributor:
     replicas: 1
   ingester:
