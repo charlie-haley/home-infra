@@ -12,7 +12,7 @@ values:
     input:
       nats_jetstream:
         urls: 
-          - "nats://nats.default.svc.cluster.local:4222"
+          - "nats://nats:4222"
         subject: "test.*"
         stream: "TEST"
         durable: "redpanda-connect-consumer"
@@ -30,9 +30,12 @@ values:
     output:
       kafka_franz:
         seed_brokers:
-          - "redpanda.default.svc.cluster.local:9093"
+          - "redpanda:9093"
         topic: "nats-test"
-        key: ${! meta("nats_subject") }
+        key: $${! meta("nats_subject") }
+        tls:
+          enabled: true
+          skip_cert_verify: true
   
   http:
     enabled: true
