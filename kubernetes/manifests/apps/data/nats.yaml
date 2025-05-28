@@ -13,9 +13,9 @@ values:
   natsBox:
     enabled: true
   
-  exporter:
+  promExporter:
     enabled: true
-    serviceMonitor:
+    podMonitor:
       enabled: true
   
   jetstream:

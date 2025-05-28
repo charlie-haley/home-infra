@@ -157,6 +157,12 @@ values:
         gnetId: 11454
         revision: 14
         datasource: Prometheus
+    nats:
+      nats-jetstream:
+        # renovate: depName="NATS JetStream"
+        gnetId: 14862
+        revision: 2
+        datasource: Prometheus
   datasources:
     datasources.yaml:
       apiVersion: 1
