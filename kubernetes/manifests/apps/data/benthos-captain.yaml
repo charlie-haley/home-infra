@@ -1,8 +1,0 @@
----
-helm:
-  repo: git://github.com/benthosdev/benthos-captain
-  chart: ./chart
-  version: 1.0.0
-
-values:
-  replicas: 1
