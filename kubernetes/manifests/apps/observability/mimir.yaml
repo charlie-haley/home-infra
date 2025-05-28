@@ -63,8 +63,7 @@ values:
             {{ .Annotations.description }}{{ end }}
             {{- end }}
             
-            **Silence:** {{ .ExternalURL }}/#/silences/new?filter={{ .CommonLabels.alertname }}
-  distributor:
+            [🔇 Silence Alert](https://mimir.${SECRET_DOMAIN}/alertmanager/#/silences/new?filter=%7Balertname%3D%22{{ .CommonLabels.alertname }}%22{{ if .CommonLabels.severity }}%2C%20severity%3D%22{{ .CommonLabels.severity }}%22{{ end }}%7D)  distributor:
     replicas: 1
   ingester:
     replicas: 1
