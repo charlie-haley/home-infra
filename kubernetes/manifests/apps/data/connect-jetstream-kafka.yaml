@@ -1,0 +1,74 @@
+---
+helm:
+  repo: https://charts.redpanda.com
+  chart: connect
+  version: 3.0.3
+
+values:
+  deployment:
+    replicaCount: 1
+  
+  config:
+    input:
+      nats_jetstream:
+        urls: 
+          - "nats://192.168.2.24:4222"
+        subject: "test.*"
+        stream: "TEST"
+        consumer_name: "redpanda-connect-consumer"
+        deliver: "all"
+        pull:
+          max_messages: 100
+    
+    pipeline:
+      processors:
+        - mapping: |
+            root = {
+              "timestamp": now(),
+              "source": "nats-jetstream",
+              "subject": meta("nats_subject"),
+              "data": content().string()
+            }
+    
+    output:
+      kafka:
+        addresses:
+          - "redpanda.default.svc.cluster.local:9092"
+        topic: "nats-test"
+        key: ${! meta("nats_subject") }
+        partitioner: "manual"
+        partition: 0
+        max_in_flight: 1
+        acks: "all"
+        compression: "snappy"
+    
+    logger:
+      level: "INFO"
+      static_fields:
+        '@service': redpanda-connect
+    
+    metrics:
+      prometheus: {}
+    
+    http:
+      enabled: true
+      address: "0.0.0.0:4195"
+      root_path: "/redpanda-connect"
+      debug_endpoints: false
+  
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: http
+  
+  serviceMonitor:
+    enabled: true
+    interval: "10s"
+  
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
