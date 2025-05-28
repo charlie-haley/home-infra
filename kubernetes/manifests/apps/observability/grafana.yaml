@@ -76,6 +76,13 @@ values:
           editable: true
           options:
             path: /var/lib/grafana/dashboards/kubernetes
+        - name: nats
+          orgId: 1
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/nats
   dashboards:
     default:
       cloudflared:
