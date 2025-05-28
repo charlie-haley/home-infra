@@ -7,8 +7,7 @@ helm:
 values:
   config:
     cluster:
-      enabled: true
-      replicas: 3
+      enabled: false
     jetstream:
       enabled: true
       fileStore:
