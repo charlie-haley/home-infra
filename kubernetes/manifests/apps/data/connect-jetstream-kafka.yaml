@@ -28,14 +28,12 @@ values:
             }
     
     output:
-      kafka_franz:
-        seed_brokers:
-          - "redpanda:9093"
-        topic: "nats-test"
-        key: $${! meta("nats_subject") }
+      kafka:
         tls:
           enabled: true
           skip_cert_verify: true
+        addresses: ["redpanda.data.svc.cluster.local:9093"]
+        topic: "nats-test"
   
   http:
     enabled: true
