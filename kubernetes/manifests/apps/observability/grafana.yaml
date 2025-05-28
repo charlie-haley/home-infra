@@ -175,6 +175,12 @@ values:
         gnetId: 13707
         revision: 1
         datasource: Prometheus
+    redpanda:
+      redpanda-ops-dashboard:
+        # renovate: depName="Redpanda Ops Dashboard"
+        gnetId: 18135
+        revision: 3
+        datasource: Prometheus
   datasources:
     datasources.yaml:
       apiVersion: 1
