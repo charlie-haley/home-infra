@@ -9,6 +9,10 @@ dependsOn:
   - name: storage-rook-ceph-operator
 
 values:
+  configOverride: |
+    [osd]
+    osd_op_complaint_time = 60
+    osd_op_log_threshold = 20
   operatorNamespace: storage
   monitoring:
     enabled: true
