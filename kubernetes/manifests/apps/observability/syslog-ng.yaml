@@ -12,7 +12,7 @@ values:
         main:
           image:
             repository: balabit/syslog-ng
-            tag: 4.8.0
+            tag: 4.8.3
           args:
             - --no-caps
             - -f
