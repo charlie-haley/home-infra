@@ -7,7 +7,7 @@ RUN go mod download
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o /mirdain
 
-FROM alpine:3.20.2
+FROM alpine:3.22.0
 
 COPY --from=builder /mirdain /mirdain
 
