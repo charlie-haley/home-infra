@@ -13,7 +13,7 @@ values:
     type: statefulset
   image:
     repository: ghcr.io/onedr0p/prowlarr
-    tag: 1.21.2.4649
+    tag: 1.32.2.4987
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
