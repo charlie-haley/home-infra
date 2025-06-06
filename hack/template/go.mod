@@ -2,7 +2,7 @@ module github.com/charlie-haley/home-infra/template
 
 go 1.22.0
 
-toolchain go1.22.6
+toolchain go1.24.4
 
 require (
 	github.com/backube/volsync v0.10.0
