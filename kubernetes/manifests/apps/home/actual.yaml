@@ -4,6 +4,9 @@ helm:
   chart: app-template
   version: 4.0.1
 
+backup:
+  pvc: "home-assistant-config"
+
 values:
   controllers:
     main:
